@@ -1,0 +1,66 @@
+apply from: 'liquibase.gradle'
+apply from: 'project.gradle'
+
+allprojects {
+  apply plugin: 'java'
+  apply plugin: 'idea'
+  apply plugin: 'jetty'
+  apply plugin: 'war'
+
+
+  sourceCompatibility = 1.7
+
+  repositories {
+    mavenCentral()
+  }
+
+  tasks.withType(Compile) {
+    options.encoding = 'utf-8'
+  }
+
+  sourceSets {
+    main {
+      resources.srcDirs = ['src/main/java', 'src/main/resources']
+    }
+  }
+
+  def uniqProjectName = project.path.substring(1).replace(':', '-');
+  uniqProjectName = uniqProjectName ? uniqProjectName : "main"
+
+  jar {
+    baseName = uniqProjectName
+  }
+}
+
+buildscript {
+  repositories {
+    mavenCentral()
+  }
+
+  dependencies {
+    classpath files('serverApp/libs/ojdbc6-11.2.0.3.jar')
+    classpath 'com.augusttechgroup:gradle-liquibase-plugin:0.7'
+    classpath 'postgresql:postgresql:9.+'
+    classpath('org.firebirdsql.jdbc:jaybird-jdk17:2.2.2') {
+      exclude group: 'javax.jms', module: 'jms'
+    }
+    classpath files('jobskills/db/src/main/resources/') // нужно для поиска liquibase-скриптов (changelogs)
+  }
+}
+
+dependencies {
+  compile project(':serverApp');
+}
+
+jettyRun {
+  httpPort = 8080
+  stopPort = 8086
+  stopKey = "stopKey"
+  webAppSourceDirectory = new File("serverApp/src/main/webapp/")
+  contextPath = "/jobSkills"
+}
+
+jettyStop {
+  stopPort = 8086
+  stopKey = "stopKey"
+}

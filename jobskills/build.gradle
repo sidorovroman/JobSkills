@@ -1,0 +1,5 @@
+dependencies {
+  compile project(':jobskills:server')
+  compile project(':jobskills:web')
+  compile project(':jobskills:common')
+}  

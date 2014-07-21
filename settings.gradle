@@ -1,0 +1,15 @@
+rootProject.name = 'jobskills'
+
+include 'core'
+include 'core:server'
+include 'core:common'
+include 'core:web'
+include 'core:db'
+
+
+include 'serverApp'
+include 'jobskills:server'
+include 'jobskills:common'
+include 'jobskills:web'
+include 'jobskills:db'
+

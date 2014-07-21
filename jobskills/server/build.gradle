@@ -1,0 +1,26 @@
+dependencies {
+  compile project(':jobskills:common')
+  compile project(':core:server')
+
+  // эту библиотеку необходимо объявить раньше чем jaybird чтобы избежать конфликта
+  compile group: 'commons-dbcp', name: 'commons-dbcp', version: '1.+'
+  compile group: 'postgresql', name : 'postgresql', version: '9.+'
+//  compile group:  'com.oracle', name: 'ojdbc6', version: '11.2.+'
+  compile files('libs/ojdbc6-11.2.0.3.jar')
+
+  compile ('org.firebirdsql.jdbc:jaybird-jdk17:2.2.2') {
+    exclude group: 'javax.jms', module: 'jms'
+  }
+  
+  compile group: 'org.springframework', name: 'spring-orm', version: rootProject.ext.springVersion
+  compile group: 'org.springframework', name: 'spring-jdbc', version: rootProject.ext.springVersion
+  compile group: 'org.hibernate', name: 'hibernate-core', version: rootProject.ext.hibernateVersion
+  compile group: 'org.hibernate', name: 'hibernate-ehcache', version: rootProject.ext.hibernateVersion
+  compile 'org.springframework.security:spring-security-core:3.1.3.RELEASE'
+  compile 'org.springframework.security:spring-security-web:3.1.3.RELEASE'
+  compile 'org.springframework.security:spring-security-config:3.1.3.RELEASE'
+  compile 'org.springframework.security:spring-security-ldap:3.1.3.RELEASE'
+
+  compile 'com.googlecode.json-simple:json-simple:1.1'
+
+}

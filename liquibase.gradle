@@ -1,0 +1,27 @@
+apply plugin: 'liquibase'
+
+liquibase {
+  changelogs {
+    main {
+      file = file('jobskills/db/src/main/resources/com/onedeveloperstudio/jobskills/db/main_changelog.xml')
+    }
+  }
+
+  databases {
+    Properties props = new Properties();
+    InputStream inputStream = new FileInputStream('conf/main.properties');
+    try {
+      props.load(inputStream);
+    } finally {
+      inputStream.close()
+    }
+
+    mainDB {
+      url = props.get('db.url');
+      username = props.get('db.username');
+      password = props.get('db.password');
+    }
+
+    defaultDatabase = databases.mainDB
+  }
+}

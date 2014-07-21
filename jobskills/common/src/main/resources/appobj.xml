@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<objects>
+  <dict name="job" caption="Профессии">
+    <entity class="com.onedeveloperstudio.jobskills.server.entity.JobEntity"/>
+    <editDto class="com.onedeveloperstudio.jobskills.common.dto.JobDto"/>
+    <service class="com.onedeveloperstudio.jobskills.server.handler.JobServiceImpl"/>
+  </dict>
+</objects>
