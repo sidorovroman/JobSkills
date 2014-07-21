@@ -5,6 +5,8 @@ import com.onedeveloperstudio.core.server.entity.BaseEntity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -22,6 +24,10 @@ public class RequiredSkill extends BaseEntity {
   private List<WayToImproveSkill> ways;
 
   @ManyToMany
+  @JoinTable(name = "requiredskill_waytoimproveskill", joinColumns = {
+      @JoinColumn(name = "ways_id", nullable = false, updatable = false) },
+      inverseJoinColumns = { @JoinColumn(name = "skill_id",
+          nullable = false, updatable = false) })
   public List<WayToImproveSkill> getWays() {
     return ways;
   }

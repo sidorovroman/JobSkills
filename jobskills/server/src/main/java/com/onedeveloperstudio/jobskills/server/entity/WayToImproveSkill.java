@@ -9,6 +9,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import java.util.List;
@@ -45,6 +47,10 @@ public class WayToImproveSkill extends BaseEntity {
   }
 
   @ManyToMany
+  @JoinTable(name = "requiredskill_waytoimproveskill", joinColumns = {
+      @JoinColumn(name = "skill_id", nullable = false, updatable = false) },
+      inverseJoinColumns = { @JoinColumn(name = "ways_id",
+          nullable = false, updatable = false) })
   public List<RequiredSkill> getSkill() {
     return skill;
   }
@@ -61,6 +67,7 @@ public class WayToImproveSkill extends BaseEntity {
     this.link = link;
   }
 
+  @Enumerated(EnumType.STRING)
   public ResourceType getResourceType() {
     return resourceType;
   }

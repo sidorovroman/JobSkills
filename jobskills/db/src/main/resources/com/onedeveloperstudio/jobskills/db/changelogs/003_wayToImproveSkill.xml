@@ -21,4 +21,20 @@
     </createTable>
     <addPrimaryKey columnNames="id" constraintName="PKUK_WayToImproveSkill" tableName="waytoimproveskill"/>
   </changeSet>
+  <changeSet author="y.zakharov" id="2">
+    <createTable tableName="requiredskill_waytoimproveskill">
+      <column name="ways_id" type="BIGINT">
+        <constraints nullable="false"/>
+      </column>
+      <column name="skill_id" type="BIGINT">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+    <addForeignKeyConstraint baseColumnNames="ways_id" baseTableName="requiredskill_waytoimproveskill"
+                             constraintName="FK_requiredskill_RSWTIS" referencedColumnNames="id"
+                             referencedTableName="waytoimproveskill"/>
+    <addForeignKeyConstraint baseColumnNames="skill_id" baseTableName="requiredskill_waytoimproveskill"
+                             constraintName="FK_waytoimproveskill_RSWTIS" referencedColumnNames="id"
+                             referencedTableName="requiredskill"/>
+  </changeSet>
 </databaseChangeLog>
