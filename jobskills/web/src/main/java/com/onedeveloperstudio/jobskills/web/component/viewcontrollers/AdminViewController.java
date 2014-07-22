@@ -4,11 +4,14 @@ import com.onedeveloperstudio.core.common.appobj.AppObj;
 import com.onedeveloperstudio.core.common.appobj.AppObjDict;
 import com.onedeveloperstudio.core.common.handler.BaseService;
 import com.onedeveloperstudio.jobskills.common.dto.JobDto;
+import com.onedeveloperstudio.jobskills.server.service.JobService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
 
 /**
  * User: y.zakharov
@@ -23,10 +26,9 @@ public class AdminViewController {
   public String getDefaultPage(ModelMap model) {
     AppObjDict dict = AppObjDict.getInstance();
     AppObj jobAppObj = dict.getAppObj("job");
-    BaseService service = (BaseService) beanFactory.getBean("simpleService");
+    JobService service = beanFactory.getBean(JobService.class);
     service.setAppObj(jobAppObj);
-
-    JobDto dto = (JobDto) service.load(1l);
+    List<JobDto>  list = service.loadAll();
     return "/admin/index";
   }
 }

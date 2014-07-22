@@ -8,48 +8,7 @@
         http://www.springframework.org/schema/context/spring-context-3.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
 
   <import resource="classpath:/com/onedeveloperstudio/core/server/coreServerContext.xml"/>
-
+  <import resource="springDataContext.xml"/>
   <context:component-scan base-package="com.onedeveloperstudio.jobskills.server"/>
-
-  <bean id="systemProperties" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-    <property name="fileEncoding" value="UTF-8"/>
-    <property name="ignoreResourceNotFound" value="true"/>
-    <property name="locations">
-      <list>
-        <value>classpath:main.properties</value>
-      </list>
-    </property>
-  </bean>
-  <!-- фабрика соединений к базе данных -->
-  <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
-    <property name="driverClassName" value="${db.driverClassName}"/>
-    <property name="url" value="${db.url}"/>
-    <property name="username" value="${db.username}"/>
-    <property name="password" value="${db.password}"/>
-
-    <property name="maxActive" value="10"/>
-    <property name="initialSize" value="5"/>
-    <property name="maxWait" value="-1"/>
-  </bean>
-
-  <!-- фабрика сессий фреймворка hibernate -->
-  <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-    <property name="configLocation" value="classpath:com/onedeveloperstudio/jobskills/hibernate.xml"/>
-
-    <property name="dataSource" ref="dataSource"/>
-    <property name="packagesToScan" value="com.onedeveloperstudio.jobskills.server.entity"/>
-    <property name="hibernateProperties">
-      <props>
-        <prop key="hibernate.dialect">${db.dialect}</prop>
-      </props>
-    </property>
-  </bean>
-
-  <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
-    <property name="sessionFactory" ref="sessionFactory"/>
-  </bean>
-
-  <!-- означает что конфигурация транзакций будет задаваться при помощи аннотаций к классам -->
-  <tx:annotation-driven transaction-manager="transactionManager"/>
 
 </beans>

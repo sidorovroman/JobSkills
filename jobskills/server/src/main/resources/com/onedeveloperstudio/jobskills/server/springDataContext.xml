@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+          http://www.springframework.org/schema/beans/spring-beans.xsd
+          http://www.springframework.org/schema/tx
+          http://www.springframework.org/schema/tx/spring-tx.xsd
+          http://www.springframework.org/schema/data/jpa
+          http://www.springframework.org/schema/data/jpa/spring-jpa-1.0.xsd">
+
+  <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    <property name="driverClassName" value="${db.driverClassName}"/>
+    <property name="url" value="${db.url}"/>
+    <property name="username" value="${db.username}"/>
+    <property name="password" value="${db.password}"/>
+  </bean>
+
+  <bean id="systemProperties" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+    <property name="fileEncoding" value="UTF-8"/>
+    <property name="ignoreResourceNotFound" value="true"/>
+    <property name="locations">
+      <list>
+        <value>classpath:main.properties</value>
+      </list>
+    </property>
+  </bean>
+  <!-- фабрика соединений к базе данных -->
+  <jpa:repositories base-package="com.onedeveloperstudio.jobskills.server"
+                    entity-manager-factory-ref="entityManagerFactory"/>
+
+  <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"
+        p:entityManagerFactory-ref="entityManagerFactory"/>
+
+  <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
+        p:dataSource-ref="dataSource"
+        p:persistenceUnitName="persistance">
+    <property name="jpaProperties">
+      <value>
+        hibernate.dialect=${db.dialect}
+        hibernate.show_sql=true
+        hibernate.format_sql=true
+        hibernate.cache.region.factory_class=org.hibernate.cache.ehcache.EhCacheRegionFactory
+      </value>
+    </property>
+    <property name="packagesToScan">
+      <list>
+        <value>com.onedeveloperstudio.jobskills.server.entity</value>
+      </list>
+    </property>
+  </bean>
+
+<!--
+  <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean"
+        p:configLocation="classpath:hibernate.cfg.xml">
+    <property name="dataSource" ref="dataSource"/>
+    <property name="packagesToScan">
+      <list>
+        <value>com.onedeveloperstudio.jobskills.server.entity</value>
+      </list>
+    </property>
+    <property name="hibernateProperties">
+      <value>
+        hibernate.dialect=${db.dialect}
+        hibernate.show_sql=true
+        hibernate.format_sql=true
+      </value>
+    </property>
+  </bean>-->
+
+  <tx:annotation-driven transaction-manager="transactionManager"/>
+</beans>
