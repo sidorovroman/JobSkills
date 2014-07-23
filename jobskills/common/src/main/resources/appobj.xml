@@ -3,6 +3,7 @@
   <dict name="job" caption="Профессии">
     <entity class="com.onedeveloperstudio.jobskills.server.entity.JobEntity"/>
     <editDto class="com.onedeveloperstudio.jobskills.common.dto.JobDto"/>
-    <service class="com.onedeveloperstudio.jobskills.server.handler.JobServiceImpl"/>
+    <service class="com.onedeveloperstudio.jobskills.server.service.JobService"/>
+    <repository class="com.onedeveloperstudio.jobskills.server.dao.repositories.JobRepository"/>
   </dict>
 </objects>

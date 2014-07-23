@@ -8,6 +8,7 @@ public class AppObj {
   public static final String ENTITY = "entity";
   public static final String EDIT_DTO = "editDto";
   public static final String SERVICE = "service";
+  public static final String REPOSITORY = "repository";
 
   private String name;
   private String caption;

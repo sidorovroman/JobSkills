@@ -1,7 +1,8 @@
-package com.onedeveloperstudio.core.common.handler;
+package com.onedeveloperstudio.core.server.service;
 
 import com.onedeveloperstudio.core.common.appobj.AppObj;
 import com.onedeveloperstudio.core.common.dto.BaseDto;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
@@ -13,11 +14,16 @@ public interface BaseService<D extends BaseDto> {
 
   D load(Long id);
 
-  <D extends BaseDto> List<D> loadAll();
+  List<D> loadAll();
 
   void delete(Long id);
 
   public AppObj getAppObj();
 
   public void setAppObj(AppObj appObj);
+
+  public JpaRepository getRepository();
+
+  public void setRepository(JpaRepository repository);
+
 }
