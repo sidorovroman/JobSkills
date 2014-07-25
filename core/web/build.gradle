@@ -1,5 +1,5 @@
 dependencies {
-  compile project(':core:common')
+  compile project(':core:server')
 
   compile group: 'javax.servlet', name: 'servlet-api', version: '2.5'
   compile group: 'commons-io', name: 'commons-io', version: '1.3.2'
@@ -11,4 +11,5 @@ dependencies {
   compile group: 'org.springframework.security', name: 'spring-security-web', version: '3.1.4.RELEASE'
   compile group: 'org.springframework.security', name: 'spring-security-taglibs', version: '3.1.4.RELEASE'
   compile group: 'net.tanesha.recaptcha4j', name:'recaptcha4j', version: '0.0.7'
+  compile group: 'org.scribe', name:'scribe', version: '1.3.6'
 }

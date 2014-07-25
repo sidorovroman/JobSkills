@@ -18,6 +18,9 @@
         <constraints nullable="false"/>
       </column>
       <column name="link" type="VARCHAR(200)"/>
+      <column name="addDate" type="TIMESTAMP">
+        <constraints nullable="false"/>
+      </column>
     </createTable>
     <addPrimaryKey columnNames="id" constraintName="PKUK_WayToImproveSkill" tableName="waytoimproveskill"/>
   </changeSet>

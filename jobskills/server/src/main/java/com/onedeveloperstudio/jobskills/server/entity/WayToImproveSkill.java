@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -27,6 +28,7 @@ public class WayToImproveSkill extends BaseEntity {
   private List<RequiredSkill> skill;
   private String link;
   private ResourceType resourceType;
+  private Date addDate;
 
   @Enumerated(EnumType.STRING)
   public GRADE getGrade() {
@@ -74,5 +76,14 @@ public class WayToImproveSkill extends BaseEntity {
 
   public void setResourceType(ResourceType resourceType) {
     this.resourceType = resourceType;
+  }
+
+  @Column(nullable = false)
+  public Date getAddDate() {
+    return addDate;
+  }
+
+  public void setAddDate(Date addDate) {
+    this.addDate = addDate;
   }
 }
