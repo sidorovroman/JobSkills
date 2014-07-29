@@ -21,6 +21,7 @@ public class Commentary  extends BaseEntity {
   private String message;
   private Commentary head;
   private List<Commentary> children;
+  private List<Vote> votes;
 
   @ManyToOne
   public AuthUser getAuthor() {
@@ -65,5 +66,13 @@ public class Commentary  extends BaseEntity {
 
   public void setChildren(List<Commentary> children) {
     this.children = children;
+  }
+
+  public List<Vote> getVotes() {
+    return votes;
+  }
+
+  public void setVotes(List<Vote> votes) {
+    this.votes = votes;
   }
 }

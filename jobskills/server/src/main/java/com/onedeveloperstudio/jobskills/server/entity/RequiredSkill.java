@@ -9,6 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.List;
 
@@ -22,6 +23,8 @@ public class RequiredSkill extends BaseEntity {
   private JobEntity job;
   private String caption;
   private List<WayToImproveSkill> ways;
+  private List<Commentary> comments;
+  private List<Vote> votes;
 
   @ManyToMany
   @JoinTable(name = "requiredskill_waytoimproveskill", joinColumns = {
@@ -52,5 +55,14 @@ public class RequiredSkill extends BaseEntity {
 
   public void setCaption(String caption) {
     this.caption = caption;
+  }
+
+  @OneToMany
+  public List<Commentary> getComments() {
+    return comments;
+  }
+
+  public void setComments(List<Commentary> comments) {
+    this.comments = comments;
   }
 }
