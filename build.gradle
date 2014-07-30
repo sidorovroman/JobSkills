@@ -41,9 +41,6 @@ buildscript {
     classpath files('serverApp/libs/ojdbc6-11.2.0.3.jar')
     classpath 'com.augusttechgroup:gradle-liquibase-plugin:0.7'
     classpath 'postgresql:postgresql:9.+'
-    classpath('org.firebirdsql.jdbc:jaybird-jdk17:2.2.2') {
-      exclude group: 'javax.jms', module: 'jms'
-    }
     classpath files('jobskills/db/src/main/resources/') // нужно для поиска liquibase-скриптов (changelogs)
   }
 }

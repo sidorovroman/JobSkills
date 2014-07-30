@@ -1,4 +1,4 @@
-package com.onedeveloperstudio.core.common;
+package com.onedeveloperstudio.jobskills.common;
 
 /**
  * User: y.zakharov

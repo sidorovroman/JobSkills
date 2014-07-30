@@ -12,6 +12,12 @@
       <property name="hibernate.ejb.naming_strategy" value="org.hibernate.cfg.EJB3NamingStrategy"/>
       <property name="jadira.usertype.autoRegisterUserTypes" value="true"/>
     </properties>
+    <class>com.onedeveloperstudio.core.server.security.UserAccount</class>
     <class>com.onedeveloperstudio.jobskills.server.entity.JobEntity</class>
+    <class>com.onedeveloperstudio.jobskills.server.entity.Vote</class>
+    <class>com.onedeveloperstudio.jobskills.server.entity.Commentary</class>
+    <class>com.onedeveloperstudio.jobskills.server.entity.DashBoard</class>
+    <class>com.onedeveloperstudio.jobskills.server.entity.WayToImproveSkill</class>
+    <class>com.onedeveloperstudio.jobskills.server.entity.RequiredSkill</class>
   </persistence-unit>
 </persistence>

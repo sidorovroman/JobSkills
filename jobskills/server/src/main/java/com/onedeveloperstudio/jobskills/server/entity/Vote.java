@@ -1,30 +1,32 @@
 package com.onedeveloperstudio.jobskills.server.entity;
 
-import com.onedeveloperstudio.core.common.VoteState;
 import com.onedeveloperstudio.core.server.entity.BaseEntity;
-import com.onedeveloperstudio.core.server.entity.user.AuthUser;
+import com.onedeveloperstudio.core.server.security.UserAccount;
+import com.onedeveloperstudio.jobskills.common.VoteState;
 
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import java.util.Date;
 
 /**
  * User: y.zakharov
  * Date: 25.07.14
  */
-@Entity
+@Table(name = "Vote")
+@Entity(name="Vote")
 public class Vote extends BaseEntity {
-  private AuthUser user;
+  private UserAccount user;
   private Date voteDate;
   private VoteState state;
 
   @ManyToOne
-  public AuthUser getUser() {
+  public UserAccount getUser() {
     return user;
   }
 
-  public void setUser(AuthUser user) {
+  public void setUser(UserAccount user) {
     this.user = user;
   }
 

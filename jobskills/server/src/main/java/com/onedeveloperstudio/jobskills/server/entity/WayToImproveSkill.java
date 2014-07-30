@@ -31,6 +31,7 @@ public class WayToImproveSkill extends BaseEntity {
   private Date addDate;
 
   @Enumerated(EnumType.STRING)
+  @Column(length = 100)
   public GRADE getGrade() {
     return grade;
   }
@@ -70,6 +71,7 @@ public class WayToImproveSkill extends BaseEntity {
   }
 
   @Enumerated(EnumType.STRING)
+  @Column(length = 100)
   public ResourceType getResourceType() {
     return resourceType;
   }

@@ -1,12 +1,13 @@
 package com.onedeveloperstudio.jobskills.server.entity;
 
 import com.onedeveloperstudio.core.server.entity.BaseEntity;
-import com.onedeveloperstudio.core.server.entity.user.AuthUser;
+import com.onedeveloperstudio.core.server.security.UserAccount;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import java.util.Date;
 import java.util.List;
 
@@ -14,9 +15,10 @@ import java.util.List;
  * User: y.zakharov
  * Date: 25.07.14
  */
-@Entity
+@Table(name = "Commentary")
+@Entity(name="Commentary")
 public class Commentary  extends BaseEntity {
-  private AuthUser author;
+  private UserAccount author;
   private Date addDate;
   private String message;
   private Commentary head;
@@ -24,11 +26,11 @@ public class Commentary  extends BaseEntity {
   private List<Vote> votes;
 
   @ManyToOne
-  public AuthUser getAuthor() {
+  public UserAccount getAuthor() {
     return author;
   }
 
-  public void setAuthor(AuthUser author) {
+  public void setAuthor(UserAccount author) {
     this.author = author;
   }
 
@@ -68,6 +70,7 @@ public class Commentary  extends BaseEntity {
     this.children = children;
   }
 
+  @OneToMany
   public List<Vote> getVotes() {
     return votes;
   }
