@@ -20,8 +20,8 @@ import java.util.List;
  * User: y.zakharov
  * Date: 20.07.14
  */
-@Table(name = "wayToImproveSkill")
-@Entity(name="wayToImproveSkill")
+@Table(name = "waytoimproveskill")
+@Entity(name="waytoimproveskill")
 public class WayToImproveSkill extends BaseEntity {
   private GRADE grade;
   private String caption;
@@ -71,7 +71,7 @@ public class WayToImproveSkill extends BaseEntity {
   }
 
   @Enumerated(EnumType.STRING)
-  @Column(length = 100)
+  @Column(length = 100, name = "resourcetype")
   public ResourceType getResourceType() {
     return resourceType;
   }

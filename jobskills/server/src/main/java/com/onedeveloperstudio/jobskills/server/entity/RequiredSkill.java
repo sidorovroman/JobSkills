@@ -17,8 +17,8 @@ import java.util.List;
  * User: y.zakharov
  * Date: 20.07.14
  */
-@Table(name = "requiredSkill")
-@Entity(name="requiredSkill")
+@Table(name = "requiredskill")
+@Entity(name="requiredskill")
 public class RequiredSkill extends BaseEntity {
   private JobEntity job;
   private String caption;

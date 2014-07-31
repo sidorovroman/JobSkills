@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
-                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
   <changeSet author="y.zakharov" id="1">
-    <createTable tableName="UserAccount">
+    <createTable tableName="useraccount">
       <column autoIncrement="true" name="id" type="BIGINT">
         <constraints nullable="false" primaryKey="true" primaryKeyName="PKB3F13C2D1B"/>
       </column>
       <column name="version" type="BIGINT"/>
-      <column name="name" type="VARCHAR(100)"/>
+      <column name="username" type="VARCHAR(100)"/>
       <column name="password" type="VARCHAR(255)"/>
-      <column name="group_id" type="BIGINT"/>
-      <column name="users_id" type="BIGINT"/>
     </createTable>
-    <createTable tableName="Commentary">
+    <createTable tableName="commentary">
       <column autoIncrement="true" name="id" type="BIGINT">
         <constraints primaryKey="true" primaryKeyName="PKUK_hio9iw7irkbdbw7ccy01i9bhm"/>
       </column>
@@ -26,20 +27,20 @@
       <column name="message" type="VARCHAR(1000)">
         <constraints nullable="false"/>
       </column>
-      <column name="user_id" type="BIGINT">
+      <column name="author_id" type="BIGINT">
         <constraints nullable="false"/>
       </column>
       <column name="head_id" type="BIGINT"/>
     </createTable>
-    <createTable tableName="Commentary_Vote">
-      <column name="Commentary_id" type="BIGINT">
+    <createTable tableName="commentary_vote">
+      <column name="commentary_id" type="BIGINT">
         <constraints nullable="false"/>
       </column>
       <column name="votes_id" type="BIGINT">
         <constraints nullable="false"/>
       </column>
     </createTable>
-    <createTable tableName="DashBoard">
+    <createTable tableName="dashboard">
       <column autoIncrement="true" name="id" type="BIGINT">
         <constraints primaryKey="true" primaryKeyName="PKUK_ev8wiiub09rwnfijowl1nw9fk"/>
       </column>
@@ -54,7 +55,7 @@
       </column>
       <column name="way_id" type="BIGINT"/>
     </createTable>
-    <createTable tableName="Vote">
+    <createTable tableName="vote">
       <column autoIncrement="true" name="id" type="BIGINT">
         <constraints primaryKey="true" primaryKeyName="PKUK_trhlgsrr6yksn99pocmg1dyww"/>
       </column>
@@ -62,7 +63,7 @@
         <constraints nullable="false"/>
       </column>
       <column name="state" type="INT"/>
-      <column name="voteDate" type="TIMESTAMP"/>
+      <column name="votedate" type="TIMESTAMP"/>
       <column name="user_id" type="BIGINT">
         <constraints nullable="false"/>
       </column>
@@ -79,7 +80,7 @@
       </column>
       <column name="parent_id" type="BIGINT"/>
     </createTable>
-    <createTable tableName="requiredSkill">
+    <createTable tableName="requiredskill">
       <column autoIncrement="true" name="id" type="BIGINT">
         <constraints primaryKey="true" primaryKeyName="PKUK_51xc14a8fmomoem3w31l6i95m"/>
       </column>
@@ -93,8 +94,8 @@
         <constraints nullable="false"/>
       </column>
     </createTable>
-    <createTable tableName="requiredSkill_Commentary">
-      <column name="requiredSkill_id" type="BIGINT">
+    <createTable tableName="requiredskill_commentary">
+      <column name="requiredskill_id" type="BIGINT">
         <constraints nullable="false"/>
       </column>
       <column name="comments_id" type="BIGINT">
@@ -109,14 +110,14 @@
         <constraints nullable="false"/>
       </column>
     </createTable>
-    <createTable tableName="wayToImproveSkill">
+    <createTable tableName="waytoimproveskill">
       <column autoIncrement="true" name="id" type="BIGINT">
         <constraints primaryKey="true" primaryKeyName="PKUK_f91vrgeu74xuv2h9vjag6bsye"/>
       </column>
       <column name="version" type="BIGINT">
         <constraints nullable="false"/>
       </column>
-      <column name="addDate" type="TIMESTAMP">
+      <column name="adddate" type="TIMESTAMP">
         <constraints nullable="false"/>
       </column>
       <column name="caption" type="VARCHAR(512)">
@@ -126,48 +127,48 @@
       <column name="link" type="VARCHAR(255)"/>
       <column name="resourceType" type="VARCHAR(100)"/>
     </createTable>
-    <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="Vote"
+    <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="vote"
                              constraintName="FK_2GXKGPKS02ISJNRFYQQ3ALD61" referencedColumnNames="id"
-                             referencedTableName="UserAccount"/>
-    <addForeignKeyConstraint baseColumnNames="Commentary_id" baseTableName="Commentary_Vote"
+                             referencedTableName="useraccount"/>
+    <addForeignKeyConstraint baseColumnNames="commentary_id" baseTableName="commentary_vote"
                              constraintName="FK_7NLIKSRLGOV83VLD4M3F58NXF" referencedColumnNames="id"
-                             referencedTableName="Commentary"/>
-    <addForeignKeyConstraint baseColumnNames="votes_id" baseTableName="Commentary_Vote"
+                             referencedTableName="commentary"/>
+    <addForeignKeyConstraint baseColumnNames="votes_id" baseTableName="commentary_vote"
                              constraintName="FK_AE6U9QCNCO0QTFCBR385UAPM3" referencedColumnNames="id"
-                             referencedTableName="Vote"/>
-    <addForeignKeyConstraint baseColumnNames="way_id" baseTableName="DashBoard"
+                             referencedTableName="vote"/>
+    <addForeignKeyConstraint baseColumnNames="way_id" baseTableName="dashboard"
                              constraintName="FK_CSC3OU4EK2Y1GDWVLA8HJ2GJ6" referencedColumnNames="id"
-                             referencedTableName="wayToImproveSkill"/>
+                             referencedTableName="waytoimproveskill"/>
     <addForeignKeyConstraint baseColumnNames="skill_id" baseTableName="requiredskill_waytoimproveskill"
                              constraintName="FK_D0141GLM8VX5WAHVM2X1XIJ4P" referencedColumnNames="id"
-                             referencedTableName="wayToImproveSkill"/>
-    <addForeignKeyConstraint baseColumnNames="head_id" baseTableName="Commentary"
+                             referencedTableName="waytoimproveskill"/>
+    <addForeignKeyConstraint baseColumnNames="head_id" baseTableName="commentary"
                              constraintName="FK_E3EYNFFOHOKTU4FM4X1S5YLHU" referencedColumnNames="id"
-                             referencedTableName="Commentary"/>
-    <addForeignKeyConstraint baseColumnNames="job_id" baseTableName="requiredSkill"
+                             referencedTableName="commentary"/>
+    <addForeignKeyConstraint baseColumnNames="job_id" baseTableName="requiredskill"
                              constraintName="FK_EDMDYX9VCQSD9YO63RBO5IX9D" referencedColumnNames="id"
                              referencedTableName="jobs"/>
     <addForeignKeyConstraint baseColumnNames="ways_id" baseTableName="requiredskill_waytoimproveskill"
                              constraintName="FK_FGG7QR4047MN2W2TMHFPMQB26" referencedColumnNames="id"
-                             referencedTableName="requiredSkill"/>
-    <addForeignKeyConstraint baseColumnNames="requiredSkill_id" baseTableName="requiredSkill_Commentary"
+                             referencedTableName="requiredskill"/>
+    <addForeignKeyConstraint baseColumnNames="requiredskill_id" baseTableName="requiredskill_commentary"
                              constraintName="FK_G597SOJGQSNFQY02UTL72KMA" referencedColumnNames="id"
-                             referencedTableName="requiredSkill"/>
+                             referencedTableName="requiredskill"/>
     <addForeignKeyConstraint baseColumnNames="parent_id" baseTableName="jobs"
                              constraintName="FK_GAQ124TOVS1BLUP6GLKBJIFWS" referencedColumnNames="id"
                              referencedTableName="jobs"/>
-    <addForeignKeyConstraint baseColumnNames="comments_id" baseTableName="requiredSkill_Commentary"
+    <addForeignKeyConstraint baseColumnNames="comments_id" baseTableName="requiredskill_commentary"
                              constraintName="FK_L3A01U0R12LUW99YOA51HV5XX" referencedColumnNames="id"
-                             referencedTableName="Commentary"/>
-    <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="DashBoard"
+                             referencedTableName="commentary"/>
+    <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="dashboard"
                              constraintName="FK_P1J93SCAK65C45SA4V6WVU7CS" referencedColumnNames="id"
-                             referencedTableName="UserAccount"/>
-    <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="Commentary"
+                             referencedTableName="useraccount"/>
+    <addForeignKeyConstraint baseColumnNames="author_id" baseTableName="commentary"
                              constraintName="FK_PE1CR7GHULATF2FONYAGBFJLN" referencedColumnNames="id"
-                             referencedTableName="UserAccount"/>
+                             referencedTableName="useraccount"/>
     <addUniqueConstraint columnNames="votes_id" constraintName="UK_AE6U9QCNCO0QTFCBR385UAPM3"
-                         tableName="Commentary_Vote"/>
+                         tableName="commentary_vote"/>
     <addUniqueConstraint columnNames="comments_id" constraintName="UK_L3A01U0R12LUW99YOA51HV5XX"
-                         tableName="requiredSkill_Commentary"/>
+                         tableName="requiredskill_commentary"/>
   </changeSet>
 </databaseChangeLog>

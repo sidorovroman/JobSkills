@@ -15,8 +15,8 @@ import java.util.List;
  * User: y.zakharov
  * Date: 25.07.14
  */
-@Table(name = "Commentary")
-@Entity(name="Commentary")
+@Table(name = "commentary")
+@Entity(name="commentary")
 public class Commentary  extends BaseEntity {
   private UserAccount author;
   private Date addDate;
@@ -34,7 +34,7 @@ public class Commentary  extends BaseEntity {
     this.author = author;
   }
 
-  @Column(nullable = false)
+  @Column(nullable = false, name = "adddate")
   public Date getAddDate() {
     return addDate;
   }

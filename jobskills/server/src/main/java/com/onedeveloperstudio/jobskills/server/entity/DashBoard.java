@@ -5,13 +5,15 @@ import com.onedeveloperstudio.core.server.security.UserAccount;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import java.util.Date;
 
 /**
  * User: y.zakharov
  * Date: 25.07.14
  */
-@Entity
+@Table(name = "dashboard")
+@Entity(name="dashboard")
 public class DashBoard extends BaseEntity{
   private UserAccount user;
   private WayToImproveSkill way;

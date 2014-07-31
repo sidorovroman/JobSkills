@@ -4,6 +4,7 @@ import com.onedeveloperstudio.core.server.entity.BaseEntity;
 import com.onedeveloperstudio.core.server.security.UserAccount;
 import com.onedeveloperstudio.jobskills.common.VoteState;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
@@ -14,8 +15,8 @@ import java.util.Date;
  * User: y.zakharov
  * Date: 25.07.14
  */
-@Table(name = "Vote")
-@Entity(name="Vote")
+@Table(name = "vote")
+@Entity(name="vote")
 public class Vote extends BaseEntity {
   private UserAccount user;
   private Date voteDate;
@@ -30,6 +31,7 @@ public class Vote extends BaseEntity {
     this.user = user;
   }
 
+  @Column(name = "votedate")
   public Date getVoteDate() {
     return voteDate;
   }
