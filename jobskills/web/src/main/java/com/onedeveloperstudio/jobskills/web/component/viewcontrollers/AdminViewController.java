@@ -3,6 +3,8 @@ package com.onedeveloperstudio.jobskills.web.component.viewcontrollers;
 import com.onedeveloperstudio.core.common.appobj.AppObj;
 import com.onedeveloperstudio.core.common.appobj.AppObjDict;
 import com.onedeveloperstudio.core.server.service.BaseService;
+import com.onedeveloperstudio.core.server.service.BaseServiceImpl;
+import com.onedeveloperstudio.core.server.service.SimpleService;
 import com.onedeveloperstudio.jobskills.common.dto.JobDto;
 import com.onedeveloperstudio.jobskills.server.service.JobService;
 import org.springframework.beans.factory.annotation.Autowired;
