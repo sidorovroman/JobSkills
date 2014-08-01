@@ -3,7 +3,35 @@
   <dict name="job" caption="Профессии">
     <entity class="com.onedeveloperstudio.jobskills.server.entity.JobEntity"/>
     <editDto class="com.onedeveloperstudio.jobskills.common.dto.JobDto"/>
-    <service class="com.onedeveloperstudio.jobskills.server.service.JobService"/>
     <repository class="com.onedeveloperstudio.jobskills.server.dao.repositories.JobRepository"/>
+  </dict>
+  <dict name="requiredSkill" caption="Необходимые навыки">
+    <entity class="com.onedeveloperstudio.jobskills.server.entity.RequiredSkill"/>
+    <editDto class="com.onedeveloperstudio.jobskills.common.dto.RequiredSkillDto"/>
+    <repository class="com.onedeveloperstudio.jobskills.server.dao.repositories.RequiredSkillRepository"/>
+  </dict>
+
+  <dict name="wayToImproveSkill" caption="Обучающие материалы">
+    <entity class="com.onedeveloperstudio.jobskills.server.entity.WayToImproveSkill"/>
+    <editDto class="com.onedeveloperstudio.jobskills.common.dto.WayToImproveSkillDto"/>
+    <repository class="com.onedeveloperstudio.jobskills.server.dao.repositories.WayToImproveSkillRepository"/>
+  </dict>
+
+  <dict name="dashBoard" caption="Доска обучения">
+    <entity class="com.onedeveloperstudio.jobskills.server.entity.DashBoard"/>
+    <editDto class="com.onedeveloperstudio.jobskills.common.dto.DashBoardDto"/>
+    <repository class="com.onedeveloperstudio.jobskills.server.dao.repositories.DashBoardRepository"/>
+  </dict>
+
+  <dict name="comment" caption="Профессии">
+    <entity class="com.onedeveloperstudio.jobskills.server.entity.Commentary"/>
+    <editDto class="com.onedeveloperstudio.jobskills.common.dto.CommentaryDto"/>
+    <repository class="com.onedeveloperstudio.jobskills.server.dao.repositories.CommentaryRepository"/>
+  </dict>
+
+  <dict name="vote" caption="Голоса">
+    <entity class="com.onedeveloperstudio.jobskills.server.entity.Vote"/>
+    <editDto class="com.onedeveloperstudio.jobskills.common.dto.VoteDto"/>
+    <repository class="com.onedeveloperstudio.jobskills.server.dao.repositories.VoteRepository"/>
   </dict>
 </objects>

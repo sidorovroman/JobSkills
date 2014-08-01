@@ -12,6 +12,6 @@ import org.springframework.stereotype.Service;
 
 @Service("simpleService")
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-public class SimpleServiceImpl extends BaseServiceImpl<BaseDto> implements BaseService<BaseDto> {
+public class SimpleServiceImpl extends BaseServiceImpl<BaseDto> implements SimpleService {
 
 }
