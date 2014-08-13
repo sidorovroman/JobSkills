@@ -1,8 +1,7 @@
 package com.onedeveloperstudio.core.server.security;
 
-import com.onedeveloperstudio.core.common.Authority;
 import com.onedeveloperstudio.core.common.dto.SysUserDto;
-import com.onedeveloperstudio.core.server.entity.SysUserBaseService;
+import com.onedeveloperstudio.core.common.handler.SysUserBaseService;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -23,7 +22,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     SysUserBaseService userHandler = beanFactory.getBean(SysUserBaseService.class);
     SysUserDto userDto = userHandler.loadByName(userName);
 
-    return new UserAccount(userDto.getUserName(), userDto.getPassword(),Collections.EMPTY_LIST);
+    return new UserAccount(userDto.getUserName(), userDto.getPassword(),
+            Collections.singletonList(new Authority(userDto.getAuthorityName())));
   }
 
 }
