@@ -11,6 +11,7 @@
   <http pattern="/fancybox/helpers/**" security="none"/>
   <http pattern="/fancybox/**" security="none"/>
   <http pattern="/js/**" security="none"/>
+
 <!--  <http use-expressions="true" auto-config="true">
     <intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
     <form-login login-page="/admin/login" default-target-url="/admin/vacancy.html"

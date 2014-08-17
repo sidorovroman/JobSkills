@@ -69,11 +69,9 @@
   </mvc:interceptors>
 
   <!-- ресурсы -->
-  <mvc:resources mapping="/css/**" location="/css/"/>
-  <!--<mvc:resources mapping="/themes/**" location="/themes/"/>-->
-  <mvc:resources mapping="/js/**" location="/js/"/>
-  <mvc:resources mapping="/images/**" location="/images/"/>
+    <mvc:annotation-driven />
+    <mvc:default-servlet-handler />
   <mvc:resources mapping="/fancybox/**" location="/fancybox/"/>
-  <mvc:resources mapping="/ckeditor/**" location="/ckeditor/"/>
-  <!--<mvc:resources mapping="/fonts/**" location="/fonts/"/>-->
+    <mvc:resources mapping="/ckeditor/**" location="/ckeditor/"/>
+    <mvc:resources mapping="/resources/**" location="/resources/" />
 </beans>
