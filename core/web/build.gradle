@@ -8,7 +8,7 @@ dependencies {
   compile group: 'org.hibernate', name: 'hibernate-validator', version: '5.0.0.Final'
 
   compile group: 'jstl', name: 'jstl', version: '1.2'
-  compile group: 'org.springframework.security', name: 'spring-security-web', version: '3.1.4.RELEASE'
-  compile group: 'org.springframework.security', name: 'spring-security-taglibs', version: '3.1.4.RELEASE'
+  compile group: 'org.springframework.security', name: 'spring-security-web', version: rootProject.ext.springSecurityVersion
+  compile group: 'org.springframework.security', name: 'spring-security-taglibs', version: rootProject.ext.springSecurityVersion
   compile group: 'net.tanesha.recaptcha4j', name:'recaptcha4j', version: '0.0.7'
 }

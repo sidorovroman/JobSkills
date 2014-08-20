@@ -1,6 +1,7 @@
 rootProject.ext {
   sourceCompatibility= '1.7'
   springVersion = '4.0.5.RELEASE'
+  springSecurityVersion = '3.2.4.RELEASE'
   junitVersion = '4.11'
   hibernateVersion = '4.3.5.Final'
 }

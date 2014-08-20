@@ -1,31 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans:beans xmlns="http://www.springframework.org/schema/security"
-             xmlns:beans="http://www.springframework.org/schema/beans"
-             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-             xsi:schemaLocation="http://www.springframework.org/schema/beans
-                    http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
-                    http://www.springframework.org/schema/security
-                    http://www.springframework.org/schema/security/spring-security-3.1.xsd">
-  <http pattern="*.css" security="none"/>
-  <http pattern="/images/**" security="none"/>
-  <http pattern="/fancybox/helpers/**" security="none"/>
-  <http pattern="/fancybox/**" security="none"/>
-  <http pattern="/js/**" security="none"/>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:s="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans  http://www.springframework.org/schema/beans/spring-beans.xsd
+          http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd">
 
-<!--  <http use-expressions="true" auto-config="true">
-    <intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
-    <form-login login-page="/admin/login" default-target-url="/admin/vacancy.html"
-                authentication-failure-url="/admin/login"/>
-    <logout logout-success-url="/"/>
-  </http>-->
+  <bean id="sessionAuthenticationStrategy"
+        class="org.springframework.security.web.authentication.session.SessionFixationProtectionStrategy">
+    <property name="migrateSessionAttributes" value="false"/>
+    <property name="alwaysCreateSession" value="true"/>
+  </bean>
 
-  <global-method-security pre-post-annotations="enabled"/>
+  <bean id="httpAccessDecisionManager"
+        class="org.springframework.security.access.vote.AffirmativeBased">
+    <constructor-arg>
+      <list>
+        <bean class="org.springframework.security.access.vote.AuthenticatedVoter"/>
+      </list>
+    </constructor-arg>
+  </bean>
 
-  <authentication-manager>
-    <authentication-provider>
-      <user-service>
-        <user name="root" password="root" authorities="ROLE_ADMIN" />
-      </user-service>
-    </authentication-provider>
-  </authentication-manager>
-</beans:beans>
+  <s:http auto-config='true' access-decision-manager-ref="httpAccessDecisionManager">
+    <s:intercept-url pattern="/user/*" access="IS_AUTHENTICATED_FULLY"/>
+
+    <s:form-login login-page="/login.jsp"
+                  authentication-failure-url="/login.jsp?login_error=1"
+                  default-target-url="/"/>
+    <s:http-basic/>
+    <s:logout logout-success-url="/"/>
+    <s:remember-me/>
+    <s:session-management invalid-session-url="/login.jsp?invalid_session_error=1"
+                          session-authentication-strategy-ref="sessionAuthenticationStrategy"/>
+  </s:http>
+  <s:authentication-manager>
+    <s:authentication-provider user-service-ref="userDetailsService">
+    </s:authentication-provider>
+  </s:authentication-manager>
+</beans>

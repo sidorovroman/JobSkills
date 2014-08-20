@@ -53,7 +53,7 @@ jettyRun {
   stopPort = 8086
   stopKey = "stopKey"
   webAppSourceDirectory = new File("serverApp/src/main/webapp/")
-  contextPath = "/jobSkills"
+  contextPath = "/"
 }
 
 jettyStop {

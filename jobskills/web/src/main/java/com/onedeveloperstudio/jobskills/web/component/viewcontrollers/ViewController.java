@@ -11,19 +11,26 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
 
 @Controller
-public class ViewController{
+public class ViewController {
   private static final String NAV_ITEM = "navItem";
+
 
   @RequestMapping(value = {"/"})
   public String getDefaultPage(ModelMap model) {
     return "index";
   }
-
-/*  @RequestMapping(value = {"/{locale}"})*/
 
   @ExceptionHandler(ClientJsonException.class)
   @ResponseStatus(value = HttpStatus.BAD_REQUEST)
@@ -38,6 +45,7 @@ public class ViewController{
     } catch (IOException e) {
       e.printStackTrace();
     }
-
   }
+
+
 }

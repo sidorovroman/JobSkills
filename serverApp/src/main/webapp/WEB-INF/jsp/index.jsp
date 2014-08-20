@@ -22,7 +22,7 @@
     <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-
+    <script src="//ulogin.ru/js/ulogin.js"></script>
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
@@ -67,6 +67,7 @@
 
         <div id="push"></div>
     </div>
+
     <div id="footer">
         <div class="container">
             <p class="muted licensed">Создано <a href="http://vk.com/id12579619">Юрой</a> и <a href="http://vk.com/id20890267">Романом</a>.</p>
