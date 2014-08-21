@@ -1,7 +1,7 @@
 package com.onedeveloperstudio.jobskills.server.entity;
 
 import com.onedeveloperstudio.core.server.entity.BaseEntity;
-import com.onedeveloperstudio.core.server.security.UserAccount;
+import com.onedeveloperstudio.core.server.entity.user.SysUserEntity;
 import com.onedeveloperstudio.jobskills.common.VoteState;
 
 import javax.persistence.Column;
@@ -18,16 +18,16 @@ import java.util.Date;
 @Table(name = "vote")
 @Entity(name="vote")
 public class Vote extends BaseEntity {
-  private UserAccount user;
+  private SysUserEntity user;
   private Date voteDate;
   private VoteState state;
 
   @ManyToOne
-  public UserAccount getUser() {
+  public SysUserEntity getUser() {
     return user;
   }
 
-  public void setUser(UserAccount user) {
+  public void setUser(SysUserEntity user) {
     this.user = user;
   }
 

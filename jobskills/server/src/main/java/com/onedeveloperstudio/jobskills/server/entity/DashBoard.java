@@ -1,7 +1,7 @@
 package com.onedeveloperstudio.jobskills.server.entity;
 
 import com.onedeveloperstudio.core.server.entity.BaseEntity;
-import com.onedeveloperstudio.core.server.security.UserAccount;
+import com.onedeveloperstudio.core.server.entity.user.SysUserEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -15,18 +15,18 @@ import java.util.Date;
 @Table(name = "dashboard")
 @Entity(name="dashboard")
 public class DashBoard extends BaseEntity{
-  private UserAccount user;
+  private SysUserEntity user;
   private WayToImproveSkill way;
   private Integer minutes;
   private Integer hours;
   private Date date;
 
   @ManyToOne
-  public UserAccount getUser() {
+  public SysUserEntity getUser() {
     return user;
   }
 
-  public void setUser(UserAccount user) {
+  public void setUser(SysUserEntity user) {
     this.user = user;
   }
 

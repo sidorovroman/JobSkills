@@ -1,7 +1,7 @@
 package com.onedeveloperstudio.jobskills.server.entity;
 
 import com.onedeveloperstudio.core.server.entity.BaseEntity;
-import com.onedeveloperstudio.core.server.security.UserAccount;
+import com.onedeveloperstudio.core.server.entity.user.SysUserEntity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,7 +18,7 @@ import java.util.List;
 @Table(name = "commentary")
 @Entity(name="commentary")
 public class Commentary  extends BaseEntity {
-  private UserAccount author;
+  private SysUserEntity author;
   private Date addDate;
   private String message;
   private Commentary head;
@@ -26,11 +26,11 @@ public class Commentary  extends BaseEntity {
   private List<Vote> votes;
 
   @ManyToOne
-  public UserAccount getAuthor() {
+  public SysUserEntity getAuthor() {
     return author;
   }
 
-  public void setAuthor(UserAccount author) {
+  public void setAuthor(SysUserEntity author) {
     this.author = author;
   }
 

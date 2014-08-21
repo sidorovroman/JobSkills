@@ -1,12 +1,22 @@
 package com.onedeveloperstudio.jobskills.web.component.viewcontrollers;
 
+import com.google.gson.Gson;
+import com.onedeveloperstudio.core.common.dto.ULoginUser;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.Reader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -17,20 +27,34 @@ import java.net.URL;
 @Controller
 public class RegistrationAndLoginController {
   private final String USER_AGENT = "Mozilla/5.0";
+  private final String DUMMY_PASSWORD = "DUMMY_PASSWORD";
 
+  @Autowired
+  private UserDetailsService service;
+
+  @Autowired
+  private DaoAuthenticationProvider provider;
   /**
    * коллбэк при авторизации пользователя
    * @param request
    * @throws Exception
    */
   @RequestMapping("/login_callback")
-  public void loginCallback(HttpServletRequest request) {
+  public String loginCallback(HttpServletRequest request) {
     String token = request.getParameter("token");
     try {
       String answer = sendGet(token);
+      Gson gson = new Gson();
+      InputStream stream =  new ByteArrayInputStream(answer.getBytes());
+      Reader reader = new InputStreamReader(stream);
+      ULoginUser user = gson.fromJson(reader, ULoginUser.class);
+      Authentication auth = provider.authenticate(new UsernamePasswordAuthenticationToken(user.getNickname(), DUMMY_PASSWORD));
+      SecurityContextHolder.getContext().setAuthentication(auth);
     } catch (Exception e) {
+      e.printStackTrace();
       System.out.println("Не удалось получить данные о пользователе");
     }
+    return "redirect:/";
   }
 
   /**

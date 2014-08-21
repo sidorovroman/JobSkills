@@ -11,7 +11,7 @@
       <property name="hibernate.hbm2ddl.auto" value="validate"/>
       <property name="jadira.usertype.autoRegisterUserTypes" value="true"/>
     </properties>
-    <class>com.onedeveloperstudio.core.server.security.UserAccount</class>
+    <class>com.onedeveloperstudio.core.server.entity.user.SysUserEntity</class>
     <class>com.onedeveloperstudio.jobskills.server.entity.JobEntity</class>
     <class>com.onedeveloperstudio.jobskills.server.entity.Vote</class>
     <class>com.onedeveloperstudio.jobskills.server.entity.Commentary</class>

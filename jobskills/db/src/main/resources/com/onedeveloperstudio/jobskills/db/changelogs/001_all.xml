@@ -11,8 +11,15 @@
         <constraints nullable="false" primaryKey="true" primaryKeyName="PKB3F13C2D1B"/>
       </column>
       <column name="version" type="BIGINT"/>
-      <column name="username" type="VARCHAR(100)"/>
-      <column name="password" type="VARCHAR(255)"/>
+      <column name="username" type="VARCHAR(100)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="password" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="email" type="VARCHAR(100)">
+        <constraints nullable="false"/>
+      </column>
     </createTable>
     <createTable tableName="commentary">
       <column autoIncrement="true" name="id" type="BIGINT">

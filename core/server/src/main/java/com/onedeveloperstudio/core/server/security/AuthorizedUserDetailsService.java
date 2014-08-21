@@ -1,5 +1,8 @@
 package com.onedeveloperstudio.core.server.security;
 
+import com.onedeveloperstudio.core.common.dto.SysUserDto;
+import com.onedeveloperstudio.core.common.dto.User;
+import com.onedeveloperstudio.core.server.service.SysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -11,10 +14,11 @@ import org.springframework.stereotype.Service;
 public class AuthorizedUserDetailsService implements UserDetailsService {
 
   @Autowired
-  private UserManager userManager;
+  private SysUserService userService;
 
   public UserDetails loadUserByUsername(String username)
       throws UsernameNotFoundException {
-    return userManager.getUser(username);
+    SysUserDto sysUser = userService.loadByUsername(username);
+    return new User(sysUser.getUserName(), sysUser.getPassword(), "ROLE_USER");
   }
 }
