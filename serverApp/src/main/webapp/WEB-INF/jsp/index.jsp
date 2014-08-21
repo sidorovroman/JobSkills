@@ -47,7 +47,7 @@
 </head>
 <body>
 <sec:authorize access="isAuthenticated()">
-  <sec:authentication property="principal.username"></sec:authentication>
+  <sec:authentication property="principal.username"></sec:authentication>, Хочешь в <a href="/user/index">личный кабинет?</a> =)
 </sec:authorize>
     <div id="wrap"   ng-app="App">
         <div id="header">

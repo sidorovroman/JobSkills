@@ -14,13 +14,15 @@ public class User implements UserDetails {
   private static final long serialVersionUID = 8266525488057072269L;
   private String username;
   private String password;
+  private SysUserDto details;
   private Collection<GrantedAuthority> authorities;
 
-  public User(String username, String password, String roles) {
+  public User(String username, String password, String roles, SysUserDto dto) {
     super();
     this.username = username;
     this.password = password;
     this.setRoles(roles);
+    this.details = dto;
   }
 
   public void setRoles(String roles) {
@@ -73,5 +75,13 @@ public class User implements UserDetails {
 
   public boolean isEnabled() {
     return true;
+  }
+
+  public SysUserDto getDetails() {
+    return details;
+  }
+
+  public void setDetails(SysUserDto details) {
+    this.details = details;
   }
 }
