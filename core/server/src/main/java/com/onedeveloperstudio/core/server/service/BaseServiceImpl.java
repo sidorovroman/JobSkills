@@ -8,6 +8,7 @@ import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,29 +27,34 @@ public class BaseServiceImpl<D extends BaseDto> implements BaseService<D> {
   private Class<D> dtoClass;
 
   @Override
+  @Transactional
   public D insert(D dto) {
     save(dto);
     return dto;
   }
 
+  @Transactional
   public void save(D dto) {
     BaseEntity entity = mapper.map(dto, entityClass);
     repository.save(entity);
   }
 
   @Override
+  @Transactional
   public D update(D dto) {
     save(dto);
     return dto;
   }
 
   @Override
+  @Transactional(readOnly = true)
   public D load(Long id) {
     D result = mapper.map(repository.findOne(id), dtoClass);
     return result;
   }
 
   @Override
+  @Transactional(readOnly = true)
   public List<D> loadAll() {
     List list = repository.findAll();
     List<D> result = new ArrayList<>(list.size());

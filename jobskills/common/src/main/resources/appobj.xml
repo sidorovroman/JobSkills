@@ -23,7 +23,7 @@
     <repository class="com.onedeveloperstudio.jobskills.server.dao.repositories.DashBoardRepository"/>
   </dict>
 
-  <dict name="comment" caption="Профессии">
+  <dict name="comment" caption="Комментарии">
     <entity class="com.onedeveloperstudio.jobskills.server.entity.Commentary"/>
     <editDto class="com.onedeveloperstudio.jobskills.common.dto.CommentaryDto"/>
     <repository class="com.onedeveloperstudio.jobskills.server.dao.repositories.CommentaryRepository"/>

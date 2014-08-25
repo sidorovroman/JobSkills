@@ -8,7 +8,7 @@ import com.onedeveloperstudio.core.server.entity.user.SysUserEntity;
  * Date: 21.08.14
  */
 public class MappingUtils {
-  public static SysUserDto SysUserToDto(SysUserEntity userEntity){
+  public static SysUserDto sysUserToDto(SysUserEntity userEntity){
     SysUserDto sysUserDto = new SysUserDto();
     sysUserDto.setId(userEntity.getId());
     sysUserDto.setUserName(userEntity.getUsername());
@@ -17,7 +17,7 @@ public class MappingUtils {
     return sysUserDto;
   }
 
-  public static SysUserEntity SysUserToEntity(SysUserDto dto){
+  public static SysUserEntity sysUserToEntity(SysUserDto dto){
     SysUserEntity entity = new SysUserEntity();
     entity.setId(dto.getId());
     entity.setUsername(dto.getUserName());
@@ -25,4 +25,5 @@ public class MappingUtils {
     entity.setPassword(dto.getPassword());
     return entity;
   }
+
 }

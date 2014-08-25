@@ -10,7 +10,6 @@
       <column autoIncrement="true" name="id" type="BIGINT">
         <constraints nullable="false" primaryKey="true" primaryKeyName="PKB3F13C2D1B"/>
       </column>
-      <column name="version" type="BIGINT"/>
       <column name="username" type="VARCHAR(100)">
         <constraints nullable="false"/>
       </column>
@@ -24,9 +23,6 @@
     <createTable tableName="commentary">
       <column autoIncrement="true" name="id" type="BIGINT">
         <constraints primaryKey="true" primaryKeyName="PKUK_hio9iw7irkbdbw7ccy01i9bhm"/>
-      </column>
-      <column name="version" type="BIGINT">
-        <constraints nullable="false"/>
       </column>
       <column name="addDate" type="TIMESTAMP">
         <constraints nullable="false"/>
@@ -51,9 +47,6 @@
       <column autoIncrement="true" name="id" type="BIGINT">
         <constraints primaryKey="true" primaryKeyName="PKUK_ev8wiiub09rwnfijowl1nw9fk"/>
       </column>
-      <column name="version" type="BIGINT">
-        <constraints nullable="false"/>
-      </column>
       <column name="date" type="TIMESTAMP"/>
       <column name="hours" type="INT"/>
       <column name="minutes" type="INT"/>
@@ -66,9 +59,6 @@
       <column autoIncrement="true" name="id" type="BIGINT">
         <constraints primaryKey="true" primaryKeyName="PKUK_trhlgsrr6yksn99pocmg1dyww"/>
       </column>
-      <column name="version" type="BIGINT">
-        <constraints nullable="false"/>
-      </column>
       <column name="state" type="INT"/>
       <column name="votedate" type="TIMESTAMP"/>
       <column name="user_id" type="BIGINT">
@@ -79,9 +69,6 @@
       <column autoIncrement="true" name="id" type="BIGINT">
         <constraints primaryKey="true" primaryKeyName="PKUK_d5jvetnyjk6j7nicxla1uh5cr"/>
       </column>
-      <column name="version" type="BIGINT">
-        <constraints nullable="false"/>
-      </column>
       <column name="caption" type="VARCHAR(512)">
         <constraints nullable="false"/>
       </column>
@@ -90,9 +77,6 @@
     <createTable tableName="requiredskill">
       <column autoIncrement="true" name="id" type="BIGINT">
         <constraints primaryKey="true" primaryKeyName="PKUK_51xc14a8fmomoem3w31l6i95m"/>
-      </column>
-      <column name="version" type="BIGINT">
-        <constraints nullable="false"/>
       </column>
       <column name="caption" type="VARCHAR(512)">
         <constraints nullable="false"/>
@@ -120,9 +104,6 @@
     <createTable tableName="waytoimproveskill">
       <column autoIncrement="true" name="id" type="BIGINT">
         <constraints primaryKey="true" primaryKeyName="PKUK_f91vrgeu74xuv2h9vjag6bsye"/>
-      </column>
-      <column name="version" type="BIGINT">
-        <constraints nullable="false"/>
       </column>
       <column name="adddate" type="TIMESTAMP">
         <constraints nullable="false"/>

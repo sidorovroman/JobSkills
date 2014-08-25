@@ -20,12 +20,12 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUserDto> implements S
   @Override
   public SysUserDto loadByUsername(String username) {
     SysUserEntity sysUserEntity = userRepository.findOneByUsername(username);
-    return MappingUtils.SysUserToDto(sysUserEntity);
+    return MappingUtils.sysUserToDto(sysUserEntity);
   }
 
   @Override
   public SysUserDto loadByUsernameAndPassword(String username, String password) {
     SysUserEntity sysUserEntity = userRepository.findOneByUsernameAndPassword(username, password);
-    return MappingUtils.SysUserToDto(sysUserEntity);
+    return MappingUtils.sysUserToDto(sysUserEntity);
   }
 }

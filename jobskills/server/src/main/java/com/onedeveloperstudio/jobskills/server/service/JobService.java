@@ -4,9 +4,12 @@ import com.onedeveloperstudio.core.server.service.BaseService;
 import com.onedeveloperstudio.jobskills.common.dto.JobDto;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * User: y.zakharov
  * Date: 22.07.14
  */
 public interface JobService extends BaseService<JobDto> {
+  List<JobDto> getAllParents();
 }

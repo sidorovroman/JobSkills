@@ -2,6 +2,7 @@ package com.onedeveloperstudio.jobskills.common.dto;
 
 import com.onedeveloperstudio.core.common.dto.BaseDto;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -11,7 +12,7 @@ import java.util.Set;
 public class JobDto extends BaseDto {
   private String caption;
   private JobDto parent;
-  private Set<JobDto> children;
+  private List<JobDto> children;
 
   public String getCaption() {
     return caption;
@@ -29,11 +30,11 @@ public class JobDto extends BaseDto {
     this.parent = parent;
   }
 
-  public Set<JobDto> getChildren() {
+  public List<JobDto> getChildren() {
     return children;
   }
 
-  public void setChildren(Set<JobDto> children) {
+  public void setChildren(List<JobDto> children) {
     this.children = children;
   }
 }
