@@ -5,8 +5,10 @@ import com.onedeveloperstudio.core.common.appobj.AppObjDict;
 import com.onedeveloperstudio.core.server.service.BaseService;
 import com.onedeveloperstudio.core.web.exception.ClientJsonException;
 import com.onedeveloperstudio.jobskills.common.dto.JobDto;
+import com.onedeveloperstudio.jobskills.common.dto.RequiredSkillDto;
 import com.onedeveloperstudio.jobskills.server.service.CommentaryService;
 import com.onedeveloperstudio.jobskills.server.service.JobService;
+import com.onedeveloperstudio.jobskills.server.service.RequiredSkillService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.springframework.http.HttpStatus;
@@ -61,6 +63,12 @@ public class ViewController {
     }
   }
 
+  /**
+   * Список всех работ/профессий
+   * если необходимо возвращать лишь как часть страницы - нужно навесить аннотацию @ResponseBody и изменить jobList.jsp
+   * @param request
+   * @return
+   */
   @RequestMapping(value = "/jobs")
   public ModelAndView getThemeComments(HttpServletRequest request){
     ModelAndView mv = new ModelAndView("jobList");
@@ -73,6 +81,11 @@ public class ViewController {
     return mv;
   }
 
+  /**
+   * POST метод сохраняет данные
+   * @param request
+   * @return
+   */
   @RequestMapping(value = "/addJob", method = RequestMethod.POST)
   public String addJob(HttpServletRequest request){
     ModelAndView mv = new ModelAndView("jobList");
@@ -92,6 +105,13 @@ public class ViewController {
     return "redirect:jobs";
   }
 
+  //todo добавить редактирование после появления нормальных форм
+
+  /**
+   *  GET методом загружаем форму сохранения, потом сюда же можно будет отправлять id редактируемой записи
+   * @param request
+   * @return
+   */
   @RequestMapping(value = "/addJob", method = RequestMethod.GET)
   public ModelAndView addJobPage(HttpServletRequest request){
     ModelAndView mv = new ModelAndView("addJob");
@@ -101,26 +121,39 @@ public class ViewController {
     service.setAppObj(jobAppObj);
     List<JobDto> list = service.getAllParents();
     mv.addObject("jobs", list);
-    System.out.println(printAllJobs(list ,0));
     return mv;
   }
 
-  public String printAllJobs(List<JobDto> jobDtos, int countTab) {
-    StringBuilder builder = new StringBuilder();
-    for (JobDto dto : jobDtos) {
-      builder.append("<option value='").append(dto.getId()).append("'>").append(getTabs(countTab)).append(dto.getCaption()).append("</option>\n");
-      builder.append(printAllJobs(dto.getChildren(), countTab+=1));
-      countTab-=1;
-    }
-    return builder.toString();
+  //todo возможность добавлять новые ресурсы только "эксператам в области" по оценке пользователей?
+  @RequestMapping(value = "/addRequeredSkill", method = RequestMethod.GET)
+  public ModelAndView addRequiredSkillPage(@RequestParam Long jobId, HttpServletRequest request){
+    ModelAndView mv = new ModelAndView("listRequiredSkills");
+    AppObjDict dict = AppObjDict.getInstance();
+    AppObj jobAppObj = dict.getAppObj("job");
+    JobService service = beanFactory.getBean(JobService.class);
+    service.setAppObj(jobAppObj);
+    JobDto job = service.load(jobId);
+    mv.addObject("job", job);
+    return mv;
   }
 
-  public String getTabs(int count){
-    StringBuilder buider = new StringBuilder();
-    for(int i = 0; i < count; i++){
-      buider.append("&nbsp;&nbsp;&nbsp;&nbsp;");
-    }
-    return buider.toString();
-  }
+  @RequestMapping(value = "/addRequeredSkill", method = RequestMethod.POST)
+  public ModelAndView addRequiredSkill(@RequestParam Long jobId, HttpServletRequest request){
+    ModelAndView mv = new ModelAndView("listRequiredSkills");
+    AppObjDict dict = AppObjDict.getInstance();
+    AppObj jobAppObj = dict.getAppObj("job");
+    JobService service = beanFactory.getBean(JobService.class);
+    service.setAppObj(jobAppObj);
+    JobDto job = service.load(jobId);
+    mv.addObject("job", job);
 
+    AppObj requiredSkillAppObj = dict.getAppObj("requiredSkill");
+    RequiredSkillService requiredSkillService = beanFactory.getBean(RequiredSkillService.class);
+    service.setAppObj(requiredSkillAppObj);
+
+    List<RequiredSkillDto> skillList = requiredSkillService.loadAllbyJob(jobId);
+    mv.addObject("skills", skillList);
+
+    return mv;
+  }
 }

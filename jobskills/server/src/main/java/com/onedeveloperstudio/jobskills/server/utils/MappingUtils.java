@@ -1,7 +1,9 @@
 package com.onedeveloperstudio.jobskills.server.utils;
 
 import com.onedeveloperstudio.jobskills.common.dto.JobDto;
+import com.onedeveloperstudio.jobskills.common.dto.RequiredSkillDto;
 import com.onedeveloperstudio.jobskills.server.entity.JobEntity;
+import com.onedeveloperstudio.jobskills.server.entity.RequiredSkill;
 
 import java.util.ArrayList;
 import java.util.HashMap;
