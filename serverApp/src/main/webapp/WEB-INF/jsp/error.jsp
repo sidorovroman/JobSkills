@@ -46,11 +46,8 @@
   </script>
 </head>
 <body>
-<h2>RequiredSkillsList</h2>
-<div id="wrap">
-  <c:out value="${job.caption}"/><br/>
-</div>
-
+<h1>Ошибочка вышла</h1>
+<c:out value="${message}"/>
 <div id="footer">
   <div class="container">
     <p class="muted licensed">Создано <a href="http://vk.com/id12579619">Юрой</a> и <a href="http://vk.com/id20890267">Романом</a>.</p>

@@ -6,4 +6,5 @@ package com.onedeveloperstudio.core.common.util;
  */
 public abstract class FieldSize {
   public final static int CAPTION = 200;
+  public final static int DESCRIPTION = 1000;
 }

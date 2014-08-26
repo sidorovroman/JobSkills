@@ -18,19 +18,20 @@ import java.util.List;
  * Date: 20.07.14
  */
 @Table(name = "requiredskill")
-@Entity(name="requiredskill")
+@Entity(name = "requiredskill")
 public class RequiredSkill extends BaseEntity {
   private JobEntity job;
   private String caption;
+  private String description;
   private List<WayToImproveSkill> ways;
   private List<Commentary> comments;
   private List<Vote> votes;
 
   @ManyToMany
   @JoinTable(name = "requiredskill_waytoimproveskill", joinColumns = {
-      @JoinColumn(name = "ways_id", nullable = false, updatable = false) },
-      inverseJoinColumns = { @JoinColumn(name = "skill_id",
-          nullable = false, updatable = false) })
+      @JoinColumn(name = "ways_id", nullable = false, updatable = false)},
+      inverseJoinColumns = {@JoinColumn(name = "skill_id",
+          nullable = false, updatable = false)})
   public List<WayToImproveSkill> getWays() {
     return ways;
   }
@@ -64,5 +65,27 @@ public class RequiredSkill extends BaseEntity {
 
   public void setComments(List<Commentary> comments) {
     this.comments = comments;
+  }
+
+  @Column(nullable = false, length = FieldSize.DESCRIPTION)
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+  @ManyToMany
+  @JoinTable(name = "requiredskill_votes", joinColumns = {
+      @JoinColumn(name = "vote_id", nullable = false, updatable = false)},
+      inverseJoinColumns = {@JoinColumn(name = "skill_id",
+          nullable = false, updatable = false)})
+  public List<Vote> getVotes() {
+    return votes;
+  }
+
+  public void setVotes(List<Vote> votes) {
+    this.votes = votes;
   }
 }

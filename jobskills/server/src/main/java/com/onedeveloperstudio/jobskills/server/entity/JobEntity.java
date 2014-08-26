@@ -19,6 +19,7 @@ import java.util.Set;
 @Entity(name="jobs")
 public class JobEntity extends BaseEntity {
   public String caption;
+  public String description;
   public JobEntity parent;
   public Set<JobEntity> children;
 
@@ -47,5 +48,14 @@ public class JobEntity extends BaseEntity {
 
   public void setChildren(Set<JobEntity> children) {
     this.children = children;
+  }
+
+  @Column(nullable = false, length = FieldSize.DESCRIPTION)
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
   }
 }

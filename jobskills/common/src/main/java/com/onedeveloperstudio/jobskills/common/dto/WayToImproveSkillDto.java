@@ -14,6 +14,7 @@ import java.util.List;
 public class WayToImproveSkillDto extends BaseDto {
   private GRADE grade;
   private String caption;
+  private String description;
   private List<RequiredSkillDto> skill;
   private String link;
   private ResourceType resourceType;
@@ -65,5 +66,13 @@ public class WayToImproveSkillDto extends BaseDto {
 
   public void setAddDate(Date addDate) {
     this.addDate = addDate;
+  }
+
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
   }
 }

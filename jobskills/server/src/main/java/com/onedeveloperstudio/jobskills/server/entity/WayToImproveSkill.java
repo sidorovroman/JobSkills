@@ -25,6 +25,7 @@ import java.util.List;
 public class WayToImproveSkill extends BaseEntity {
   private GRADE grade;
   private String caption;
+  private String description;
   private List<RequiredSkill> skill;
   private String link;
   private ResourceType resourceType;
@@ -87,5 +88,14 @@ public class WayToImproveSkill extends BaseEntity {
 
   public void setAddDate(Date addDate) {
     this.addDate = addDate;
+  }
+
+  @Column(nullable = false, length = FieldSize.DESCRIPTION)
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
   }
 }

@@ -95,7 +95,8 @@ public class ViewController {
     service.setAppObj(jobAppObj);
     JobDto dto = new JobDto();
     dto.setCaption(request.getParameter("caption"));
-    if(request.getParameter("parent") == null){
+    dto.setDescription(request.getParameter("description"));
+    if(request.getParameter("parent") == null || request.getParameter("parent").equals("")){
       dto.setParent(null);
     } else {
       JobDto parent = service.load(Long.valueOf(request.getParameter("parent")));
@@ -125,21 +126,24 @@ public class ViewController {
   }
 
   //todo возможность добавлять новые ресурсы только "эксператам в области" по оценке пользователей?
-  @RequestMapping(value = "/addRequeredSkill", method = RequestMethod.GET)
+  @RequestMapping(value = "/addRequiredSkill", method = RequestMethod.GET)
   public ModelAndView addRequiredSkillPage(@RequestParam Long jobId, HttpServletRequest request){
-    ModelAndView mv = new ModelAndView("listRequiredSkills");
+    ModelAndView mv = new ModelAndView("addRequiredSkill");
     AppObjDict dict = AppObjDict.getInstance();
     AppObj jobAppObj = dict.getAppObj("job");
     JobService service = beanFactory.getBean(JobService.class);
     service.setAppObj(jobAppObj);
     JobDto job = service.load(jobId);
+    if(job == null){
+      return errorPage("Не удалось найти выбранную профессию");
+    }
     mv.addObject("job", job);
     return mv;
   }
 
-  @RequestMapping(value = "/addRequeredSkill", method = RequestMethod.POST)
+  @RequestMapping(value = "/addRequiredSkill", method = RequestMethod.POST)
   public ModelAndView addRequiredSkill(@RequestParam Long jobId, HttpServletRequest request){
-    ModelAndView mv = new ModelAndView("listRequiredSkills");
+    ModelAndView mv = new ModelAndView("requiredSkills");
     AppObjDict dict = AppObjDict.getInstance();
     AppObj jobAppObj = dict.getAppObj("job");
     JobService service = beanFactory.getBean(JobService.class);
@@ -149,11 +153,25 @@ public class ViewController {
 
     AppObj requiredSkillAppObj = dict.getAppObj("requiredSkill");
     RequiredSkillService requiredSkillService = beanFactory.getBean(RequiredSkillService.class);
-    service.setAppObj(requiredSkillAppObj);
+    requiredSkillService.setAppObj(requiredSkillAppObj);
+
+    RequiredSkillDto newDto = new RequiredSkillDto();
+    newDto.setCaption(request.getParameter("caption"));
+    newDto.setDescription(request.getParameter("description"));
+    JobDto parent = new JobDto();
+    parent.setId(jobId);
+    newDto.setJob(parent);
+    requiredSkillService.insert(newDto);
 
     List<RequiredSkillDto> skillList = requiredSkillService.loadAllbyJob(jobId);
     mv.addObject("skills", skillList);
-
     return mv;
+  }
+
+  @RequestMapping(value = "/error")
+  public ModelAndView errorPage(String message){
+    ModelAndView errorPage = new ModelAndView("error");
+    errorPage.addObject("message", message);
+    return errorPage;
   }
 }

@@ -11,6 +11,7 @@ import java.util.Set;
  */
 public class JobDto extends BaseDto {
   private String caption;
+  private String description;
   private JobDto parent;
   private List<JobDto> children;
 
@@ -36,5 +37,13 @@ public class JobDto extends BaseDto {
 
   public void setChildren(List<JobDto> children) {
     this.children = children;
+  }
+
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
   }
 }

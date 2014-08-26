@@ -11,6 +11,7 @@ import java.util.List;
 public class RequiredSkillDto extends BaseDto {
   private JobDto job;
   private String caption;
+  private String description;
   private List<WayToImproveSkillDto> ways;
   private List<CommentaryDto> comments;
   private List<VoteDto> votes;
@@ -53,5 +54,13 @@ public class RequiredSkillDto extends BaseDto {
 
   public void setVotes(List<VoteDto> votes) {
     this.votes = votes;
+  }
+
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
   }
 }

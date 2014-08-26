@@ -13,7 +13,7 @@
       <column name="username" type="VARCHAR(100)">
         <constraints nullable="false"/>
       </column>
-      <column name="password" type="VARCHAR(255)">
+      <column name="password" type="VARCHAR(50)">
         <constraints nullable="false"/>
       </column>
       <column name="email" type="VARCHAR(100)">
@@ -69,7 +69,10 @@
       <column autoIncrement="true" name="id" type="BIGINT">
         <constraints primaryKey="true" primaryKeyName="PKUK_d5jvetnyjk6j7nicxla1uh5cr"/>
       </column>
-      <column name="caption" type="VARCHAR(512)">
+      <column name="caption" type="VARCHAR(200)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="description" type="VARCHAR(1000)">
         <constraints nullable="false"/>
       </column>
       <column name="parent_id" type="BIGINT"/>
@@ -78,7 +81,10 @@
       <column autoIncrement="true" name="id" type="BIGINT">
         <constraints primaryKey="true" primaryKeyName="PKUK_51xc14a8fmomoem3w31l6i95m"/>
       </column>
-      <column name="caption" type="VARCHAR(512)">
+      <column name="caption" type="VARCHAR(200)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="description" type="VARCHAR(1000)">
         <constraints nullable="false"/>
       </column>
       <column name="job_id" type="BIGINT">
@@ -101,6 +107,14 @@
         <constraints nullable="false"/>
       </column>
     </createTable>
+    <createTable tableName="requiredskill_votes">
+      <column name="skill_id" type="BIGINT">
+        <constraints nullable="false"/>
+      </column>
+      <column name="vote_id" type="BIGINT">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
     <createTable tableName="waytoimproveskill">
       <column autoIncrement="true" name="id" type="BIGINT">
         <constraints primaryKey="true" primaryKeyName="PKUK_f91vrgeu74xuv2h9vjag6bsye"/>
@@ -109,6 +123,9 @@
         <constraints nullable="false"/>
       </column>
       <column name="caption" type="VARCHAR(512)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="description" type="VARCHAR(1000)">
         <constraints nullable="false"/>
       </column>
       <column name="grade" type="VARCHAR(100)"/>

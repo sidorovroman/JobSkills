@@ -49,7 +49,11 @@ public class BaseServiceImpl<D extends BaseDto> implements BaseService<D> {
   @Override
   @Transactional(readOnly = true)
   public D load(Long id) {
-    D result = mapper.map(repository.findOne(id), dtoClass);
+    Object entity = repository.findOne(id);
+    if (entity == null){
+      return null;
+    }
+    D result = mapper.map(entity, dtoClass);
     return result;
   }
 

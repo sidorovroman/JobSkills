@@ -73,8 +73,12 @@
   <label>Наименование
     <input name="caption" type="text"/>
   </label>
+  <label>Описание
+    <textarea name="description"></textarea>
+  </label>
   <label>Родительский элемент
     <select name="parent">
+      <option value=""></option>
       <% out.println(printAllJobs((List<JobDto>) request.getAttribute("jobs"),0));%>
     </select>
   </label>

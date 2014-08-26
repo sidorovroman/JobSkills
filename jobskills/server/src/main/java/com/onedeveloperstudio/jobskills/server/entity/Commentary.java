@@ -1,5 +1,6 @@
 package com.onedeveloperstudio.jobskills.server.entity;
 
+import com.onedeveloperstudio.core.common.util.FieldSize;
 import com.onedeveloperstudio.core.server.entity.BaseEntity;
 import com.onedeveloperstudio.core.server.entity.user.SysUserEntity;
 
@@ -43,7 +44,7 @@ public class Commentary  extends BaseEntity {
     this.addDate = addDate;
   }
 
-  @Column(nullable = false, length = 1000)
+  @Column(nullable = false, length = FieldSize.DESCRIPTION)
   public String getMessage() {
     return message;
   }
