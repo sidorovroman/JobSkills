@@ -2,6 +2,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -19,10 +20,10 @@
     <table>
       <tr>
         <td>
-          Логин:
+          ФИО:
         </td>
         <td>
-          <c:out value="${user.userName}"/>
+          <c:out value="${user.userFullName}"/>
         </td>
       </tr>
       <tr>
@@ -31,6 +32,45 @@
         </td>
         <td>
           <c:out value="${user.email}"/>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Логин:
+        </td>
+        <td>
+          <c:out value="${user.userName}"/>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Пол:
+        </td>
+        <td>
+          <c:choose>
+            <c:when test="${user.sex =='1'}">
+              Женский
+            </c:when>
+            <c:otherwise>
+              Мужской
+            </c:otherwise>
+          </c:choose>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Вошли через:
+        </td>
+        <td>
+          <c:out value="${user.network}"/>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Дата рождения:
+        </td>
+        <td>
+          <fmt:formatDate pattern='dd.MM.yyyy' value='${user.birthday}' />
         </td>
       </tr>
   </table>

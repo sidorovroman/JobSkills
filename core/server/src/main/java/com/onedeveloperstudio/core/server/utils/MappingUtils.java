@@ -54,7 +54,7 @@ public class MappingUtils {
     dto.setUserName(uloginUser.getNickname());
     dto.setEmail(uloginUser.getEmail());
     dto.setPassword(uloginUser.getPassword());
-    dto.setUserFullName(uloginUser.getFirst_name() + uloginUser.getLast_name());
+    dto.setUserFullName(uloginUser.getFirst_name() +" " + uloginUser.getLast_name());
     try {
       dto.setBirthday(sdf.parse(uloginUser.getBdate()));
     } catch (ParseException e) {
