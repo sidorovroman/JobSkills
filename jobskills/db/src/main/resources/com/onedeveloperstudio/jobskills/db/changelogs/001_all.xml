@@ -16,9 +16,16 @@
       <column name="password" type="VARCHAR(50)">
         <constraints nullable="false"/>
       </column>
-      <column name="email" type="VARCHAR(100)">
+      <column name="email" type="VARCHAR(30)">
         <constraints nullable="false"/>
       </column>
+      <column name="userfullname" type="VARCHAR(100)"/>
+      <column name="sex" type="VARCHAR(1)"/>
+      <column name="birthday" type="TIMESTAMP"/>
+      <column name="phone" type="VARCHAR(20)"/>
+      <column name="city" type="VARCHAR(30)"/>
+      <column name="country" type="VARCHAR(30)"/>
+      <column name="network" type="VARCHAR(20)"/>
     </createTable>
     <createTable tableName="commentary">
       <column autoIncrement="true" name="id" type="BIGINT">

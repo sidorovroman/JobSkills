@@ -1,11 +1,18 @@
 package com.onedeveloperstudio.core.common.dto;
 
+import java.util.Date;
+
 public class SysUserDto extends BaseDto {
   private String userFullName;
-  private Integer department;
   private String email;
   private String userName;
   private String password;
+  private String sex;
+  private Date birthday;
+  private String phone;
+  private String city;
+  private String country;
+  private String network;
 
   private String authorityName;
 
@@ -15,14 +22,6 @@ public class SysUserDto extends BaseDto {
 
   public void setUserFullName(String userFullName) {
     this.userFullName = userFullName;
-  }
-
-  public Integer getDepartment() {
-    return department;
-  }
-
-  public void setDepartment(Integer department) {
-    this.department = department;
   }
 
   public String getEmail() {
@@ -55,5 +54,53 @@ public class SysUserDto extends BaseDto {
 
   public void setAuthorityName(String authorityName) {
     this.authorityName = authorityName;
+  }
+
+  public String getSex() {
+    return sex;
+  }
+
+  public void setSex(String sex) {
+    this.sex = sex;
+  }
+
+  public Date getBirthday() {
+    return birthday;
+  }
+
+  public void setBirthday(Date birthday) {
+    this.birthday = birthday;
+  }
+
+  public String getPhone() {
+    return phone;
+  }
+
+  public void setPhone(String phone) {
+    this.phone = phone;
+  }
+
+  public String getCity() {
+    return city;
+  }
+
+  public void setCity(String city) {
+    this.city = city;
+  }
+
+  public String getCountry() {
+    return country;
+  }
+
+  public void setCountry(String country) {
+    this.country = country;
+  }
+
+  public String getNetwork() {
+    return network;
+  }
+
+  public void setNetwork(String network) {
+    this.network = network;
   }
 }

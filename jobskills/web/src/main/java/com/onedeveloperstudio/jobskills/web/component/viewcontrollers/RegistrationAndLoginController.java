@@ -1,7 +1,10 @@
 package com.onedeveloperstudio.jobskills.web.component.viewcontrollers;
 
 import com.google.gson.Gson;
+import com.onedeveloperstudio.core.common.dto.SysUserDto;
 import com.onedeveloperstudio.core.common.dto.ULoginUser;
+import com.onedeveloperstudio.core.server.service.SysUserService;
+import com.onedeveloperstudio.core.server.utils.MappingUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -31,6 +34,10 @@ public class RegistrationAndLoginController {
 
   @Autowired
   private UserDetailsService service;
+  
+  @Autowired
+  private SysUserService sysUserService;
+  
 
   @Autowired
   private DaoAuthenticationProvider provider;
@@ -48,7 +55,16 @@ public class RegistrationAndLoginController {
       InputStream stream =  new ByteArrayInputStream(answer.getBytes());
       Reader reader = new InputStreamReader(stream);
       ULoginUser user = gson.fromJson(reader, ULoginUser.class);
-      Authentication auth = provider.authenticate(new UsernamePasswordAuthenticationToken(user.getNickname(), DUMMY_PASSWORD));
+      user.setPassword(DUMMY_PASSWORD);
+      SysUserDto sysUserDto = MappingUtils.fromULoginUserToDto(user);
+      SysUserDto dto = sysUserService.loadByEmail(user.getEmail());
+      if(dto.getId()!=null){
+        sysUserDto.setId(dto.getId());
+        sysUserService.update(sysUserDto);
+      } else {
+        sysUserService.insert(sysUserDto);
+      }
+      Authentication auth = provider.authenticate(new UsernamePasswordAuthenticationToken(user.getEmail(), DUMMY_PASSWORD));
       SecurityContextHolder.getContext().setAuthentication(auth);
     } catch (Exception e) {
       e.printStackTrace();

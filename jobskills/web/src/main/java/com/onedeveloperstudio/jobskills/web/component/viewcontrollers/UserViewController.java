@@ -29,7 +29,7 @@ public class UserViewController {
     ModelMap modelMap = new ModelMap("/user/index");
     Authentication auth = SecurityContextHolder.getContext().getAuthentication();
     User regUser = (User) auth.getPrincipal();
-    SysUserDto user = service.loadByUsername(regUser.getUsername());
+    SysUserDto user = service.loadByEmail(regUser.getUsername());
     modelMap.put("user", user);
     return modelMap;
   }

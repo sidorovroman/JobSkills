@@ -15,6 +15,15 @@ public class ULoginUser {
   private String city;
   private String country;
   private String network;
+  private String password;
+
+  public String getPassword() {
+    return password;
+  }
+
+  public void setPassword(String password) {
+    this.password = password;
+  }
 
   public String getFirst_name() {
     return first_name;

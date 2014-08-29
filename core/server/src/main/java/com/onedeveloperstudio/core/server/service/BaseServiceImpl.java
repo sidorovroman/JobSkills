@@ -15,6 +15,15 @@ import java.util.List;
 
 @Component
 public class BaseServiceImpl<D extends BaseDto> implements BaseService<D> {
+
+  public BaseServiceImpl() {
+  }
+
+  public BaseServiceImpl(Class<? extends BaseEntity> entityClass, Class<D> dtoClass) {
+    this.entityClass = entityClass;
+    this.dtoClass = dtoClass;
+  }
+
   @Autowired
   private BeanFactory beanFactory;
 

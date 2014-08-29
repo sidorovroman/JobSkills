@@ -9,5 +9,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface UserRepository extends JpaRepository<SysUserEntity, Long> {
   SysUserEntity findOneByUsername(String username);
+  SysUserEntity findOneByEmail(String email);
   SysUserEntity findOneByUsernameAndPassword(String username, String password);
 }

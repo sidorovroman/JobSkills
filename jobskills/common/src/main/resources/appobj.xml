@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <objects>
+  <dict name="sysUser" caption="Пользователи">
+    <entity class="com.onedeveloperstudio.core.server.entity.user.SysUserEntity"/>
+    <editDto class="com.onedeveloperstudio.core.common.dto.SysUserDto"/>
+    <repository class="com.onedeveloperstudio.core.server.repository.UserRepository"/>
+  </dict>
   <dict name="job" caption="Профессии">
     <entity class="com.onedeveloperstudio.jobskills.server.entity.JobEntity"/>
     <editDto class="com.onedeveloperstudio.jobskills.common.dto.JobDto"/>
