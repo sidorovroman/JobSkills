@@ -1,0 +1,117 @@
+@import "mixins.less";
+@import "components.less";
+html, body {
+  height: 100%;
+}
+
+body{
+  background: #ECEEF1;
+}
+
+#wrap {
+  height: 100%;
+  width: 1024px;
+  margin:0 auto;
+}
+
+#header {
+  display: inline-block;
+  width: 100%;
+  ul {
+    height: 82px;
+    li {
+      float: left;
+      width: 20%;
+      height: 100%;
+      padding: 0 0 0 4px;
+      box-sizing: border-box;
+      a {
+        height: 100%;
+        box-sizing: border-box;
+        text-decoration: none;
+        padding: 0 0 3px;
+        color: #FFF;
+        font-family: Trebuchet MS;
+        font-weight: normal;
+        font-size: 24px;
+        display: inline-block;
+        text-align: center;
+        width: 100%;
+        padding-top: 40px;
+
+        &.logo{
+          font-size: 36px;
+          color: #000;
+          padding-top: 32px;
+        }
+
+        &.section{ background: #708B8F;}
+        &.dashboard{ background: #5c6982;}
+        &.news{ background: #61a8aa;}
+        &.info{ background: #487a8f;}
+      }
+    }
+  }
+}
+/* ==========================================
+                 registration
+   ========================================== */
+#reg-form{
+  padding: 100px 0 0 50px;
+  .reg-table{
+    font-family: Cambria;
+    font-size: 28px;
+    color: #75929d;
+    tr{
+      td{
+        padding: 5px 0;
+        &:first-child{
+          width: 180px;
+        }
+      }
+      .main-data{
+        color: #8f664f;
+      }
+    }
+    .birthday{
+      input{
+        width:68px;
+        text-align: center;
+        &.year{
+          width: 120px;
+        }
+      }
+    }
+    .btn-save{
+      margin-top: 5px;
+      width: 100%;
+    }
+  }
+}
+/* ==========================================
+                    login
+   ========================================== */
+#login-form{
+  padding: 120px 0 0 230px;
+   .auth-col{
+     width: 310px;
+     float: left;
+     .title{
+       font-size: 30px;
+       font-weight: bold;
+       color:#8e8c8c;
+       margin-bottom: 16px;
+     }
+     input{
+       width: 100%;
+       margin-bottom: 16px;
+     }
+     .btn-reg,.btn-login{
+       width: 100%;
+       margin-bottom: 16px;
+     }
+     .login-icons{
+       margin: 47px 0 0 47px;
+     }
+   }
+}

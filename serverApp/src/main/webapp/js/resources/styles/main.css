@@ -1,92 +1,162 @@
-html, body {
-    height: 100%;
+/*---------------------------------------------------
+    LESS Elements 0.9
+  ---------------------------------------------------
+    A set of useful LESS mixins
+    More info at: http://lesselements.com
+  ---------------------------------------------------*/
+input {
+  height: 39px;
+  width: 350px;
+  padding: 8px 15px;
+  border: 1px solid #e6dfd8;
+  font-size: 20px;
+  box-sizing: border-box;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
 }
-
+.btn {
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 8px 15px;
+  font-size: 24px;
+  line-height: 1.42857143;
+  color: #4e626c;
+  border-radius: 4px;
+  border: 1px solid #bdbec1;
+  box-sizing: border-box;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.btn.rose {
+  background: #e0c6e1 ;
+}
+.btn.violet {
+  background: #b193b2 ;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  background: #ECEEF1;
+}
 #wrap {
-    min-height: 100%;
-    height: auto !important;
-    height: 100%;
-    margin: 0 auto -60px;
+  height: 100%;
+  width: 1024px;
+  margin: 0 auto;
 }
-/* ==============================================
-        home window
-   ============================================== */
-
-.container-narrow {
-    margin: 0 auto;
-    max-width: 700px;
+#header {
+  display: inline-block;
+  width: 100%;
 }
-
-.container-narrow>hr {
-    margin: 30px 0;
+#header ul {
+  height: 82px;
 }
-
-.jumbotron {
-    margin: 60px 0;
-    text-align: center;
+#header ul li {
+  float: left;
+  width: 20%;
+  height: 100%;
+  padding: 0 0 0 4px;
+  box-sizing: border-box;
 }
-
-.jumbotron h1 {
-    font-size: 72px;
-    line-height: 1;
+#header ul li a {
+  height: 100%;
+  box-sizing: border-box;
+  text-decoration: none;
+  padding: 0 0 3px;
+  color: #FFF;
+  font-family: Trebuchet MS;
+  font-weight: normal;
+  font-size: 24px;
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+  padding-top: 40px;
 }
-
-.jumbotron .btn {
-    font-size: 21px;
-    padding: 14px 24px;
+#header ul li a.logo {
+  font-size: 36px;
+  color: #000;
+  padding-top: 32px;
 }
-
-.marketing {
-    margin: 60px 0;
+#header ul li a.section {
+  background: #708B8F;
 }
-
-.marketing p+h4 {
-    margin-top: 28px;
+#header ul li a.dashboard {
+  background: #5c6982;
 }
-
-/* ==============================================
-        login window
-   ============================================== */
-.form-signin {
-    max-width: 300px;
-    padding: 19px 29px 29px;
-    margin: 0 auto 20px;
-    background-color: #fff;
-    border: 1px solid #e5e5e5;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
-    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+#header ul li a.news {
+  background: #61a8aa;
 }
-
-.form-signin .form-control {
-    margin-bottom: 10px;
+#header ul li a.info {
+  background: #487a8f;
 }
-
-
-/* ==============================================
-                    footer
-   ============================================== */
-
-#push, #footer {
-    height: 60px;
+/* ==========================================
+                 registration
+   ========================================== */
+#reg-form {
+  padding: 100px 0 0 50px;
 }
-
-#footer {
-    background-color: #f5f5f5;
+#reg-form .reg-table {
+  font-family: Cambria;
+  font-size: 28px;
+  color: #75929d;
 }
-
-@media (max-width: 767px) {
-    #footer {
-        margin-left: -20px;
-        margin-right: -20px;
-        padding-left: 20px;
-        padding-right: 20px;
-    }
+#reg-form .reg-table tr td {
+  padding: 5px 0;
 }
-#footer .container .licensed {
-    margin: 20px 0;
-    font-size: 14px;
+#reg-form .reg-table tr td:first-child {
+  width: 180px;
+}
+#reg-form .reg-table tr .main-data {
+  color: #8f664f;
+}
+#reg-form .reg-table .birthday input {
+  width: 68px;
+  text-align: center;
+}
+#reg-form .reg-table .birthday input.year {
+  width: 120px;
+}
+#reg-form .reg-table .btn-save {
+  margin-top: 5px;
+  width: 100%;
+}
+/* ==========================================
+                    login
+   ========================================== */
+#login-form {
+  padding: 120px 0 0 230px;
+}
+#login-form .auth-col {
+  width: 310px;
+  float: left;
+}
+#login-form .auth-col .title {
+  font-size: 30px;
+  font-weight: bold;
+  color: #8e8c8c;
+  margin-bottom: 16px;
+}
+#login-form .auth-col input {
+  width: 100%;
+  margin-bottom: 16px;
+}
+#login-form .auth-col .btn-reg,
+#login-form .auth-col .btn-login {
+  width: 100%;
+  margin-bottom: 16px;
+}
+#login-form .auth-col .login-icons {
+  margin: 47px 0 0 47px;
 }
