@@ -24,6 +24,8 @@
     <s:intercept-url pattern="/user/*" access="isFullyAuthenticated()"/>
     <s:intercept-url pattern="/" access="permitAll()"/>
     <s:form-login login-page="/"
+                  username-parameter="username"
+                  password-parameter="password"
                   authentication-failure-url="/?login_error=1"
                   default-target-url="/"/>
     <s:http-basic/>
