@@ -12,8 +12,8 @@
     <meta name="author" content="">
 
     <%--<link rel="stylesheet" type="text/css" href="<c:url value="/js/resources/styles/bootstrap.css" />">--%>
-    <link rel="stylesheet" type="text/css" href="<c:url value="/js/resources/styles/reset.css" />">
-    <link rel="stylesheet" type="text/css" href="<c:url value="/js/resources/styles/main.css" />">
+    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/styles/reset.css" />">
+    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/styles/main.css" />">
 
 
 </head>
@@ -38,10 +38,10 @@
 
 
 <script src="//ulogin.ru/js/ulogin.js"></script>
-<script src="<c:url value="/js/resources/bower_components/angular/angular.js" />"></script>
-<script src="<c:url value="/js/resources/bower_components/angular-route/angular-route.js" />"></script>
-<script src="<c:url value="/js/resources/js/app.js" />"></script>
-<script src="<c:url value="/js/resources/js/services.js" />"></script>
-<script src="<c:url value="/js/resources/js/controllers.js" />"></script>
+<script src="<c:url value="/resources/libs/bower_components/angular/angular.js" />"></script>
+<script src="<c:url value="/resources/libs/bower_components/angular-route/angular-route.js" />"></script>
+<script src="<c:url value="/resources/js/app.js" />"></script>
+<script src="<c:url value="/resources/js/services.js" />"></script>
+<script src="<c:url value="/resources/js/controllers.js" />"></script>
 </body>
 </html>

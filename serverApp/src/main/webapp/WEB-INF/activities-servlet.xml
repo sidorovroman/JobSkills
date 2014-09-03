@@ -71,7 +71,5 @@
   <!-- ресурсы -->
     <mvc:annotation-driven />
     <mvc:default-servlet-handler />
-  <mvc:resources mapping="/fancybox/**" location="/fancybox/"/>
-    <mvc:resources mapping="/ckeditor/**" location="/ckeditor/"/>
     <mvc:resources mapping="/resources/**" location="/resources/" />
 </beans>
