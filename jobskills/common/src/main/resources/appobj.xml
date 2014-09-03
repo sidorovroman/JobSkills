@@ -22,6 +22,12 @@
     <repository class="com.onedeveloperstudio.jobskills.server.dao.repositories.WayToImproveSkillRepository"/>
   </dict>
 
+  <dict name="news" caption="Новости">
+    <entity class="com.onedeveloperstudio.jobskills.server.entity.News"/>
+    <editDto class="com.onedeveloperstudio.jobskills.common.dto.NewsDto"/>
+    <repository class="com.onedeveloperstudio.jobskills.server.dao.repositories.NewsRepository"/>
+  </dict>
+
   <dict name="dashBoard" caption="Доска обучения">
     <entity class="com.onedeveloperstudio.jobskills.server.entity.DashBoard"/>
     <editDto class="com.onedeveloperstudio.jobskills.common.dto.DashBoardDto"/>

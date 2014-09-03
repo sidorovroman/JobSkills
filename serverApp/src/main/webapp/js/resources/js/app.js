@@ -7,6 +7,6 @@ angular.module('App', [
         $routeProvider.
             when("/", {templateUrl: "./js/resources/partials/home.html"}).
             when("/login", {templateUrl: "./js/resources/partials/login.html"}).
-            when("/registration", {templateUrl:"./js/resources/partials/registration.html"}).
+            when("/userInfo", {templateUrl:"./js/resources/partials/userInfo.html"}).
             otherwise({redirectTo: '/'});
     }]);
