@@ -4,6 +4,7 @@ import com.onedeveloperstudio.core.common.dto.BaseDto;
 import com.onedeveloperstudio.core.common.dto.SysUserDto;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * User: y.zakharov
@@ -16,6 +17,8 @@ public class NewsDto extends BaseDto {
   private SysUserDto author;
   private String source;
   private String tags;
+  private List<CommentaryDto> commentaries;
+  private List<VoteDto> votes;
 
   public String getCaption() {
     return caption;
@@ -63,5 +66,21 @@ public class NewsDto extends BaseDto {
 
   public void setTags(String tags) {
     this.tags = tags;
+  }
+
+  public List<CommentaryDto> getCommentaries() {
+    return commentaries;
+  }
+
+  public void setCommentaries(List<CommentaryDto> commentaries) {
+    this.commentaries = commentaries;
+  }
+
+  public List<VoteDto> getVotes() {
+    return votes;
+  }
+
+  public void setVotes(List<VoteDto> votes) {
+    this.votes = votes;
   }
 }

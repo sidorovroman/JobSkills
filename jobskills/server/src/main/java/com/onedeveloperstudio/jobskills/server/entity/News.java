@@ -6,6 +6,8 @@ import com.onedeveloperstudio.core.server.entity.user.SysUserEntity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.swing.*;
@@ -35,6 +37,7 @@ public class News extends BaseEntity {
     this.caption = caption;
   }
 
+  @Column(length = FieldSize.BODY)
   public String getBody() {
     return body;
   }
@@ -71,6 +74,10 @@ public class News extends BaseEntity {
   }
 
   @OneToMany
+  @JoinTable(name = "news_commentary", joinColumns = {
+      @JoinColumn(name = "commentary_id", nullable = false, updatable = false)},
+      inverseJoinColumns = {@JoinColumn(name = "news_id",
+          nullable = false, updatable = false)})
   public List<Commentary> getCommentaries() {
     return commentaries;
   }
@@ -80,6 +87,10 @@ public class News extends BaseEntity {
   }
 
   @OneToMany
+  @JoinTable(name = "news_votes", joinColumns = {
+      @JoinColumn(name = "vote_id", nullable = false, updatable = false)},
+      inverseJoinColumns = {@JoinColumn(name = "news_id",
+          nullable = false, updatable = false)})
   public List<Vote> getVotes() {
     return votes;
   }

@@ -5,6 +5,7 @@ import com.onedeveloperstudio.core.common.dto.SysUserDto;
 import com.onedeveloperstudio.core.common.dto.ULoginUser;
 import com.onedeveloperstudio.core.server.service.SysUserService;
 import com.onedeveloperstudio.core.server.utils.MappingUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -13,6 +14,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.BufferedReader;
@@ -22,6 +24,8 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 /**
  * User: y.zakharov
@@ -98,16 +102,29 @@ public class RegistrationAndLoginController {
   }
 
   /**
-   * коллбэк при авторизации пользователя
-   * @param request
-   * @throws Exception
+   * Регистрируем пользователя
    */
-  @RequestMapping("/login")
-  public void login(HttpServletRequest request) {
-    try {
-
-    } catch (Exception e) {
-      System.out.println("Не удалось получить данные о пользователе");
+  @RequestMapping(value = "/register", method = RequestMethod.POST)
+  public String register(HttpServletRequest request) throws ParseException {
+    if(StringUtils.isEmpty(request.getParameter("email")) || StringUtils.isEmpty(request.getParameter("password"))){
+      return "error";
     }
+    SysUserDto dto = new SysUserDto();
+    dto.setEmail(request.getParameter("email"));
+    dto.setPassword(request.getParameter("password"));
+    dto.setUserFullName(request.getParameter("userFullName"));
+    dto.setSex(request.getParameter("sex"));
+    dto.setPhone(request.getParameter("phone"));
+    dto.setCountry(request.getParameter("country"));
+    dto.setBirthday(new SimpleDateFormat("dd.mm.yyyy").parse(request.getParameter("birthday")));
+    dto.setCity(request.getParameter("city"));
+    try{
+      sysUserService.insert(dto);
+    } catch (Exception e){
+      return "error";
+    }
+    Authentication auth = provider.authenticate(new UsernamePasswordAuthenticationToken(dto.getEmail(), dto.getPassword()));
+    SecurityContextHolder.getContext().setAuthentication(auth);
+    return "redirect:/";
   }
 }
