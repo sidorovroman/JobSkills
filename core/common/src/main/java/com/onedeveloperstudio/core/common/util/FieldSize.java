@@ -15,4 +15,5 @@ public abstract class FieldSize {
   public final static int FIO = 100;
   public final static int PASSWORD_HASH = 40;
   public final static int EMAIL = 30;
+  public final static int LINK = 150;
 }

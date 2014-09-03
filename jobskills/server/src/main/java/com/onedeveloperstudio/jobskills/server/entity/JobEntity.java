@@ -9,6 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -18,10 +19,12 @@ import java.util.Set;
 @Table(name = "jobs")
 @Entity(name="jobs")
 public class JobEntity extends BaseEntity {
-  public String caption;
-  public String description;
-  public JobEntity parent;
-  public Set<JobEntity> children;
+  private String caption;
+  private String description;
+  private JobEntity parent;
+  private Set<JobEntity> children;
+  private List<RequiredSkill> skills;
+
 
   @Column(nullable = false, length = FieldSize.CAPTION)
   public String getCaption() {
@@ -57,5 +60,14 @@ public class JobEntity extends BaseEntity {
 
   public void setDescription(String description) {
     this.description = description;
+  }
+
+  @OneToMany(mappedBy = "job")
+  public List<RequiredSkill> getSkills() {
+    return skills;
+  }
+
+  public void setSkills(List<RequiredSkill> skills) {
+    this.skills = skills;
   }
 }

@@ -28,7 +28,7 @@
                 <li><a class="section" href="#">Разделы</a></li>
                 <li><a class="dashboard" href="#">Dashboard</a></li>
                 <li><a class="news" href="#">Новости</a></li>
-                <li><a class="info"  href="#">Инфо</a></li>
+                <li><a class="info"  href="#/userInfo">Инфо</a></li>
             </ul>
         </div>
         <div id="main">
