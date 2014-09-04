@@ -45,6 +45,12 @@ public class RegistrationAndLoginController {
 
   @Autowired
   private DaoAuthenticationProvider provider;
+
+  @RequestMapping("/login")
+  public String loginPage(HttpServletRequest request){
+    return "/login";
+  }
+
   /**
    * коллбэк при авторизации пользователя
    * @param request
