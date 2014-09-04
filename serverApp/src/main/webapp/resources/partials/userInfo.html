@@ -1,15 +1,15 @@
 <div id="reg-form">
-    <form class="auth-col" method="POST" action="/newuser">
+    <form name="userInfoForm" ng-controller="UserInfo" class="auth-col" >
         <table class="reg-table">
-            <tr><td class="main-data">Логин</td><td><input name="login" type="text" class="login"></td></tr>
-            <tr><td class="main-data">Пароль</td><td><input name="password" type="text" class="password"></td></tr>
-            <tr><td>Повторите пароль</td><td><input type="text" class="re-password"></td></tr>
-            <tr><td>Ф.И.О.</td><td><input name="fio" type="text" class="fio"></td></tr>
-            <tr><td>Пол</td><td><input name="sex" type="text" class="pol"></td></tr>
-            <tr><td>Дата рождения</td><td name="birthday" class="birthday"><input type="text" class="date" placeholder="ДД"> / <input type="text" class="month" placeholder="ММ"> / <input type="text" class="year" placeholder="ГГГГ"></td></tr>
-            <tr><td>Никнейм</td><td><input type="text" class="supername"></td></tr>
-            <tr><td>Эл.почта</td><td><input type="text" class="email"></td></tr>
-            <tr><td></td><td><a class="btn rose btn-save">Сохранить</a></td></tr>
+            <tr><td class="main-data">Логин</td>    <td><input name="login"     ng-model="info.login" required type="text" class="login"></td></tr>
+            <tr><td class="main-data">Пароль</td>   <td><input name="pass"      ng-model="info.pass" required type="text" class="password"></td></tr>
+            <tr><td>Повторите пароль</td>           <td><input name="pass2"     ng-model="info.pass2" required class="re-password"  type="text" ></td></tr>
+            <tr><td>Ф.И.О.</td>                     <td><input name="fio"       ng-model="info.fio" required type="text" class="fio"></td></tr>
+            <tr><td>Пол</td>                        <td><input name="sex"       ng-model="info.sex" required type="text" class="pol"></td></tr>
+            <tr><td>Дата рождения</td>              <td class="birthday"><input type="text"  class="date" placeholder="ДД"> / <input type="text" class="month" placeholder="ММ"> / <input type="text" class="year" placeholder="ГГГГ"></td></tr>
+            <tr><td>Никнейм</td>                    <td><input name="supername" ng-model="info.supername" required type="text" class="supername"></td></tr>
+            <tr><td>Эл.почта</td>                   <td><input name="email" ng-model="info.email"  requiredtype="text" class="email"></td></tr>
+            <tr><td></td><td><button type="submit" class="btn rose btn-save" ng-click="save(info, userInfoForm)">Сохранить</button></td></tr>
         </table>
     </form>
 </div>
