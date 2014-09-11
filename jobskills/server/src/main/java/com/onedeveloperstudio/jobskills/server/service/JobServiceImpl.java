@@ -1,5 +1,7 @@
 package com.onedeveloperstudio.jobskills.server.service;
 
+import com.onedeveloperstudio.core.common.appobj.AppObj;
+import com.onedeveloperstudio.core.common.appobj.AppObjDict;
 import com.onedeveloperstudio.core.server.service.BaseServiceImpl;
 import com.onedeveloperstudio.jobskills.common.dto.JobDto;
 import com.onedeveloperstudio.jobskills.server.dao.repositories.JobRepository;
@@ -9,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +23,13 @@ import java.util.List;
 public class JobServiceImpl extends BaseServiceImpl<JobDto> implements JobService {
   @Autowired
   private JobRepository repository;
+
+  @PostConstruct
+  private  void init(){
+    AppObjDict dict = AppObjDict.getInstance();
+    AppObj appobj = dict.getAppObj("job");
+    setAppObj(appobj);
+  }
 
   @Transactional(readOnly = true)
   @Override
