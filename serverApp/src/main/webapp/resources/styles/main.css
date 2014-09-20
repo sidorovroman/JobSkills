@@ -181,6 +181,15 @@ body {
 /* ==========================================
                  jobs
    ========================================== */
+#jobs-list table {
+  background: #fff;
+}
+#jobs-list table tr {
+  padding: 5px 10px;
+}
+#jobs-list table tr:hover {
+  background: #d9edf7;
+}
 #add-jobs {
   margin-left: 20px;
   margin-top: 100px;
