@@ -9,8 +9,8 @@ angular.module('App', [
           when("/login", {templateUrl: "/resources/partials/login.html"}).
           when("/userInfo", {templateUrl:"/resources/partials/userInfo.html"}).
           when("/jobs", {
-                templateUrl:"/resources/partials/jobs.html",
-                controller: "JobsCtrl"
+                controller: "JobsCtrl",
+                templateUrl:"/resources/partials/jobs.html"
             }).
 
             otherwise({redirectTo: '/'});

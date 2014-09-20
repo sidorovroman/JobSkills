@@ -22,7 +22,9 @@ angular.module('App.controllers', [])
                 var dataObject = {
                     caption : this.caption,
                     description  : this.description,
-                    parent : this.parent
+                    parent : {
+                        id:this.parentId
+                    }
                 };
 
                 var responsePromise = $http.post("/jobs/add", dataObject,{});
