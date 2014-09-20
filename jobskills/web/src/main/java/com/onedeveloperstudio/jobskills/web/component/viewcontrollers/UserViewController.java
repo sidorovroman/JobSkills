@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import com.onedeveloperstudio.core.common.dto.SysUserDto;
 import com.onedeveloperstudio.core.common.dto.User;
 import com.onedeveloperstudio.core.server.service.SysUserService;
-import com.onedeveloperstudio.core.web.OperationStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import sun.misc.PostVMInitHook;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;

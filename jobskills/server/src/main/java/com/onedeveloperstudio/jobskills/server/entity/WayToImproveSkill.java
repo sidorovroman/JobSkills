@@ -12,6 +12,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.Date;
 import java.util.List;
@@ -21,7 +22,7 @@ import java.util.List;
  * Date: 20.07.14
  */
 @Table(name = "waytoimproveskill")
-@Entity(name="waytoimproveskill")
+@Entity(name = "waytoimproveskill")
 public class WayToImproveSkill extends BaseEntity {
   private GRADE grade;
   private String caption;
@@ -30,6 +31,8 @@ public class WayToImproveSkill extends BaseEntity {
   private String link;
   private ResourceType resourceType;
   private Date addDate;
+  private List<Vote> votes;
+  private List<Commentary> commentaries;
 
   @Enumerated(EnumType.STRING)
   @Column(length = 100)
@@ -52,9 +55,9 @@ public class WayToImproveSkill extends BaseEntity {
 
   @ManyToMany
   @JoinTable(name = "requiredskill_waytoimproveskill", joinColumns = {
-      @JoinColumn(name = "skill_id", nullable = false, updatable = false) },
-      inverseJoinColumns = { @JoinColumn(name = "ways_id",
-          nullable = false, updatable = false) })
+      @JoinColumn(name = "skill_id", nullable = false, updatable = false)},
+      inverseJoinColumns = {@JoinColumn(name = "ways_id",
+          nullable = false, updatable = false)})
   public List<RequiredSkill> getSkill() {
     return skill;
   }
@@ -97,5 +100,31 @@ public class WayToImproveSkill extends BaseEntity {
 
   public void setDescription(String description) {
     this.description = description;
+  }
+
+  @ManyToMany
+  @JoinTable(name = "waytoimproveskill_votes", joinColumns = {
+      @JoinColumn(name = "vote_id", nullable = false, updatable = false)},
+      inverseJoinColumns = {@JoinColumn(name = "waytoimproveskill_id",
+          nullable = false, updatable = false)})
+  public List<Vote> getVotes() {
+    return votes;
+  }
+
+  public void setVotes(List<Vote> votes) {
+    this.votes = votes;
+  }
+
+  @OneToMany
+  @JoinTable(name = "waytoimproveskill_commentary", joinColumns = {
+      @JoinColumn(name = "commentary_id", nullable = false, updatable = false)},
+      inverseJoinColumns = {@JoinColumn(name = "waytoimproveskill_id",
+          nullable = false, updatable = false)})
+  public List<Commentary> getCommentaries() {
+    return commentaries;
+  }
+
+  public void setCommentaries(List<Commentary> commentaries) {
+    this.commentaries = commentaries;
   }
 }

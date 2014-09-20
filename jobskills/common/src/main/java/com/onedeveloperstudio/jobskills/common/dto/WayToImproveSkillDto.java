@@ -19,6 +19,7 @@ public class WayToImproveSkillDto extends BaseDto {
   private String link;
   private ResourceType resourceType;
   private Date addDate;
+  private List<VoteDto> votes;
 
   public GRADE getGrade() {
     return grade;
@@ -74,5 +75,13 @@ public class WayToImproveSkillDto extends BaseDto {
 
   public void setDescription(String description) {
     this.description = description;
+  }
+
+  public List<VoteDto> getVotes() {
+    return votes;
+  }
+
+  public void setVotes(List<VoteDto> votes) {
+    this.votes = votes;
   }
 }

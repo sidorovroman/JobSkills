@@ -7,5 +7,5 @@ import com.onedeveloperstudio.jobskills.common.dto.WayToImproveSkillDto;
  * User: User
  * Date: 20.09.14
  */
-public interface WayToImproveSkillService extends BaseService<WayToImproveSkillDto> {
+public interface WayToImproveSkillService extends BaseService<WayToImproveSkillDto>, VoteService {
 }

@@ -9,6 +9,6 @@ import java.util.List;
  * User: y.zakharov
  * Date: 25.08.14
  */
-public interface RequiredSkillService extends BaseService<RequiredSkillDto> {
+public interface RequiredSkillService extends BaseService<RequiredSkillDto>, VoteService {
   List<RequiredSkillDto> loadAllbyJob(Long jobId);
 }
