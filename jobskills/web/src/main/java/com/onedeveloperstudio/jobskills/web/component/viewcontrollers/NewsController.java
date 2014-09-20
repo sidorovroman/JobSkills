@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.onedeveloperstudio.core.common.appobj.AppObjDict;
 import com.onedeveloperstudio.core.server.service.BaseService;
 import com.onedeveloperstudio.jobskills.common.dto.NewsDto;
+import com.onedeveloperstudio.jobskills.server.service.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,7 +25,7 @@ import java.util.List;
 @RequestMapping("/news")
 public class NewsController {
   @Autowired
-  private BaseService<NewsDto> service;
+  private NewsService service;
 
   private Gson gson;
 
