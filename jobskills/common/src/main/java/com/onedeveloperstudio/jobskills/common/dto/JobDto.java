@@ -3,7 +3,6 @@ package com.onedeveloperstudio.jobskills.common.dto;
 import com.onedeveloperstudio.core.common.dto.BaseDto;
 
 import java.util.List;
-import java.util.Set;
 
 /**
  * User: y.zakharov
@@ -12,7 +11,7 @@ import java.util.Set;
 public class JobDto extends BaseDto {
   private String caption;
   private String description;
-  private JobDto parent;
+  private transient JobDto parent;
   private List<JobDto> children;
 
   public String getCaption() {
