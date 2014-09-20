@@ -80,9 +80,6 @@ public class JobsViewController {
       jb.append(line);
     }
     JobDto job = gson.fromJson(jb.toString(), JobDto.class);
-    if(job.getParent().getId() == null){
-      job.setParent(null);
-    }
     job = service.insert(job);
     try{
       response.getOutputStream().write(gson.toJson(job).getBytes());
