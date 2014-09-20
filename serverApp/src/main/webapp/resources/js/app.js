@@ -6,8 +6,8 @@ angular.module('App', [
     config(['$routeProvider', function($routeProvider) {
         $routeProvider.
             when("/", {templateUrl: "/resources/partials/home.html"}).
-            when("/login", {templateUrl: "/login"}).
-            when("/userInfo", {templateUrl:"/user/index"}).
+          when("/login", {templateUrl: "/resources/partials/login.html"}).
+          when("/userInfo", {templateUrl:"/resources/partials/userInfo.html"}).
 
             otherwise({redirectTo: '/'});
     }]);
