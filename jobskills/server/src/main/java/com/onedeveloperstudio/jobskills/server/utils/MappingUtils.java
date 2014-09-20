@@ -21,6 +21,7 @@ public class MappingUtils extends com.onedeveloperstudio.core.server.utils.Mappi
     JobDto dto = new JobDto();
     dto.setId(entity.getId());
     dto.setCaption(entity.getCaption());
+    dto.setDescription(entity.getDescription());
     mappedObjects.put(dto.getId(), dto);
     List<JobDto> children = new ArrayList<>(entity.getChildren().size());
     for (JobEntity job : entity.getChildren()) {

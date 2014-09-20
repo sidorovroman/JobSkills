@@ -41,7 +41,7 @@ public class JobsViewController {
   public void getList(HttpServletRequest request, HttpServletResponse response){
     response.setContentType("application/json");
     response.setCharacterEncoding("UTF8");
-    List<JobDto> jobs = service.loadAll();
+    List<JobDto> jobs = service.getAllParents();
     try{
       response.getOutputStream().write(gson.toJson(jobs).getBytes());
     } catch (Exception e){

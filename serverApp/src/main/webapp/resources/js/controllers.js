@@ -1,24 +1,22 @@
 angular.module('App.controllers', [])
 
+    .controller('UserInfo',
+    function UserInfo($scope) {
+        $scope.save = function (info, userInfoForm) {
+            if(info.pass.equals(info.pass2)){
+                alert("пароли не совпадают");
+            }
+            if (userInfoForm.$valid) {
+                // действия по сохранению
+                alert(info.login + ", всё ништяк");
+            }
+        };
+    })
     .controller(
-        'UserInfo',
-        function UserInfo($scope) {
-            $scope.save = function (info, userInfoForm) {
-                if(info.pass.equals(info.pass2)){
-                    alert("пароли не совпадают");
-                }
-                if (userInfoForm.$valid) {
-                    // действия по сохранению
-                    alert(info.login + ", всё ништяк");
-                }
-            };
-        }
-    )
-    .controller(
-        "NewJobCtrl",
+        "JobsCtrl",
         function ($scope, $http) {
             $scope.JobsForm = {};
-            $scope.JobsForm.add = function() {
+            $scope.JobsForm.send = function() {
                 alert("--> Submitting form");
 
                 var dataObject = {
@@ -39,15 +37,3 @@ angular.module('App.controllers', [])
                 });
             }
         })
-    .controller(
-        "JobsListCtrl",
-        function ($scope, $http) {
-            $http.get('/jobs/list').
-                success(function(data) {
-                    $scope.jobs = data;
-                }).
-                error(function(){
-                        alert("Fail");
-                    });
-
-    })
