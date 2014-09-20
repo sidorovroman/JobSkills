@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -68,11 +70,19 @@ public class JobsViewController {
 
   @RequestMapping(value = "/add", method = RequestMethod.POST)
   @ResponseBody
-  public void addJob(HttpServletRequest request, HttpServletResponse response){
+  public void addJob(HttpServletRequest request, HttpServletResponse response) throws IOException {
     response.setContentType("application/json");
     response.setCharacterEncoding("UTF8");
-    //todo
-    JobDto job = new JobDto();
+    StringBuffer jb = new StringBuffer();
+    String line = null;
+    BufferedReader reader = request.getReader();
+    while ((line = reader.readLine()) != null){
+      jb.append(line);
+    }
+    JobDto job = gson.fromJson(jb.toString(), JobDto.class);
+    if(job.getParent().getId() == null){
+      job.setParent(null);
+    }
     job = service.insert(job);
     try{
       response.getOutputStream().write(gson.toJson(job).getBytes());
