@@ -25,7 +25,7 @@
         <div id="header">
             <ul class="nav">
                 <li><a class="logo" href="#">Skill Youself</a></li>
-                <li><a class="section" href="#">Разделы</a></li>
+                <li><a class="jobs" href="#/jobs">Работы</a></li>
                 <li><a class="dashboard" href="#">Dashboard</a></li>
                 <li><a class="news" href="#">Новости</a></li>
                 <li><a class="info"  href="#/userInfo">Инфо</a></li>

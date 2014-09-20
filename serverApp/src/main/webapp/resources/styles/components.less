@@ -1,11 +1,14 @@
-input{
-  height: 39px;
-  width: 350px;
-  padding: 8px 15px;
-  border:1px solid #e6dfd8;
-  font-size:  20px;
-  box-sizing: border-box;
-  .rounded(3px);
+input,textarea{
+   height: 39px;
+   width: 350px;
+   padding: 8px 15px;
+   border:1px solid #e6dfd8;
+   font-size:  20px;
+   box-sizing: border-box;
+   .rounded(3px);
+ }
+textarea{
+  height: 78px;
 }
 .btn {
   display: inline-block;
@@ -19,7 +22,8 @@ input{
   border: 1px solid transparent;
   white-space: nowrap;
   padding: 8px 15px;
-  font-size: 24px;
+  font-family:Trebuchet MS;
+  font-size: 20px;
   line-height: 1.42857143;
   color:#4e626c;
   border-radius: 4px;
@@ -34,5 +38,8 @@ input{
   }
   &.violet{
     background: #b193b2 ;
+  }
+  &.blue{
+    background: #a1e7e0 ;
   }
 }

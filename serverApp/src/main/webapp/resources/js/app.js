@@ -8,6 +8,10 @@ angular.module('App', [
             when("/", {templateUrl: "/resources/partials/home.html"}).
           when("/login", {templateUrl: "/resources/partials/login.html"}).
           when("/userInfo", {templateUrl:"/resources/partials/userInfo.html"}).
+          when("/jobs", {
+                templateUrl:"/resources/partials/jobs.html",
+                controller: "JobsCtrl"
+            }).
 
             otherwise({redirectTo: '/'});
     }]);

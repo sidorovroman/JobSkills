@@ -4,7 +4,8 @@
     A set of useful LESS mixins
     More info at: http://lesselements.com
   ---------------------------------------------------*/
-input {
+input,
+textarea {
   height: 39px;
   width: 350px;
   padding: 8px 15px;
@@ -14,6 +15,9 @@ input {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
+}
+textarea {
+  height: 78px;
 }
 .btn {
   display: inline-block;
@@ -27,7 +31,8 @@ input {
   border: 1px solid transparent;
   white-space: nowrap;
   padding: 8px 15px;
-  font-size: 24px;
+  font-family: Trebuchet MS;
+  font-size: 20px;
   line-height: 1.42857143;
   color: #4e626c;
   border-radius: 4px;
@@ -43,6 +48,9 @@ input {
 }
 .btn.violet {
   background: #b193b2 ;
+}
+.btn.blue {
+  background: #a1e7e0 ;
 }
 html,
 body {
@@ -159,4 +167,32 @@ body {
 }
 #login-form .auth-col .login-icons {
   margin: 47px 0 0 47px;
+}
+/* ==========================================
+                 jobs
+   ========================================== */
+#add-jobs {
+  margin-left: 20px;
+  margin-top: 100px;
+}
+#add-jobs table td {
+  padding: 5px 0;
+}
+#add-jobs table td:first-child {
+  width: 200px;
+  font-size: 24px;
+  font-family: Cambria;
+  color: #75929d;
+  vertical-align: middle;
+}
+#add-jobs table td.sec-col {
+  width: 600px;
+}
+#add-jobs table td.sec-col input,
+#add-jobs table td.sec-col textarea {
+  width: 100%;
+}
+#add-jobs .btn-save {
+  width: 350px;
+  margin: 35px 0 0 200px;
 }
