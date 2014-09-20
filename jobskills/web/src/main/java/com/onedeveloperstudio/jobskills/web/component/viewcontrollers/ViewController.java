@@ -3,17 +3,16 @@ package com.onedeveloperstudio.jobskills.web.component.viewcontrollers;
 import com.onedeveloperstudio.core.common.appobj.AppObj;
 import com.onedeveloperstudio.core.common.appobj.AppObjDict;
 import com.onedeveloperstudio.core.server.service.BaseService;
+import com.onedeveloperstudio.core.server.service.SysUserService;
 import com.onedeveloperstudio.core.web.exception.ClientJsonException;
 import com.onedeveloperstudio.jobskills.common.dto.JobDto;
+import com.onedeveloperstudio.jobskills.common.dto.NewsDto;
 import com.onedeveloperstudio.jobskills.common.dto.RequiredSkillDto;
-import com.onedeveloperstudio.jobskills.server.service.CommentaryService;
 import com.onedeveloperstudio.jobskills.server.service.JobService;
 import com.onedeveloperstudio.jobskills.server.service.RequiredSkillService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -26,22 +25,21 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLEncoder;
 import java.util.List;
 
 @Controller
 public class ViewController {
   @Autowired
   private AutowireCapableBeanFactory beanFactory;
+
+  @Autowired
+  private SysUserService service;
+  private static AppObjDict dict;
+  static {
+     dict = AppObjDict.getInstance();
+  }
 
   @RequestMapping(value = {"/"})
   public String getDefaultPage(ModelMap model) {
@@ -70,14 +68,37 @@ public class ViewController {
    * @return
    */
   @RequestMapping(value = "/jobs")
-  public ModelAndView getThemeComments(HttpServletRequest request){
+  public ModelAndView getAllJobs(HttpServletRequest request){
     ModelAndView mv = new ModelAndView("jobList");
-    AppObjDict dict = AppObjDict.getInstance();
     AppObj jobAppObj = dict.getAppObj("job");
     JobService service = beanFactory.getBean(JobService.class);
     service.setAppObj(jobAppObj);
     List<JobDto> list = service.getAllParents();
     mv.addObject("jobs", list);
+    return mv;
+  }
+
+  /**
+   * Список всех работ/профессий
+   * если необходимо возвращать лишь как часть страницы - нужно навесить аннотацию @ResponseBody и изменить jobList.jsp
+   */
+  @RequestMapping(value = "/job")
+  public ModelAndView getThemeComments(@RequestParam Long jobId, HttpServletRequest request){
+    ModelAndView mv = new ModelAndView("job");
+    AppObj jobAppObj = dict.getAppObj("job");
+    JobService service = beanFactory.getBean(JobService.class);
+    service.setAppObj(jobAppObj);
+    service.setAppObj(jobAppObj);
+    JobDto job = service.load(jobId);
+    if(job == null){
+      return errorPage("Не удалось найти выбранную профессию");
+    }
+    mv.addObject("job", job);
+    AppObj rsAppObj = dict.getAppObj("requiredSkill");
+    RequiredSkillService rsService = beanFactory.getBean(RequiredSkillService.class);
+    rsService.setAppObj(rsAppObj);
+    List<RequiredSkillDto> skills = rsService.loadAllbyJob(jobId);
+    mv.addObject("skills", skills);
     return mv;
   }
 
@@ -89,7 +110,6 @@ public class ViewController {
   @RequestMapping(value = "/addJob", method = RequestMethod.POST)
   public String addJob(HttpServletRequest request){
     ModelAndView mv = new ModelAndView("jobList");
-    AppObjDict dict = AppObjDict.getInstance();
     AppObj jobAppObj = dict.getAppObj("job");
     JobService service = beanFactory.getBean(JobService.class);
     service.setAppObj(jobAppObj);
@@ -116,7 +136,6 @@ public class ViewController {
   @RequestMapping(value = "/addJob", method = RequestMethod.GET)
   public ModelAndView addJobPage(HttpServletRequest request){
     ModelAndView mv = new ModelAndView("addJob");
-    AppObjDict dict = AppObjDict.getInstance();
     AppObj jobAppObj = dict.getAppObj("job");
     JobService service = beanFactory.getBean(JobService.class);
     service.setAppObj(jobAppObj);
@@ -129,7 +148,6 @@ public class ViewController {
   @RequestMapping(value = "/addRequiredSkill", method = RequestMethod.GET)
   public ModelAndView addRequiredSkillPage(@RequestParam Long jobId, HttpServletRequest request){
     ModelAndView mv = new ModelAndView("addRequiredSkill");
-    AppObjDict dict = AppObjDict.getInstance();
     AppObj jobAppObj = dict.getAppObj("job");
     JobService service = beanFactory.getBean(JobService.class);
     service.setAppObj(jobAppObj);
@@ -144,7 +162,6 @@ public class ViewController {
   @RequestMapping(value = "/addRequiredSkill", method = RequestMethod.POST)
   public ModelAndView addRequiredSkill(@RequestParam Long jobId, HttpServletRequest request){
     ModelAndView mv = new ModelAndView("requiredSkills");
-    AppObjDict dict = AppObjDict.getInstance();
     AppObj jobAppObj = dict.getAppObj("job");
     JobService service = beanFactory.getBean(JobService.class);
     service.setAppObj(jobAppObj);
@@ -173,5 +190,16 @@ public class ViewController {
     ModelAndView errorPage = new ModelAndView("error");
     errorPage.addObject("message", message);
     return errorPage;
+  }
+
+  @RequestMapping(value = "/news")
+  public ModelAndView getNews(HttpServletRequest request){
+    ModelAndView mv = new ModelAndView("news");
+    AppObj newsAppObj = dict.getAppObj("news");
+    BaseService<NewsDto> service = beanFactory.getBean(BaseService.class);
+    service.setAppObj(newsAppObj);
+    List<NewsDto> list = service.loadAll();
+    mv.addObject("news", list);
+    return mv;
   }
 }

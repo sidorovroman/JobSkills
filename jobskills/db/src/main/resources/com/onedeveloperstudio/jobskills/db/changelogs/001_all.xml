@@ -183,4 +183,57 @@
     <addUniqueConstraint columnNames="comments_id" constraintName="UK_L3A01U0R12LUW99YOA51HV5XX"
                          tableName="requiredskill_commentary"/>
   </changeSet>
+
+  <changeSet id="002" author="y.zakharov">
+    <createTable tableName="news">
+      <column autoIncrement="true" name="id" type="BIGINT">
+        <constraints primaryKey="true" primaryKeyName="PKUK_NEWSPK"/>
+      </column>
+      <column name="adddate" type="TIMESTAMP">
+        <constraints nullable="false"/>
+      </column>
+      <column name="caption" type="VARCHAR(200)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="body" type="VARCHAR(4000)"/>
+      <column name="author_id" type="BIGINT">
+        <constraints nullable="false"/>
+      </column>
+      <column name="link" type="VARCHAR(150)">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+    <addForeignKeyConstraint baseColumnNames="author_id" baseTableName="news"
+                             constraintName="FK_NEWS_USERACCOUNT" referencedColumnNames="id"
+                             referencedTableName="useraccount"/>
+    <createTable tableName="news_commentary">
+      <column name="news_id" type="BIGINT">
+        <constraints nullable="false"/>
+      </column>
+      <column name="commentary_id" type="BIGINT">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+    <addForeignKeyConstraint baseColumnNames="news_id" baseTableName="news_commentary"
+                             constraintName="FK_NEWS_news_commentary" referencedColumnNames="id"
+                             referencedTableName="news"/>
+    <addForeignKeyConstraint baseColumnNames="commentary_id" baseTableName="news_commentary"
+                             constraintName="FK_COMMENTARY_news_commentary" referencedColumnNames="id"
+                             referencedTableName="commentary"/>
+
+    <createTable tableName="news_votes">
+      <column name="news_id" type="BIGINT">
+        <constraints nullable="false"/>
+      </column>
+      <column name="vote_id" type="BIGINT">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+    <addForeignKeyConstraint baseColumnNames="news_id" baseTableName="news_votes"
+                             constraintName="FK_NEWS_news_votes" referencedColumnNames="id"
+                             referencedTableName="news"/>
+    <addForeignKeyConstraint baseColumnNames="vote_id" baseTableName="news_votes"
+                             constraintName="FK_COMMENTARY_news_votes" referencedColumnNames="id"
+                             referencedTableName="vote"/>
+  </changeSet>
 </databaseChangeLog>
