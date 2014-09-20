@@ -16,11 +16,9 @@ angular.module('App.controllers', [])
     )
     .controller(
         "NewJobCtrl",
-        function ($scope, $http) {
+        function ($scope, $location, $http) {
             $scope.JobsForm = {};
             $scope.JobsForm.add = function() {
-                alert("--> Submitting form");
-
                 var dataObject = {
                     caption : this.caption,
                     description  : this.description,
@@ -31,8 +29,7 @@ angular.module('App.controllers', [])
 
                 var responsePromise = $http.post("/jobs/add", dataObject,{});
                 responsePromise.success(function(dataFromServer, status, headers, config) {
-                    alert("ok "+ dataFromServer.title);
-
+                    $location.path('/jobs');
                 });
                 responsePromise.error(function(data, status, headers, config) {
                     alert("Submitting form failed!");
