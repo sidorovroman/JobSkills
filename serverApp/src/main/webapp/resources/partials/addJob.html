@@ -1,0 +1,10 @@
+<div id="add-jobs">
+    <form class="add-jobs-form" ng-submit="JobsForm.add()">
+        <table>
+            <tr> <td>Наименование</td>  <td class="sec-col"><input ng-model="JobsForm.caption" type="text" required></td> </tr>
+            <tr> <td>Описание </td>  <td  class="sec-col"><textarea ng-model="JobsForm.description" required></textarea></td> </tr>
+            <tr> <td>Выщестоящие работы </td>  <td  class="sec-col"><input ng-model="JobsForm.parentId" type="text"></td> </tr>
+        </table>
+        <button type="submit" class="btn blue btn-save">Сохранить</button>
+    </form>
+</div>
