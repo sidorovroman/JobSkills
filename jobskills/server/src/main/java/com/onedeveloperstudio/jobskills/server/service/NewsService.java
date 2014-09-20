@@ -7,5 +7,5 @@ import com.onedeveloperstudio.jobskills.common.dto.NewsDto;
  * User: User
  * Date: 20.09.14
  */
-public interface NewsService extends BaseService<NewsDto>{
+public interface NewsService extends BaseService<NewsDto>, VoteService{
 }

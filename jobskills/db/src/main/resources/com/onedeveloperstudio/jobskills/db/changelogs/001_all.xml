@@ -236,4 +236,35 @@
                              constraintName="FK_COMMENTARY_news_votes" referencedColumnNames="id"
                              referencedTableName="vote"/>
   </changeSet>
+
+  <changeSet author="y.zakharov" id="003">
+    <createTable tableName="waytoimproveskill_votes">
+      <column name="waytoimproveskill_id" type="BIGINT">
+        <constraints nullable="false"/>
+      </column>
+      <column name="vote_id" type="BIGINT">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+    <addForeignKeyConstraint baseColumnNames="waytoimproveskill_id" baseTableName="waytoimproveskill_votes"
+                             constraintName="FK_waytoimproveskill_votes" referencedColumnNames="id"
+                             referencedTableName="waytoimproveskill"/>
+    <addForeignKeyConstraint baseColumnNames="vote_id" baseTableName="waytoimproveskill_votes"
+                             constraintName="FK_waytoimproveskill_votes_votes" referencedColumnNames="id"
+                             referencedTableName="vote"/>
+    <createTable tableName="waytoimproveskill_commentary">
+      <column name="waytoimproveskill_id" type="BIGINT">
+        <constraints nullable="false"/>
+      </column>
+      <column name="commentary_id" type="BIGINT">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+    <addForeignKeyConstraint baseColumnNames="waytoimproveskill_id" baseTableName="waytoimproveskill_commentary"
+                             constraintName="FK_NEWS_news_commentary" referencedColumnNames="id"
+                             referencedTableName="waytoimproveskill"/>
+    <addForeignKeyConstraint baseColumnNames="commentary_id" baseTableName="waytoimproveskill_commentary"
+                             constraintName="FK_COMMENTARY_news_commentary" referencedColumnNames="id"
+                             referencedTableName="commentary"/>
+  </changeSet>
 </databaseChangeLog>
