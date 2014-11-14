@@ -31,7 +31,7 @@
       <column autoIncrement="true" name="id" type="BIGINT">
         <constraints primaryKey="true" primaryKeyName="PKUK_hio9iw7irkbdbw7ccy01i9bhm"/>
       </column>
-      <column name="addDate" type="TIMESTAMP">
+      <column name="adddate" type="TIMESTAMP">
         <constraints nullable="false"/>
       </column>
       <column name="message" type="VARCHAR(1000)">

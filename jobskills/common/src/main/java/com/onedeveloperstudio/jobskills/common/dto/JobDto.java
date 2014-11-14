@@ -11,7 +11,7 @@ import java.util.List;
 public class JobDto extends BaseDto {
   private String caption;
   private String description;
-  private transient JobDto parent;
+  private JobDto parent;
   private List<JobDto> children;
 
   public String getCaption() {

@@ -1,6 +1,5 @@
 package com.onedeveloperstudio.jobskills.web.component.viewcontrollers;
 
-import com.google.gson.Gson;
 import com.onedeveloperstudio.core.common.appobj.AppObjDict;
 import com.onedeveloperstudio.core.common.dto.SysUserDto;
 import com.onedeveloperstudio.core.common.dto.User;
@@ -8,6 +7,7 @@ import com.onedeveloperstudio.core.server.service.SysUserService;
 import com.onedeveloperstudio.jobskills.common.VoteState;
 import com.onedeveloperstudio.jobskills.common.dto.NewsDto;
 import com.onedeveloperstudio.jobskills.server.service.NewsService;
+import flexjson.JSONSerializer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -35,11 +35,10 @@ public class NewsController {
   @Autowired
   private SysUserService sysUserService;
 
-  private Gson gson;
+  private JSONSerializer serializer = new JSONSerializer();
 
   @PostConstruct
   private void init() {
-    gson = new Gson();
     AppObjDict dict = AppObjDict.getInstance();
     service.setAppObj(dict.getAppObj("news"));
   }
@@ -52,7 +51,7 @@ public class NewsController {
     response.setCharacterEncoding("UTF8");
     List<NewsDto> newss = service.loadAll();
     try {
-      response.getOutputStream().write(gson.toJson(newss).getBytes());
+      response.getOutputStream().write(serializer.deepSerialize(newss).getBytes());
     } catch (Exception e) {
       System.out.println("ERROR EBAT'");
     }
@@ -65,7 +64,7 @@ public class NewsController {
     response.setCharacterEncoding("UTF8");
     NewsDto news = service.load(id);
     try {
-      response.getOutputStream().write(gson.toJson(news).getBytes());
+      response.getOutputStream().write(serializer.deepSerialize(news).getBytes());
     } catch (Exception e) {
       System.out.println("ERROR EBAT'");
     }
@@ -86,7 +85,7 @@ public class NewsController {
     NewsDto news = new NewsDto();
     news = service.insert(news);
     try {
-      response.getOutputStream().write(gson.toJson(news).getBytes());
+      response.getOutputStream().write(serializer.deepSerialize(news).getBytes());
     } catch (Exception e) {
       System.out.println("ERROR EBAT'");
     }
@@ -101,7 +100,7 @@ public class NewsController {
     //todo
     news = service.update(news);
     try {
-      response.getOutputStream().write(gson.toJson(news).getBytes());
+      response.getOutputStream().write(serializer.deepSerialize(news).getBytes());
     } catch (Exception e) {
       System.out.println("ERROR EBAT'");
     }

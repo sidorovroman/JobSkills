@@ -1,9 +1,9 @@
 package com.onedeveloperstudio.jobskills.web.component.viewcontrollers;
 
-import com.google.gson.Gson;
 import com.onedeveloperstudio.core.common.appobj.AppObjDict;
 import com.onedeveloperstudio.jobskills.common.dto.WayToImproveSkillDto;
 import com.onedeveloperstudio.jobskills.server.service.WayToImproveSkillService;
+import flexjson.JSONSerializer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,11 +26,10 @@ public class WayToImproveSkillViewController {
   @Autowired
   private WayToImproveSkillService service;
 
-  private Gson gson;
+  private JSONSerializer serializer = new JSONSerializer();
 
   @PostConstruct
-  private void init(){
-    gson = new Gson();
+  private void init() {
     AppObjDict dict = AppObjDict.getInstance();
     service.setAppObj(dict.getAppObj("wayToImproveSkill"));
   }
@@ -38,62 +37,62 @@ public class WayToImproveSkillViewController {
 
   @RequestMapping("/list")
   @ResponseBody
-  public void getList(HttpServletRequest request, HttpServletResponse response){
+  public void getList(HttpServletRequest request, HttpServletResponse response) {
     response.setContentType("application/json");
     response.setCharacterEncoding("UTF8");
     List<WayToImproveSkillDto> wayToImproveSkills = service.loadAll();
-    try{
-      response.getOutputStream().write(gson.toJson(wayToImproveSkills).getBytes());
-    } catch (Exception e){
+    try {
+      response.getOutputStream().write(serializer.deepSerialize(wayToImproveSkills).getBytes());
+    } catch (Exception e) {
       System.out.println("ERROR EBAT'");
     }
   }
 
   @RequestMapping(value = "/{id}", method = RequestMethod.GET)
   @ResponseBody
-  public void getWayToImproveSkill(@PathVariable Long id, HttpServletRequest request, HttpServletResponse response){
+  public void getWayToImproveSkill(@PathVariable Long id, HttpServletRequest request, HttpServletResponse response) {
     response.setContentType("application/json");
     response.setCharacterEncoding("UTF8");
     WayToImproveSkillDto wayToImproveSkill = service.load(id);
-    try{
-      response.getOutputStream().write(gson.toJson(wayToImproveSkill).getBytes());
-    } catch (Exception e){
+    try {
+      response.getOutputStream().write(serializer.deepSerialize(wayToImproveSkill).getBytes());
+    } catch (Exception e) {
       System.out.println("ERROR EBAT'");
     }
   }
 
   @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-  public String deleteWayToImproveSkill(@PathVariable Long id, HttpServletRequest request){
+  public String deleteWayToImproveSkill(@PathVariable Long id, HttpServletRequest request) {
     service.delete(id);
     return "{status : 1}";
   }
 
   @RequestMapping(value = "/add", method = RequestMethod.POST)
   @ResponseBody
-  public void addWayToImproveSkill(HttpServletRequest request, HttpServletResponse response){
+  public void addWayToImproveSkill(HttpServletRequest request, HttpServletResponse response) {
     response.setContentType("application/json");
     response.setCharacterEncoding("UTF8");
     //todo
     WayToImproveSkillDto wayToImproveSkill = new WayToImproveSkillDto();
     wayToImproveSkill = service.insert(wayToImproveSkill);
-    try{
-      response.getOutputStream().write(gson.toJson(wayToImproveSkill).getBytes());
-    } catch (Exception e){
+    try {
+      response.getOutputStream().write(serializer.deepSerialize(wayToImproveSkill).getBytes());
+    } catch (Exception e) {
       System.out.println("ERROR EBAT'");
     }
   }
 
   @RequestMapping(value = "/update", method = RequestMethod.PUT)
   @ResponseBody
-  public void updateWayToImproveSkill(HttpServletRequest request, HttpServletResponse response){
+  public void updateWayToImproveSkill(HttpServletRequest request, HttpServletResponse response) {
     response.setContentType("application/json");
     response.setCharacterEncoding("UTF8");
     WayToImproveSkillDto wayToImproveSkill = new WayToImproveSkillDto();
     //todo
     wayToImproveSkill = service.update(wayToImproveSkill);
-    try{
-      response.getOutputStream().write(gson.toJson(wayToImproveSkill).getBytes());
-    } catch (Exception e){
+    try {
+      response.getOutputStream().write(serializer.deepSerialize(wayToImproveSkill).getBytes());
+    } catch (Exception e) {
       System.out.println("ERROR EBAT'");
     }
   }

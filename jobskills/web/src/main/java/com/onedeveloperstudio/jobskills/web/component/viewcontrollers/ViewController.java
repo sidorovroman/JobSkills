@@ -1,15 +1,8 @@
 package com.onedeveloperstudio.jobskills.web.component.viewcontrollers;
 
-import com.onedeveloperstudio.core.common.appobj.AppObj;
 import com.onedeveloperstudio.core.common.appobj.AppObjDict;
-import com.onedeveloperstudio.core.server.service.BaseService;
 import com.onedeveloperstudio.core.server.service.SysUserService;
 import com.onedeveloperstudio.core.web.exception.ClientJsonException;
-import com.onedeveloperstudio.jobskills.common.dto.JobDto;
-import com.onedeveloperstudio.jobskills.common.dto.NewsDto;
-import com.onedeveloperstudio.jobskills.common.dto.RequiredSkillDto;
-import com.onedeveloperstudio.jobskills.server.service.JobService;
-import com.onedeveloperstudio.jobskills.server.service.RequiredSkillService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.springframework.http.HttpStatus;
@@ -17,17 +10,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 
 @Controller
 public class ViewController {

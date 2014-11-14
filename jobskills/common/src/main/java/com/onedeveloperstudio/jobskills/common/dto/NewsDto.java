@@ -15,7 +15,7 @@ public class NewsDto extends BaseDto {
   private String body;
   private Date addDate;
   private SysUserDto author;
-  private String source;
+  private String link;
   private String tags;
   private List<CommentaryDto> commentaries;
   private List<VoteDto> votes;
@@ -52,12 +52,12 @@ public class NewsDto extends BaseDto {
     this.author = author;
   }
 
-  public String getSource() {
-    return source;
+  public String getLink() {
+    return link;
   }
 
-  public void setSource(String source) {
-    this.source = source;
+  public void setLink(String link) {
+    this.link = link;
   }
 
   public String getTags() {

@@ -1,10 +1,10 @@
 package com.onedeveloperstudio.jobskills.web.component.viewcontrollers;
 
-import com.google.gson.Gson;
 import com.onedeveloperstudio.core.common.dto.SysUserDto;
 import com.onedeveloperstudio.core.common.dto.ULoginUser;
 import com.onedeveloperstudio.core.server.service.SysUserService;
 import com.onedeveloperstudio.core.server.utils.MappingUtils;
+import flexjson.JSONDeserializer;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -41,7 +41,8 @@ public class RegistrationAndLoginController {
   
   @Autowired
   private SysUserService sysUserService;
-  
+
+  private JSONDeserializer<ULoginUser> serializer = new JSONDeserializer<>();
 
   @Autowired
   private DaoAuthenticationProvider provider;
@@ -61,14 +62,13 @@ public class RegistrationAndLoginController {
     String token = request.getParameter("token");
     try {
       String answer = sendGet(token);
-      Gson gson = new Gson();
       InputStream stream =  new ByteArrayInputStream(answer.getBytes());
       Reader reader = new InputStreamReader(stream);
-      ULoginUser user = gson.fromJson(reader, ULoginUser.class);
+      ULoginUser user = serializer.deserialize(reader, ULoginUser.class);
       user.setPassword(DUMMY_PASSWORD);
       SysUserDto sysUserDto = MappingUtils.fromULoginUserToDto(user);
       SysUserDto dto = sysUserService.loadByEmail(user.getEmail());
-      if(dto.getId()!=null){
+      if (dto.getId() != null) {
         sysUserDto.setId(dto.getId());
         sysUserService.update(sysUserDto);
       } else {
