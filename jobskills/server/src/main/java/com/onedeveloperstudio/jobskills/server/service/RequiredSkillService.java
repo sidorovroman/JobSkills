@@ -1,6 +1,7 @@
 package com.onedeveloperstudio.jobskills.server.service;
 
 import com.onedeveloperstudio.core.server.service.BaseService;
+import com.onedeveloperstudio.core.server.service.VoteService;
 import com.onedeveloperstudio.jobskills.common.dto.RequiredSkillDto;
 
 import java.util.List;

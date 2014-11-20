@@ -2,8 +2,9 @@ package com.onedeveloperstudio.jobskills.server.entity;
 
 import com.onedeveloperstudio.core.server.entity.BaseEntity;
 import com.onedeveloperstudio.core.server.entity.user.SysUserEntity;
-import com.onedeveloperstudio.jobskills.common.VoteState;
+import com.onedeveloperstudio.core.common.VoteState;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;

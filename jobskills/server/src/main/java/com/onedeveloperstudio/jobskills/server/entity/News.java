@@ -4,10 +4,13 @@ import com.onedeveloperstudio.core.common.util.FieldSize;
 import com.onedeveloperstudio.core.server.entity.BaseEntity;
 import com.onedeveloperstudio.core.server.entity.user.SysUserEntity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.swing.*;
@@ -73,10 +76,10 @@ public class News extends BaseEntity {
     this.link = link;
   }
 
-  @OneToMany
+  @OneToMany(cascade = CascadeType.ALL)
   @JoinTable(name = "news_commentary", joinColumns = {
-      @JoinColumn(name = "commentary_id", nullable = false, updatable = false)},
-      inverseJoinColumns = {@JoinColumn(name = "news_id",
+      @JoinColumn(name = "news_id", nullable = false, updatable = false)},
+      inverseJoinColumns = {@JoinColumn(name = "commentary_id",
           nullable = false, updatable = false)})
   public List<Commentary> getCommentaries() {
     return commentaries;
@@ -86,10 +89,10 @@ public class News extends BaseEntity {
     this.commentaries = commentaries;
   }
 
-  @OneToMany
+  @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
   @JoinTable(name = "news_votes", joinColumns = {
-      @JoinColumn(name = "vote_id", nullable = false, updatable = false)},
-      inverseJoinColumns = {@JoinColumn(name = "news_id",
+      @JoinColumn(name = "news_id", nullable = false, updatable = false)},
+      inverseJoinColumns = {@JoinColumn(name = "vote_id",
           nullable = false, updatable = false)})
   public List<Vote> getVotes() {
     return votes;

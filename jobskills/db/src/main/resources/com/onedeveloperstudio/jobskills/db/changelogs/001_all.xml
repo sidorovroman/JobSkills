@@ -6,6 +6,12 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd"
     objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
   <changeSet author="y.zakharov" id="1">
+    <comment>
+      Если база поддерживает sequence, то hiber его использует по умолчанию. Один на все таблицы.
+      При этом для каждой autoIncrement колонки будет создан свой sequence, который нигде не будет использоваться, и
+      черт бы с ними.
+    </comment>
+    <createSequence sequenceName="hibernate_sequence"/>
     <createTable tableName="useraccount">
       <column autoIncrement="true" name="id" type="BIGINT">
         <constraints nullable="false" primaryKey="true" primaryKeyName="PKB3F13C2D1B"/>

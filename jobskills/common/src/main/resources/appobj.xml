@@ -42,7 +42,7 @@
 
   <dict name="vote" caption="Голоса">
     <entity class="com.onedeveloperstudio.jobskills.server.entity.Vote"/>
-    <editDto class="com.onedeveloperstudio.jobskills.common.dto.VoteDto"/>
+    <editDto class="com.onedeveloperstudio.core.common.dto.VoteDto"/>
     <repository class="com.onedeveloperstudio.jobskills.server.dao.repositories.VoteRepository"/>
   </dict>
 </objects>

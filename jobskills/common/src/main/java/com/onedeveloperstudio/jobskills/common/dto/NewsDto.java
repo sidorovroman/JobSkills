@@ -1,7 +1,8 @@
 package com.onedeveloperstudio.jobskills.common.dto;
 
-import com.onedeveloperstudio.core.common.dto.BaseDto;
+import com.onedeveloperstudio.core.common.dto.RatedDto;
 import com.onedeveloperstudio.core.common.dto.SysUserDto;
+import com.onedeveloperstudio.core.common.dto.VoteDto;
 
 import java.util.Date;
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.List;
  * User: y.zakharov
  * Date: 02.09.14
  */
-public class NewsDto extends BaseDto {
+public class NewsDto extends RatedDto {
   private String caption;
   private String body;
   private Date addDate;
@@ -18,7 +19,6 @@ public class NewsDto extends BaseDto {
   private String link;
   private String tags;
   private List<CommentaryDto> commentaries;
-  private List<VoteDto> votes;
 
   public String getCaption() {
     return caption;
@@ -74,13 +74,5 @@ public class NewsDto extends BaseDto {
 
   public void setCommentaries(List<CommentaryDto> commentaries) {
     this.commentaries = commentaries;
-  }
-
-  public List<VoteDto> getVotes() {
-    return votes;
-  }
-
-  public void setVotes(List<VoteDto> votes) {
-    this.votes = votes;
   }
 }

@@ -1,7 +1,7 @@
-package com.onedeveloperstudio.jobskills.server.service;
+package com.onedeveloperstudio.core.server.service;
 
+import com.onedeveloperstudio.core.common.VoteState;
 import com.onedeveloperstudio.core.common.dto.SysUserDto;
-import com.onedeveloperstudio.jobskills.common.VoteState;
 
 /**
  * User: User
@@ -9,4 +9,5 @@ import com.onedeveloperstudio.jobskills.common.VoteState;
  */
 public interface VoteService {
   void vote(SysUserDto user, Long entityId, VoteState state);
+  int getVotesCount(Long id);
 }

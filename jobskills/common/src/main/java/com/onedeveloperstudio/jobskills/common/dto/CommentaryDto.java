@@ -1,6 +1,7 @@
 package com.onedeveloperstudio.jobskills.common.dto;
 
-import com.onedeveloperstudio.core.common.dto.BaseDto;
+import com.onedeveloperstudio.core.common.dto.RatedDto;
+import com.onedeveloperstudio.core.common.dto.VoteDto;
 
 import java.util.Date;
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
  * User: y.zakharov
  * Date: 01.08.14
  */
-public class CommentaryDto extends BaseDto {
+public class CommentaryDto extends RatedDto {
   private Date addDate;
   private String message;
   private CommentaryDto head;

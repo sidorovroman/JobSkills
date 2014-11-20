@@ -3,8 +3,9 @@ package com.onedeveloperstudio.jobskills.web.component.viewcontrollers;
 import com.onedeveloperstudio.core.common.appobj.AppObjDict;
 import com.onedeveloperstudio.core.common.dto.SysUserDto;
 import com.onedeveloperstudio.core.common.dto.User;
+import com.onedeveloperstudio.core.common.dto.VoteDto;
 import com.onedeveloperstudio.core.server.service.SysUserService;
-import com.onedeveloperstudio.jobskills.common.VoteState;
+import com.onedeveloperstudio.core.common.VoteState;
 import com.onedeveloperstudio.jobskills.common.dto.NewsDto;
 import com.onedeveloperstudio.jobskills.server.service.NewsService;
 import flexjson.JSONSerializer;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -51,7 +53,7 @@ public class NewsController {
     response.setCharacterEncoding("UTF8");
     List<NewsDto> newss = service.loadAll();
     try {
-      response.getOutputStream().write(serializer.deepSerialize(newss).getBytes());
+      response.getOutputStream().write(serializer.serialize(newss).getBytes());
     } catch (Exception e) {
       System.out.println("ERROR EBAT'");
     }
@@ -106,16 +108,24 @@ public class NewsController {
     }
   }
 
-  @RequestMapping(value = "up/{id}", method = RequestMethod.POST)
+  @RequestMapping(value = "up/{id}")
   public void up(@PathVariable Long id, HttpServletRequest request, HttpServletResponse response) {
     Authentication auth = SecurityContextHolder.getContext().getAuthentication();
     User regUser = (User) auth.getPrincipal();
     SysUserDto user = sysUserService.loadByEmail(regUser.getUsername());
-    service.vote(user, id, VoteState.UP);
+    NewsDto news = service.load(id);
+    VoteDto vote = new VoteDto();
+    vote.setVoteDate(new Date());
+    vote.setState(VoteState.UP);
+    vote.setUser(user);
+    news.getVotes().add(vote);
+    service.update(news);
+    response.setContentType("application/json");
+    response.setCharacterEncoding("UTF8");
   }
 
 
-  @RequestMapping(value = "down/{id}", method = RequestMethod.POST)
+  @RequestMapping(value = "down/{id}")
   public void down(@PathVariable Long id, HttpServletRequest request, HttpServletResponse response) {
     Authentication auth = SecurityContextHolder.getContext().getAuthentication();
     User regUser = (User) auth.getPrincipal();

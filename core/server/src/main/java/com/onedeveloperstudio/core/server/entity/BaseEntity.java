@@ -11,7 +11,7 @@ public abstract class BaseEntity implements Entity {
   private Long id;
 
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @GeneratedValue(strategy = GenerationType.AUTO)
   @Column(nullable = false)
   public Long getId() {
     return id;

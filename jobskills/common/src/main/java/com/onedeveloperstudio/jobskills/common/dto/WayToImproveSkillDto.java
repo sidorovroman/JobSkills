@@ -1,6 +1,7 @@
 package com.onedeveloperstudio.jobskills.common.dto;
 
-import com.onedeveloperstudio.core.common.dto.BaseDto;
+import com.onedeveloperstudio.core.common.dto.RatedDto;
+import com.onedeveloperstudio.core.common.dto.VoteDto;
 import com.onedeveloperstudio.jobskills.common.GRADE;
 import com.onedeveloperstudio.jobskills.common.ResourceType;
 
@@ -11,7 +12,7 @@ import java.util.List;
  * User: y.zakharov
  * Date: 01.08.14
  */
-public class WayToImproveSkillDto extends BaseDto {
+public class WayToImproveSkillDto extends RatedDto {
   private GRADE grade;
   private String caption;
   private String description;

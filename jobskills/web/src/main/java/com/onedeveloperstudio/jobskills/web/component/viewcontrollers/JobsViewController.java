@@ -1,5 +1,6 @@
 package com.onedeveloperstudio.jobskills.web.component.viewcontrollers;
 
+import com.onedeveloperstudio.core.server.service.SysUserService;
 import com.onedeveloperstudio.jobskills.common.dto.JobDto;
 import com.onedeveloperstudio.jobskills.server.service.JobService;
 import flexjson.JSONDeserializer;
@@ -13,7 +14,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.List;
 
@@ -27,6 +27,9 @@ public class JobsViewController {
 
   @Autowired
   private JobService service;
+
+  @Autowired
+  private SysUserService sysUserService;
 
   private JSONSerializer serializer = new JSONSerializer();
   private JSONDeserializer<JobDto> deserializer = new JSONDeserializer<>();

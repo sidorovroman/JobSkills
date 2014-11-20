@@ -23,7 +23,7 @@ angular.module('App.controllers', [])
                     caption : this.caption,
                     description  : this.description,
                     parent : {
-                        id:this.parentId
+                        id:(this.parentId == "" ? null : this.parentId)
                     }
                 };
 

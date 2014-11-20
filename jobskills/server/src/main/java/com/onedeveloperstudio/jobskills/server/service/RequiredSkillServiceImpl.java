@@ -2,9 +2,10 @@ package com.onedeveloperstudio.jobskills.server.service;
 
 import com.onedeveloperstudio.core.common.dto.SysUserDto;
 import com.onedeveloperstudio.core.server.service.BaseServiceImpl;
-import com.onedeveloperstudio.jobskills.common.VoteState;
+import com.onedeveloperstudio.core.common.VoteState;
+import com.onedeveloperstudio.core.server.service.BaseVoteServiceImlp;
 import com.onedeveloperstudio.jobskills.common.dto.RequiredSkillDto;
-import com.onedeveloperstudio.jobskills.common.dto.VoteDto;
+import com.onedeveloperstudio.core.common.dto.VoteDto;
 import com.onedeveloperstudio.jobskills.server.dao.repositories.RequiredSkillRepository;
 import com.onedeveloperstudio.jobskills.server.entity.RequiredSkill;
 import org.dozer.Mapper;
@@ -21,7 +22,7 @@ import java.util.List;
  * Date: 25.08.14
  */
 @Service
-public class RequiredSkillServiceImpl extends BaseServiceImpl<RequiredSkillDto> implements RequiredSkillService {
+public class RequiredSkillServiceImpl extends BaseVoteServiceImlp<RequiredSkillDto> implements RequiredSkillService {
   @Autowired
   private RequiredSkillRepository repository;
   @Autowired
@@ -35,17 +36,5 @@ public class RequiredSkillServiceImpl extends BaseServiceImpl<RequiredSkillDto> 
       result.add(mapper.map(skill, RequiredSkillDto.class));
     }
     return result;
-  }
-
-  @Transactional
-  @Override
-  public void vote(SysUserDto user, Long entityId, VoteState state) {
-    RequiredSkillDto dto = load(entityId);
-    VoteDto vote = new VoteDto();
-    vote.setVoteDate(new Date());
-    vote.setState(state);
-    vote.setUser(user);
-    dto.getVotes().add(vote);
-    update(dto);
   }
 }

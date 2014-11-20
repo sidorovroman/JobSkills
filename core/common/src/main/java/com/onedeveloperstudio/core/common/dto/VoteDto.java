@@ -1,8 +1,6 @@
-package com.onedeveloperstudio.jobskills.common.dto;
+package com.onedeveloperstudio.core.common.dto;
 
-import com.onedeveloperstudio.core.common.dto.BaseDto;
-import com.onedeveloperstudio.core.common.dto.SysUserDto;
-import com.onedeveloperstudio.jobskills.common.VoteState;
+import com.onedeveloperstudio.core.common.VoteState;
 
 import java.util.Date;
 
