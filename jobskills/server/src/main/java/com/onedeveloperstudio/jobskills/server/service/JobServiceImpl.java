@@ -31,13 +31,6 @@ public class JobServiceImpl extends BaseServiceImpl<JobDto> implements JobServic
     setAppObj(appobj);
   }
 
-  @Transactional(readOnly = true)
-  @Override
-  public List<JobDto> loadAll() {
-    List<JobDto> list = super.loadAll();
-    return list;
-  }
-
   @Override
   @Transactional(readOnly = true)
   public List<JobDto> getAllParents() {

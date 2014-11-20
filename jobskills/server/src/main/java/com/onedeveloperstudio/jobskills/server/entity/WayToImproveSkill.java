@@ -55,8 +55,8 @@ public class WayToImproveSkill extends BaseEntity {
 
   @ManyToMany
   @JoinTable(name = "requiredskill_waytoimproveskill", joinColumns = {
-      @JoinColumn(name = "skill_id", nullable = false, updatable = false)},
-      inverseJoinColumns = {@JoinColumn(name = "ways_id",
+      @JoinColumn(name = "ways_id", nullable = false, updatable = false)},
+      inverseJoinColumns = {@JoinColumn(name = "skill_id",
           nullable = false, updatable = false)})
   public List<RequiredSkill> getSkill() {
     return skill;
@@ -104,8 +104,8 @@ public class WayToImproveSkill extends BaseEntity {
 
   @ManyToMany
   @JoinTable(name = "waytoimproveskill_votes", joinColumns = {
-      @JoinColumn(name = "vote_id", nullable = false, updatable = false)},
-      inverseJoinColumns = {@JoinColumn(name = "waytoimproveskill_id",
+      @JoinColumn(name = "waytoimproveskill_id", nullable = false, updatable = false)},
+      inverseJoinColumns = {@JoinColumn(name = "vote_id",
           nullable = false, updatable = false)})
   public List<Vote> getVotes() {
     return votes;
@@ -117,8 +117,8 @@ public class WayToImproveSkill extends BaseEntity {
 
   @OneToMany
   @JoinTable(name = "waytoimproveskill_commentary", joinColumns = {
-      @JoinColumn(name = "commentary_id", nullable = false, updatable = false)},
-      inverseJoinColumns = {@JoinColumn(name = "waytoimproveskill_id",
+      @JoinColumn(name = "waytoimproveskill_id", nullable = false, updatable = false)},
+      inverseJoinColumns = {@JoinColumn(name = "commentary_id",
           nullable = false, updatable = false)})
   public List<Commentary> getCommentaries() {
     return commentaries;

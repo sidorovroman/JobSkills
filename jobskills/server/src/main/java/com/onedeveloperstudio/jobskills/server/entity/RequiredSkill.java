@@ -29,8 +29,8 @@ public class RequiredSkill extends BaseEntity {
 
   @ManyToMany
   @JoinTable(name = "requiredskill_waytoimproveskill", joinColumns = {
-      @JoinColumn(name = "ways_id", nullable = false, updatable = false)},
-      inverseJoinColumns = {@JoinColumn(name = "skill_id",
+      @JoinColumn(name = "skill_id", nullable = false, updatable = false)},
+      inverseJoinColumns = {@JoinColumn(name = "ways_id",
           nullable = false, updatable = false)})
   public List<WayToImproveSkill> getWays() {
     return ways;
@@ -78,8 +78,8 @@ public class RequiredSkill extends BaseEntity {
 
   @ManyToMany
   @JoinTable(name = "requiredskill_votes", joinColumns = {
-      @JoinColumn(name = "vote_id", nullable = false, updatable = false)},
-      inverseJoinColumns = {@JoinColumn(name = "skill_id",
+      @JoinColumn(name = "skill_id", nullable = false, updatable = false)},
+      inverseJoinColumns = {@JoinColumn(name = "vote_id",
           nullable = false, updatable = false)})
   public List<Vote> getVotes() {
     return votes;

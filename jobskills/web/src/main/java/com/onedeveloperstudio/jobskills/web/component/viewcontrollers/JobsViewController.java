@@ -39,7 +39,7 @@ public class JobsViewController {
   public void getList(HttpServletRequest request, HttpServletResponse response){
     response.setContentType("application/json");
     response.setCharacterEncoding("UTF8");
-    List<JobDto> jobs = service.getAllParents();
+    List<JobDto> jobs = service.loadAll();
     try{
       response.getOutputStream().write(serializer.deepSerialize(jobs).getBytes());
     } catch (Exception e){
@@ -62,6 +62,7 @@ public class JobsViewController {
 
   @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
   public String deleteJob(@PathVariable Long id, HttpServletRequest request){
+    //А стоит ли вот так давать возможность удалять?
     service.delete(id);
     return "{status : 1}";
   }
