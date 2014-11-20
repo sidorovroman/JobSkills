@@ -8,6 +8,15 @@ import java.util.List;
  */
 public abstract class RatedDto extends BaseDto {
   private List<VoteDto> votes;
+  private int rating;
+
+  public int getRating() {
+    return rating;
+  }
+
+  public void setRating(int rating) {
+    this.rating = rating;
+  }
 
   public List<VoteDto> getVotes() {
     return votes;

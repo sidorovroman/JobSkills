@@ -19,6 +19,7 @@ public class NewsDto extends RatedDto {
   private String link;
   private String tags;
   private List<CommentaryDto> commentaries;
+  private int rating;
 
   public String getCaption() {
     return caption;
@@ -74,5 +75,13 @@ public class NewsDto extends RatedDto {
 
   public void setCommentaries(List<CommentaryDto> commentaries) {
     this.commentaries = commentaries;
+  }
+
+  public int getRating() {
+    return rating;
+  }
+
+  public void setRating(int rating) {
+    this.rating = rating;
   }
 }

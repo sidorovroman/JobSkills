@@ -113,13 +113,7 @@ public class NewsController {
     Authentication auth = SecurityContextHolder.getContext().getAuthentication();
     User regUser = (User) auth.getPrincipal();
     SysUserDto user = sysUserService.loadByEmail(regUser.getUsername());
-    NewsDto news = service.load(id);
-    VoteDto vote = new VoteDto();
-    vote.setVoteDate(new Date());
-    vote.setState(VoteState.UP);
-    vote.setUser(user);
-    news.getVotes().add(vote);
-    service.update(news);
+    service.vote(user, id, VoteState.UP);
     response.setContentType("application/json");
     response.setCharacterEncoding("UTF8");
   }

@@ -9,5 +9,4 @@ import com.onedeveloperstudio.core.common.dto.SysUserDto;
  */
 public interface VoteService {
   void vote(SysUserDto user, Long entityId, VoteState state);
-  int getVotesCount(Long id);
 }
