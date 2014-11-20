@@ -1,11 +1,11 @@
 package com.onedeveloperstudio.jobskills.web.component.viewcontrollers;
 
+import com.onedeveloperstudio.core.common.VoteState;
 import com.onedeveloperstudio.core.common.appobj.AppObjDict;
 import com.onedeveloperstudio.core.common.dto.SysUserDto;
 import com.onedeveloperstudio.core.common.dto.User;
 import com.onedeveloperstudio.core.common.dto.VoteDto;
 import com.onedeveloperstudio.core.server.service.SysUserService;
-import com.onedeveloperstudio.core.common.VoteState;
 import com.onedeveloperstudio.jobskills.common.dto.NewsDto;
 import com.onedeveloperstudio.jobskills.server.service.NewsService;
 import flexjson.JSONSerializer;
