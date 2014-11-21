@@ -3,7 +3,11 @@ package com.onedeveloperstudio.core.server.service;
 import com.onedeveloperstudio.core.common.VoteState;
 import com.onedeveloperstudio.core.common.dto.RatedDto;
 import com.onedeveloperstudio.core.common.dto.SysUserDto;
+import com.onedeveloperstudio.core.common.dto.User;
 import com.onedeveloperstudio.core.common.dto.VoteDto;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
@@ -14,6 +18,9 @@ import java.util.List;
  * Date: 18.11.14
  */
 public class BaseVoteServiceImlp<D extends RatedDto> extends BaseServiceImpl<D> implements VoteService {
+
+  @Autowired
+  private SysUserService sysUserService;
 
   @Override
   public D load(Long id) {
@@ -34,11 +41,14 @@ public class BaseVoteServiceImlp<D extends RatedDto> extends BaseServiceImpl<D> 
 
   @Override
   @Transactional
-  public void vote(SysUserDto user, Long id, VoteState state) {
+  public void vote(Long id, VoteState state) {
     D ratedObject = this.load(id);
     VoteDto vote = new VoteDto();
     vote.setVoteDate(new Date());
     vote.setState(VoteState.UP);
+    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+    User regUser = (User) auth.getPrincipal();
+    SysUserDto user = sysUserService.loadByEmail(regUser.getUsername());
     vote.setUser(user);
     ratedObject.getVotes().add(vote);
     this.update(ratedObject);

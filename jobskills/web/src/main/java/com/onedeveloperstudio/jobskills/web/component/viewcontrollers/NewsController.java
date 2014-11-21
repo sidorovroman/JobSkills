@@ -34,9 +34,6 @@ public class NewsController {
   @Autowired
   private NewsService service;
 
-  @Autowired
-  private SysUserService sysUserService;
-
   private JSONSerializer serializer = new JSONSerializer();
 
   @PostConstruct
@@ -110,20 +107,16 @@ public class NewsController {
 
   @RequestMapping(value = "up/{id}")
   public void up(@PathVariable Long id, HttpServletRequest request, HttpServletResponse response) {
-    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-    User regUser = (User) auth.getPrincipal();
-    SysUserDto user = sysUserService.loadByEmail(regUser.getUsername());
-    service.vote(user, id, VoteState.UP);
+    service.vote(id, VoteState.UP);
     response.setContentType("application/json");
     response.setCharacterEncoding("UTF8");
   }
 
 
   @RequestMapping(value = "down/{id}")
-  public void down(@PathVariable Long id, HttpServletRequest request, HttpServletResponse response) {
-    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-    User regUser = (User) auth.getPrincipal();
-    SysUserDto user = sysUserService.loadByEmail(regUser.getUsername());
-    service.vote(user, id, VoteState.DOWN);
+  public String down(@PathVariable Long id, HttpServletRequest request, HttpServletResponse response) {
+    service.vote(id, VoteState.DOWN);
+    response.setContentType("application/json");
+    return "{status : 1}";
   }
 }
