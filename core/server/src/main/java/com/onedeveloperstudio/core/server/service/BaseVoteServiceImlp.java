@@ -43,13 +43,17 @@ public class BaseVoteServiceImlp<D extends RatedDto> extends BaseServiceImpl<D> 
   @Transactional
   public void vote(Long id, VoteState state) {
     D ratedObject = this.load(id);
-    VoteDto vote = new VoteDto();
-    vote.setVoteDate(new Date());
-    vote.setState(VoteState.UP);
     Authentication auth = SecurityContextHolder.getContext().getAuthentication();
     User regUser = (User) auth.getPrincipal();
     SysUserDto user = sysUserService.loadByEmail(regUser.getUsername());
-    vote.setUser(user);
+    for(VoteDto vote : ratedObject.getVotes()){
+      if(vote.getUser().equals(regUser)){
+        return;
+      }
+    }
+    VoteDto vote = new VoteDto();
+    vote.setVoteDate(new Date());
+    vote.setState(VoteState.UP);    vote.setUser(user);
     ratedObject.getVotes().add(vote);
     this.update(ratedObject);
   }
