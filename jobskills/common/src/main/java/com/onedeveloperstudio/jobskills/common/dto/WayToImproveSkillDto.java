@@ -1,5 +1,6 @@
 package com.onedeveloperstudio.jobskills.common.dto;
 
+import com.onedeveloperstudio.core.common.dto.CommentaryDto;
 import com.onedeveloperstudio.core.common.dto.RatedDto;
 import com.onedeveloperstudio.core.common.dto.VoteDto;
 import com.onedeveloperstudio.jobskills.common.GRADE;
@@ -21,6 +22,7 @@ public class WayToImproveSkillDto extends RatedDto {
   private ResourceType resourceType;
   private Date addDate;
   private List<VoteDto> votes;
+  private List<CommentaryDto> commentaries;
 
   public GRADE getGrade() {
     return grade;
@@ -84,5 +86,13 @@ public class WayToImproveSkillDto extends RatedDto {
 
   public void setVotes(List<VoteDto> votes) {
     this.votes = votes;
+  }
+
+  public List<CommentaryDto> getCommentaries() {
+    return commentaries;
+  }
+
+  public void setCommentaries(List<CommentaryDto> commentaries) {
+    this.commentaries = commentaries;
   }
 }

@@ -2,12 +2,14 @@ package com.onedeveloperstudio.jobskills.web.component.viewcontrollers;
 
 import com.onedeveloperstudio.core.common.VoteState;
 import com.onedeveloperstudio.core.common.appobj.AppObjDict;
+import com.onedeveloperstudio.core.common.dto.CommentaryDto;
 import com.onedeveloperstudio.core.common.dto.SysUserDto;
 import com.onedeveloperstudio.core.common.dto.User;
 import com.onedeveloperstudio.core.common.dto.VoteDto;
 import com.onedeveloperstudio.core.server.service.SysUserService;
 import com.onedeveloperstudio.jobskills.common.dto.NewsDto;
 import com.onedeveloperstudio.jobskills.server.service.NewsService;
+import flexjson.JSONDeserializer;
 import flexjson.JSONSerializer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -21,6 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
@@ -35,7 +38,8 @@ public class NewsController {
   private NewsService service;
 
   private JSONSerializer serializer = new JSONSerializer();
-
+  private JSONDeserializer<NewsDto> deserializer = new JSONDeserializer<>();
+  private JSONDeserializer<CommentaryDto> commentDeserializer = new JSONDeserializer<>();
   @PostConstruct
   private void init() {
     AppObjDict dict = AppObjDict.getInstance();
@@ -80,10 +84,10 @@ public class NewsController {
   public void addNews(HttpServletRequest request, HttpServletResponse response) {
     response.setContentType("application/json");
     response.setCharacterEncoding("UTF8");
-    //todo
-    NewsDto news = new NewsDto();
-    news = service.insert(news);
     try {
+      NewsDto news = deserializer.deserialize(request.getReader(), NewsDto.class);
+      //TODO проверить после появления формы
+      news = service.insert(news);
       response.getOutputStream().write(serializer.deepSerialize(news).getBytes());
     } catch (Exception e) {
       System.out.println("ERROR EBAT'");
@@ -118,5 +122,15 @@ public class NewsController {
     service.vote(id, VoteState.DOWN);
     response.setContentType("application/json");
     return "{status : 1}";
+  }
+
+  @RequestMapping(value = "/comment/{id}", method = RequestMethod.POST)
+  public void comment(@PathVariable Long id, HttpServletRequest request, HttpServletResponse response){
+    try {
+      CommentaryDto comment = commentDeserializer.deserialize(request.getReader());
+      service.comment(id, comment);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 }

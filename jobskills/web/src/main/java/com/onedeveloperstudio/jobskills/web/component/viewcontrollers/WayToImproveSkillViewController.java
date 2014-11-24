@@ -1,8 +1,10 @@
 package com.onedeveloperstudio.jobskills.web.component.viewcontrollers;
 
 import com.onedeveloperstudio.core.common.appobj.AppObjDict;
+import com.onedeveloperstudio.core.common.dto.CommentaryDto;
 import com.onedeveloperstudio.jobskills.common.dto.WayToImproveSkillDto;
 import com.onedeveloperstudio.jobskills.server.service.WayToImproveSkillService;
+import flexjson.JSONDeserializer;
 import flexjson.JSONSerializer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -27,6 +30,7 @@ public class WayToImproveSkillViewController {
   private WayToImproveSkillService service;
 
   private JSONSerializer serializer = new JSONSerializer();
+  private JSONDeserializer<CommentaryDto> commentDeserializer = new JSONDeserializer<>();
 
   @PostConstruct
   private void init() {
@@ -94,6 +98,16 @@ public class WayToImproveSkillViewController {
       response.getOutputStream().write(serializer.deepSerialize(wayToImproveSkill).getBytes());
     } catch (Exception e) {
       System.out.println("ERROR EBAT'");
+    }
+  }
+
+  @RequestMapping(value = "/comment/{id}", method = RequestMethod.POST)
+  public void comment(@PathVariable Long id, HttpServletRequest request, HttpServletResponse response){
+    try {
+      CommentaryDto comment = commentDeserializer.deserialize(request.getReader());
+      service.comment(id, comment);
+    } catch (IOException e) {
+      e.printStackTrace();
     }
   }
 }

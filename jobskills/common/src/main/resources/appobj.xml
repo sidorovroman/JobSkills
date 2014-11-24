@@ -35,13 +35,13 @@
   </dict>
 
   <dict name="comment" caption="Комментарии">
-    <entity class="com.onedeveloperstudio.jobskills.server.entity.Commentary"/>
-    <editDto class="com.onedeveloperstudio.jobskills.common.dto.CommentaryDto"/>
+    <entity class="com.onedeveloperstudio.core.server.entity.Commentary"/>
+    <editDto class="com.onedeveloperstudio.core.common.dto.CommentaryDto"/>
     <repository class="com.onedeveloperstudio.jobskills.server.dao.repositories.CommentaryRepository"/>
   </dict>
 
   <dict name="vote" caption="Голоса">
-    <entity class="com.onedeveloperstudio.jobskills.server.entity.Vote"/>
+    <entity class="com.onedeveloperstudio.core.server.entity.Vote"/>
     <editDto class="com.onedeveloperstudio.core.common.dto.VoteDto"/>
     <repository class="com.onedeveloperstudio.jobskills.server.dao.repositories.VoteRepository"/>
   </dict>

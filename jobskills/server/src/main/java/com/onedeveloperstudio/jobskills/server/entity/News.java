@@ -2,6 +2,8 @@ package com.onedeveloperstudio.jobskills.server.entity;
 
 import com.onedeveloperstudio.core.common.util.FieldSize;
 import com.onedeveloperstudio.core.server.entity.BaseEntity;
+import com.onedeveloperstudio.core.server.entity.Commentary;
+import com.onedeveloperstudio.core.server.entity.Vote;
 import com.onedeveloperstudio.core.server.entity.user.SysUserEntity;
 
 import javax.persistence.CascadeType;
@@ -10,10 +12,8 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.swing.*;
 import java.util.Date;
 import java.util.List;
 

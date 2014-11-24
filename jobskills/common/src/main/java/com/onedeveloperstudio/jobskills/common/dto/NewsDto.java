@@ -1,8 +1,8 @@
 package com.onedeveloperstudio.jobskills.common.dto;
 
+import com.onedeveloperstudio.core.common.dto.CommentaryDto;
 import com.onedeveloperstudio.core.common.dto.RatedDto;
 import com.onedeveloperstudio.core.common.dto.SysUserDto;
-import com.onedeveloperstudio.core.common.dto.VoteDto;
 
 import java.util.Date;
 import java.util.List;

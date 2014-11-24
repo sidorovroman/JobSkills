@@ -1,7 +1,7 @@
 package com.onedeveloperstudio.jobskills.server.service;
 
 import com.onedeveloperstudio.core.server.service.BaseServiceImpl;
-import com.onedeveloperstudio.jobskills.common.dto.CommentaryDto;
+import com.onedeveloperstudio.core.common.dto.CommentaryDto;
 import org.springframework.stereotype.Service;
 
 /**

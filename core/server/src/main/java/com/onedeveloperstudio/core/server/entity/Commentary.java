@@ -1,7 +1,6 @@
-package com.onedeveloperstudio.jobskills.server.entity;
+package com.onedeveloperstudio.core.server.entity;
 
 import com.onedeveloperstudio.core.common.util.FieldSize;
-import com.onedeveloperstudio.core.server.entity.BaseEntity;
 import com.onedeveloperstudio.core.server.entity.user.SysUserEntity;
 
 import javax.persistence.Column;

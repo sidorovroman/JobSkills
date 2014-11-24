@@ -1,6 +1,6 @@
 package com.onedeveloperstudio.jobskills.server.dao.repositories;
 
-import com.onedeveloperstudio.jobskills.server.entity.Commentary;
+import com.onedeveloperstudio.core.server.entity.Commentary;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

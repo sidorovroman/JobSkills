@@ -13,8 +13,8 @@
     </properties>
     <class>com.onedeveloperstudio.core.server.entity.user.SysUserEntity</class>
     <class>com.onedeveloperstudio.jobskills.server.entity.JobEntity</class>
-    <class>com.onedeveloperstudio.jobskills.server.entity.Vote</class>
-    <class>com.onedeveloperstudio.jobskills.server.entity.Commentary</class>
+    <class>com.onedeveloperstudio.core.server.entity.Vote</class>
+    <class>com.onedeveloperstudio.core.server.entity.Commentary</class>
     <class>com.onedeveloperstudio.jobskills.server.entity.DashBoard</class>
     <class>com.onedeveloperstudio.jobskills.server.entity.WayToImproveSkill</class>
     <class>com.onedeveloperstudio.jobskills.server.entity.RequiredSkill</class>

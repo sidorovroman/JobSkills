@@ -1,6 +1,6 @@
 package com.onedeveloperstudio.jobskills.server.dao.repositories;
 
-import com.onedeveloperstudio.jobskills.server.entity.Vote;
+import com.onedeveloperstudio.core.server.entity.Vote;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
