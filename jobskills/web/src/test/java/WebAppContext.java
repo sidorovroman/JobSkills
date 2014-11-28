@@ -20,8 +20,7 @@ import java.util.Properties;
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = {
-    "net.petrikainulainen.spring.testmvc.common.controller",
-    "net.petrikainulainen.spring.testmvc.todo.controller"
+    "com.onedeveloperstudio.jobskills.web.component.viewcontrollers",
 })
 public class WebAppContext extends WebMvcConfigurerAdapter {
 

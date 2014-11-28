@@ -1,0 +1,4 @@
+<dataset>
+  <news id="1" body="Lorem ipsum" caption="Foo" addDate="25.11.2014" link="asdasd"/>
+  <news id="2" body="Lorem ipsum" caption="Bar" addDate="25.11.2014" link="asdasd"/>
+</dataset>

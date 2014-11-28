@@ -8,6 +8,5 @@
 
   <bean class="org.dozer.spring.DozerBeanMapperFactoryBean"/>
 
-<!--  <bean id="org.dozer.Mapper" class="org.dozer.DozerBeanMapper"/>-->
 
 </beans>

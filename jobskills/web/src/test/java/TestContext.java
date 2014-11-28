@@ -1,5 +1,10 @@
+import com.onedeveloperstudio.jobskills.server.service.JobService;
+import com.onedeveloperstudio.jobskills.server.service.JobServiceImpl;
 import com.onedeveloperstudio.jobskills.server.service.NewsService;
 import com.onedeveloperstudio.jobskills.server.service.NewsServiceImpl;
+import com.onedeveloperstudio.jobskills.web.component.viewcontrollers.JobsViewController;
+import org.dozer.DozerBeanMapper;
+import org.dozer.Mapper;
 import org.mockito.Mockito;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
@@ -24,7 +29,22 @@ public class TestContext {
   }
 
   @Bean
-  public NewsService todoService() {
+  public NewsService newsService() {
     return Mockito.mock(NewsServiceImpl.class);
+  }
+
+  @Bean
+  public JobsViewController getJobsViewController() {
+    return Mockito.mock(JobsViewController.class);
+  }
+
+  @Bean
+  public JobService jobsService() {
+    return Mockito.mock(JobServiceImpl.class);
+  }
+
+  @Bean
+  public Mapper getMapper(){
+    return Mockito.mock(DozerBeanMapper.class);
   }
 }
