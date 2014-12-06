@@ -12,4 +12,3 @@ include 'jobskills:server'
 include 'jobskills:common'
 include 'jobskills:web'
 include 'jobskills:db'
-

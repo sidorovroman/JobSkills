@@ -1,4 +1,5 @@
 apply plugin: 'war'
+apply plugin: 'jetty'
 
 war {
   archiveName="jobSkills.war"
@@ -31,4 +32,17 @@ dependencies {
 
   // включаем все файлы настроек в classpath
   runtime files(rootProject.getProjectDir().getPath() + '/conf/')
+}
+
+jettyRun {
+  httpPort = 8080
+  stopPort = 8086
+  stopKey = "stopKey"
+  webAppSourceDirectory = new File("serverApp/src/main/webapp/")
+  contextPath = "/"
+}
+
+jettyStop {
+  stopPort = 8086
+  stopKey = "stopKey"
 }

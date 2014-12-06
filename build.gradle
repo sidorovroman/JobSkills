@@ -1,21 +1,17 @@
-apply from: 'liquibase.gradle'
 apply from: 'project.gradle'
+apply plugin: 'java'
+
+repositories {
+  mavenCentral()
+}
 
 allprojects {
-  apply plugin: 'java'
   apply plugin: 'idea'
-  apply plugin: 'jetty'
-  apply plugin: 'war'
-
-
-  sourceCompatibility = 1.7
+  apply plugin: 'java'
+  version = '1.0'
 
   repositories {
     mavenCentral()
-  }
-
-  tasks.withType(Compile) {
-    options.encoding = 'utf-8'
   }
 
   sourceSets {
@@ -23,40 +19,4 @@ allprojects {
       resources.srcDirs = ['src/main/java', 'src/main/resources']
     }
   }
-
-  def uniqProjectName = project.path.substring(1).replace(':', '-');
-  uniqProjectName = uniqProjectName ? uniqProjectName : "main"
-
-  jar {
-    baseName = uniqProjectName
-  }
-}
-
-buildscript {
-  repositories {
-    mavenCentral()
-  }
-
-  dependencies {
-    classpath 'com.augusttechgroup:gradle-liquibase-plugin:0.7'
-    classpath 'postgresql:postgresql:9.+'
-    classpath files('jobskills/db/src/main/resources/') // нужно для поиска liquibase-скриптов (changelogs)
-  }
-}
-
-dependencies {
-  compile project(':serverApp');
-}
-
-jettyRun {
-  httpPort = 8080
-  stopPort = 8086
-  stopKey = "stopKey"
-  webAppSourceDirectory = new File("serverApp/src/main/webapp/")
-  contextPath = "/"
-}
-
-jettyStop {
-  stopPort = 8086
-  stopKey = "stopKey"
 }
