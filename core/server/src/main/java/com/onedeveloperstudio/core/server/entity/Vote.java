@@ -1,10 +1,8 @@
 package com.onedeveloperstudio.core.server.entity;
 
-import com.onedeveloperstudio.core.server.entity.BaseEntity;
-import com.onedeveloperstudio.core.server.entity.user.SysUserEntity;
 import com.onedeveloperstudio.core.common.VoteState;
+import com.onedeveloperstudio.core.server.entity.user.SysUserEntity;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;

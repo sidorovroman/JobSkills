@@ -9,7 +9,7 @@ Script Parameters = jettyRun
 
 
 Для БД:
-1)Установить  Postgres
+1)Установить  Postgres, создать бд job_skills
 2)создать бд job_skills с владельцем postgres
 3)зайти в ./conf/project.properties b прописать настройки к бд
 3)выполнить в командной строке gradle update

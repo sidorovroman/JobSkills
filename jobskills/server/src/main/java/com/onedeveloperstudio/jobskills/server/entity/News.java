@@ -3,8 +3,8 @@ package com.onedeveloperstudio.jobskills.server.entity;
 import com.onedeveloperstudio.core.common.util.FieldSize;
 import com.onedeveloperstudio.core.server.entity.BaseEntity;
 import com.onedeveloperstudio.core.server.entity.Commentary;
-import com.onedeveloperstudio.core.server.entity.Vote;
 import com.onedeveloperstudio.core.server.entity.user.SysUserEntity;
+import com.onedeveloperstudio.core.server.entity.Vote;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;

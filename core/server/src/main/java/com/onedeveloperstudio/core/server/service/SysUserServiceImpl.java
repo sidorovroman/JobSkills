@@ -7,7 +7,6 @@ import com.onedeveloperstudio.core.server.entity.user.SysUserEntity;
 import com.onedeveloperstudio.core.server.repository.UserRepository;
 import com.onedeveloperstudio.core.server.utils.MappingUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;

@@ -1,4 +1,6 @@
-package com.onedeveloperstudio.core.server.entity;
+package com.onedeveloperstudio.core.server.entity.user;
+
+import com.onedeveloperstudio.core.server.entity.BaseEntity;
 
 public class AuthorityEntity extends BaseEntity {
 
