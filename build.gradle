@@ -1,8 +1,21 @@
+apply from: 'liquibase.gradle'
 apply from: 'project.gradle'
 apply plugin: 'java'
 
 repositories {
   mavenCentral()
+}
+
+buildscript {
+  repositories {
+    mavenLocal()
+    mavenCentral()
+  }
+  dependencies {
+    classpath 'net.saliman:gradle-liquibase-plugin:1.0.0'
+    classpath 'postgresql:postgresql:9.+'
+    classpath files('jobskills/db/src/main/resources/')
+  }
 }
 
 allprojects {

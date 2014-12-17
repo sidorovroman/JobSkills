@@ -1,7 +1,23 @@
 apply plugin: 'liquibase'
 
 liquibase {
-  changelogs {
+  activities {
+    main {
+      Properties props = new Properties();
+      InputStream inputStream = new FileInputStream('conf/main.properties');
+      try {
+        props.load(inputStream);
+      } finally {
+        inputStream.close()
+      }
+      changeLogFile 'jobskills/db/src/main/resources/com/onedeveloperstudio/jobskills/db/main_changelog.xml'
+      url  props.get('db.url');
+      username  props.get('db.username');
+      password  props.get('db.password');
+    }
+  }
+  runList = 'main'
+ /* changelogs {
     main {
       file = file('jobskills/db/src/main/resources/com/onedeveloperstudio/jobskills/db/main_changelog.xml')
     }
@@ -23,5 +39,5 @@ liquibase {
     }
 
     defaultDatabase = databases.mainDB
-  }
+  }*/
 }
