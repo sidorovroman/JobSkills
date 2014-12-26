@@ -138,7 +138,7 @@ body{
     .border-radius(3px,3px,3px,3px);
     th{
       text-align: left;
-      padding: 5px 10px;
+      padding: 5px 40px 5px 10px;
     }
     tr{
       td{
@@ -148,6 +148,27 @@ body{
           background:#d9edf7;
         }
       }
+    }
+    .btn-add,.btn-edit,.btn-remove{
+      text-align: center;
+      height: 20px;
+      width: 20px;
+      border-radius: 10px;
+      background: #07c507;
+      float: right;
+      text-decoration: none;
+      color: #FFF;
+
+      &:hover{
+        cursor: pointer;
+        opacity: 0.6;
+      }
+    }
+    .btn-edit{
+      background: #0d00fa;
+    }
+    .btn-remove{
+      background: #da000b;
     }
   }
 }

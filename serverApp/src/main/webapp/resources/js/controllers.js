@@ -12,7 +12,7 @@ angular.module('App.controllers', [])
             };
         }
     )
-    .controller("NewJobCtrl",function ($scope, $location, $http) {
+    .controller("AddJobCtrl",function ($scope, $location, $http) {
             $scope.JobsForm = {};
             $scope.JobsForm.add = function() {
                 var dataObject = {
@@ -32,15 +32,53 @@ angular.module('App.controllers', [])
                 });
             }
         })
-    .controller("JobsListCtrl",function ($scope, $http) {
-            $http.get('/jobs/list').
+    .controller("EditJobCtrl",function ($scope, $location, $http) {
+        $scope.JobsForm = {};
+        $scope.JobsForm.add = function() {
+            var dataObject = {
+                caption : this.caption,
+                description  : this.description,
+                parent : {
+                    id:(this.parentId == "" ? null : this.parentId)
+                }
+            };
+
+            var responsePromise = $http.post("/jobs/update", dataObject,{});
+            responsePromise.success(function(dataFromServer, status, headers, config) {
+                $location.path('/jobs');
+            });
+            responsePromise.error(function(data, status, headers, config) {
+                alert("Submitting form failed!");
+            });
+        }
+    })
+    .controller("JobsListCtrl",function ($scope, $http, $routeParams) {
+        $http.get('/jobs/list').
+            success(function(data) {
+                $scope.jobs = data;
+            }).
+            error(function(){
+                alert("Fail");
+            });
+
+        $scope.remove = function(job){
+
+            console.log("id: "+job.id);
+            console.log("scope: "+$scope);
+            console.log("$routeParams:"+$routeParams);
+            $http.delete('/jobs/'+job.id).
                 success(function(data) {
-                    $scope.jobs = data;
+                    alert("Success remove");
                 }).
                 error(function(){
-                        alert("Fail");
-                    });
+                    alert("Fail");
+                });
+
+
+        }
+
     })
+
     .controller("DashboardListCtrl",function ($scope, $http) {
         $http.get('/dashboard/list').
             success(function(data) {

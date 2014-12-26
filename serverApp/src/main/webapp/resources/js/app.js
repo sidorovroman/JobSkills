@@ -28,9 +28,13 @@ angular.module('App', [
                 controller: "WaysToImproveSkillsListCtrl",
                 templateUrl:"/resources/partials/waysToImproveSkills.html"
             }).
-            when("/newJob", {
-                controller: "NewJobCtrl",
+            when("/addJob", {
+                controller: "AddJobCtrl",
                 templateUrl:"/resources/partials/addJob.html"
+            }).
+            when('/editJob/:jobId', {
+                controller:"EditJobCtrl",
+                templateUrl:'detail.html'
             }).
 
             otherwise({redirectTo: '/'});
