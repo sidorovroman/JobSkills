@@ -1,8 +1,6 @@
 angular.module('App.controllers', [])
 
-    .controller(
-        'UserInfo',
-        function UserInfo($scope) {
+    .controller('UserInfo',function UserInfo($scope) {
             $scope.save = function (info, userInfoForm) {
                 if(info.pass.equals(info.pass2)){
                     alert("пароли не совпадают");
@@ -14,9 +12,7 @@ angular.module('App.controllers', [])
             };
         }
     )
-    .controller(
-        "NewJobCtrl",
-        function ($scope, $location, $http) {
+    .controller("NewJobCtrl",function ($scope, $location, $http) {
             $scope.JobsForm = {};
             $scope.JobsForm.add = function() {
                 var dataObject = {
@@ -36,9 +32,7 @@ angular.module('App.controllers', [])
                 });
             }
         })
-    .controller(
-        "JobsListCtrl",
-        function ($scope, $http) {
+    .controller("JobsListCtrl",function ($scope, $http) {
             $http.get('/jobs/list').
                 success(function(data) {
                     $scope.jobs = data;
@@ -46,5 +40,40 @@ angular.module('App.controllers', [])
                 error(function(){
                         alert("Fail");
                     });
-
+    })
+    .controller("DashboardListCtrl",function ($scope, $http) {
+        $http.get('/dashboard/list').
+            success(function(data) {
+                $scope.dashboard = data;
+            }).
+            error(function(){
+                alert("Fail");
+            });
+    })
+    .controller("NewsListCtrl",function ($scope, $http) {
+        $http.get('/news/list').
+            success(function(data) {
+                $scope.news = data;
+            }).
+            error(function(){
+                alert("Fail");
+            });
+    })
+    .controller("SkillsListCtrl",function ($scope, $http) {
+        $http.get('/skills/list').
+            success(function(data) {
+                $scope.skills = data;
+            }).
+            error(function(){
+                alert("Fail");
+            });
+    })
+    .controller("WaysToImproveSkillsListCtrl",function ($scope, $http) {
+        $http.get('/waysToImproveSkills/list').
+            success(function(data) {
+                $scope.ways = data;
+            }).
+            error(function(){
+                alert("Fail");
+            });
     })
