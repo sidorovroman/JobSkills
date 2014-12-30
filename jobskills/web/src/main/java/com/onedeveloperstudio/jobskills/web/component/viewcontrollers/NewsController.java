@@ -67,6 +67,7 @@ public class NewsController {
   }
 
   @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+  @ResponseBody
   public String deleteNews(@PathVariable Long id, HttpServletRequest request) {
     service.delete(id);
     return "{status : 1}";

@@ -61,6 +61,7 @@ public class JobsViewController {
   }
 
   @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+  @ResponseBody
   public String deleteJob(@PathVariable Long id, HttpServletRequest request){
     //А стоит ли вот так давать возможность удалять?
     service.delete(id);

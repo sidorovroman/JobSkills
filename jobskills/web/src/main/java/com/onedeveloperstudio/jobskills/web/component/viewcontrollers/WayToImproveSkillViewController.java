@@ -66,6 +66,7 @@ public class WayToImproveSkillViewController {
   }
 
   @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+  @ResponseBody
   public String deleteWayToImproveSkill(@PathVariable Long id, HttpServletRequest request) {
     service.delete(id);
     return "{status : 1}";
