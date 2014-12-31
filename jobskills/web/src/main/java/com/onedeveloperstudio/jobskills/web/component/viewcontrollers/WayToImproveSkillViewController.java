@@ -2,6 +2,7 @@ package com.onedeveloperstudio.jobskills.web.component.viewcontrollers;
 
 import com.onedeveloperstudio.core.common.appobj.AppObjDict;
 import com.onedeveloperstudio.core.common.dto.CommentaryDto;
+import com.onedeveloperstudio.jobskills.common.dto.RequiredSkillDto;
 import com.onedeveloperstudio.jobskills.common.dto.WayToImproveSkillDto;
 import com.onedeveloperstudio.jobskills.server.service.WayToImproveSkillService;
 import flexjson.JSONDeserializer;
@@ -47,6 +48,19 @@ public class WayToImproveSkillViewController {
     List<WayToImproveSkillDto> wayToImproveSkills = service.loadAll();
     try {
       response.getOutputStream().write(serializer.deepSerialize(wayToImproveSkills).getBytes());
+    } catch (Exception e) {
+      System.out.println("ERROR EBAT'");
+    }
+  }
+
+  @RequestMapping("/{skillId}/list")
+  @ResponseBody
+  public void getListBySkill(@PathVariable Long skillId, HttpServletRequest request, HttpServletResponse response) {
+    response.setContentType("application/json");
+    response.setCharacterEncoding("UTF8");
+    List<WayToImproveSkillDto> ways = service.loadAllbySkill(skillId);
+    try {
+      response.getOutputStream().write(serializer.deepSerialize(ways).getBytes());
     } catch (Exception e) {
       System.out.println("ERROR EBAT'");
     }

@@ -3,7 +3,10 @@ package com.onedeveloperstudio.jobskills.server.service;
 import com.onedeveloperstudio.core.server.service.BaseCommentaryService;
 import com.onedeveloperstudio.core.server.service.BaseService;
 import com.onedeveloperstudio.core.server.service.VoteService;
+import com.onedeveloperstudio.jobskills.common.dto.RequiredSkillDto;
 import com.onedeveloperstudio.jobskills.common.dto.WayToImproveSkillDto;
+
+import java.util.List;
 
 /**
  * User: User
@@ -12,4 +15,5 @@ import com.onedeveloperstudio.jobskills.common.dto.WayToImproveSkillDto;
 public interface WayToImproveSkillService extends BaseService<WayToImproveSkillDto>,
                                                   VoteService,
                                                   BaseCommentaryService {
+  public List<WayToImproveSkillDto> loadAllbySkill(Long jobId);
 }
