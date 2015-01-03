@@ -7,6 +7,7 @@ angular.module('App', [
         $routeProvider.
             when("/", {templateUrl: "/resources/partials/main.html"}).
             when("/login", {templateUrl: "/resources/partials/login.html"}).
+            when("/aboutUs", {templateUrl: "/resources/partials/aboutUs.html"}).
             when("/userInfo", {templateUrl:"/resources/partials/userInfo.html"}).
             when("/jobs", {
                 controller: "JobsListCtrl",

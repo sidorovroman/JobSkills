@@ -57,57 +57,31 @@ body {
   height: 100%;
 }
 body {
-  background: #ECEEF1;
+  background: #edeef2;
 }
 #wrap {
   height: 100%;
+  width: 100%;
+}
+.container {
+  min-height: 100%;
   width: 1024px;
   margin: 0 auto;
 }
-#header {
-  display: inline-block;
-  width: 100%;
+/* ==========================================
+          @Override bootstrap & bootswatch
+   ========================================== */
+.navbar {
+  border-radius: 0;
 }
-#header ul {
-  height: 82px;
+/* ==========================================
+                    main
+   ========================================== */
+#main {
+  min-height: 100%;
 }
-#header ul li {
-  float: left;
-  width: 20%;
-  height: 100%;
-  padding: 0 0 0 4px;
-  box-sizing: border-box;
-}
-#header ul li a {
-  height: 100%;
-  box-sizing: border-box;
-  text-decoration: none;
-  padding: 0 0 3px;
-  color: #FFF;
-  font-family: Trebuchet MS;
-  font-weight: normal;
-  font-size: 24px;
-  display: inline-block;
-  text-align: center;
-  width: 100%;
-  padding-top: 40px;
-}
-#header ul li a.logo {
-  font-size: 36px;
-  color: #000;
-  padding-top: 32px;
-}
-#header ul li a.jobs {
-  background: #708B8F;
-}
-#header ul li a.dashboard {
-  background: #5c6982;
-}
-#header ul li a.news {
-  background: #61a8aa;
-}
-#header ul li a.info {
-  background: #487a8f;
+#main .container {
+  background: #FFF;
 }
 /* ==========================================
                  registration

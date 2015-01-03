@@ -13,6 +13,9 @@
 
     <%--<link rel="stylesheet" type="text/css" href="<c:url value="/js/resources/styles/bootstrap.css" />">--%>
     <link rel="stylesheet" type="text/css" href="<c:url value="/resources/styles/reset.css" />">
+    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/styles/bootstrap.min.css" />">
+    <link rel="stylesheet" type="text/less" href="<c:url value="/resources/styles/variables.less" />">
+    <link rel="stylesheet" type="text/less" href="<c:url value="/resources/styles/bootswatch.less" />">
     <link rel="stylesheet" type="text/css" href="<c:url value="/resources/styles/main.css" />">
 
 
@@ -23,16 +26,30 @@
 </sec:authorize>
     <div id="wrap"   ng-app="App">
         <div id="header">
-            <ul class="nav">
-                <li><a class="logo" href="#">Skill Youself</a></li>
-                <li><a class="jobs" href="#/jobs">Работы</a></li>
-                <li><a class="dashboard" href="#">Dashboard</a></li>
-                <li><a class="news" href="#">Новости</a></li>
-                <li><a class="info"  href="#/userInfo">Инфо</a></li>
-            </ul>
+            <div class="navbar navbar-default">
+                <div class="container">
+
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="#">Skill Youself</a>
+                    </div>
+                    <div class="navbar-collapse collapse navbar-responsive-collapse">
+                        <ul class="nav navbar-nav">
+                            <li><a href="#/jobs">Работы</a></li>
+                            <li><a href="#/news">Новости</a></li>
+                            <li><a href="#/aboutUs">О нас</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="#">Личный кабинет</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
         </div>
         <div id="main">
-            <div ng-view></div>
+            <div class="container">
+                <div ng-view></div>
+            </div>
         </div>
     </div>
 
