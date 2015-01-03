@@ -2,6 +2,7 @@ package com.onedeveloperstudio.jobskills.web.component.viewcontrollers;
 
 import com.onedeveloperstudio.core.common.appobj.AppObjDict;
 import com.onedeveloperstudio.core.common.dto.CommentaryDto;
+import com.onedeveloperstudio.jobskills.common.dto.RequiredSkillDto;
 import com.onedeveloperstudio.jobskills.common.dto.WayToImproveSkillDto;
 import com.onedeveloperstudio.jobskills.server.service.WayToImproveSkillService;
 import flexjson.JSONDeserializer;
@@ -52,6 +53,19 @@ public class WayToImproveSkillViewController {
     }
   }
 
+  @RequestMapping("/{skillId}/list")
+  @ResponseBody
+  public void getListBySkill(@PathVariable Long skillId, HttpServletRequest request, HttpServletResponse response) {
+    response.setContentType("application/json");
+    response.setCharacterEncoding("UTF8");
+    List<WayToImproveSkillDto> ways = service.loadAllbySkill(skillId);
+    try {
+      response.getOutputStream().write(serializer.deepSerialize(ways).getBytes());
+    } catch (Exception e) {
+      System.out.println("ERROR EBAT'");
+    }
+  }
+
   @RequestMapping(value = "/{id}", method = RequestMethod.GET)
   @ResponseBody
   public void getWayToImproveSkill(@PathVariable Long id, HttpServletRequest request, HttpServletResponse response) {
@@ -66,6 +80,7 @@ public class WayToImproveSkillViewController {
   }
 
   @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+  @ResponseBody
   public String deleteWayToImproveSkill(@PathVariable Long id, HttpServletRequest request) {
     service.delete(id);
     return "{status : 1}";

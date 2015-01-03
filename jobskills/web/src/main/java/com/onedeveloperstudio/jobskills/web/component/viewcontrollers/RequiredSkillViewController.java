@@ -70,6 +70,7 @@ public class RequiredSkillViewController {
   }
 
   @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+  @ResponseBody
   public String deleteRequiredSkill(@PathVariable Long id, HttpServletRequest request) {
     service.delete(id);
     return "{status : 1}";
