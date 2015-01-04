@@ -14,7 +14,8 @@ angular.module('App.controllers', [])
     )
     .controller("AddJobCtrl",function ($scope, $location, $http) {
             $scope.JobsForm = {};
-            $scope.JobsForm.add = function() {
+            $scope.save = function() {
+                console.log("try to save");
                 var dataObject = {
                     caption : this.caption,
                     description  : this.description,
@@ -25,6 +26,7 @@ angular.module('App.controllers', [])
 
                 var responsePromise = $http.post("/jobs/add", dataObject,{});
                 responsePromise.success(function(dataFromServer, status, headers, config) {
+                    alert("add job success");
                     $location.path('/jobs');
                 });
                 responsePromise.error(function(data, status, headers, config) {
@@ -32,23 +34,29 @@ angular.module('App.controllers', [])
                 });
             }
         })
-    .controller("EditJobCtrl",function ($scope, $location, $http) {
+    .controller("EditJobCtrl",function ($scope, $location, $http, $routeParams) {
         $scope.JobsForm = {};
-        $scope.JobsForm.add = function() {
-            var dataObject = {
-                caption : this.caption,
-                description  : this.description,
-                parent : {
-                    id:(this.parentId == "" ? null : this.parentId)
-                }
-            };
+        console.log("try to edit");
 
-            var responsePromise = $http.post("/jobs/update", dataObject,{});
+        $http.get('/jobs/'+$routeParams.id).
+            success(function(data) {
+                alert("success");
+                console.log("get job with id: "+$routeParams.id+" success");
+                $scope.JobsForm = data;
+            }).
+            error(function(){
+                console.log("get job with id: "+$routeParams.id+" failed");
+            });
+
+        $scope.save = function() {
+            console.log("try to save");
+            var responsePromise = $http.put("/jobs/update", $scope.JobsForm,{});
             responsePromise.success(function(dataFromServer, status, headers, config) {
+                alert("update success");
                 $location.path('/jobs');
             });
             responsePromise.error(function(data, status, headers, config) {
-                alert("Submitting form failed!");
+                alert("update error");
             });
         }
     })

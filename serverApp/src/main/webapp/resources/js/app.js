@@ -31,11 +31,11 @@ angular.module('App', [
             }).
             when("/addJob", {
                 controller: "AddJobCtrl",
-                templateUrl:"/resources/partials/addJob.html"
+                templateUrl:"/resources/partials/jobDetail.html"
             }).
-            when('/editJob/:jobId', {
+            when('/editJob/:id', {
                 controller:"EditJobCtrl",
-                templateUrl:'detail.html'
+                templateUrl:'/resources/partials/jobDetail.html'
             }).
 
             otherwise({redirectTo: '/'});
