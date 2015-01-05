@@ -23,6 +23,7 @@ public class BaseVoteServiceImlp<D extends RatedDto> extends BaseServiceImpl<D> 
   private SysUserService sysUserService;
 
   @Override
+  @Transactional(readOnly = true)
   public D load(Long id) {
     D obj = super.load(id);
     sumsRating(obj);
