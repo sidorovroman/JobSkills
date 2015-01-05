@@ -87,11 +87,13 @@ public class JobsViewController {
 
   @RequestMapping(value = "/update", method = RequestMethod.PUT)
   @ResponseBody
-  public void updateJob(HttpServletRequest request, HttpServletResponse response){
+  public void updateJob(HttpServletRequest request, HttpServletResponse response) throws IOException {
     response.setContentType("application/json");
     response.setCharacterEncoding("UTF8");
-    JobDto job = new JobDto();
-    //todo
+    JobDto job = deserializer.deserialize(request.getReader(), JobDto.class);
+    if(job.getParent()!=null && job.getParent().getId() == null){
+      job.setParent(null);
+    }
     job = service.update(job);
     try{
       response.getOutputStream().write(serializer.deepSerialize(job).getBytes());

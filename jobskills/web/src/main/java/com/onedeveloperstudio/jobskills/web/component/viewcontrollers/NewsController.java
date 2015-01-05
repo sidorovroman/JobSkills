@@ -90,13 +90,13 @@ public class NewsController {
 
   @RequestMapping(value = "/update", method = RequestMethod.PUT)
   @ResponseBody
-  public void updateNews(HttpServletRequest request, HttpServletResponse response) {
+  public void updateNews(HttpServletRequest request, HttpServletResponse response){
     response.setContentType("application/json");
     response.setCharacterEncoding("UTF8");
-    NewsDto news = new NewsDto();
-    //todo
-    news = service.update(news);
     try {
+    NewsDto news = deserializer.deserialize(request.getReader(), NewsDto.class);
+    //todo
+      news = service.update(news);
       response.getOutputStream().write(serializer.deepSerialize(news).getBytes());
     } catch (Exception e) {
       System.out.println("ERROR EBAT'");
