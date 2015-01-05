@@ -2,7 +2,7 @@
     <table>
         <thead>
         <tr>
-            <th>Наименование <a href="#/addJob" class="btn-add" >+</a></th>
+            <th>Наименование <a href="#/jobs/add" class="btn-add" >+</a></th>
         </tr>
         </thead>
         <tbody>
@@ -10,7 +10,7 @@
             <td>{{job.caption}}
 
                 <button ng-click="remove(job)" class="btn-remove"></button>
-                <a href="#/editJob/{{job.id}}">
+                <a href="#/jobs/edit/{{job.id}}">
                     <i class="btn-edit"></i>
                 </a>
             </td>

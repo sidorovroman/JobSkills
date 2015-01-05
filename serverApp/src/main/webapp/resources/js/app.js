@@ -7,8 +7,8 @@
         $routeProvider.
             when("/", {templateUrl: "/resources/partials/main.html"}).
             when("/login", {templateUrl: "/resources/partials/login.html"}).
-            when("/aboutUs", {templateUrl: "/resources/partials/aboutUs.html"}).
-            when("/userInfo", {templateUrl:"/resources/partials/userInfo.html"}).
+            when("/about", {templateUrl: "/resources/partials/about.html"}).
+            when("/user/info", {templateUrl:"/resources/partials/userInfo.html"}).
             when("/jobs", {
                 controller: "JobsListCtrl",
                 templateUrl:"/resources/partials/jobs.html"
@@ -29,13 +29,21 @@
                 controller: "WaysToImproveSkillsListCtrl",
                 templateUrl:"/resources/partials/waysToImproveSkills.html"
             }).
-            when("/addJob", {
+            when("/jobs/add", {
                 controller: "AddJobCtrl",
                 templateUrl:"/resources/partials/jobDetail.html"
             }).
-            when('/editJob/:id', {
+            when('/jobs/edit/:id', {
                 controller:"EditJobCtrl",
                 templateUrl:'/resources/partials/jobDetail.html'
+            }).
+            when('/news/add', {
+                controller:"AddNewsCtrl",
+                templateUrl:'/resources/partials/newsDetail.html'
+            }).
+            when('/news/edit/:id', {
+                controller:"EditNewsCtrl",
+                templateUrl:'/resources/partials/newsDetail.html'
             }).
 
             otherwise({redirectTo: '/'});

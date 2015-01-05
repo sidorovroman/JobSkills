@@ -1,13 +1,19 @@
-<div id="jobs-list">
+<div id="news-list" xmlns="http://www.w3.org/1999/html">
     <table>
         <thead>
         <tr>
-            <th>Наименование</th>
+            <th>Наименование <a href="#/news/add" class="btn-add" >+</a></th>
         </tr>
         </thead>
         <tbody>
         <tr ng-repeat="info in news">
-            <td>{{info}}</td>
+            <td>{{info.caption}}
+
+                <button ng-click="remove(info)" class="btn-remove"></button>
+                <a href="#/news/edit/{{info.id}}">
+                    <i class="btn-edit"></i>
+                </a>
+            </td>
         </tr>
         </tbody>
     </table>

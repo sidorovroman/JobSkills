@@ -36,7 +36,7 @@
                         <ul class="nav navbar-nav">
                             <li><a href="#/jobs">Работы</a></li>
                             <li><a href="#/news">Новости</a></li>
-                            <li><a href="#/aboutUs">О нас</a></li>
+                            <li><a href="#/about">О нас</a></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="#">Личный кабинет</a></li>
@@ -58,6 +58,7 @@
 <script src="<c:url value="/resources/libs/bower_components/angular/angular.js" />"></script>
 <script src="<c:url value="/resources/libs/bower_components/angular-route/angular-route.js" />"></script>
 <script src="<c:url value="/resources/js/controllers/jobs.js" />"></script>
+<script src="<c:url value="/resources/js/controllers/news.js" />"></script>
 <script src="<c:url value="/resources/js/controllers/controllers.js" />"></script>
 <script src="<c:url value="/resources/js/app.js" />"></script>
 </body>

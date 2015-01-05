@@ -10,3 +10,4 @@ out/
 .idea
 *.backup
 prepros.cfg
+*.hprof
