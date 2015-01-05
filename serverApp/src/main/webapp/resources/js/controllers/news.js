@@ -32,7 +32,6 @@
                 author: this.NewsForm.author,
                 link: this.NewsForm.link,
                 tags: this.NewsForm.tags,
-                commentaries: this.NewsForm.commentaries,
                 rating: this.NewsForm.rating
             };
 
@@ -71,7 +70,6 @@
                 author: this.NewsForm.author,
                 link: this.NewsForm.link,
                 tags: this.NewsForm.tags,
-                commentaries: this.NewsForm.commentaries,
                 rating: this.NewsForm.rating
             };
 
