@@ -1,5 +1,5 @@
-angular.module('App', [
-        'App.services',
+(function () {
+    angular.module('App', [
         'App.controllers',
         'ngRoute'
     ]).
@@ -40,3 +40,4 @@ angular.module('App', [
 
             otherwise({redirectTo: '/'});
     }]);
+})();

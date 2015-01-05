@@ -57,8 +57,8 @@
 <script src="//ulogin.ru/js/ulogin.js"></script>
 <script src="<c:url value="/resources/libs/bower_components/angular/angular.js" />"></script>
 <script src="<c:url value="/resources/libs/bower_components/angular-route/angular-route.js" />"></script>
+<script src="<c:url value="/resources/js/controllers/jobs.js" />"></script>
+<script src="<c:url value="/resources/js/controllers/controllers.js" />"></script>
 <script src="<c:url value="/resources/js/app.js" />"></script>
-<script src="<c:url value="/resources/js/services.js" />"></script>
-<script src="<c:url value="/resources/js/controllers.js" />"></script>
 </body>
 </html>
