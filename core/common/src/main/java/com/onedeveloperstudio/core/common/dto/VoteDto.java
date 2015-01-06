@@ -9,15 +9,15 @@ import java.util.Date;
  * Date: 01.08.14
  */
 public class VoteDto extends BaseDto {
-  private Date voteDate;
+  private Long voteDate;
   private SysUserDto user;
   private VoteState state;
 
-  public Date getVoteDate() {
+  public Long getVoteDate() {
     return voteDate;
   }
 
-  public void setVoteDate(Date voteDate) {
+  public void setVoteDate(Long voteDate) {
     this.voteDate = voteDate;
   }
 

@@ -20,7 +20,7 @@ public class WayToImproveSkillDto extends RatedDto {
   private List<RequiredSkillDto> skill;
   private String link;
   private ResourceType resourceType;
-  private Date addDate;
+  private Long addDate;
   private List<VoteDto> votes;
   private List<CommentaryDto> commentaries;
 
@@ -64,11 +64,11 @@ public class WayToImproveSkillDto extends RatedDto {
     this.resourceType = resourceType;
   }
 
-  public Date getAddDate() {
+  public Long getAddDate() {
     return addDate;
   }
 
-  public void setAddDate(Date addDate) {
+  public void setAddDate(Long addDate) {
     this.addDate = addDate;
   }
 

@@ -53,7 +53,7 @@ public class BaseVoteServiceImlp<D extends RatedDto> extends BaseServiceImpl<D> 
       }
     }
     VoteDto vote = new VoteDto();
-    vote.setVoteDate(new Date());
+    vote.setVoteDate(new Date().getTime());
     vote.setState(VoteState.UP);    vote.setUser(user);
     ratedObject.getVotes().add(vote);
     this.update(ratedObject);

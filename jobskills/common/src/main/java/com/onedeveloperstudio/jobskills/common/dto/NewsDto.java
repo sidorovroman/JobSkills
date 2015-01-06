@@ -14,7 +14,7 @@ import java.util.List;
 public class NewsDto extends RatedDto {
   private String caption;
   private String body;
-  private Date addDate;
+  private Long addDate;
   private SysUserDto author;
   private String link;
   private String tags;
@@ -37,11 +37,11 @@ public class NewsDto extends RatedDto {
     this.body = body;
   }
 
-  public Date getAddDate() {
+  public Long getAddDate() {
     return addDate;
   }
 
-  public void setAddDate(Date addDate) {
+  public void setAddDate(Long addDate) {
     this.addDate = addDate;
   }
 

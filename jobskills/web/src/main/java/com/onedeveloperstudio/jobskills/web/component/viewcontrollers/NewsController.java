@@ -3,11 +3,16 @@ package com.onedeveloperstudio.jobskills.web.component.viewcontrollers;
 import com.onedeveloperstudio.core.common.VoteState;
 import com.onedeveloperstudio.core.common.appobj.AppObjDict;
 import com.onedeveloperstudio.core.common.dto.CommentaryDto;
+import com.onedeveloperstudio.core.common.dto.SysUserDto;
+import com.onedeveloperstudio.core.common.dto.User;
+import com.onedeveloperstudio.core.server.service.SysUserService;
 import com.onedeveloperstudio.jobskills.common.dto.NewsDto;
 import com.onedeveloperstudio.jobskills.server.service.NewsService;
 import flexjson.JSONDeserializer;
 import flexjson.JSONSerializer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +23,7 @@ import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -29,6 +35,8 @@ import java.util.List;
 public class NewsController {
   @Autowired
   private NewsService service;
+  @Autowired
+  private SysUserService sysUserService;
 
   private JSONSerializer serializer = new JSONSerializer();
   private JSONDeserializer<NewsDto> deserializer = new JSONDeserializer<>();
@@ -79,8 +87,12 @@ public class NewsController {
     response.setContentType("application/json");
     response.setCharacterEncoding("UTF8");
     try {
+      Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+      User regUser = (User) auth.getPrincipal();
+      SysUserDto user = sysUserService.loadByEmail(regUser.getUsername());
       NewsDto news = deserializer.deserialize(request.getReader(), NewsDto.class);
-      //TODO проверить после появления формы
+      news.setAddDate(new Date().getTime());
+      news.setAuthor(user);
       news = service.insert(news);
       response.getOutputStream().write(serializer.deepSerialize(news).getBytes());
     } catch (Exception e) {
