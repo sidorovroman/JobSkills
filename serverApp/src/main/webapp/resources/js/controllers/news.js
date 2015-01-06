@@ -37,7 +37,6 @@
 
             var responsePromise = $http.post("/news/add", dataObject, {});
             responsePromise.success(function (dataFromServer, status, headers, config) {
-                alert("add news success");
                 $location.path('/news');
             });
             responsePromise.error(function (data, status, headers, config) {
@@ -51,7 +50,6 @@
 
         $http.get('/news/' + $routeParams.id).
             success(function (data) {
-                alert("success");
                 console.log("get news with id: " + $routeParams.id + " success");
                 $scope.NewsForm = data;
             }).
@@ -66,7 +64,7 @@
                 id:this.NewsForm.id,
                 caption: this.NewsForm.caption,
                 body: this.NewsForm.body,
-                addDate: this.NewsForm.addDate,
+                addDate: new Date().getTime(),
                 author: this.NewsForm.author,
                 link: this.NewsForm.link,
                 tags: this.NewsForm.tags,
