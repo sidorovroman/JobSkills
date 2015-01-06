@@ -122,7 +122,7 @@ public class RegistrationAndLoginController {
     dto.setSex(request.getParameter("sex"));
     dto.setPhone(request.getParameter("phone"));
     dto.setCountry(request.getParameter("country"));
-    dto.setBirthday(new SimpleDateFormat("dd.mm.yyyy").parse(request.getParameter("birthday")));
+    dto.setBirthday(Long.valueOf(request.getParameter("birthday")));
     dto.setCity(request.getParameter("city"));
     try{
       sysUserService.insert(dto);

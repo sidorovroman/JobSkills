@@ -18,7 +18,7 @@ import java.util.Date;
 @Entity(name="vote")
 public class Vote extends BaseEntity {
   private SysUserEntity user;
-  private Date voteDate;
+  private Long voteDate;
   private VoteState state;
 
   @ManyToOne
@@ -31,11 +31,11 @@ public class Vote extends BaseEntity {
   }
 
   @Column(name = "votedate")
-  public Date getVoteDate() {
+  public Long getVoteDate() {
     return voteDate;
   }
 
-  public void setVoteDate(Date voteDate) {
+  public void setVoteDate(Long voteDate) {
     this.voteDate = voteDate;
   }
 

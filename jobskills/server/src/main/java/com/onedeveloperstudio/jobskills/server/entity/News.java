@@ -25,7 +25,7 @@ import java.util.List;
 public class News extends BaseEntity {
   private String caption;
   private String body;
-  private Date addDate;
+  private Long addDate;
   private SysUserEntity author;
   private String link;
   private List<Commentary> commentaries;
@@ -50,11 +50,11 @@ public class News extends BaseEntity {
   }
 
   @Column(nullable = false, name = "adddate")
-  public Date getAddDate() {
+  public Long getAddDate() {
     return addDate;
   }
 
-  public void setAddDate(Date addDate) {
+  public void setAddDate(Long addDate) {
     this.addDate = addDate;
   }
 

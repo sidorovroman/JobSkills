@@ -19,7 +19,7 @@ public class DashBoard extends BaseEntity{
   private WayToImproveSkill way;
   private Integer minutes;
   private Integer hours;
-  private Date date;
+  private Long date;
 
   @ManyToOne
   public SysUserEntity getUser() {
@@ -55,11 +55,11 @@ public class DashBoard extends BaseEntity{
     this.hours = hours;
   }
 
-  public Date getDate() {
+  public Long getDate() {
     return date;
   }
 
-  public void setDate(Date date) {
+  public void setDate(Long date) {
     this.date = date;
   }
 }

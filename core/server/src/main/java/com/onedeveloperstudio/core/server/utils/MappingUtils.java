@@ -55,7 +55,7 @@ public class MappingUtils {
     dto.setPassword(uloginUser.getPassword());
     dto.setUserFullName(uloginUser.getFirst_name() +" " + uloginUser.getLast_name());
     try {
-      dto.setBirthday(sdf.parse(uloginUser.getBdate()));
+      dto.setBirthday(sdf.parse(uloginUser.getBdate()).getTime());
     } catch (ParseException e) {
       System.out.println("Неверный формат даты: " + uloginUser.getBdate());
     }

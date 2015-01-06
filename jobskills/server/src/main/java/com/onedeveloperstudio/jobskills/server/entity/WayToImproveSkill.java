@@ -32,7 +32,7 @@ public class WayToImproveSkill extends BaseEntity {
   private List<RequiredSkill> skill;
   private String link;
   private ResourceType resourceType;
-  private Date addDate;
+  private Long addDate;
   private List<Vote> votes;
   private List<Commentary> commentaries;
 
@@ -87,11 +87,11 @@ public class WayToImproveSkill extends BaseEntity {
   }
 
   @Column(nullable = false)
-  public Date getAddDate() {
+  public Long getAddDate() {
     return addDate;
   }
 
-  public void setAddDate(Date addDate) {
+  public void setAddDate(Long addDate) {
     this.addDate = addDate;
   }
 

@@ -8,7 +8,7 @@ public class SysUserDto extends BaseDto {
   private String userName;
   private String password;
   private String sex;
-  private Date birthday;
+  private Long birthday;
   private String phone;
   private String city;
   private String country;
@@ -64,11 +64,11 @@ public class SysUserDto extends BaseDto {
     this.sex = sex;
   }
 
-  public Date getBirthday() {
+  public Long getBirthday() {
     return birthday;
   }
 
-  public void setBirthday(Date birthday) {
+  public void setBirthday(Long birthday) {
     this.birthday = birthday;
   }
 

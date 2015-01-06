@@ -19,7 +19,7 @@ import java.util.List;
 @Entity(name="commentary")
 public class Commentary  extends BaseEntity {
   private SysUserEntity author;
-  private Date addDate;
+  private Long addDate;
   private String message;
   private Commentary head;
   private List<Commentary> children;
@@ -35,11 +35,11 @@ public class Commentary  extends BaseEntity {
   }
 
   @Column(nullable = false, name = "adddate")
-  public Date getAddDate() {
+  public Long getAddDate() {
     return addDate;
   }
 
-  public void setAddDate(Date addDate) {
+  public void setAddDate(Long addDate) {
     this.addDate = addDate;
   }
 
