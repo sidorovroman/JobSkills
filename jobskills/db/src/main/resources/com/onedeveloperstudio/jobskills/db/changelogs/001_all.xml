@@ -143,7 +143,7 @@
       </column>
       <column name="grade" type="VARCHAR(100)"/>
       <column name="link" type="VARCHAR(255)"/>
-      <column name="resourceType" type="VARCHAR(100)"/>
+      <column name="resourcetype" type="VARCHAR(100)"/>
     </createTable>
     <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="vote"
                              constraintName="FK_2GXKGPKS02ISJNRFYQQ3ALD61" referencedColumnNames="id"
