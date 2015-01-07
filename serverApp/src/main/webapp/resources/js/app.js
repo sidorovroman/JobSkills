@@ -25,9 +25,9 @@
                 controller: "SkillsListCtrl",
                 templateUrl:"/resources/partials/skills.html"
             }).
-            when("/waysToImproveSkills", {
-                controller: "WaysToImproveSkillsListCtrl",
-                templateUrl:"/resources/partials/waysToImproveSkills.html"
+            when("/skillWays", {
+                controller: "SkillWaysListCtrl",
+                templateUrl:"/resources/partials/skillsWays.html"
             }).
             when("/jobs/add", {
                 controller: "AddJobCtrl",

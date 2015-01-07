@@ -21,9 +21,6 @@
 
 </head>
 <body>
-<sec:authorize access="isAuthenticated()">
-  <sec:authentication property="principal.username"></sec:authentication>, Хочешь в <a href="/user/index">личный кабинет?</a> =)
-</sec:authorize>
     <div id="wrap"   ng-app="App">
         <div id="header">
             <div class="navbar navbar-default">
@@ -39,7 +36,15 @@
                             <li><a href="#/about">О нас</a></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="#">Личный кабинет</a></li>
+                            <li>
+
+                                <sec:authorize var="loggedIn" access="isAuthenticated()">
+                                    <a href="/user/index"><sec:authentication property="principal.username"></sec:authentication></a>
+                                </sec:authorize>
+                                <sec:authorize var="loggedIn" access="isAnonymous()">
+                                    <a href="#/login">Вход</a>
+                                </sec:authorize>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -58,6 +63,7 @@
 <script src="<c:url value="/resources/libs/bower_components/angular/angular.js" />"></script>
 <script src="<c:url value="/resources/libs/bower_components/angular-route/angular-route.js" />"></script>
 <script src="<c:url value="/resources/js/controllers/jobs.js" />"></script>
+<script src="<c:url value="/resources/js/controllers/skillWays.js" />"></script>
 <script src="<c:url value="/resources/js/controllers/news.js" />"></script>
 <script src="<c:url value="/resources/js/controllers/controllers.js" />"></script>
 <script src="<c:url value="/resources/js/app.js" />"></script>
