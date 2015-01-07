@@ -1,7 +1,7 @@
 (function () {
     var app = angular.module('jobs', []);
 
-    app.controller("JobsListCtrl", function ($scope, $http, $routeParams) {
+    app.controller("JobsListCtrl", function ($scope, $location, $http, $routeParams) {
         $http.get('/jobs/list').
             success(function (data) {
                 $scope.jobs = data;
@@ -11,17 +11,17 @@
             });
 
         $scope.remove = function (job) {
-
-            console.log("id: " + job.id);
-            console.log("scope: " + $scope);
-            console.log("$routeParams:" + $routeParams);
             $http.delete('/jobs/' + job.id).
                 success(function (data) {
-                    alert("Success remove");
+                    console.log("Success remove job.id="+job.id);
                 }).
                 error(function () {
-                    alert("Fail");
+                    console.log("Fail remove job.id="+job.id);
                 });
+        }
+
+        $scope.select = function (job) {
+            $location.path('/jobs/'+job.id);
         }
     });
     app.controller("AddJobCtrl", function ($scope, $location, $http) {

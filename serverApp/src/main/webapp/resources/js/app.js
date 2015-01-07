@@ -21,10 +21,6 @@
                 controller: "NewsListCtrl",
                 templateUrl:"/resources/partials/news.html"
             }).
-            when("/skills", {
-                controller: "SkillsListCtrl",
-                templateUrl:"/resources/partials/skills.html"
-            }).
             when("/skillWays", {
                 controller: "SkillWaysListCtrl",
                 templateUrl:"/resources/partials/skillsWays.html"
@@ -36,6 +32,10 @@
             when('/jobs/edit/:id', {
                 controller:"EditJobCtrl",
                 templateUrl:'/resources/partials/jobDetail.html'
+            }).
+            when('/jobs/:id', {
+                controller:"SkillsListCtrl",
+                templateUrl:'/resources/partials/skills.html'
             }).
             when('/news/add', {
                 controller:"AddNewsCtrl",

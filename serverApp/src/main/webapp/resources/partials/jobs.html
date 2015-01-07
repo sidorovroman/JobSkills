@@ -6,7 +6,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="job in jobs">
+        <tr ng-repeat="job in jobs" ng-click="select(job)">
             <td>{{job.caption}}
 
                 <button ng-click="remove(job)" class="btn-remove"></button>

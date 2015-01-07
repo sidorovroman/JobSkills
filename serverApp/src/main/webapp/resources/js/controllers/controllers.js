@@ -1,5 +1,5 @@
 (function () {
-    angular.module('App.controllers', ['jobs','news','skillWays'])
+    angular.module('App.controllers', ['jobs','news','skills','skillWays'])
 
         .controller('UserInfo', function UserInfo($scope) {
             $scope.save = function (info, userInfoForm) {
@@ -23,13 +23,5 @@
                 });
         })
 
-        .controller("SkillsListCtrl", function ($scope, $http) {
-            $http.get('/skills/list').
-                success(function (data) {
-                    $scope.skills = data;
-                }).
-                error(function () {
-                    alert("Fail");
-                });
-        })
+
 })();
