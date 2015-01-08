@@ -32,6 +32,7 @@ public class WayToImproveSkillServiceImpl extends BaseVoteServiceImlp<WayToImpro
   private Mapper mapper;
 
   @Override
+  @Transactional(readOnly = true)
   public List<WayToImproveSkillDto> loadAllbySkill(Long jobId) {
     List<WayToImproveSkill> list = repository.findAllBySkillId(jobId);
     List<WayToImproveSkillDto> result = new ArrayList<>(list.size());

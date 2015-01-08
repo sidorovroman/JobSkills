@@ -28,6 +28,7 @@ public class RequiredSkillServiceImpl extends BaseVoteServiceImlp<RequiredSkillD
   private Mapper mapper;
 
   @Override
+  @Transactional(readOnly = true)
   public List<RequiredSkillDto> loadAllbyJob(Long jobId) {
     List<RequiredSkill> list = repository.findAllByJobId(jobId);
     List<RequiredSkillDto> result = new ArrayList<>(list.size());
