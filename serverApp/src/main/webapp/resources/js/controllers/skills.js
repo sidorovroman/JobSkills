@@ -9,16 +9,6 @@
             error(function () {
                 alert("Fail");
             });
-        $scope.remove = function (skill) {
-
-            $http.delete('/requiredSkill/' + skill.id).
-                success(function (data) {
-                    alert("Success remove");
-                }).
-                error(function () {
-                    alert("Fail");
-                });
-        }
         $scope.add = function () {
             $location.path('/jobs/'+$routeParams.id+"/add");
         }

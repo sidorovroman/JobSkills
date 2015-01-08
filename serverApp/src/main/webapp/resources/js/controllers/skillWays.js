@@ -10,16 +10,6 @@
             error(function () {
                 alert("Fail");
             });
-        $scope.remove = function (way) {
-
-            $http.delete('/wayToImproveSkill/' + way.id).
-                success(function (data) {
-                    alert("Success remove");
-                }).
-                error(function () {
-                    alert("Fail");
-                });
-        }
     })
 
 })();

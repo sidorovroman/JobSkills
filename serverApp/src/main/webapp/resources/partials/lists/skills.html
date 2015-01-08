@@ -8,8 +8,6 @@
         <tbody>
         <tr ng-repeat="skill in skills" ng-click="select(job)">
             <td>{{skill.caption}}
-
-                <button ng-click="remove(skill)" class="btn-remove"></button>
                 <a href="#/skills/edit/{{skill.id}}">
                     <i class="btn-edit"></i>
                 </a>

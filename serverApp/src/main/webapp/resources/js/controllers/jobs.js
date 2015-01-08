@@ -10,16 +10,6 @@
                 alert("Fail");
             });
 
-        $scope.remove = function (job) {
-            $http.delete('/jobs/' + job.id).
-                success(function (data) {
-                    console.log("Success remove job.id="+job.id);
-                }).
-                error(function () {
-                    console.log("Fail remove job.id="+job.id);
-                });
-        }
-
         $scope.select = function (job) {
             $location.path('/jobs/'+job.id);
         }

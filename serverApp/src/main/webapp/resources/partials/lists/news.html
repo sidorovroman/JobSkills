@@ -8,8 +8,6 @@
         <tbody>
         <tr ng-repeat="info in news">
             <td>{{info.caption}}
-
-                <button ng-click="remove(info)" class="btn-remove"></button>
                 <a href="#/news/edit/{{info.id}}">
                     <i class="btn-edit"></i>
                 </a>

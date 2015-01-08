@@ -5,49 +5,49 @@
     ]).
     config(['$routeProvider', function($routeProvider) {
         $routeProvider.
-            when("/", {templateUrl: "/resources/partials/main.html"}).
-            when("/login", {templateUrl: "/resources/partials/login.html"}).
-            when("/about", {templateUrl: "/resources/partials/about.html"}).
-            when("/user/info", {templateUrl:"/resources/partials/userInfo.html"}).
+            when("/", {templateUrl: "/resources/partials/content/main.html"}).
+            when("/login", {templateUrl: "/resources/partials/content/login.html"}).
+            when("/about", {templateUrl: "/resources/partials/content/about.html"}).
+            when("/user/info", {templateUrl:"/resources/partials/content/userInfo.html"}).
             when("/jobs", {
                 controller: "JobsListCtrl",
-                templateUrl:"/resources/partials/jobs.html"
+                templateUrl:"/resources/partials/lists/jobs.html"
             }).
             when("/dashboard", {
                 controller: "DashboardListCtrl",
-                templateUrl:"/resources/partials/dashboard.html"
+                templateUrl:"/resources/partials/content/dashboard.html"
             }).
             when("/news", {
                 controller: "NewsListCtrl",
-                templateUrl:"/resources/partials/news.html"
+                templateUrl:"/resources/partials/lists/news.html"
             }).
             when("/skillWays", {
                 controller: "SkillWaysListCtrl",
-                templateUrl:"/resources/partials/skillsWays.html"
+                templateUrl:"/resources/partials/lists/skillsWays.html"
             }).
             when("/jobs/add", {
                 controller: "AddJobCtrl",
-                templateUrl:"/resources/partials/jobDetail.html"
+                templateUrl:"/resources/partials/details/job.html"
             }).
             when('/jobs/edit/:id', {
                 controller:"EditJobCtrl",
-                templateUrl:'/resources/partials/jobDetail.html'
+                templateUrl:'/resources/partials/details/job.html'
             }).
             when('/jobs/:id', {
                 controller:"SkillsListCtrl",
-                templateUrl:'/resources/partials/skills.html'
+                templateUrl:'/resources/partials/lists/skills.html'
             }).
             when('/jobs/:id/add', {
                 controller:"AddSkillCtrl",
-                templateUrl:'/resources/partials/skillDetail.html'
+                templateUrl:'/resources/partials/details/skill.html'
             }).
             when('/news/add', {
                 controller:"AddNewsCtrl",
-                templateUrl:'/resources/partials/newsDetail.html'
+                templateUrl:'/resources/partials/details/news.html'
             }).
             when('/news/edit/:id', {
                 controller:"EditNewsCtrl",
-                templateUrl:'/resources/partials/newsDetail.html'
+                templateUrl:'/resources/partials/details/news.html'
             }).
 
             otherwise({redirectTo: '/'});

@@ -9,18 +9,6 @@
             error(function () {
                 alert("Fail");
             });
-        $scope.remove = function (news) {
-
-            console.log("id: " + news.id);
-            console.log("$routeParams:" + $routeParams);
-            $http.delete('/news/' + news.id).
-                success(function (data) {
-                    alert("Success remove");
-                }).
-                error(function () {
-                    alert("Fail");
-                });
-        }
     })
     app.controller("AddNewsCtrl", function ($scope, $location, $http) {
         $scope.NewsForm = {};
