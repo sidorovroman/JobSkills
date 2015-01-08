@@ -53,7 +53,6 @@
 
         $http.get('/jobs/' + $routeParams.id).
             success(function (data) {
-                alert("success");
                 console.log("get job with id: " + $routeParams.id + " success");
                 $scope.JobsForm = data;
             }).

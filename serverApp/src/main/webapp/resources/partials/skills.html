@@ -1,13 +1,19 @@
-<div id="jobs-list">
+<div id="skills-list" xmlns="http://www.w3.org/1999/html">
     <table>
         <thead>
         <tr>
-            <th>Наименование</th>
+            <th>Наименование <div ng-click="add()" class="btn-add" >+</div></th>
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="skill in skills">
-            <td>{{skill}}</td>
+        <tr ng-repeat="skill in skills" ng-click="select(job)">
+            <td>{{skill.caption}}
+
+                <button ng-click="remove(skill)" class="btn-remove"></button>
+                <a href="#/skills/edit/{{skill.id}}">
+                    <i class="btn-edit"></i>
+                </a>
+            </td>
         </tr>
         </tbody>
     </table>

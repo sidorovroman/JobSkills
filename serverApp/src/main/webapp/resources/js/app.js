@@ -37,6 +37,10 @@
                 controller:"SkillsListCtrl",
                 templateUrl:'/resources/partials/skills.html'
             }).
+            when('/jobs/:id/add', {
+                controller:"AddSkillCtrl",
+                templateUrl:'/resources/partials/skillDetail.html'
+            }).
             when('/news/add', {
                 controller:"AddNewsCtrl",
                 templateUrl:'/resources/partials/newsDetail.html'
