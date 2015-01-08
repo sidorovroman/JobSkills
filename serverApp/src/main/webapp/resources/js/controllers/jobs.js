@@ -7,7 +7,7 @@
                 $scope.jobs = data;
             }).
             error(function () {
-                alert("Fail");
+                console.log("Fail");
             });
 
         $scope.select = function (job) {
@@ -29,11 +29,11 @@
 
             var responsePromise = $http.post("/jobs/add", dataObject, {});
             responsePromise.success(function (dataFromServer, status, headers, config) {
-                alert("add job success");
+                console.log("add job success");
                 $location.path('/jobs');
             });
             responsePromise.error(function (data, status, headers, config) {
-                alert("Submitting form failed!");
+                console.log("Submitting form failed!");
             });
         }
     });
@@ -64,11 +64,11 @@
 
             var responsePromise = $http.put("/jobs/update", dataObject, {});
             responsePromise.success(function (dataFromServer, status, headers, config) {
-                alert("update success");
+                console.log("update success");
                 $location.path('/jobs');
             });
             responsePromise.error(function (data, status, headers, config) {
-                alert("update error status "+status);
+                console.log("update error status "+status);
             });
         }
     });
