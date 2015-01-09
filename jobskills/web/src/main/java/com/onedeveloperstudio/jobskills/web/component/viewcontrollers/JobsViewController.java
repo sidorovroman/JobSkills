@@ -38,7 +38,7 @@ public class JobsViewController {
   @RequestMapping("/list")
   @ResponseBody
   public void getList(HttpServletRequest request, HttpServletResponse response) throws Exception {
-    List<JobDto> jobs = service.loadAll();
+    List<JobDto> jobs = service.getAllParents();
     response.getOutputStream().write(serializer.deepSerialize(jobs).getBytes());
   }
 
