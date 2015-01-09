@@ -1,9 +1,28 @@
 <div id="skills-detail">
-    <form ng-submit="save()">
-        <table>
-            <tr> <td>caption</td>  <td class="sec-col"><input ng-model="SkillForm.caption" type="text" required></td> </tr>
-            <tr> <td>description </td>  <td  class="sec-col"><textarea ng-model="SkillForm.description" required></textarea></td> </tr>
-        </table>
-        <button type="submit" class="btn blue btn-save">Сохранить</button>
+    <form class="form-horizontal" ng-submit="save()">
+        <fieldset>
+            <legend>Skill</legend>
+            <div class="form-group">
+                <label for="inputSkillCaption" class="col-lg-2 control-label">caption</label>
+                <div class="col-lg-10">
+                    <input type="text" ng-model="SkillForm.caption" class="form-control" id="inputSkillCaption" placeholder="caption" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="textAreaSkillDescription" class="col-lg-2 control-label">body</label>
+                <div class="col-lg-10">
+                    <textarea class="form-control" rows="3" id="textAreaSkillDescription" ng-model="SkillForm.body" placeholder="description" required></textarea>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-lg-10 col-lg-offset-2">
+                    <!--<a href="#/news" class="btn btn-default">Cancel</a>-->
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </fieldset>
     </form>
 </div>
