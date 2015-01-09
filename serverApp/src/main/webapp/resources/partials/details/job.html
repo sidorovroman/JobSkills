@@ -1,44 +1,37 @@
-<!--<div id="job-detail">-->
-    <!--<form ng-submit="save()">-->
-        <!--<table>-->
-            <!--<tr> <td>Наименование</td>  <td class="sec-col"><input ng-model="JobsForm.caption" type="text" required></td> </tr>-->
-            <!--<tr> <td>Описание </td>  <td  class="sec-col"><textarea ng-model="JobsForm.description" required></textarea></td> </tr>-->
-            <!--<tr> <td>Выщестоящие работы </td>  <td  class="sec-col"><input ng-model="JobsForm.parentId" type="text"></td> </tr>-->
-        <!--</table>-->
-        <!--<button type="submit" class="btn blue btn-save">Сохранить</button>-->
-    <!--</form>-->
-<!--</div>-->
-
-
-
 <div id="job-detail">
-<form class="form-horizontal" ng-submit="save()">
-    <fieldset>
-        <legend>Информация о работе</legend>
-        <div class="form-group">
-            <label for="inputJobCaption" class="col-lg-2 control-label">Наименование</label>
-            <div class="col-lg-10">
-                <input type="text" ng-model="JobsForm.caption" class="form-control" id="inputJobCaption" placeholder="caption" required>
+    <form class="form-horizontal" ng-submit="save()">
+        <fieldset>
+            <legend>Информация о работе</legend>
+            <div class="form-group">
+                <label for="inputJobCaption" class="col-lg-2 control-label">Наименование</label>
+
+                <div class="col-lg-10">
+                    <input type="text" ng-model="JobsForm.caption" class="form-control" id="inputJobCaption"
+                           placeholder="caption" required>
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label for="textAreaJobDescription" class="col-lg-2 control-label">Описание</label>
-            <div class="col-lg-10">
-                <textarea class="form-control" rows="3" id="textAreaJobDescription" ng-model="JobsForm.description" required></textarea>
+            <div class="form-group">
+                <label for="textAreaJobDescription" class="col-lg-2 control-label">Описание</label>
+
+                <div class="col-lg-10">
+                    <textarea class="form-control" rows="3" id="textAreaJobDescription" ng-model="JobsForm.description"
+                              placeholder="описание" required></textarea>
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label for="inputJobParentId" class="col-lg-2 control-label">Выщестоящие работы</label>
-            <div class="col-lg-10">
-                <input type="text" ng-model="JobsForm.parentId" class="form-control" id="inputJobParentId" placeholder="селект с поиском">
+            <div class="form-group">
+                <label for="inputJobParentId" class="col-lg-2 control-label">Выщестоящие работы</label>
+
+                <div class="col-lg-10">
+                    <input type="text" ng-model="JobsForm.parentId" class="form-control" id="inputJobParentId"
+                           placeholder="селект с поиском будет">
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <div class="col-lg-10 col-lg-offset-2">
-                <a href="#/jobs" class="btn btn-default">Cancel</a>
-                <button type="submit" class="btn btn-primary">Submit</button>
+            <div class="form-group">
+                <div class="col-lg-10 col-lg-offset-2">
+                    <a href="#/jobs" class="btn btn-default">Cancel</a>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
             </div>
-        </div>
-    </fieldset>
-</form>
+        </fieldset>
+    </form>
 </div>
