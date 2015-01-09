@@ -6,11 +6,11 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="skill in skills" ng-click="select(job)">
+        <tr ng-repeat="skill in skills" ng-click="select(skill)">
             <td>{{skill.caption}}
-                <a href="#/skills/edit/{{skill.id}}">
+                <div ng-click="edit(skill)">
                     <i class="btn-edit"></i>
-                </a>
+                </div>
             </td>
         </tr>
         </tbody>

@@ -12,27 +12,60 @@ body{
   height: 100%;
   width: 100%;
 }
-.container{
-  min-height: 100%;
+.box{
   width: 1024px;
-  margin:0 auto;
+  margin: 0 auto;
 }
 /* ==========================================
           @Override bootstrap & bootswatch
    ========================================== */
 .navbar{
   border-radius: 0;
+  margin-bottom: 0;
 }
+/* ==========================================
+                    header
+   ========================================== */
+#header {
+  .box {
+    padding-left: 70px;
+  }
+}
+
 /* ==========================================
                     main
    ========================================== */
 #main{
-  min-height: 100%;
-  .container{
+  .box{
     background: #FFF;
+    position: absolute;
+    top: 52px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    .content{
+      padding: 20px 86px 0;
+    }
+    .left-panel{
+      position: fixed;
+      top: 0;
+      width: 56px;
+      height: 100%;
+      background: url("../img/logo.png") #3499f3 no-repeat center 15px;
+      box-shadow: black 0px 0px 22px -5px inset;
+    }
   }
 }
-
+/* ==========================================
+                    footer
+   ========================================== */
+#footer{
+  background:#000;
+  position:fixed;
+  bottom:0px;
+  width:100%; /* cause of fixed pos */
+  height:40px;
+}
 /* ==========================================
                  registration
    ========================================== */
@@ -153,8 +186,6 @@ body{
   }
 }
 #job-detail{
-  margin-left: 20px;
-  margin-top: 100px;
   table{
     td{
       padding: 5px 0;

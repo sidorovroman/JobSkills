@@ -24,7 +24,7 @@
     <div id="wrap"   ng-app="App">
         <div id="header">
             <div class="navbar navbar-default">
-                <div class="container">
+                <div class="box">
 
                     <div class="navbar-header">
                         <a class="navbar-brand" href="#">Skill Youself</a>
@@ -52,8 +52,9 @@
             </div>
         </div>
         <div id="main">
-            <div class="container">
-                <div ng-view></div>
+            <div class="box">
+                <div class="left-panel"></div>
+                <div ng-view class="content"></div>
             </div>
         </div>
     </div>
