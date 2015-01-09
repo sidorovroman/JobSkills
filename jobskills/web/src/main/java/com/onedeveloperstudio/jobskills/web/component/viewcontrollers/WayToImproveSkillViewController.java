@@ -9,6 +9,7 @@ import flexjson.JSONDeserializer;
 import flexjson.JSONSerializer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -42,41 +43,29 @@ public class WayToImproveSkillViewController {
 
   @RequestMapping("/list")
   @ResponseBody
-  public void getList(HttpServletRequest request, HttpServletResponse response) {
+  public void getList(HttpServletRequest request, HttpServletResponse response) throws Exception {
     response.setContentType("application/json");
     response.setCharacterEncoding("UTF8");
     List<WayToImproveSkillDto> wayToImproveSkills = service.loadAll();
-    try {
-      response.getOutputStream().write(serializer.deepSerialize(wayToImproveSkills).getBytes());
-    } catch (Exception e) {
-      System.out.println("ERROR EBAT'");
-    }
+    response.getOutputStream().write(serializer.deepSerialize(wayToImproveSkills).getBytes());
   }
 
   @RequestMapping("/{skillId}/list")
   @ResponseBody
-  public void getListBySkill(@PathVariable Long skillId, HttpServletRequest request, HttpServletResponse response) {
+  public void getListBySkill(@PathVariable Long skillId, HttpServletRequest request, HttpServletResponse response) throws Exception {
     response.setContentType("application/json");
     response.setCharacterEncoding("UTF8");
     List<WayToImproveSkillDto> ways = service.loadAllbySkill(skillId);
-    try {
-      response.getOutputStream().write(serializer.deepSerialize(ways).getBytes());
-    } catch (Exception e) {
-      System.out.println("ERROR EBAT'");
-    }
+    response.getOutputStream().write(serializer.deepSerialize(ways).getBytes());
   }
 
   @RequestMapping(value = "/{id}", method = RequestMethod.GET)
   @ResponseBody
-  public void getWayToImproveSkill(@PathVariable Long id, HttpServletRequest request, HttpServletResponse response) {
+  public void getWayToImproveSkill(@PathVariable Long id, HttpServletRequest request, HttpServletResponse response) throws Exception {
     response.setContentType("application/json");
     response.setCharacterEncoding("UTF8");
     WayToImproveSkillDto wayToImproveSkill = service.load(id);
-    try {
-      response.getOutputStream().write(serializer.deepSerialize(wayToImproveSkill).getBytes());
-    } catch (Exception e) {
-      System.out.println("ERROR EBAT'");
-    }
+    response.getOutputStream().write(serializer.deepSerialize(wayToImproveSkill).getBytes());
   }
 
   @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
@@ -88,41 +77,31 @@ public class WayToImproveSkillViewController {
 
   @RequestMapping(value = "/add", method = RequestMethod.POST)
   @ResponseBody
-  public void addWayToImproveSkill(HttpServletRequest request, HttpServletResponse response) {
-    response.setContentType("application/json");
-    response.setCharacterEncoding("UTF8");
+  public void addWayToImproveSkill(HttpServletRequest request, HttpServletResponse response) throws Exception {
     //todo
     WayToImproveSkillDto wayToImproveSkill = new WayToImproveSkillDto();
     wayToImproveSkill = service.insert(wayToImproveSkill);
-    try {
-      response.getOutputStream().write(serializer.deepSerialize(wayToImproveSkill).getBytes());
-    } catch (Exception e) {
-      System.out.println("ERROR EBAT'");
-    }
+    response.getOutputStream().write(serializer.deepSerialize(wayToImproveSkill).getBytes());
   }
 
   @RequestMapping(value = "/update", method = RequestMethod.PUT)
   @ResponseBody
-  public void updateWayToImproveSkill(HttpServletRequest request, HttpServletResponse response) {
-    response.setContentType("application/json");
-    response.setCharacterEncoding("UTF8");
+  public WayToImproveSkillDto updateWayToImproveSkill(HttpServletRequest request, HttpServletResponse response) throws Exception {
     WayToImproveSkillDto wayToImproveSkill = new WayToImproveSkillDto();
     //todo
     wayToImproveSkill = service.update(wayToImproveSkill);
-    try {
-      response.getOutputStream().write(serializer.deepSerialize(wayToImproveSkill).getBytes());
-    } catch (Exception e) {
-      System.out.println("ERROR EBAT'");
-    }
+    return wayToImproveSkill;
   }
 
   @RequestMapping(value = "/comment/{id}", method = RequestMethod.POST)
-  public void comment(@PathVariable Long id, HttpServletRequest request, HttpServletResponse response){
-    try {
-      CommentaryDto comment = commentDeserializer.deserialize(request.getReader());
-      service.comment(id, comment);
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+  public void comment(@PathVariable Long id, HttpServletRequest request, HttpServletResponse response) throws Exception {
+    CommentaryDto comment = commentDeserializer.deserialize(request.getReader());
+    service.comment(id, comment);
+  }
+
+  @ResponseBody
+  @ExceptionHandler(Exception.class)
+  public String handleAllException(Exception ex) {
+    return "{error:" + ex.getLocalizedMessage()+"}";
   }
 }

@@ -7,6 +7,7 @@ import flexjson.JSONDeserializer;
 import flexjson.JSONSerializer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -36,33 +37,21 @@ public class JobsViewController {
 
   @RequestMapping("/list")
   @ResponseBody
-  public void getList(HttpServletRequest request, HttpServletResponse response){
-    response.setContentType("application/json");
-    response.setCharacterEncoding("UTF8");
+  public void getList(HttpServletRequest request, HttpServletResponse response) throws Exception {
     List<JobDto> jobs = service.loadAll();
-    try{
-      response.getOutputStream().write(serializer.deepSerialize(jobs).getBytes());
-    } catch (Exception e){
-      System.out.println("ERROR EBAT'");
-    }
+    response.getOutputStream().write(serializer.deepSerialize(jobs).getBytes());
   }
 
   @RequestMapping(value = "/{id}", method = RequestMethod.GET)
   @ResponseBody
-  public void getJob(@PathVariable Long id, HttpServletRequest request, HttpServletResponse response){
-    response.setContentType("application/json");
-    response.setCharacterEncoding("UTF8");
+  public void getJob(@PathVariable Long id, HttpServletRequest request, HttpServletResponse response) throws Exception {
     JobDto job = service.load(id);
-    try{
-      response.getOutputStream().write(serializer.deepSerialize(job).getBytes());
-    } catch (Exception e){
-      System.out.println("ERROR EBAT'");
-    }
+    response.getOutputStream().write(serializer.deepSerialize(job).getBytes());
   }
 
   @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
   @ResponseBody
-  public String deleteJob(@PathVariable Long id, HttpServletRequest request){
+  public String deleteJob(@PathVariable Long id, HttpServletRequest request) {
     //А стоит ли вот так давать возможность удалять?
     service.delete(id);
     return "{status : 1}";
@@ -70,35 +59,30 @@ public class JobsViewController {
 
   @RequestMapping(value = "/add", method = RequestMethod.POST)
   @ResponseBody
-  public void addJob(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    response.setContentType("application/json");
-    response.setCharacterEncoding("UTF8");
+  public void addJob(HttpServletRequest request, HttpServletResponse response) throws Exception {
     JobDto job = deserializer.deserialize(request.getReader(), JobDto.class);
-    if(job.getParent()!=null && job.getParent().getId() == null){
+    if (job.getParent() != null && job.getParent().getId() == null) {
       job.setParent(null);
     }
     job = service.insert(job);
-    try{
-      response.getOutputStream().write(serializer.deepSerialize(job).getBytes());
-    } catch (Exception e){
-      System.out.println("ERROR EBAT'");
-    }
+    response.getOutputStream().write(serializer.deepSerialize(job).getBytes());
   }
 
   @RequestMapping(value = "/update", method = RequestMethod.PUT)
   @ResponseBody
-  public void updateJob(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    response.setContentType("application/json");
-    response.setCharacterEncoding("UTF8");
+  public void updateJob(HttpServletRequest request, HttpServletResponse response) throws Exception {
     JobDto job = deserializer.deserialize(request.getReader(), JobDto.class);
-    if(job.getParent()!=null && job.getParent().getId() == null){
+    if (job.getParent() != null && job.getParent().getId() == null) {
       job.setParent(null);
     }
     job = service.update(job);
-    try{
-      response.getOutputStream().write(serializer.deepSerialize(job).getBytes());
-    } catch (Exception e){
-      System.out.println("ERROR EBAT'");
-    }
+    response.getOutputStream().write(serializer.deepSerialize(job).getBytes());
   }
+
+  @ResponseBody
+  @ExceptionHandler(Exception.class)
+  public String handleAllException(Exception ex) {
+    return "{error:" + ex.getLocalizedMessage()+"}";
+  }
+
 }
