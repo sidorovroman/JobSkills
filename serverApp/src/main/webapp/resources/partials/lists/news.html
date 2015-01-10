@@ -1,18 +1,17 @@
 <div id="news-list" xmlns="http://www.w3.org/1999/html">
-    <table>
-        <thead>
-        <tr>
-            <th>Наименование <a href="#/news/add" class="btn-add" >+</a></th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat="info in news">
-            <td>{{info.caption}}
-                <a href="#/news/edit/{{info.id}}">
-                    <i class="btn-edit"></i>
-                </a>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+    <div class="add-news">ээй, админ, расскажи что-нибудь новенькое <a href="#/news/add" class="btn btn-add btn-primary">лаадно</a></div>
+
+    <div class="post" ng-repeat="info in news">
+        <h1>
+            <a href="#/news/edit/{{info.id}}"><i class="btn-edit"></i></a>
+            <a href="#">{{info.caption}}</a>
+        </h1>
+
+        <div class="body">
+            {{info.body}}
+        </div>
+        <div class="author">
+            от {{info.author.userName}}
+        </div>
+    </div>
 </div>

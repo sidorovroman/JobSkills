@@ -135,9 +135,50 @@ body {
   margin: 47px 0 0 47px;
 }
 /* ==========================================
-                 jobs
+                 news
    ========================================== */
-#news-list table,
+#news-list .add-news {
+  background: #f4f4f4;
+  padding: 15px 10px;
+  border-radius: 5px;
+  box-shadow: #000000 0 0 20px -7px inset;
+}
+#news-list .post {
+  padding: 10px;
+  border-bottom: 1px solid #dae2e8;
+}
+#news-list .post .btn-edit {
+  text-align: center;
+  height: 20px;
+  width: 20px;
+  border-radius: 10px;
+  float: right;
+  text-decoration: none;
+  color: #FFF;
+  background: url("../img/btn-edit.png") no-repeat;
+  background-size: cover;
+}
+#news-list .post .btn-edit:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+#news-list .post h1 {
+  font-size: 26px;
+}
+#news-list .post h1 a {
+  color: #8b98aa;
+}
+#news-list .post .body {
+  font-size: 14px;
+  padding-bottom: 20px;
+}
+#news-list .post .author {
+  font-size: 11px;
+  color: #a9a9a9;
+}
+/* ==========================================
+                 jobs,skills
+   ========================================== */
 #jobs-list table,
 #skills-list table {
   background: #fff;
@@ -159,27 +200,22 @@ body {
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
 }
-#news-list table th,
 #jobs-list table th,
 #skills-list table th {
   text-align: left;
   padding: 5px 40px 5px 10px;
 }
-#news-list table tr td,
 #jobs-list table tr td,
 #skills-list table tr td {
   padding: 15px 40px;
   border-top: 1px solid #eaf2f7;
 }
-#news-list table tr td:hover,
 #jobs-list table tr td:hover,
 #skills-list table tr td:hover {
   background: #d9edf7;
 }
-#news-list table .btn-add,
 #jobs-list table .btn-add,
 #skills-list table .btn-add,
-#news-list table .btn-edit,
 #jobs-list table .btn-edit,
 #skills-list table .btn-edit {
   text-align: center;
@@ -191,16 +227,13 @@ body {
   text-decoration: none;
   color: #FFF;
 }
-#news-list table .btn-add:hover,
 #jobs-list table .btn-add:hover,
 #skills-list table .btn-add:hover,
-#news-list table .btn-edit:hover,
 #jobs-list table .btn-edit:hover,
 #skills-list table .btn-edit:hover {
   cursor: pointer;
   opacity: 0.6;
 }
-#news-list table .btn-edit,
 #jobs-list table .btn-edit,
 #skills-list table .btn-edit {
   background: url("../img/btn-edit.png") no-repeat;
