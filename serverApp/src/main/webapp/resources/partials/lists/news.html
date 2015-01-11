@@ -17,7 +17,9 @@
                 от {{info.author.userName}}
             </div>
             <div class="rating">
-                {{info.rating}}
+                <div class="vote-up" ng-click="voteUp(info.id)"></div>
+                   <span class="rating-value"> {{info.rating}}</span>
+                <div class="vote-down" ng-click="voteDown(info.id)"></div>
             </div>
         </div>
     </div>

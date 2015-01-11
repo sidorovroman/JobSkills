@@ -9,6 +9,27 @@
             error(function () {
                 alert("Fail");
             });
+
+        $scope.voteUp = function(newsId){
+            var responsePromise = $http.post("/news/up/"+newsId,{});
+            responsePromise.success(function (dataFromServer, status, headers, config) {
+                alert("vote up success!");
+
+            });
+            responsePromise.error(function (data, status, headers, config) {
+                alert("vote up form failed!");
+            });
+        }
+        $scope.voteDown = function(newsId){
+            var responsePromise = $http.post("/news/down/"+newsId,{});
+            responsePromise.success(function (dataFromServer, status, headers, config) {
+                alert("vote down success!");
+
+            });
+            responsePromise.error(function (data, status, headers, config) {
+                alert("vote down form failed!");
+            });
+        }
     })
     app.controller("AddNewsCtrl", function ($scope, $location, $http) {
         $scope.NewsForm = {};
