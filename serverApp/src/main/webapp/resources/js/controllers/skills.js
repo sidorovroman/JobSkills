@@ -17,12 +17,12 @@
         }
     })
     app.controller("AddSkillCtrl", function ($scope, $location, $http, $routeParams) {
-        $scope.JobsForm = {};
+        $scope.SkillForm = {};
         $scope.save = function () {
             var dataObject = {
                 caption: this.SkillForm.caption,
                 description: this.SkillForm.description,
-                jobId: $routeParams.id
+                job:{id: $routeParams.id}
             };
 
             var responsePromise = $http.post("/requiredSkill/add", dataObject, {});
@@ -36,7 +36,7 @@
         }
     });
     app.controller("EditSkillCtrl", function ($scope, $location, $http, $routeParams) {
-//        $scope.JobsForm = {};
+//        $scope.SkillForm = {};
 //        console.log("try to edit");
 //
 //        $http.get('/jobs/' + $routeParams.id).

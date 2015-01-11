@@ -30,7 +30,7 @@ body {
                     header
    ========================================== */
 #header .box {
-  padding-left: 70px;
+  padding-left: 81px;
 }
 /* ==========================================
                     main
@@ -148,19 +148,23 @@ body {
   border-bottom: 1px solid #dae2e8;
 }
 #news-list .post .btn-edit {
-  text-align: center;
   height: 20px;
   width: 20px;
-  border-radius: 10px;
-  float: right;
-  text-decoration: none;
-  color: #FFF;
+  float: left;
+  margin: 5px 0 0 -29px;
   background: url("../img/btn-edit.png") no-repeat;
   background-size: cover;
 }
 #news-list .post .btn-edit:hover {
   cursor: pointer;
   opacity: 0.6;
+}
+#news-list .post .date {
+  float: right;
+  color: #a9a9a9 ;
+  font-size: 12px;
+  line-height: 28px;
+  padding-right: 20px;
 }
 #news-list .post h1 {
   font-size: 26px;
@@ -172,9 +176,17 @@ body {
   font-size: 14px;
   padding-bottom: 20px;
 }
+#news-list .post .info {
+  display: inline-block;
+}
 #news-list .post .author {
   font-size: 11px;
+  float: left;
   color: #a9a9a9;
+}
+#news-list .post .rating {
+  float: left;
+  margin-left: 20px;
 }
 /* ==========================================
                  jobs,skills
