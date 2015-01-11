@@ -106,7 +106,6 @@ public class NewsController {
   @ResponseBody
   public String down(@PathVariable Long id, HttpServletRequest request, HttpServletResponse response) {
     service.vote(id, VoteState.DOWN);
-    response.setContentType("application/json");
     return "{status : 1}";
   }
 

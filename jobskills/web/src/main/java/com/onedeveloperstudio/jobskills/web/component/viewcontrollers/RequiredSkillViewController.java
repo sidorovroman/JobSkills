@@ -87,6 +87,7 @@ public class RequiredSkillViewController {
   @ResponseBody
   @ExceptionHandler(Exception.class)
   public String handleAllException(Exception ex) {
+    ex.printStackTrace();
     return "{error:" + ex.getLocalizedMessage() + "}";
   }
 }

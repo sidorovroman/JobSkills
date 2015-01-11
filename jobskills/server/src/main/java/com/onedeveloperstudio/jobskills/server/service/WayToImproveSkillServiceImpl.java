@@ -1,5 +1,7 @@
 package com.onedeveloperstudio.jobskills.server.service;
 
+import com.onedeveloperstudio.core.common.appobj.AppObj;
+import com.onedeveloperstudio.core.common.appobj.AppObjDict;
 import com.onedeveloperstudio.core.common.dto.CommentaryDto;
 import com.onedeveloperstudio.core.server.service.BaseCommentaryService;
 import com.onedeveloperstudio.core.server.service.BaseVoteServiceImlp;
@@ -15,6 +17,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +33,13 @@ public class WayToImproveSkillServiceImpl extends BaseVoteServiceImlp<WayToImpro
   private WayToImproveSkillRepository repository;
   @Autowired
   private Mapper mapper;
+
+  @PostConstruct
+  private  void init(){
+    AppObjDict dict = AppObjDict.getInstance();
+    AppObj appobj = dict.getAppObj("wayToImproveSkill");
+    setAppObj(appobj);
+  }
 
   @Override
   @Transactional(readOnly = true)
