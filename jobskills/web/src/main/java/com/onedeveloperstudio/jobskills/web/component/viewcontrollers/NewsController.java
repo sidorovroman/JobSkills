@@ -85,24 +85,21 @@ public class NewsController {
   @ResponseBody
   public NewsDto updateNews(HttpServletRequest request, HttpServletResponse response) throws Exception {
     NewsDto news = deserializer.deserialize(request.getReader(), NewsDto.class);
-    //todo
     news = service.update(news);
     return news;
   }
 
   @RequestMapping(value = "up/{id}")
   @ResponseBody
-  public String up(@PathVariable Long id) {
-    service.vote(id, VoteState.UP);
-    return "{status : 1}";
+  public Integer up(@PathVariable Long id) {
+    return service.vote(id, VoteState.UP);
   }
 
 
   @RequestMapping(value = "down/{id}")
   @ResponseBody
-  public String down(@PathVariable Long id) {
-    service.vote(id, VoteState.DOWN);
-    return "{status : 1}";
+  public Integer down(@PathVariable Long id) {
+     return service.vote(id, VoteState.DOWN);
   }
 
   @RequestMapping(value = "/comment/{id}", method = RequestMethod.POST)

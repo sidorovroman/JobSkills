@@ -1,5 +1,6 @@
 package com.onedeveloperstudio.jobskills.web.component.viewcontrollers;
 
+import com.onedeveloperstudio.core.common.VoteState;
 import com.onedeveloperstudio.core.common.appobj.AppObjDict;
 import com.onedeveloperstudio.core.common.dto.CommentaryDto;
 import com.onedeveloperstudio.jobskills.common.dto.WayToImproveSkillDto;
@@ -86,6 +87,19 @@ public class WayToImproveSkillViewController {
   public void comment(@PathVariable Long id, HttpServletRequest request, HttpServletResponse response) throws Exception {
     CommentaryDto comment = commentDeserializer.deserialize(request.getReader());
     service.comment(id, comment);
+  }
+
+  @RequestMapping(value = "up/{id}")
+  @ResponseBody
+  public Integer up(@PathVariable Long id) {
+    return service.vote(id, VoteState.UP);
+  }
+
+
+  @RequestMapping(value = "down/{id}")
+  @ResponseBody
+  public Integer down(@PathVariable Long id) {
+    return service.vote(id, VoteState.DOWN);
   }
 
   @ResponseBody

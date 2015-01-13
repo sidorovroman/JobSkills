@@ -41,15 +41,22 @@ public class BaseVoteServiceImlp<D extends RatedDto> extends BaseServiceImpl<D> 
   }
 
   @Override
+  public D update(D dto) {
+    D obj = super.update(dto);
+    sumsRating(obj);
+    return obj;
+  }
+
+  @Override
   @Transactional
-  public void vote(Long id, VoteState state) {
+  public Integer vote(Long id, VoteState state) {
     D ratedObject = this.load(id);
     Authentication auth = SecurityContextHolder.getContext().getAuthentication();
     User regUser = (User) auth.getPrincipal();
     SysUserDto user = sysUserService.loadByEmail(regUser.getUsername());
     for(VoteDto vote : ratedObject.getVotes()){
       if(vote.getUser().equals(regUser)){
-        return;
+        return ratedObject.getRating();
       }
     }
     VoteDto vote = new VoteDto();
@@ -57,7 +64,8 @@ public class BaseVoteServiceImlp<D extends RatedDto> extends BaseServiceImpl<D> 
     vote.setState(state);
     vote.setUser(user);
     ratedObject.getVotes().add(vote);
-    this.update(ratedObject);
+    ratedObject = this.update(ratedObject);
+    return ratedObject.getRating();
   }
 
   private void sumsRating(D obj){

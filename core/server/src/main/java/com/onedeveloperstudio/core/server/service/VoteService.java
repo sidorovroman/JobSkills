@@ -8,5 +8,5 @@ import com.onedeveloperstudio.core.common.dto.SysUserDto;
  * Date: 20.09.14
  */
 public interface VoteService {
-  void vote(Long entityId, VoteState state);
+  Integer vote(Long entityId, VoteState state);
 }
