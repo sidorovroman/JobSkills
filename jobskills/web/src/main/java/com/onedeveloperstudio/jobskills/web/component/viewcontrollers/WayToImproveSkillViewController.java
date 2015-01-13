@@ -2,11 +2,9 @@ package com.onedeveloperstudio.jobskills.web.component.viewcontrollers;
 
 import com.onedeveloperstudio.core.common.appobj.AppObjDict;
 import com.onedeveloperstudio.core.common.dto.CommentaryDto;
-import com.onedeveloperstudio.jobskills.common.dto.RequiredSkillDto;
 import com.onedeveloperstudio.jobskills.common.dto.WayToImproveSkillDto;
 import com.onedeveloperstudio.jobskills.server.service.WayToImproveSkillService;
 import flexjson.JSONDeserializer;
-import flexjson.JSONSerializer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -18,7 +16,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.util.List;
 
 /**
@@ -31,7 +28,7 @@ public class WayToImproveSkillViewController {
   @Autowired
   private WayToImproveSkillService service;
 
-  private JSONSerializer serializer = new JSONSerializer();
+  private JSONDeserializer<WayToImproveSkillDto> deserializer = new JSONDeserializer<>();
   private JSONDeserializer<CommentaryDto> commentDeserializer = new JSONDeserializer<>();
 
   @PostConstruct
@@ -43,52 +40,44 @@ public class WayToImproveSkillViewController {
 
   @RequestMapping("/list")
   @ResponseBody
-  public void getList(HttpServletRequest request, HttpServletResponse response) throws Exception {
-    response.setContentType("application/json");
-    response.setCharacterEncoding("UTF8");
+  public List<WayToImproveSkillDto> getList(){
     List<WayToImproveSkillDto> wayToImproveSkills = service.loadAll();
-    response.getOutputStream().write(serializer.deepSerialize(wayToImproveSkills).getBytes());
+    return wayToImproveSkills;
   }
 
   @RequestMapping("/{skillId}/list")
   @ResponseBody
-  public void getListBySkill(@PathVariable Long skillId, HttpServletRequest request, HttpServletResponse response) throws Exception {
-    response.setContentType("application/json");
-    response.setCharacterEncoding("UTF8");
+  public List<WayToImproveSkillDto> getListBySkill(@PathVariable Long skillId){
     List<WayToImproveSkillDto> ways = service.loadAllbySkill(skillId);
-    response.getOutputStream().write(serializer.deepSerialize(ways).getBytes());
+    return ways;
   }
 
   @RequestMapping(value = "/{id}", method = RequestMethod.GET)
   @ResponseBody
-  public void getWayToImproveSkill(@PathVariable Long id, HttpServletRequest request, HttpServletResponse response) throws Exception {
-    response.setContentType("application/json");
-    response.setCharacterEncoding("UTF8");
+  public WayToImproveSkillDto getWayToImproveSkill(@PathVariable Long id) {
     WayToImproveSkillDto wayToImproveSkill = service.load(id);
-    response.getOutputStream().write(serializer.deepSerialize(wayToImproveSkill).getBytes());
+    return wayToImproveSkill;
   }
 
   @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
   @ResponseBody
-  public String deleteWayToImproveSkill(@PathVariable Long id, HttpServletRequest request) {
+  public String deleteWayToImproveSkill(@PathVariable Long id) {
     service.delete(id);
     return "{status : 1}";
   }
 
   @RequestMapping(value = "/add", method = RequestMethod.POST)
   @ResponseBody
-  public void addWayToImproveSkill(HttpServletRequest request, HttpServletResponse response) throws Exception {
-    //todo
-    WayToImproveSkillDto wayToImproveSkill = new WayToImproveSkillDto();
+  public WayToImproveSkillDto addWayToImproveSkill(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    WayToImproveSkillDto wayToImproveSkill = deserializer.deserialize(request.getReader(), WayToImproveSkillDto.class);
     wayToImproveSkill = service.insert(wayToImproveSkill);
-    response.getOutputStream().write(serializer.deepSerialize(wayToImproveSkill).getBytes());
+    return wayToImproveSkill;
   }
 
   @RequestMapping(value = "/update", method = RequestMethod.PUT)
   @ResponseBody
   public WayToImproveSkillDto updateWayToImproveSkill(HttpServletRequest request, HttpServletResponse response) throws Exception {
-    WayToImproveSkillDto wayToImproveSkill = new WayToImproveSkillDto();
-    //todo
+    WayToImproveSkillDto wayToImproveSkill = deserializer.deserialize(request.getReader(), WayToImproveSkillDto.class);
     wayToImproveSkill = service.update(wayToImproveSkill);
     return wayToImproveSkill;
   }

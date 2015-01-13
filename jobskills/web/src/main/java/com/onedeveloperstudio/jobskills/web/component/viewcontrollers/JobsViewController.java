@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.util.List;
 
 /**
@@ -37,21 +36,21 @@ public class JobsViewController {
 
   @RequestMapping("/list")
   @ResponseBody
-  public void getList(HttpServletRequest request, HttpServletResponse response) throws Exception {
+  public List<JobDto> getList() throws Exception {
     List<JobDto> jobs = service.getAllParents();
-    response.getOutputStream().write(serializer.deepSerialize(jobs).getBytes());
+    return jobs;
   }
 
   @RequestMapping(value = "/{id}", method = RequestMethod.GET)
   @ResponseBody
-  public void getJob(@PathVariable Long id, HttpServletRequest request, HttpServletResponse response) throws Exception {
+  public JobDto getJob(@PathVariable Long id) throws Exception {
     JobDto job = service.load(id);
-    response.getOutputStream().write(serializer.deepSerialize(job).getBytes());
+    return job;
   }
 
   @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
   @ResponseBody
-  public String deleteJob(@PathVariable Long id, HttpServletRequest request) {
+  public String deleteJob(@PathVariable Long id) {
     //А стоит ли вот так давать возможность удалять?
     service.delete(id);
     return "{status : 1}";
@@ -59,24 +58,24 @@ public class JobsViewController {
 
   @RequestMapping(value = "/add", method = RequestMethod.POST)
   @ResponseBody
-  public void addJob(HttpServletRequest request, HttpServletResponse response) throws Exception {
+  public JobDto addJob(HttpServletRequest request, HttpServletResponse response) throws Exception {
     JobDto job = deserializer.deserialize(request.getReader(), JobDto.class);
     if (job.getParent() != null && job.getParent().getId() == null) {
       job.setParent(null);
     }
     job = service.insert(job);
-    response.getOutputStream().write(serializer.deepSerialize(job).getBytes());
+    return job;
   }
 
   @RequestMapping(value = "/update", method = RequestMethod.PUT)
   @ResponseBody
-  public void updateJob(HttpServletRequest request, HttpServletResponse response) throws Exception {
+  public JobDto updateJob(HttpServletRequest request, HttpServletResponse response) throws Exception {
     JobDto job = deserializer.deserialize(request.getReader(), JobDto.class);
     if (job.getParent() != null && job.getParent().getId() == null) {
       job.setParent(null);
     }
     job = service.update(job);
-    response.getOutputStream().write(serializer.deepSerialize(job).getBytes());
+    return job;
   }
 
   @ResponseBody
