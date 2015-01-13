@@ -1,11 +1,34 @@
 <div id="login-form">
-    <form class="auth-col" method="POST" action="/j_spring_security_check">
-        <h2 class="title">Вход</h2>
-        <input type="email" autocomplete="off" name="username" class="input-login" placeholder="E-mail">     <!--on autocomplete -->
-        <input type="password" name="password" class="input-password"  placeholder="Пароль">
-        <button type="submit" class="btn rose btn-login">Войти</button>
-        <a href="#/user/info" class="btn violet btn-reg">Зарегистрироваться</a>
+    <form class="auth-col form-horizontal" method="POST" action="/j_spring_security_check">
+        <fieldset>
+            <legend>Вход</legend>
+            <div class="form-group">
+                <label for="inputLoginEmail" class="col-lg-2 control-label">MAIL</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">$</span>
+                        <input type="email" autocomplete="off" name="username" class="form-control" id="inputLoginEmail"
+                               placeholder="e-mail" required>
+                    </div>
+            </div>
+
+            <div class="form-group">
+                <label for="inputLoginPas" class="col-lg-2 control-label">Пароль</label>
+
+                <div class="col-lg-10">
+                    <input type="password" autocomplete="off" name="password" class="form-control" id="inputLoginPas"
+                           placeholder="Пароль" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-10 col-lg-offset-2">
+                    <button type="submit" class="btn btn-primary">Войти</button>
+                    <a href="#/user/info" class="btn btn-default">Зарегистрироваться</a>
+                </div>
+            </div>
+        </fieldset>
     </form>
+
+
     <div class="auth-col">
         <div class="login-icons">
             <div id="uLogincc8fbc96"
@@ -16,9 +39,9 @@
                  providers=google,vkontakte,facebook,mailru,odnoklassniki;
                  hidden=twitter,yandex,livejournal,openid,lastfm,linkedin,liveid,soundcloud,steam,flickr,uid,youtube,webmoney,foursquare,tumblr,googleplus,dudu,vimeo,instagram;
                  redirect_uri=http%3A%2F%2Flocalhost%3A8080%2Flogin_callback">
-                <img src="/resources/img/icon-vk.png" x-ulogin-button = "vkontakte"/>
-                <img src="/resources/img/icon-fb.png" x-ulogin-button = "facebook"/>
-                <img src="/resources/img/icon-google.png" x-ulogin-button = "google"/>
+                <img src="/resources/img/icon-vk.png" x-ulogin-button="vkontakte"/>
+                <img src="/resources/img/icon-fb.png" x-ulogin-button="facebook"/>
+                <img src="/resources/img/icon-google.png" x-ulogin-button="google"/>
             </div>
 
         </div>

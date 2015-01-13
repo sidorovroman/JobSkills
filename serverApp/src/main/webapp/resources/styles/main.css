@@ -106,20 +106,6 @@ body {
   width: 310px;
   float: left;
 }
-#login-form .auth-col .title {
-  font-size: 30px;
-  font-weight: bold;
-  color: #8e8c8c;
-  margin-bottom: 16px;
-}
-#login-form .auth-col input {
-  width: 100%;
-  margin-bottom: 16px;
-}
-#login-form .auth-col input.input-password,
-#login-form .auth-col input.input-login {
-  padding-left: 42px;
-}
 #login-form .auth-col input.input-password {
   background: url("../img/icon-pass.png") no-repeat #ffffff 14px 10px;
 }
