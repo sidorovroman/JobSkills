@@ -3,12 +3,9 @@ package com.onedeveloperstudio.core.server.service;
 import com.onedeveloperstudio.core.common.VoteState;
 import com.onedeveloperstudio.core.common.dto.RatedDto;
 import com.onedeveloperstudio.core.common.dto.SysUserDto;
-import com.onedeveloperstudio.core.common.dto.User;
 import com.onedeveloperstudio.core.common.dto.VoteDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
@@ -27,7 +24,8 @@ public class BaseVoteServiceImlp<D extends RatedDto> extends BaseServiceImpl<D> 
   @Transactional(readOnly = true)
   public D load(Long id) {
     D obj = super.load(id);
-    sumsRating(obj);
+    SysUserDto user = sysUserService.authenticate();
+    sumsRating(obj, user);
     return obj;
   }
 
@@ -35,8 +33,9 @@ public class BaseVoteServiceImlp<D extends RatedDto> extends BaseServiceImpl<D> 
   @Transactional(readOnly = true)
   public List<D> loadAll() {
     List<D> result =  super.loadAll();
+    SysUserDto user = sysUserService.authenticate();
     for(D obj : result){
-      sumsRating(obj);
+      sumsRating(obj, user);
     }
     return result;
   }
@@ -44,7 +43,8 @@ public class BaseVoteServiceImlp<D extends RatedDto> extends BaseServiceImpl<D> 
   @Override
   public D update(D dto) {
     D obj = super.update(dto);
-    sumsRating(obj);
+    SysUserDto user = sysUserService.authenticate();
+    sumsRating(obj, user);
     return obj;
   }
 
@@ -53,11 +53,9 @@ public class BaseVoteServiceImlp<D extends RatedDto> extends BaseServiceImpl<D> 
   @Transactional
   public Integer vote(Long id, VoteState state) {
     D ratedObject = this.load(id);
-    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-    User regUser = (User) auth.getPrincipal();
-    SysUserDto user = sysUserService.loadByEmail(regUser.getUsername());
+    SysUserDto user = sysUserService.authenticate();
     for(VoteDto vote : ratedObject.getVotes()){
-      if(vote.getUser().equals(regUser)){
+      if(vote.getUser().equals(user)){
         return ratedObject.getRating();
       }
     }
@@ -70,9 +68,12 @@ public class BaseVoteServiceImlp<D extends RatedDto> extends BaseServiceImpl<D> 
     return ratedObject.getRating();
   }
 
-  private void sumsRating(D obj){
+  private void sumsRating(D obj, SysUserDto user){
     int i = 0;
     for(VoteDto vote : obj.getVotes()){
+      if(vote.getUser().equals(user)){
+        obj.setCanVote(false);
+      }
       i+= (vote.getState() == VoteState.UP ? 1 : -1);
     }
     obj.setRating(i);

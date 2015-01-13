@@ -21,7 +21,6 @@ public class WayToImproveSkillDto extends RatedDto {
   private String link;
   private ResourceType resourceType;
   private Long addDate;
-  private List<VoteDto> votes;
   private List<CommentaryDto> commentaries;
 
   public GRADE getGrade() {
@@ -78,14 +77,6 @@ public class WayToImproveSkillDto extends RatedDto {
 
   public void setDescription(String description) {
     this.description = description;
-  }
-
-  public List<VoteDto> getVotes() {
-    return votes;
-  }
-
-  public void setVotes(List<VoteDto> votes) {
-    this.votes = votes;
   }
 
   public List<CommentaryDto> getCommentaries() {

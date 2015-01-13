@@ -9,6 +9,7 @@ import java.util.List;
 public abstract class RatedDto extends BaseDto {
   private List<VoteDto> votes;
   private Integer rating;
+  private Boolean canVote = true;
 
   public Integer getRating() {
     return rating;
@@ -24,5 +25,13 @@ public abstract class RatedDto extends BaseDto {
 
   public void setVotes(List<VoteDto> votes) {
     this.votes = votes;
+  }
+
+  public Boolean getCanVote() {
+    return canVote;
+  }
+
+  public void setCanVote(Boolean canVote) {
+    this.canVote = canVote;
   }
 }

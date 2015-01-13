@@ -3,10 +3,14 @@ package com.onedeveloperstudio.core.server.service;
 import com.onedeveloperstudio.core.common.appobj.AppObj;
 import com.onedeveloperstudio.core.common.appobj.AppObjDict;
 import com.onedeveloperstudio.core.common.dto.SysUserDto;
+import com.onedeveloperstudio.core.common.dto.User;
 import com.onedeveloperstudio.core.server.entity.user.SysUserEntity;
 import com.onedeveloperstudio.core.server.repository.UserRepository;
 import com.onedeveloperstudio.core.server.utils.MappingUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -27,6 +31,21 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUserDto> implements S
     setAppObj(appobj);
   }
 
+  @Secured("ROLE_ANONYMOUS")
+  public SysUserDto update(SysUserDto dto) {
+    return super.update(dto);
+  }
+
+  @Secured("ROLE_ANONYMOUS")
+  public void save(SysUserDto dto) {
+    super.save(dto);
+  }
+
+  @Secured("ROLE_ANONYMOUS")
+  public SysUserDto insert(SysUserDto dto) {
+    return super.insert(dto);
+  }
+
   @Override
   public SysUserDto loadByUsername(String username) {
     SysUserEntity sysUserEntity = userRepository.findOneByUsername(username);
@@ -43,5 +62,16 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUserDto> implements S
   public SysUserDto loadByEmail(String email) {
     SysUserEntity sysUserEntity = userRepository.findOneByEmail(email);
     return MappingUtils.sysUserToDto(sysUserEntity);
+  }
+
+  @Override
+  public SysUserDto authenticate() {
+    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+    if(auth.getPrincipal() instanceof String){
+      return new SysUserDto();
+    }
+    User regUser = (User) auth.getPrincipal();
+    SysUserDto user = this.loadByEmail(regUser.getUsername());
+    return user;
   }
 }

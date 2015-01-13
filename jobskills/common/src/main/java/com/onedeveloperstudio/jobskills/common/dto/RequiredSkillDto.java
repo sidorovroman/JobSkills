@@ -16,7 +16,6 @@ public class RequiredSkillDto extends RatedDto {
   private String description;
   private List<WayToImproveSkillDto> ways;
   private List<CommentaryDto> comments;
-  private List<VoteDto> votes;
 
   public JobDto getJob() {
     return job;
@@ -48,14 +47,6 @@ public class RequiredSkillDto extends RatedDto {
 
   public void setComments(List<CommentaryDto> comments) {
     this.comments = comments;
-  }
-
-  public List<VoteDto> getVotes() {
-    return votes;
-  }
-
-  public void setVotes(List<VoteDto> votes) {
-    this.votes = votes;
   }
 
   public String getDescription() {
