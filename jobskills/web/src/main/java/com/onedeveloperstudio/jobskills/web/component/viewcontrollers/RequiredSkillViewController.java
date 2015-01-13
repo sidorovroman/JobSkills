@@ -6,6 +6,7 @@ import com.onedeveloperstudio.jobskills.common.dto.RequiredSkillDto;
 import com.onedeveloperstudio.jobskills.server.service.RequiredSkillService;
 import flexjson.JSONDeserializer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -96,6 +97,9 @@ public class RequiredSkillViewController {
   @ResponseBody
   @ExceptionHandler(Exception.class)
   public String handleAllException(Exception ex) {
+    if(ex instanceof AccessDeniedException){
+      return "{error: 'Необходима авторизация'}";
+    }
     ex.printStackTrace();
     return "{error:" + ex.getLocalizedMessage() + "}";
   }

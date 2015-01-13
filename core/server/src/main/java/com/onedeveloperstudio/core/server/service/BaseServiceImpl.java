@@ -7,6 +7,7 @@ import org.dozer.Mapper;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -36,6 +37,7 @@ public class BaseServiceImpl<D extends BaseDto> implements BaseService<D> {
   private Class<D> dtoClass;
 
   @Override
+  @Secured("ROLE_USER")
   @Transactional
   public D insert(D dto) {
     save(dto);
@@ -49,6 +51,7 @@ public class BaseServiceImpl<D extends BaseDto> implements BaseService<D> {
   }
 
   @Override
+  @Secured("ROLE_USER")
   @Transactional
   public D update(D dto) {
     save(dto);

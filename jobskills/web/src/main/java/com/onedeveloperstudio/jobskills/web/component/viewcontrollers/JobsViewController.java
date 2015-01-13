@@ -6,6 +6,7 @@ import com.onedeveloperstudio.jobskills.server.service.JobService;
 import flexjson.JSONDeserializer;
 import flexjson.JSONSerializer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,10 +29,6 @@ public class JobsViewController {
   @Autowired
   private JobService service;
 
-  @Autowired
-  private SysUserService sysUserService;
-
-  private JSONSerializer serializer = new JSONSerializer();
   private JSONDeserializer<JobDto> deserializer = new JSONDeserializer<>();
 
   @RequestMapping("/list")
@@ -81,7 +78,10 @@ public class JobsViewController {
   @ResponseBody
   @ExceptionHandler(Exception.class)
   public String handleAllException(Exception ex) {
-    return "{error:" + ex.getLocalizedMessage()+"}";
+    if(ex instanceof AccessDeniedException){
+      return "{error: 'Необходима авторизация'}";
+    }
+    ex.printStackTrace();
+    return "{error:" + ex.getLocalizedMessage() + "}";
   }
-
 }

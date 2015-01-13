@@ -6,6 +6,7 @@ import com.onedeveloperstudio.core.common.dto.SysUserDto;
 import com.onedeveloperstudio.core.common.dto.User;
 import com.onedeveloperstudio.core.common.dto.VoteDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.transaction.annotation.Transactional;
@@ -48,6 +49,7 @@ public class BaseVoteServiceImlp<D extends RatedDto> extends BaseServiceImpl<D> 
   }
 
   @Override
+  @Secured("ROLE_USER")
   @Transactional
   public Integer vote(Long id, VoteState state) {
     D ratedObject = this.load(id);
