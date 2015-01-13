@@ -27,8 +27,8 @@
 
             var responsePromise = $http.post("/requiredSkill/add", dataObject, {});
             responsePromise.success(function (dataFromServer, status, headers, config) {
-                alert("add job success");
-                $location.path('/skills');
+                alert("add skill success");
+                window.history.back();
             });
             responsePromise.error(function (data, status, headers, config) {
                 alert("Submitting form failed!");
@@ -36,40 +36,35 @@
         }
     });
     app.controller("EditSkillCtrl", function ($scope, $location, $http, $routeParams) {
-//        $scope.SkillForm = {};
-//        console.log("try to edit");
-//
-//        $http.get('/jobs/' + $routeParams.id).
-//            success(function (data) {
-//                alert("success");
-//                console.log("get job with id: " + $routeParams.id + " success");
-//                $scope.JobsForm = data;
-//            }).
-//            error(function () {
-//                console.log("get job with id: " + $routeParams.id + " failed");
-//            });
-//
-//        $scope.save = function () {
-//            console.log("try to save");
-//
-//            var dataObject = {
-//                id:this.JobsForm.id,
-//                caption: this.JobsForm.caption,
-//                description: this.JobsForm.description,
-//                parent: {
-//                    id: (this.JobsForm.parentId == "" ? null : this.JobsForm.parentId)
-//                }
-//            };
-//
-//            var responsePromise = $http.put("/jobs/update", dataObject, {});
-//            responsePromise.success(function (dataFromServer, status, headers, config) {
-//                alert("update success");
-//                $location.path('/jobs');
-//            });
-//            responsePromise.error(function (data, status, headers, config) {
-//                alert("update error status "+status);
-//            });
-//        }
+        $scope.SkillForm = {};
+        $http.get('/requiredSkill/' + $routeParams.skillId).
+            success(function (data) {
+                alert("success");
+                console.log("get skill with id: " + $routeParams.skillId + " success");
+                $scope.SkillForm = data;
+            }).
+            error(function () {
+                console.log("get job with id: " + $routeParams.skillId + " failed");
+            });
+
+        $scope.save = function () {
+            var dataObject = {
+                caption: this.SkillForm.caption,
+                description: this.SkillForm.description,
+                job:{id: $routeParams.skillId}
+            };
+
+            console.log("dataObject "+dataObject);
+
+            var responsePromise = $http.put("/requiredSkill/update", dataObject);
+            responsePromise.success(function (dataFromServer, status, headers, config) {
+                alert("update success");
+                window.history.back();
+            });
+            responsePromise.error(function (data, status, headers, config) {
+                alert("update error status "+status);
+            });
+        }
     });
 
 })();

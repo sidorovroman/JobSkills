@@ -41,7 +41,7 @@
                 controller:"AddSkillCtrl",
                 templateUrl:'/resources/partials/details/skill.html'
             }).
-            when('/jobs/:id/edit/:id', {
+            when('/jobs/:jobId/edit/:skillId', {
                 controller:"EditSkillCtrl",
                 templateUrl:'/resources/partials/details/skill.html'
             }).
