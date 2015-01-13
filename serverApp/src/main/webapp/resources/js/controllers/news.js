@@ -10,20 +10,22 @@
                 alert("Fail");
             });
 
-        $scope.voteUp = function(newsId){
-            var responsePromise = $http.post("/news/up/"+newsId,{});
+        $scope.voteUp = function(info){
+            var responsePromise = $http.post("/news/up/"+info.id,{});
             responsePromise.success(function (dataFromServer, status, headers, config) {
                 alert("vote up success!");
+                info.rating = dataFromServer;
 
             });
             responsePromise.error(function (data, status, headers, config) {
                 alert("vote up form failed!");
             });
         }
-        $scope.voteDown = function(newsId){
-            var responsePromise = $http.post("/news/down/"+newsId,{});
+        $scope.voteDown = function(info){
+            var responsePromise = $http.post("/news/down/"+info.id,{});
             responsePromise.success(function (dataFromServer, status, headers, config) {
                 alert("vote down success!");
+                info.rating = dataFromServer;
 
             });
             responsePromise.error(function (data, status, headers, config) {
