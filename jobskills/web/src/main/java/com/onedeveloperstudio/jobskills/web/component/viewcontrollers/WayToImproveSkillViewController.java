@@ -107,6 +107,7 @@ public class WayToImproveSkillViewController {
   @ExceptionHandler(Exception.class)
   public String handleAllException(Exception ex) {
     if(ex instanceof AccessDeniedException){
+      System.out.println(ex.getLocalizedMessage());
       return "{error: 'Необходима авторизация'}";
     }
     ex.printStackTrace();

@@ -32,15 +32,16 @@ public class BaseVoteServiceImlp<D extends RatedDto> extends BaseServiceImpl<D> 
   @Override
   @Transactional(readOnly = true)
   public List<D> loadAll() {
-    List<D> result =  super.loadAll();
+    List<D> result = super.loadAll();
     SysUserDto user = sysUserService.authenticate();
-    for(D obj : result){
+    for (D obj : result) {
       sumsRating(obj, user);
     }
     return result;
   }
 
   @Override
+  @Secured("ROLE_USER")
   public D update(D dto) {
     D obj = super.update(dto);
     SysUserDto user = sysUserService.authenticate();
@@ -54,8 +55,8 @@ public class BaseVoteServiceImlp<D extends RatedDto> extends BaseServiceImpl<D> 
   public Integer vote(Long id, VoteState state) {
     D ratedObject = this.load(id);
     SysUserDto user = sysUserService.authenticate();
-    for(VoteDto vote : ratedObject.getVotes()){
-      if(vote.getUser().equals(user)){
+    for (VoteDto vote : ratedObject.getVotes()) {
+      if (vote.getUser().equals(user)) {
         return ratedObject.getRating();
       }
     }
@@ -68,13 +69,15 @@ public class BaseVoteServiceImlp<D extends RatedDto> extends BaseServiceImpl<D> 
     return ratedObject.getRating();
   }
 
-  private void sumsRating(D obj, SysUserDto user){
+  private void sumsRating(D obj, SysUserDto user) {
     int i = 0;
-    for(VoteDto vote : obj.getVotes()){
-      if(vote.getUser().equals(user)){
-        obj.setCanVote(false);
+    if (obj.getVotes() != null) {
+      for (VoteDto vote : obj.getVotes()) {
+        if (vote.getUser().equals(user)) {
+          obj.setCanVote(false);
+        }
+        i += (vote.getState() == VoteState.UP ? 1 : -1);
       }
-      i+= (vote.getState() == VoteState.UP ? 1 : -1);
     }
     obj.setRating(i);
   }
