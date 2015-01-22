@@ -17,7 +17,7 @@ public class WayToImproveSkillDto extends RatedDto {
   private GRADE grade;
   private String caption;
   private String description;
-  private List<RequiredSkillDto> skill;
+  private List<RequiredSkillDto> skills;
   private String link;
   private ResourceType resourceType;
   private Long addDate;
@@ -39,12 +39,12 @@ public class WayToImproveSkillDto extends RatedDto {
     this.caption = caption;
   }
 
-  public List<RequiredSkillDto> getSkill() {
-    return skill;
+  public List<RequiredSkillDto> getSkills() {
+    return skills;
   }
 
-  public void setSkill(List<RequiredSkillDto> skill) {
-    this.skill = skill;
+  public void setSkills(List<RequiredSkillDto> skills) {
+    this.skills = skills;
   }
 
   public String getLink() {
