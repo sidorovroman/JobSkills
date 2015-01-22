@@ -21,47 +21,19 @@ import javax.servlet.http.HttpServletResponse;
  * User: y.zakharov
  * Date: 21.08.14
  */
-@RequestMapping("/users")
+@RequestMapping("/user")
 @Controller
 public class UserViewController {
 
   @Autowired
   private SysUserService service;
 
-  private JSONSerializer serializer = new JSONSerializer();
-
-
-  @RequestMapping("/index")
-  public ModelMap mainUserPage(HttpServletRequest request) {
-    ModelMap modelMap = new ModelMap("/user/index");
+  @RequestMapping("/info")
+  @ResponseBody
+  public SysUserDto mainUserInfo(HttpServletRequest request) {
     Authentication auth = SecurityContextHolder.getContext().getAuthentication();
     User regUser = (User) auth.getPrincipal();
     SysUserDto user = service.loadByEmail(regUser.getUsername());
-    modelMap.put("user", user);
-    return modelMap;
-  }
-
-  @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-  @ResponseBody
-  public void addUser(@PathVariable Long id, HttpServletRequest request, HttpServletResponse response) {
-    response.setContentType("application/json");
-    response.setCharacterEncoding("UTF8");
-    SysUserDto user = service.load(id);
-    try {
-      response.getOutputStream().write(serializer.deepSerialize(user).getBytes());
-    } catch (Exception e) {
-      System.out.println("ERROR EBAT'");
-    }
-  }
-
-  @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-  @ResponseBody
-  public String deleteUser(@PathVariable Long id, HttpServletRequest request, HttpServletResponse response) {
-    try {
-      service.delete(id);
-      return "{status : 1}";
-    } catch (Exception e) {
-      return "{status : 0}";
-    }
+    return user;
   }
 }
