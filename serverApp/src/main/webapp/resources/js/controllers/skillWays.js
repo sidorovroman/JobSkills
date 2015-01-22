@@ -24,7 +24,7 @@
                 addDate:  new Date().getTime(),
                 grade:  this.SkillWaysForm.grade,
                 resourceType:  this.SkillWaysForm.resourceType,
-                skill:  this.SkillWaysForm.skill
+                skills:  this.SkillWaysForm.skills
             };
 
             var responsePromise = $http.post("/wayToImproveSkill/add", dataObject, {});
@@ -34,6 +34,39 @@
             });
             responsePromise.error(function (data, status, headers, config) {
                 alert("Submitting form failed!");
+            });
+        }
+    });
+    app.controller("EditSkillWaysCtrl", function ($scope, $location, $http, $routeParams) {
+        $scope.SkillForm = {};
+        $http.get('/wayToImproveSkill/' + $routeParams.wayId).
+            success(function (data) {
+                alert("success");
+                console.log("get skill way with id: " + $routeParams.wayId + " success");
+                $scope.SkillWaysForm = data;
+            }).
+            error(function () {
+                console.log("get job with id: " + $routeParams.wayId + " failed");
+            });
+
+        $scope.save = function () {
+            var dataObject = {
+                id: $routeParams.wayId,
+                caption: this.SkillWaysForm.caption,
+                description: this.SkillWaysForm.description,
+                link: this.SkillWaysForm.link,
+                grade:  this.SkillWaysForm.grade,
+                resourceType:  this.SkillWaysForm.resourceType,
+                skills:  this.SkillWaysForm.skills
+            };
+
+            var responsePromise = $http.put("/wayToImproveSkill/update", dataObject);
+            responsePromise.success(function (dataFromServer, status, headers, config) {
+                alert("update success");
+                window.history.back();
+            });
+            responsePromise.error(function (data, status, headers, config) {
+                alert("update error status "+status);
             });
         }
     });
