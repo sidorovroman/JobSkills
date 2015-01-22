@@ -1,7 +1,8 @@
 (function () {
     angular.module('App.controllers', ['jobs','news','skills','skillWays'])
 
-        .controller('UserInfo', function UserInfo($scope) {
+        .controller('UserInfoCtrl', function UserInfo($scope) {
+
             $scope.save = function (info, userInfoForm) {
                 if (info.pass.equals(info.pass2)) {
                     alert("пароли не совпадают");
