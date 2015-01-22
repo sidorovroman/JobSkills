@@ -25,6 +25,7 @@
             var dataObject = {
                 caption: this.SkillForm.caption,
                 description: this.SkillForm.description,
+                ways: [{id:this.SkillForm.ways}],//todo пока в тестовом варианте
                 job:{id: $routeParams.id}
             };
 
