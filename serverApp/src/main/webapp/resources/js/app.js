@@ -8,7 +8,10 @@
             when("/", {templateUrl: "/resources/partials/content/main.html"}).
             when("/login", {templateUrl: "/resources/partials/content/login.html"}).
             when("/about", {templateUrl: "/resources/partials/content/about.html"}).
-            when("/user/info", {templateUrl:"/resources/partials/content/userInfo.html"}).
+            when("/user/info", {
+                controller: "UserInfoCtrl",
+                templateUrl:"/resources/partials/content/userInfo.html",
+            }).
             when("/jobs", {
                 controller: "JobsListCtrl",
                 templateUrl:"/resources/partials/lists/jobs.html"

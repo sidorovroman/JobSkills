@@ -49,10 +49,12 @@
 
         $scope.save = function () {
             var dataObject = {
+                id: $routeParams.skillId,
                 caption: this.SkillForm.caption,
                 description: this.SkillForm.description,
-                job:{id: $routeParams.skillId}
+                job:{id: $routeParams.jobId}
             };
+            console.log("save: " + dataObject);
 
             console.log("dataObject "+dataObject);
 

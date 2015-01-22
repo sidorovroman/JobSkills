@@ -39,7 +39,7 @@
                             <li>
 
                                 <sec:authorize var="loggedIn" access="isAuthenticated()">
-                                    <a href="/user/index"><sec:authentication property="principal.username"></sec:authentication></a>
+                                    <a href="#/user/info"><sec:authentication property="principal.username"></sec:authentication></a>
                                 </sec:authorize>
                                 <sec:authorize var="loggedIn" access="isAnonymous()">
                                     <a href="#/login">Вход</a>
