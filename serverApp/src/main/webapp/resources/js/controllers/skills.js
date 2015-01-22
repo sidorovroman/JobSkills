@@ -15,6 +15,9 @@
         $scope.edit = function (skill) {
             $location.path('/jobs/'+$routeParams.id+"/edit/" + skill.id);
         }
+        $scope.select = function (skill) {
+            $location.path('/jobs/'+$routeParams.id+"/"+skill.id);
+        }
     })
     app.controller("AddSkillCtrl", function ($scope, $location, $http, $routeParams) {
         $scope.SkillForm = {};

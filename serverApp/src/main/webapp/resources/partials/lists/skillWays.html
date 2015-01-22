@@ -1,4 +1,4 @@
-<div id="skills-list" xmlns="http://www.w3.org/1999/html">
+<div id="skill-ways-list" xmlns="http://www.w3.org/1999/html">
     <table>
         <thead>
         <tr>
@@ -6,9 +6,9 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="skill in skills" ng-click="select(skill)">
-            <td ng-click="select(skill)"> {{skill.caption}}
-                <div ng-click="edit(skill)">
+        <tr ng-repeat="way in ways">
+            <td> {{way.caption}}
+                <div ng-click="edit(way)">
                     <i class="btn-edit"></i>
                 </div>
             </td>

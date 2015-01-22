@@ -24,10 +24,6 @@
                 controller: "NewsListCtrl",
                 templateUrl:"/resources/partials/lists/news.html"
             }).
-            when("/skillWays", {
-                controller: "SkillWaysListCtrl",
-                templateUrl:"/resources/partials/lists/skillsWays.html"
-            }).
             when("/jobs/add", {
                 controller: "AddJobCtrl",
                 templateUrl:"/resources/partials/details/job.html"
@@ -47,6 +43,18 @@
             when('/jobs/:jobId/edit/:skillId', {
                 controller:"EditSkillCtrl",
                 templateUrl:'/resources/partials/details/skill.html'
+            }).
+            when('/jobs/:jobId/:skillId', {
+                controller:"SkillWaysListCtrl",
+                templateUrl:'/resources/partials/lists/skillWays.html'
+            }).
+            when('/jobs/:jobId/:skillId/add', {
+                controller:"AddSkillWaysCtrl",
+                templateUrl:'/resources/partials/details/skillWays.html'
+            }).
+            when('/jobs/:jobId/:skillId/:wayId', {
+                controller:"EditSkillWaysCtrl",
+                templateUrl:'/resources/partials/details/skillWays.html'
             }).
             when('/news/add', {
                 controller:"AddNewsCtrl",
