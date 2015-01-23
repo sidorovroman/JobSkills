@@ -104,8 +104,7 @@ public class RegistrationAndLoginController {
     con.setRequestMethod("GET");
     con.setRequestProperty("User-Agent", USER_AGENT);
     int responseCode = con.getResponseCode();
-    BufferedReader in = new BufferedReader(
-        new InputStreamReader(con.getInputStream()));
+    BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
     String inputLine;
     StringBuffer response = new StringBuffer();
     while ((inputLine = in.readLine()) != null) {
@@ -125,18 +124,15 @@ public class RegistrationAndLoginController {
     }
     SysUserDto dto = new SysUserDto();
     dto.setEmail(request.getParameter("email"));
-    dto.setPassword(passwordEncoder.encodePassword(request.getParameter("password"), saltSource.getSalt(new User(dto.getEmail(),request.getParameter("password"),"",null))));
+    dto.setPassword(passwordEncoder.encodePassword(request.getParameter("password"), saltSource.getSalt(new User(dto.getEmail(), request.getParameter("password"), "", null))));
     dto.setUserFullName(request.getParameter("userFullName"));
     dto.setSex(request.getParameter("sex"));
     dto.setPhone(request.getParameter("phone"));
     dto.setCountry(request.getParameter("country"));
     dto.setBirthday(Long.valueOf(request.getParameter("birthday")));
     dto.setCity(request.getParameter("city"));
-    try{
-      sysUserService.insert(dto);
-    } catch (Exception e){
-      return "error";
-    }
+    sysUserService.insert(dto);
+    sysUserService.getAuthentication();
     Authentication auth = provider.authenticate(new UsernamePasswordAuthenticationToken(dto.getEmail(), dto.getPassword()));
     SecurityContextHolder.getContext().setAuthentication(auth);
     return "redirect:/";

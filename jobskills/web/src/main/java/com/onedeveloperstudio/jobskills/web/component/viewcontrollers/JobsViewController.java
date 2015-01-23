@@ -3,11 +3,13 @@ package com.onedeveloperstudio.jobskills.web.component.viewcontrollers;
 import com.onedeveloperstudio.jobskills.common.dto.JobDto;
 import com.onedeveloperstudio.jobskills.server.service.JobService;
 import flexjson.JSONDeserializer;
+import org.hibernate.HibernateException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -27,11 +29,9 @@ public class JobsViewController {
   @Autowired
   private JobService service;
 
-  private JSONDeserializer<JobDto> deserializer = new JSONDeserializer<>();
-
   @RequestMapping("/list")
   @ResponseBody
-  public List<JobDto> getList() throws Exception {
+  public List<JobDto> getList(){
     List<JobDto> jobs = service.getAllParents();
     return jobs;
   }
@@ -53,8 +53,7 @@ public class JobsViewController {
 
   @RequestMapping(value = "/add", method = RequestMethod.POST)
   @ResponseBody
-  public JobDto addJob(HttpServletRequest request, HttpServletResponse response) throws Exception {
-    JobDto job = deserializer.deserialize(request.getReader(), JobDto.class);
+  public JobDto addJob(@RequestBody JobDto job) {
     if (job.getParent() != null && job.getParent().getId() == null) {
       job.setParent(null);
     }
@@ -64,8 +63,7 @@ public class JobsViewController {
 
   @RequestMapping(value = "/update", method = RequestMethod.PUT)
   @ResponseBody
-  public JobDto updateJob(HttpServletRequest request, HttpServletResponse response) throws Exception {
-    JobDto job = deserializer.deserialize(request.getReader(), JobDto.class);
+  public JobDto updateJob(@RequestBody JobDto job){
     if (job.getParent() != null && job.getParent().getId() == null) {
       job.setParent(null);
     }
@@ -79,6 +77,9 @@ public class JobsViewController {
     if(ex instanceof AccessDeniedException){
       System.out.println(ex.getLocalizedMessage());
       return "{error: 'Необходима авторизация'}";
+    } else if(ex instanceof HibernateException){
+      System.out.println(ex.getLocalizedMessage());
+      return "{error: 'Ошибка базы данных'}";
     }
     ex.printStackTrace();
     return "{error:" + ex.getLocalizedMessage() + "}";

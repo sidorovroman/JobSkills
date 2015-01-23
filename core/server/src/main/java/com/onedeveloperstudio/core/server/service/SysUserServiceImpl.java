@@ -9,6 +9,7 @@ import com.onedeveloperstudio.core.server.repository.UserRepository;
 import com.onedeveloperstudio.core.server.utils.MappingUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -65,10 +66,10 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUserDto> implements S
   }
 
   @Override
-  public SysUserDto authenticate() {
+  public SysUserDto getAuthentication() {
     Authentication auth = SecurityContextHolder.getContext().getAuthentication();
     if(auth.getPrincipal() instanceof String){
-      return new SysUserDto();
+     throw new AuthenticationServiceException("Необходима авторизация");
     }
     User regUser = (User) auth.getPrincipal();
     SysUserDto user = this.loadByEmail(regUser.getUsername());

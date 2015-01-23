@@ -10,6 +10,7 @@ import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -28,12 +29,9 @@ public class RequiredSkillViewController {
   @Autowired
   private RequiredSkillService service;
 
-  private JSONDeserializer<RequiredSkillDto> deserializer = new JSONDeserializer<>();
-  private JSONDeserializer<CommentaryDto> commentDeserializer = new JSONDeserializer<>();
-
   @RequestMapping("/list")
   @ResponseBody
-  public List<RequiredSkillDto> getList() throws Exception {
+  public List<RequiredSkillDto> getList(){
     List<RequiredSkillDto> requiredSkills = service.loadAll();
     return requiredSkills;
   }
@@ -61,23 +59,20 @@ public class RequiredSkillViewController {
 
   @RequestMapping(value = "/add", method = RequestMethod.POST)
   @ResponseBody
-  public RequiredSkillDto addRequiredSkill(HttpServletRequest request, HttpServletResponse response) throws Exception {
-    RequiredSkillDto requiredSkill = deserializer.deserialize(request.getReader(), RequiredSkillDto.class);
+  public RequiredSkillDto addRequiredSkill(@RequestBody RequiredSkillDto requiredSkill){
     requiredSkill = service.insert(requiredSkill);
     return requiredSkill;
   }
 
   @RequestMapping(value = "/update", method = RequestMethod.PUT)
   @ResponseBody
-  public RequiredSkillDto updateRequiredSkill(HttpServletRequest request, HttpServletResponse response) throws Exception {
-    RequiredSkillDto requiredSkill = deserializer.deserialize(request.getReader(), RequiredSkillDto.class);
+  public RequiredSkillDto updateRequiredSkill(@RequestBody RequiredSkillDto requiredSkill){
     requiredSkill = service.update(requiredSkill);
     return requiredSkill;
   }
 
-  @RequestMapping(value = "/comment/{id}", method = RequestMethod.POST)
-  public void comment(@PathVariable Long id, HttpServletRequest request, HttpServletResponse response) throws Exception {
-    CommentaryDto comment = commentDeserializer.deserialize(request.getReader());
+  @RequestMapping(value = "/comment/{id}", method = RequestMethod.PUT)
+  public void comment(@PathVariable Long id, @RequestBody CommentaryDto comment){
     service.comment(id, comment);
   }
 

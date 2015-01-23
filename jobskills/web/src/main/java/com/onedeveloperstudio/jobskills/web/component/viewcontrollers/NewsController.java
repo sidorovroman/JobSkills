@@ -17,6 +17,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -38,9 +39,6 @@ public class NewsController {
   private NewsService service;
   @Autowired
   private SysUserService sysUserService;
-
-  private JSONDeserializer<NewsDto> deserializer = new JSONDeserializer<>();
-  private JSONDeserializer<CommentaryDto> commentDeserializer = new JSONDeserializer<>();
 
   @PostConstruct
   private void init() {
@@ -72,11 +70,8 @@ public class NewsController {
 
   @RequestMapping(value = "/add", method = RequestMethod.POST)
   @ResponseBody
-  public NewsDto addNews(HttpServletRequest request, HttpServletResponse response) throws Exception {
-    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-    User regUser = (User) auth.getPrincipal();
-    SysUserDto user = sysUserService.loadByEmail(regUser.getUsername());
-    NewsDto news = deserializer.deserialize(request.getReader(), NewsDto.class);
+  public NewsDto addNews(@RequestBody NewsDto news){
+    SysUserDto user = sysUserService.getAuthentication();
     news.setAddDate(new Date().getTime());
     news.setAuthor(user);
     news = service.insert(news);
@@ -85,8 +80,7 @@ public class NewsController {
 
   @RequestMapping(value = "/update", method = RequestMethod.PUT)
   @ResponseBody
-  public NewsDto updateNews(HttpServletRequest request, HttpServletResponse response) throws Exception {
-    NewsDto news = deserializer.deserialize(request.getReader(), NewsDto.class);
+  public NewsDto updateNews(@RequestBody NewsDto news){
     news = service.update(news);
     return news;
   }
@@ -103,9 +97,8 @@ public class NewsController {
      return service.vote(id, VoteState.DOWN);
   }
 
-  @RequestMapping(value = "/comment/{id}", method = RequestMethod.POST)
-  public void comment(@PathVariable Long id, HttpServletRequest request, HttpServletResponse response) throws Exception {
-    CommentaryDto comment = commentDeserializer.deserialize(request.getReader());
+  @RequestMapping(value = "/comment/{id}", method = RequestMethod.PUT)
+  public void comment(@PathVariable Long id, @RequestBody CommentaryDto comment){
     service.comment(id, comment);
   }
 

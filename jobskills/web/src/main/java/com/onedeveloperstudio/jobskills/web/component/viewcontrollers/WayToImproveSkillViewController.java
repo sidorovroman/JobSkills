@@ -12,6 +12,7 @@ import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -31,9 +32,6 @@ import java.util.List;
 public class WayToImproveSkillViewController {
   @Autowired
   private WayToImproveSkillService service;
-
-  private JSONDeserializer<WayToImproveSkillDto> deserializer = new JSONDeserializer<>();
-  private JSONDeserializer<CommentaryDto> commentDeserializer = new JSONDeserializer<>();
 
   @PostConstruct
   private void init() {
@@ -72,19 +70,17 @@ public class WayToImproveSkillViewController {
 
   @RequestMapping(value = "/add", method = RequestMethod.POST)
   @ResponseBody
-  public WayToImproveSkillDto addWayToImproveSkill(HttpServletRequest request, HttpServletResponse response) throws Exception {
-    WayToImproveSkillDto wayToImproveSkill = deserializer.deserialize(request.getReader(), WayToImproveSkillDto.class);
+  public WayToImproveSkillDto addWayToImproveSkill(@RequestBody WayToImproveSkillDto wayToImproveSkill){
     wayToImproveSkill = service.insert(wayToImproveSkill);
     return wayToImproveSkill;
   }
 
   @RequestMapping(value = "/update", method = RequestMethod.PUT)
   @ResponseBody
-  public WayToImproveSkillDto updateWayToImproveSkill(HttpServletRequest request, HttpServletResponse response) throws Exception {
-    WayToImproveSkillDto wayToImproveSkill = deserializer.deserialize(request.getReader(), WayToImproveSkillDto.class);
+  public WayToImproveSkillDto updateWayToImproveSkill(@RequestBody WayToImproveSkillDto wayToImproveSkill){
     WayToImproveSkillDto existedWTIS = service.load(wayToImproveSkill.getId());
     if(wayToImproveSkill.getSkills() == null){
-      wayToImproveSkill.setSkills(new ArrayList<RequiredSkillDto>(existedWTIS.getSkills()));
+      wayToImproveSkill.setSkills(new ArrayList<>(existedWTIS.getSkills()));
     } else {
       if(!existedWTIS.getSkills().contains(wayToImproveSkill.getSkills().get(0))){
         wayToImproveSkill.getSkills().addAll(existedWTIS.getSkills());
@@ -94,9 +90,8 @@ public class WayToImproveSkillViewController {
     return wayToImproveSkill;
   }
 
-  @RequestMapping(value = "/comment/{id}", method = RequestMethod.POST)
-  public void comment(@PathVariable Long id, HttpServletRequest request, HttpServletResponse response) throws Exception {
-    CommentaryDto comment = commentDeserializer.deserialize(request.getReader());
+  @RequestMapping(value = "/comment/{id}", method = RequestMethod.PUT)
+  public void comment(@PathVariable Long id, @RequestBody CommentaryDto comment){
     service.comment(id, comment);
   }
 

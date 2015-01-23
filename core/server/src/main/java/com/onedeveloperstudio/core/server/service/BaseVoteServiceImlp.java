@@ -24,7 +24,7 @@ public class BaseVoteServiceImlp<D extends RatedDto> extends BaseServiceImpl<D> 
   @Transactional(readOnly = true)
   public D load(Long id) {
     D obj = super.load(id);
-    SysUserDto user = sysUserService.authenticate();
+    SysUserDto user = sysUserService.getAuthentication();
     sumsRating(obj, user);
     return obj;
   }
@@ -33,7 +33,7 @@ public class BaseVoteServiceImlp<D extends RatedDto> extends BaseServiceImpl<D> 
   @Transactional(readOnly = true)
   public List<D> loadAll() {
     List<D> result = super.loadAll();
-    SysUserDto user = sysUserService.authenticate();
+    SysUserDto user = sysUserService.getAuthentication();
     for (D obj : result) {
       sumsRating(obj, user);
     }
@@ -44,7 +44,7 @@ public class BaseVoteServiceImlp<D extends RatedDto> extends BaseServiceImpl<D> 
   @Secured("ROLE_USER")
   public D update(D dto) {
     D obj = super.update(dto);
-    SysUserDto user = sysUserService.authenticate();
+    SysUserDto user = sysUserService.getAuthentication();
     sumsRating(obj, user);
     return obj;
   }
@@ -54,7 +54,7 @@ public class BaseVoteServiceImlp<D extends RatedDto> extends BaseServiceImpl<D> 
   @Transactional
   public Integer vote(Long id, VoteState state) {
     D ratedObject = this.load(id);
-    SysUserDto user = sysUserService.authenticate();
+    SysUserDto user = sysUserService.getAuthentication();
     for (VoteDto vote : ratedObject.getVotes()) {
       if (vote.getUser().equals(user)) {
         return ratedObject.getRating();
