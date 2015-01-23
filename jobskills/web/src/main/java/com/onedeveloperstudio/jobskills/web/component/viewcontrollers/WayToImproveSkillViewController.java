@@ -3,6 +3,7 @@ package com.onedeveloperstudio.jobskills.web.component.viewcontrollers;
 import com.onedeveloperstudio.core.common.VoteState;
 import com.onedeveloperstudio.core.common.appobj.AppObjDict;
 import com.onedeveloperstudio.core.common.dto.CommentaryDto;
+import com.onedeveloperstudio.jobskills.common.dto.RequiredSkillDto;
 import com.onedeveloperstudio.jobskills.common.dto.WayToImproveSkillDto;
 import com.onedeveloperstudio.jobskills.server.service.WayToImproveSkillService;
 import flexjson.JSONDeserializer;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -80,6 +82,14 @@ public class WayToImproveSkillViewController {
   @ResponseBody
   public WayToImproveSkillDto updateWayToImproveSkill(HttpServletRequest request, HttpServletResponse response) throws Exception {
     WayToImproveSkillDto wayToImproveSkill = deserializer.deserialize(request.getReader(), WayToImproveSkillDto.class);
+    WayToImproveSkillDto existedWTIS = service.load(wayToImproveSkill.getId());
+    if(wayToImproveSkill.getSkills() == null){
+      wayToImproveSkill.setSkills(new ArrayList<RequiredSkillDto>(existedWTIS.getSkills()));
+    } else {
+      if(!existedWTIS.getSkills().contains(wayToImproveSkill.getSkills().get(0))){
+        wayToImproveSkill.getSkills().addAll(existedWTIS.getSkills());
+      }
+    }
     wayToImproveSkill = service.update(wayToImproveSkill);
     return wayToImproveSkill;
   }
