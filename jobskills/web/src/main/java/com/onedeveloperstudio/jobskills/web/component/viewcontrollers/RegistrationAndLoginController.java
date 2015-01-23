@@ -2,13 +2,17 @@ package com.onedeveloperstudio.jobskills.web.component.viewcontrollers;
 
 import com.onedeveloperstudio.core.common.dto.SysUserDto;
 import com.onedeveloperstudio.core.common.dto.ULoginUser;
+import com.onedeveloperstudio.core.common.dto.User;
 import com.onedeveloperstudio.core.server.service.SysUserService;
 import com.onedeveloperstudio.core.server.utils.MappingUtils;
 import flexjson.JSONDeserializer;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.authentication.dao.SaltSource;
+import org.springframework.security.authentication.encoding.PasswordEncoder;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -41,8 +45,13 @@ public class RegistrationAndLoginController {
   @Autowired
   private SysUserService sysUserService;
 
+  @Autowired
+  private PasswordEncoder passwordEncoder;
+  @Autowired
+  private SaltSource saltSource;
   private JSONDeserializer<ULoginUser> serializer = new JSONDeserializer<>();
 
+  @Qualifier("authenticationProvider")
   @Autowired
   private DaoAuthenticationProvider provider;
 
@@ -64,7 +73,7 @@ public class RegistrationAndLoginController {
       InputStream stream =  new ByteArrayInputStream(answer.getBytes());
       Reader reader = new InputStreamReader(stream);
       ULoginUser user = serializer.deserialize(reader, ULoginUser.class);
-      user.setPassword(DUMMY_PASSWORD);
+      user.setPassword(passwordEncoder.encodePassword(DUMMY_PASSWORD, saltSource.getSalt(new User(user.getEmail(),DUMMY_PASSWORD,"",null))));
       SysUserDto sysUserDto = MappingUtils.fromULoginUserToDto(user);
       SysUserDto dto = sysUserService.loadByEmail(user.getEmail());
       if (dto.getId() != null) {
@@ -116,7 +125,7 @@ public class RegistrationAndLoginController {
     }
     SysUserDto dto = new SysUserDto();
     dto.setEmail(request.getParameter("email"));
-    dto.setPassword(request.getParameter("password"));
+    dto.setPassword(passwordEncoder.encodePassword(request.getParameter("password"), saltSource.getSalt(new User(dto.getEmail(),request.getParameter("password"),"",null))));
     dto.setUserFullName(request.getParameter("userFullName"));
     dto.setSex(request.getParameter("sex"));
     dto.setPhone(request.getParameter("phone"));

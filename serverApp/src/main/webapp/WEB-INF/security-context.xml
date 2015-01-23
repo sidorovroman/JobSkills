@@ -2,6 +2,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:s="http://www.springframework.org/schema/security"
+       xmlns:p="http://www.springframework.org/schema/p"
        xsi:schemaLocation="http://www.springframework.org/schema/beans  http://www.springframework.org/schema/beans/spring-beans.xsd
           http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd">
 
@@ -33,8 +34,25 @@
     <s:logout logout-success-url="/"/>
     <s:remember-me/>
   </s:http>
+
+  <bean id="saltSource" class="org.springframework.security.authentication.dao.ReflectionSaltSource"
+        p:userPropertyToUse="username"/>
+
+  <bean id="passwordEncoder" class="org.springframework.security.authentication.encoding.Md5PasswordEncoder"/>
+
+  <bean id="customAuthenticationProvider" class="com.onedeveloperstudio.core.server.security.CustomAuthenticationProvider">
+    <property name="userDetailsService" ref="userDetailsService"/>
+    <property name="passwordEncoder" ref="passwordEncoder"/>
+    <property name="saltSource" ref="saltSource"/>
+  </bean>
+
+  <bean id="authenticationProvider" class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
+    <property name="userDetailsService" ref="userDetailsService"/>
+    <property name="passwordEncoder" ref="passwordEncoder"/>
+    <property name="saltSource" ref="saltSource"/>
+  </bean>
+
   <s:authentication-manager>
-    <s:authentication-provider user-service-ref="userDetailsService">
-    </s:authentication-provider>
+    <s:authentication-provider ref="customAuthenticationProvider"/>
   </s:authentication-manager>
 </beans>
