@@ -24,7 +24,7 @@
                 addDate:  new Date().getTime(),
                 grade:  this.SkillWaysForm.grade,
                 resourceType:  this.SkillWaysForm.resourceType,
-                skills:  this.SkillWaysForm.skills
+                skills: [{id:this.SkillWaysForm.skills}]
             };
 
             var responsePromise = $http.post("/wayToImproveSkill/add", dataObject, {});
@@ -57,7 +57,8 @@
                 link: this.SkillWaysForm.link,
                 grade:  this.SkillWaysForm.grade,
                 resourceType:  this.SkillWaysForm.resourceType,
-                skills:  this.SkillWaysForm.skills
+                skills: [{id:this.SkillWaysForm.skills}]
+
             };
 
             var responsePromise = $http.put("/wayToImproveSkill/update", dataObject);
