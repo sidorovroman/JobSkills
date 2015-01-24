@@ -159,7 +159,7 @@
                              referencedTableName="waytoimproveskill"/>
     <addForeignKeyConstraint baseColumnNames="skill_id" baseTableName="requiredskill_waytoimproveskill"
                              constraintName="FK_D0141GLM8VX5WAHVM2X1XIJ4P" referencedColumnNames="id"
-                             referencedTableName="waytoimproveskill"/>
+                             referencedTableName="requiredskill"/>
     <addForeignKeyConstraint baseColumnNames="head_id" baseTableName="commentary"
                              constraintName="FK_E3EYNFFOHOKTU4FM4X1S5YLHU" referencedColumnNames="id"
                              referencedTableName="commentary"/>
@@ -168,7 +168,7 @@
                              referencedTableName="jobs"/>
     <addForeignKeyConstraint baseColumnNames="ways_id" baseTableName="requiredskill_waytoimproveskill"
                              constraintName="FK_FGG7QR4047MN2W2TMHFPMQB26" referencedColumnNames="id"
-                             referencedTableName="requiredskill"/>
+                             referencedTableName="waytoimproveskill"/>
     <addForeignKeyConstraint baseColumnNames="requiredskill_id" baseTableName="requiredskill_commentary"
                              constraintName="FK_G597SOJGQSNFQY02UTL72KMA" referencedColumnNames="id"
                              referencedTableName="requiredskill"/>

@@ -13,6 +13,7 @@ public class JobDto extends BaseDto {
   private String description;
   private JobDto parent;
   private List<JobDto> children;
+  private List<RequiredSkillDto> skills;
 
   public String getCaption() {
     return caption;
@@ -44,5 +45,13 @@ public class JobDto extends BaseDto {
 
   public void setDescription(String description) {
     this.description = description;
+  }
+
+  public List<RequiredSkillDto> getSkills() {
+    return skills;
+  }
+
+  public void setSkills(List<RequiredSkillDto> skills) {
+    this.skills = skills;
   }
 }

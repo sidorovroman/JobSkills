@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
+import java.util.Map;
 
 /**
  * User: y.zakharov
@@ -34,6 +35,13 @@ public class JobsViewController {
   public List<JobDto> getList(){
     List<JobDto> jobs = service.getAllParents();
     return jobs;
+  }
+
+  @RequestMapping("/allJobs")
+  @ResponseBody
+  public List<JobDto> getJobsWithSkills(){
+    List<JobDto> all = service.loadAll();
+    return all;
   }
 
   @RequestMapping(value = "/{id}", method = RequestMethod.GET)

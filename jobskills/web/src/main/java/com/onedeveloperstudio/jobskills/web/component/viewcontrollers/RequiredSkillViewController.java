@@ -60,6 +60,9 @@ public class RequiredSkillViewController {
   @RequestMapping(value = "/add", method = RequestMethod.POST)
   @ResponseBody
   public RequiredSkillDto addRequiredSkill(@RequestBody RequiredSkillDto requiredSkill){
+    if(requiredSkill.getWays().size()==1 && requiredSkill.getWays().get(0).getCaption() == null){
+      requiredSkill.setWays(null);
+    }
     requiredSkill = service.insert(requiredSkill);
     return requiredSkill;
   }
