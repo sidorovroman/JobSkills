@@ -1,5 +1,8 @@
 package com.onedeveloperstudio.jobskills.common.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.onedeveloperstudio.core.common.dto.CommentaryDto;
 import com.onedeveloperstudio.core.common.dto.RatedDto;
 import com.onedeveloperstudio.core.common.dto.VoteDto;
@@ -11,16 +14,19 @@ import java.util.List;
  * Date: 01.08.14
  */
 public class RequiredSkillDto extends RatedDto {
+  @JsonIgnore
   private JobDto job;
   private String caption;
   private String description;
   private List<WayToImproveSkillDto> ways;
   private List<CommentaryDto> comments;
 
+  @JsonIgnore
   public JobDto getJob() {
     return job;
   }
 
+  @JsonProperty("job")
   public void setJob(JobDto job) {
     this.job = job;
   }

@@ -2,6 +2,11 @@ dependencies {
   compile group: 'org.springframework', name: 'spring-beans', version: rootProject.ext.springVersion
   compile group: 'xerces', name: 'xercesImpl', version: '2.11.0'
   compile group: 'net.sf.dozer', name: 'dozer', version: '5.4.0'
+  compile 'com.fasterxml.jackson.core:jackson-core:2.5.0'
+  compile 'com.fasterxml.jackson.core:jackson-annotations:2.5.0'
+  compile 'com.fasterxml.jackson.core:jackson-databind:2.5.0'
+  compile 'com.fasterxml.jackson.datatype:jackson-datatype-joda:2.5.0'
+  compile 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.5.0'
 
   compile group: 'org.springframework.security', name: 'spring-security-core', version: rootProject.ext.springSecurityVersion
   compile group: 'org.springframework.security', name: 'spring-security-config', version: rootProject.ext.springSecurityVersion
