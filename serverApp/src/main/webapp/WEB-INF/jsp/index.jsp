@@ -17,7 +17,7 @@
     <link rel="stylesheet" type="text/less" href="<c:url value="/resources/styles/variables.less" />">
     <link rel="stylesheet" type="text/less" href="<c:url value="/resources/styles/bootswatch.less" />">
     <link rel="stylesheet" type="text/css" href="<c:url value="/resources/styles/main.css" />">
-
+    <link rel="stylesheet" href="<c:url value="/resources/styles/bootstrap-multiselect.css" />">
 
 </head>
 <body>
@@ -59,6 +59,9 @@
         </div>
     </div>
 
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script src="<c:url value="/resources/libs/bootstrap-multiselect.js" />"></script>
 
 <script src="//ulogin.ru/js/ulogin.js"></script>
 <script src="<c:url value="/resources/libs/bower_components/angular/angular.js" />"></script>

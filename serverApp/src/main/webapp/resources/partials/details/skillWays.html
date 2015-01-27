@@ -26,16 +26,20 @@
             <div class="form-group">
                 <label for="inputSkillWaySkills" class="col-lg-2 control-label">skills</label>
                 <div class="col-lg-10">
-                    <input type="text" ng-model="SkillWaysForm.skills" class="form-control" id="inputSkillWaySkills" placeholder="пока только 1 скилл id">
+                    <select id="inputSkillWaySkills" multiple class="form-control" ng-model="SkillWaysForm.skills">
+                        <optgroup ng-repeat="job in allJobs" label="{{job.caption}}">
+                            <option ng-repeat="skill in job.skills" value="{{skill.id}}">{{skill.caption}}</option>
+                        </optgroup>
+                    </select>
                 </div>
             </div>
             <div class="form-group">
                 <label for="selectSkillWayGrade" class="col-lg-2 control-label">grade</label>
                 <div class="col-lg-10">
                     <select ng-model="SkillWaysForm.grade"  class="form-control" id="selectSkillWayGrade">
-                        <option value="GRADE_1">1</option>
-                        <option value="GRADE_2">2</option>
-                        <option value="GRADE_3">3</option>
+                        <option value="GRADE_1">Высокий уровень</option>
+                        <option value="GRADE_2">Средний уровень</option>
+                        <option value="GRADE_3">Низкий уровень</option>
                     </select>
                 </div>
             </div>

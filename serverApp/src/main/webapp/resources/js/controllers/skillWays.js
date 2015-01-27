@@ -14,7 +14,29 @@
             $location.path('/jobs/'+$routeParams.jobId+"/"+$routeParams.skillId+"/add");
         }
     })
+
+    function prepareSkillsToSend(skillsId) {
+        var skillData =[];
+        for(var i in skillsId){
+            skillData.push({"id":skillsId[i]});
+        }
+        return skillData;
+    }
+
     app.controller("AddSkillWaysCtrl", function ($scope, $location, $http, $routeParams) {
+        $scope.allJobs = [];
+        $http.get('/jobs/allJobs').
+            success(function (data) {
+                $scope.allJobs = data;
+                $scope.allJobs = data;
+                setTimeout(function(){//todo dirty hack, multiselect применяется раньше чем отрисовывается select,пока застрял на этом моменте
+                    $("#inputSkillWaySkills").multiselect();
+                },1000);
+            }).
+            error(function () {
+                console.log("Fail load all jobs");
+            });
+
         $scope.SkillWaysForm = {};
         $scope.save = function () {
             var dataObject = {
@@ -24,7 +46,7 @@
                 addDate:  new Date().getTime(),
                 grade:  this.SkillWaysForm.grade,
                 resourceType:  this.SkillWaysForm.resourceType,
-                skills: [{id:this.SkillWaysForm.skills}]
+                skills: prepareSkillsToSend(this.SkillWaysForm.skills)
             };
 
             var responsePromise = $http.post("/wayToImproveSkill/add", dataObject, {});
@@ -38,6 +60,7 @@
         }
     });
     app.controller("EditSkillWaysCtrl", function ($scope, $location, $http, $routeParams) {
+
         $scope.SkillForm = {};
         $http.get('/wayToImproveSkill/' + $routeParams.wayId).
             success(function (data) {
