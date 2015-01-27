@@ -5,64 +5,81 @@
     ]).
     config(['$routeProvider', function($routeProvider) {
         $routeProvider.
+
             when("/", {templateUrl: "/resources/partials/content/main.html"}).
-            when("/login", {templateUrl: "/resources/partials/content/login.html"}).
-            when("/about", {templateUrl: "/resources/partials/content/about.html"}).
-            when("/user/info", {
-                controller: "UserInfoCtrl",
-                templateUrl:"/resources/partials/content/userInfo.html",
-            }).
+
+            /* ============  jobs  ============ */
+
             when("/jobs", {
                 controller: "JobsListCtrl",
                 templateUrl:"/resources/partials/lists/jobs.html"
-            }).
-            when("/dashboard", {
-                controller: "DashboardListCtrl",
-                templateUrl:"/resources/partials/content/dashboard.html"
-            }).
-            when("/news", {
-                controller: "NewsListCtrl",
-                templateUrl:"/resources/partials/lists/news.html"
             }).
             when("/jobs/add", {
                 controller: "AddJobCtrl",
                 templateUrl:"/resources/partials/details/job.html"
             }).
-            when('/jobs/edit/:id', {
+            when('/jobs/:id/edit', {
                 controller:"EditJobCtrl",
                 templateUrl:'/resources/partials/details/job.html'
             }).
-            when('/jobs/:id', {
+
+            /* ============  skills  ============ */
+
+            when('/jobs/:id/skills', {
                 controller:"SkillsListCtrl",
                 templateUrl:'/resources/partials/lists/skills.html'
             }).
-            when('/jobs/:id/add', {
+            when('/jobs/:id/skills/add', {
                 controller:"AddSkillCtrl",
                 templateUrl:'/resources/partials/details/skill.html'
             }).
-            when('/jobs/:jobId/edit/:skillId', {
+            when('/jobs/:jobId/skills/:skillId/edit', {
                 controller:"EditSkillCtrl",
                 templateUrl:'/resources/partials/details/skill.html'
             }).
-            when('/jobs/:jobId/:skillId', {
+
+            /* ============  skill ways  ============ */
+
+            when('/jobs/:jobId/skills/:skillId/ways', {
                 controller:"SkillWaysListCtrl",
                 templateUrl:'/resources/partials/lists/skillWays.html'
             }).
-            when('/jobs/:jobId/:skillId/add', {
+            when('/jobs/:jobId/skills/:skillId/ways/add', {
                 controller:"AddSkillWaysCtrl",
                 templateUrl:'/resources/partials/details/skillWays.html'
             }).
-            when('/jobs/:jobId/:skillId/:wayId', {
+            when('/jobs/:jobId/skills/:skillId/ways/:wayId/edit', {
                 controller:"EditSkillWaysCtrl",
-                templateUrl:'/resources/partials/details/skillWays.html'
+                templateUrl:'/resources/partials/list/skillWays.html'
+            }).
+
+            /* ============  news  ============ */
+
+            when("/news", {
+                controller: "NewsListCtrl",
+                templateUrl:"/resources/partials/lists/news.html"
             }).
             when('/news/add', {
                 controller:"AddNewsCtrl",
                 templateUrl:'/resources/partials/details/news.html'
             }).
-            when('/news/edit/:id', {
+            when('/news/:id/edit', {
                 controller:"EditNewsCtrl",
                 templateUrl:'/resources/partials/details/news.html'
+            }).
+
+            /* ============  others  ============ */
+
+            when("/login", {templateUrl: "/resources/partials/content/login.html"}).
+            when("/about", {templateUrl: "/resources/partials/content/about.html"}).
+
+            when("/user/info", {
+                controller: "UserInfoCtrl",
+                templateUrl:"/resources/partials/content/userInfo.html"
+            }).
+            when("/dashboard", {
+                controller: "DashboardListCtrl",
+                templateUrl:"/resources/partials/content/dashboard.html"
             }).
 
             otherwise({redirectTo: '/'});

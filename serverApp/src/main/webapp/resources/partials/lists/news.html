@@ -4,7 +4,7 @@
     <div class="post" ng-repeat="info in news">
         <h1>
             <a href="#">{{info.caption}}</a>
-            <a href="#/news/edit/{{info.id}}"><i class="btn-edit"></i></a>
+            <a href="#/news/{{info.id}}/edit"><i class="btn-edit"></i></a>
             <span class="date">{{info.addDate|date:'dd MMMM HH:mm'}}</span>
 
         </h1>

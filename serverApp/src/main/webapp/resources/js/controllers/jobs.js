@@ -11,7 +11,7 @@
             });
 
         $scope.select = function (job) {
-            $location.path('/jobs/'+job.id);
+            $location.path('/jobs/'+job.id + '/skills');
         }
     });
     app.controller("AddJobCtrl", function ($scope, $location, $http) {

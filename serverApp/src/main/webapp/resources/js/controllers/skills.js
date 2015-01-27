@@ -10,13 +10,13 @@
                 alert("Fail");
             });
         $scope.add = function () {
-            $location.path('/jobs/'+$routeParams.id+"/add");
+            $location.path('/jobs/' + $routeParams.id + "/skills/add");
         }
         $scope.edit = function (skill) {
-            $location.path('/jobs/'+$routeParams.id+"/edit/" + skill.id);
+            $location.path('/jobs/' + $routeParams.id + "/skills/" + skill.id + "/edit");
         }
         $scope.select = function (skill) {
-            $location.path('/jobs/'+$routeParams.id+"/"+skill.id);
+            $location.path('/jobs/' + $routeParams.id + "/skills/" + skill.id + '/ways');
         }
     })
     app.controller("AddSkillCtrl", function ($scope, $location, $http, $routeParams) {

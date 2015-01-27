@@ -11,7 +11,7 @@
                 alert("Fail");
             });
         $scope.add = function () {
-            $location.path('/jobs/'+$routeParams.jobId+"/"+$routeParams.skillId+"/add");
+            $location.path('/jobs/'+$routeParams.jobId+"/skills/"+$routeParams.skillId+"/ways/add");
         }
     })
 

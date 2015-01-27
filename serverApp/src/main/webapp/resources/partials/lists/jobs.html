@@ -8,7 +8,7 @@
         <tbody>
         <tr ng-repeat="job in jobs" ng-click="select(job)">
             <td>{{job.caption}}
-                <a href="#/jobs/edit/{{job.id}}">
+                <a href="#/jobs/{{job.id}}/edit">
                     <i class="btn-edit"></i>
                 </a>
             </td>
