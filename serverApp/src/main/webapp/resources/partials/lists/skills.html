@@ -1,18 +1,26 @@
-<div id="skills-list" xmlns="http://www.w3.org/1999/html">
-    <table>
-        <thead>
-        <tr>
-            <th>Наименование <div ng-click="add()" class="btn-add" >+</div></th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat="skill in skills" ng-click="select(skill)">
-            <td ng-click="select(skill)"> {{skill.caption}}
-                <div ng-click="edit(skill)">
-                    <i class="btn-edit"></i>
-                </div>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+<div id="job-container">
+    <h1 class="job-name">{{job.caption}}</h1>
+    <span class="description-title">Описание</span>
+    <h1 class="job-description">{{job.description}}</h1>
+    <h1 class="skills-title">Необходимые навыки</h1>
+
+    <div id="skills-list" xmlns="http://www.w3.org/1999/html">
+        <table>
+            <thead>
+            <tr>
+                <th>Наименование <div ng-click="add()" class="btn-add" >+</div></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="skill in skills" ng-click="select(skill)">
+                <td ng-click="select(skill)">
+                    <div ng-click="edit(skill)">
+                        <span>{{skill.caption}}</span>
+                        <i class="btn-edit"></i>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>

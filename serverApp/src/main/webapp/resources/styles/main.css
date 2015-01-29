@@ -196,11 +196,31 @@ body {
 /* ==========================================
                  jobs,skills, skillWays
    ========================================== */
+#job-container .job-name {
+  color: #1a88eb;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+#job-container .description-title {
+  color: #5b9eb7;
+  font-size: 16px;
+  text-decoration: underline;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+#job-container .job-description {
+  color: #56585d;
+  font-size: 16px;
+}
+#job-container .skills-title {
+  color: #81899b;
+  font-size: 16px;
+}
 #jobs-list table,
 #skills-list table,
 #skill-ways-list table {
   background: #fff;
-  margin: 30px  auto;
   width: 609px;
   -webkit-border-top-right-radius: 3px;
   -webkit-border-bottom-right-radius: 3px;
