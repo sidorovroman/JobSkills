@@ -6,6 +6,7 @@ import com.onedeveloperstudio.core.common.dto.SysUserDto;
 import com.onedeveloperstudio.core.common.dto.VoteDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
@@ -33,7 +34,12 @@ public class BaseVoteServiceImlp<D extends RatedDto> extends BaseServiceImpl<D> 
   @Transactional(readOnly = true)
   public List<D> loadAll() {
     List<D> result = super.loadAll();
-    SysUserDto user = sysUserService.getAuthentication();
+    SysUserDto user = null;
+    try{
+      user = sysUserService.getAuthentication();
+    }catch (AuthenticationServiceException e){
+      //Норма, неавторизированный пользователь
+    }
     for (D obj : result) {
       sumsRating(obj, user);
     }

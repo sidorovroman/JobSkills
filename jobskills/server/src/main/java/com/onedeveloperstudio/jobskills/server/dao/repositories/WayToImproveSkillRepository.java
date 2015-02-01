@@ -10,5 +10,5 @@ import java.util.List;
  * Date: 01.08.14
  */
 public interface WayToImproveSkillRepository  extends JpaRepository<WayToImproveSkill, Long> {
-  List<WayToImproveSkill> findAllBySkillId(Long skillId);
+  List<WayToImproveSkill> findAllBySkillsId(Long skillId);
 }

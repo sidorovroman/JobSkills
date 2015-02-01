@@ -29,7 +29,7 @@ public class WayToImproveSkill extends BaseEntity {
   private GRADE grade;
   private String caption;
   private String description;
-  private List<RequiredSkill> skill;
+  private List<RequiredSkill> skills;
   private String link;
   private ResourceType resourceType;
   private Long addDate;
@@ -57,15 +57,15 @@ public class WayToImproveSkill extends BaseEntity {
 
   @ManyToMany
   @JoinTable(name = "requiredskill_waytoimproveskill", joinColumns = {
-      @JoinColumn(name = "ways_id", nullable = false, updatable = false)},
+      @JoinColumn(name = "ways_id", nullable = false, updatable = true)},
       inverseJoinColumns = {@JoinColumn(name = "skill_id",
-          nullable = false, updatable = false)})
-  public List<RequiredSkill> getSkill() {
-    return skill;
+          nullable = false, updatable = true)})
+  public List<RequiredSkill> getSkills() {
+    return skills;
   }
 
-  public void setSkill(List<RequiredSkill> skill) {
-    this.skill = skill;
+  public void setSkills(List<RequiredSkill> skills) {
+    this.skills = skills;
   }
 
   public String getLink() {

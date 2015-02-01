@@ -18,6 +18,7 @@ public class RequiredSkillDto extends RatedDto {
   private JobDto job;
   private String caption;
   private String description;
+  @JsonIgnore
   private List<WayToImproveSkillDto> ways;
   private List<CommentaryDto> comments;
 
@@ -39,10 +40,12 @@ public class RequiredSkillDto extends RatedDto {
     this.caption = caption;
   }
 
+  @JsonIgnore
   public List<WayToImproveSkillDto> getWays() {
     return ways;
   }
 
+  @JsonProperty("ways")
   public void setWays(List<WayToImproveSkillDto> ways) {
     this.ways = ways;
   }
