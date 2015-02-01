@@ -11,9 +11,10 @@
             });
 
         $scope.select = function (job) {
-            $location.path('/jobs/'+job.id + '/skills');
+            $location.path('/jobs/'+job.id);
         }
     });
+
     app.controller("AddJobCtrl", function ($scope, $location, $http) {
         $scope.JobsForm = {};
         $scope.save = function () {
@@ -27,16 +28,17 @@
                 }
             };
 
-            var responsePromise = $http.post("/jobs/add", dataObject, {});
-            responsePromise.success(function (dataFromServer, status, headers, config) {
-                console.log("add job success");
-                $location.path('/jobs');
-            });
-            responsePromise.error(function (data, status, headers, config) {
-                console.log("Submitting form failed!");
-            });
+                $http.post("/jobs/add", dataObject).
+                    success(function (dataFromServer, status, headers, config) {
+                        console.log("add job success");
+                        $location.path('/jobs');
+                    }).
+                    error(function (response, status) {
+                        alert(response);
+                    });
         }
     });
+
     app.controller("EditJobCtrl", function ($scope, $location, $http, $routeParams) {
         $scope.JobsForm = {};
         console.log("try to edit");
@@ -73,4 +75,29 @@
         }
     });
 
+    app.controller("JobCtrl", function ($scope, $location, $http, $routeParams) {
+        $http.get('/jobs/' + $routeParams.jobId).
+            success(function (data) {
+                $scope.job = data;
+            }).
+            error(function () {
+                alert("Fail");
+            });
+        $http.get('/requiredSkill/' + $routeParams.jobId + '/list').
+            success(function (data) {
+                $scope.skills = data;
+            }).
+            error(function () {
+                alert("Fail");
+            });
+        $scope.add = function () {
+            $location.path('/jobs/' + $routeParams.jobId + "/skills/add");
+        };
+        $scope.edit = function (skill) {
+            $location.path('/jobs/' + $routeParams.jobId + "/skills/" + skill.id + "/edit");
+        };
+        $scope.select = function (skill) {
+            $location.path('/jobs/' + $routeParams.jobId + "/skills/" + skill.id + '/ways');
+        };
+    });
 })();

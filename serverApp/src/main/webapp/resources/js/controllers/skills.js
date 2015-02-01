@@ -1,31 +1,6 @@
 (function () {
     var app = angular.module('skills', []);
 
-    app.controller("SkillsListCtrl", function ($scope, $location, $http, $routeParams) {
-        $http.get('/jobs/' + $routeParams.id).
-            success(function (data) {
-                $scope.job = data;
-            }).
-            error(function () {
-                alert("Fail");
-            });
-        $http.get('/requiredSkill/' + $routeParams.id + '/list').
-            success(function (data) {
-                $scope.skills = data;
-            }).
-            error(function () {
-                alert("Fail");
-            });
-        $scope.add = function () {
-            $location.path('/jobs/' + $routeParams.id + "/skills/add");
-        }
-        $scope.edit = function (skill) {
-            $location.path('/jobs/' + $routeParams.id + "/skills/" + skill.id + "/edit");
-        }
-        $scope.select = function (skill) {
-            $location.path('/jobs/' + $routeParams.id + "/skills/" + skill.id + '/ways');
-        }
-    })
     app.controller("AddSkillCtrl", function ($scope, $location, $http, $routeParams) {
         $scope.SkillForm = {};
         $scope.save = function () {

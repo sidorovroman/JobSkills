@@ -6,7 +6,9 @@
     config(['$routeProvider', function($routeProvider) {
         $routeProvider.
 
-            when("/", {templateUrl: "/resources/partials/content/main.html"}).
+            when("/", {
+                templateUrl: "/resources/partials/content/main.html"
+            }).
 
             /* ============  jobs  ============ */
 
@@ -14,21 +16,21 @@
                 controller: "JobsListCtrl",
                 templateUrl:"/resources/partials/lists/jobs.html"
             }).
-            when("/jobs/add", {
+            when('/jobs/:jobId', {
+                controller:"JobCtrl",
+                templateUrl:'/resources/partials/info/job.html'
+            }).
+            when("/addJob", {
                 controller: "AddJobCtrl",
                 templateUrl:"/resources/partials/details/job.html"
             }).
-            when('/jobs/:id/edit', {
+            when('/editJob/:id', {
                 controller:"EditJobCtrl",
                 templateUrl:'/resources/partials/details/job.html'
             }).
 
             /* ============  skills  ============ */
 
-            when('/jobs/:id/skills', {
-                controller:"SkillsListCtrl",
-                templateUrl:'/resources/partials/lists/skills.html'
-            }).
             when('/jobs/:id/skills/add', {
                 controller:"AddSkillCtrl",
                 templateUrl:'/resources/partials/details/skill.html'

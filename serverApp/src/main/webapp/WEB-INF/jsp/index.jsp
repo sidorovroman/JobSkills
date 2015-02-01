@@ -70,6 +70,7 @@
 <script src="<c:url value="/resources/js/controllers/skills.js" />"></script>
 <script src="<c:url value="/resources/js/controllers/skillWays.js" />"></script>
 <script src="<c:url value="/resources/js/controllers/news.js" />"></script>
+<script src="<c:url value="/resources/js/controllers/userInfo.js" />"></script>
 <script src="<c:url value="/resources/js/controllers/controllers.js" />"></script>
 <script src="<c:url value="/resources/js/app.js" />"></script>
 </body>

@@ -2,13 +2,13 @@
     <table>
         <thead>
         <tr>
-            <th>Наименование <a href="#/jobs/add" class="btn-add" >+</a></th>
+            <th>Наименование <a href="#/addJob" class="btn-add" >+</a></th>
         </tr>
         </thead>
         <tbody>
         <tr ng-repeat="job in jobs" ng-click="select(job)">
             <td>{{job.caption}}
-                <a href="#/jobs/{{job.id}}/edit">
+                <a href="#/editJobs/{{job.id}}">
                     <i class="btn-edit"></i>
                 </a>
             </td>

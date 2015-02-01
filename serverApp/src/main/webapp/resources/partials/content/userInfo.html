@@ -1,5 +1,5 @@
 <div id="reg-form">
-    <form name="userInfoForm" ng-controller="UserInfo" class=" form-horizontal auth-col" >
+    <form name="userInfoForm" class=" form-horizontal auth-col" >
 
         <fieldset>
             <legend>Данные пользователя</legend>
@@ -16,21 +16,21 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="inputLogin" class="col-lg-2 control-label">Повторите пароль</label>
+                <label for="inputReLogin" class="col-lg-2 control-label">Повторите пароль</label>
                 <div class="col-lg-10">
-                    <input name="pass2"     ng-model="info.pass2" required type="text" class="form-control" id="inputLogin">
+                    <input name="pass2"     ng-model="info.pass2" required type="text" class="form-control" id="inputReLogin">
                 </div>
             </div>
             <div class="form-group">
-                <label for="inputLogin" class="col-lg-2 control-label">Ф.И.О.</label>
+                <label for="inputFio" class="col-lg-2 control-label">Ф.И.О.</label>
                 <div class="col-lg-10">
-                    <input name="fio"       ng-model="info.fio" required type="text" class="form-control" id="inputLogin">
+                    <input name="fio"       ng-model="info.fio" required type="text" class="form-control" id="inputFio">
                 </div>
             </div>
             <div class="form-group">
-                <label for="inputLogin" class="col-lg-2 control-label">Пол</label>
+                <label for="inputSex" class="col-lg-2 control-label">Пол</label>
                 <div class="col-lg-10">
-                    <input name="sex"       ng-model="info.sex" required type="text" class="form-control" id="inputLogin">
+                    <input name="sex"       ng-model="info.sex" required type="text" class="form-control" id="inputSex">
                 </div>
             </div>
             <div class="form-group">
@@ -40,19 +40,21 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="inputLogin" class="col-lg-2 control-label">Никнейм</label>
+                <label for="inputName" class="col-lg-2 control-label">Никнейм</label>
                 <div class="col-lg-10">
-                    <input name="supername" ng-model="info.supername" required type="text" class="form-control" id="inputLogin">
+                    <input name="supername" ng-model="info.supername" required type="text" class="form-control" id="inputName">
                 </div>
             </div>
             <div class="form-group">
-                <label for="inputLogin" class="col-lg-2 control-label">Эл.почта</label>
+                <label for="inputMail" class="col-lg-2 control-label">Эл.почта</label>
                 <div class="col-lg-10">
-                    <input name="email" ng-model="info.email"   required type="text" class="form-control" id="inputLogin">
+                    <input name="email" ng-model="info.email"   required type="text" class="form-control" id="inputMail">
                 </div>
             </div>
             <div class="form-group">
-                <div class="col-lg-10 col-lg-offset-10">
+                <div class="col-lg-10 col-lg-offset-3">
+                    <button type="submit" class="btn  btn-default btn-exit" ng-click="logout()">Выход</button>
+
                     <button type="submit" class="btn btn-primary btn-save" ng-click="save(info, userInfoForm)">Сохранить</button>
                 </div>
             </div>
