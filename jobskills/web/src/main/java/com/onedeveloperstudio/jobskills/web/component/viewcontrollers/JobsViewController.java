@@ -84,12 +84,12 @@ public class JobsViewController {
   public String handleAllException(Exception ex) {
     if(ex instanceof AccessDeniedException){
       System.out.println(ex.getLocalizedMessage());
-      return "{error: 'Необходима авторизация'}";
+      return "{\"error\":\"" + ex.getLocalizedMessage() + "\"}";
     } else if(ex instanceof HibernateException){
       System.out.println(ex.getLocalizedMessage());
-      return "{error: 'Ошибка базы данных'}";
+      return "{\"error\":\"" + ex.getLocalizedMessage() + "\"}";
     }
     ex.printStackTrace();
-    return "{error:" + ex.getLocalizedMessage() + "}";
+    return "{\"error\":\"" + ex.getLocalizedMessage() + "\"}";
   }
 }
