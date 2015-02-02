@@ -30,12 +30,13 @@
 
                 $http.post("/jobs/add", dataObject).
                     success(function (dataFromServer, status, headers, config) {
-                        console.log("add job success");
-                        $location.path('/jobs');
-                    }).
-                    error(function (response, status) {
-                        alert(response);
-                    });
+                        if(dataFromServer.error==null){
+                            console.log("add job success");
+                            $location.path('/jobs');
+                        }else{
+                            alert(dataFromServer.error);
+                        }
+                    })
         }
     });
 
