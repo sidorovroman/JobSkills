@@ -31,7 +31,7 @@
                   authentication-failure-url="/?login_error=1"
                   default-target-url="/"/>
     <s:http-basic/>
-    <s:logout logout-success-url="/"/>
+    <s:logout logout-url="/users/logout" logout-success-url="/"/>
     <s:remember-me/>
   </s:http>
 
