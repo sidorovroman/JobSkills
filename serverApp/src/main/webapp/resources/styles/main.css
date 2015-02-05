@@ -44,7 +44,7 @@ body {
   background: #FFF;
 }
 #main .box .content {
-  padding: 20px 86px 0;
+  padding: 20px 48px 0 97px;
 }
 #main .box .left-panel {
   position: fixed;
@@ -225,7 +225,29 @@ body {
   color: #81899b;
   font-size: 16px;
 }
-#jobs-list table,
+#jobs-list {
+  padding: 0 48px 0 41px;
+}
+#jobs-list .btn-add,
+#jobs-list .btn-edit {
+  text-align: center;
+  height: 20px;
+  width: 20px;
+  border-radius: 10px;
+  background: #07c507;
+  float: right;
+  text-decoration: none;
+  color: #FFF;
+  cursor: pointer;
+}
+#jobs-list .btn-add:hover,
+#jobs-list .btn-edit:hover {
+  opacity: 0.6;
+}
+#jobs-list .btn-edit {
+  background: url("../img/btn-edit.png") no-repeat;
+  background-size: cover;
+}
 #skills-list table,
 #skill-ways-list table {
   background: #fff;
@@ -246,27 +268,22 @@ body {
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
 }
-#jobs-list table th,
 #skills-list table th,
 #skill-ways-list table th {
   text-align: left;
   padding: 5px 40px 5px 10px;
 }
-#jobs-list table tr td,
 #skills-list table tr td,
 #skill-ways-list table tr td {
   padding: 15px 40px;
   border-top: 1px solid #eaf2f7;
 }
-#jobs-list table tr td:hover,
 #skills-list table tr td:hover,
 #skill-ways-list table tr td:hover {
   background: #d9edf7;
 }
-#jobs-list table .btn-add,
 #skills-list table .btn-add,
 #skill-ways-list table .btn-add,
-#jobs-list table .btn-edit,
 #skills-list table .btn-edit,
 #skill-ways-list table .btn-edit {
   text-align: center;
@@ -277,17 +294,15 @@ body {
   float: right;
   text-decoration: none;
   color: #FFF;
+  cursor: pointer;
 }
-#jobs-list table .btn-add:hover,
 #skills-list table .btn-add:hover,
 #skill-ways-list table .btn-add:hover,
-#jobs-list table .btn-edit:hover,
 #skills-list table .btn-edit:hover,
 #skill-ways-list table .btn-edit:hover {
   cursor: pointer;
   opacity: 0.6;
 }
-#jobs-list table .btn-edit,
 #skills-list table .btn-edit,
 #skill-ways-list table .btn-edit {
   background: url("../img/btn-edit.png") no-repeat;

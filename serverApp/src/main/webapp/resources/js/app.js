@@ -14,7 +14,7 @@
 
             when("/jobs", {
                 controller: "JobsListCtrl",
-                templateUrl:"/resources/partials/lists/jobs.html"
+                templateUrl:"/resources/partials/lists/jobs.jsp"
             }).
             when('/jobs/:jobId', {
                 controller:"JobCtrl",
