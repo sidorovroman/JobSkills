@@ -59,7 +59,7 @@
 
             when("/news", {
                 controller: "NewsListCtrl",
-                templateUrl:"/resources/partials/lists/news.html"
+                templateUrl:"/resources/partials/lists/news.jsp"
             }).
             when('/news/add', {
                 controller:"AddNewsCtrl",
@@ -73,6 +73,11 @@
             /* ============  others  ============ */
 
             when("/login", {templateUrl: "/resources/partials/content/login.html"}).
+            when("/logout", {
+                controller: function(){
+                    alert("Выход");
+                }
+            }).
             when("/about", {templateUrl: "/resources/partials/content/about.html"}).
 
             when("/user/info", {

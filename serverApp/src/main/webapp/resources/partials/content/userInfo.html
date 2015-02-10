@@ -29,14 +29,17 @@
             </div>
             <div class="form-group">
                 <label for="inputSex" class="col-lg-2 control-label">Пол</label>
-                <div class="col-lg-10">
-                    <input name="sex"       ng-model="info.sex" required type="text" class="form-control" id="inputSex">
+                <div class="col-lg-3">
+                    <select class="form-control"  ng-model="info.sex"  id="inputSex">
+                        <option value="0">Мужской</option>
+                        <option value="1">Женский</option>
+                    </select>
                 </div>
             </div>
             <div class="form-group">
-                <label for="inputLogin" class="col-lg-2 control-label">Дата рождения</label>
-                <div class="col-lg-10">
-                    <input name="birthday" ng-model="info.birthday" required type="text" class="form-control" id="inputLogin">
+                <label for="inputBirthday" class="col-lg-2 control-label">Дата рождения</label>
+                <div class="col-lg-3">
+                    <input name="birthday" ng-model="info.birthday" required type="text" class="form-control datepicker" id="inputBirthday">
                 </div>
             </div>
             <div class="form-group">
@@ -53,7 +56,7 @@
             </div>
             <div class="form-group">
                 <div class="col-lg-10 col-lg-offset-3">
-                    <button type="submit" class="btn  btn-default btn-exit" ng-click="logout()">Выход</button>
+                    <!--<button type="submit" class="btn  btn-default btn-exit" ng-click="logout()">Выход</button>-->
 
                     <button type="submit" class="btn btn-primary btn-save" ng-click="save(info, userInfoForm)">Сохранить</button>
                 </div>

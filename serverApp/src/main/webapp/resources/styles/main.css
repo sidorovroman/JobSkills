@@ -225,9 +225,6 @@ body {
   color: #81899b;
   font-size: 16px;
 }
-#jobs-list {
-  padding: 0 48px 0 41px;
-}
 #jobs-list .btn-add,
 #jobs-list .btn-edit {
   text-align: center;

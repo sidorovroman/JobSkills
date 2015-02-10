@@ -11,13 +11,13 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <%--<link rel="stylesheet" type="text/css" href="<c:url value="/js/resources/styles/bootstrap.css" />">--%>
-    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/styles/reset.css" />">
+    <%--<link rel="stylesheet" type="text/css" href="<c:url value="/resources/styles/reset.css" />">--%>
     <link rel="stylesheet" type="text/css" href="<c:url value="/resources/styles/bootstrap.min.css" />">
     <link rel="stylesheet" type="text/less" href="<c:url value="/resources/styles/variables.less" />">
-    <link rel="stylesheet" type="text/less" href="<c:url value="/resources/styles/bootswatch.less" />">
-    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/styles/main.css" />">
     <link rel="stylesheet" href="<c:url value="/resources/styles/bootstrap-multiselect.css" />">
+    <link rel="stylesheet" type="text/less" href="<c:url value="/resources/styles/bootswatch.less" />">
+    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/styles/datepicker.css" />">
+    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/styles/main.css" />">
 
 </head>
 <body>
@@ -39,7 +39,13 @@
                             <li>
 
                                 <sec:authorize var="loggedIn" access="isAuthenticated()">
-                                    <a href="#/user/info"><sec:authentication property="principal.username"></sec:authentication></a>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><sec:authentication property="principal.username"></sec:authentication> <span class="caret"></span></a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li><a href="#/user/info">Настройки</a></li>
+                                            <li><a href="#/logout">Выход</a></li>
+                                        </ul>
+                                    </li>
                                 </sec:authorize>
                                 <sec:authorize var="loggedIn" access="isAnonymous()">
                                     <a href="#/login">Вход</a>
@@ -59,13 +65,16 @@
         </div>
     </div>
 
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+<script src="<c:url value="/resources/libs/jquery-2.1.3.min.js" />"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script src="<c:url value="/resources/libs/bootstrap-multiselect.js" />"></script>
+<script src="<c:url value="/resources/libs/bootstrap-datepicker.js" />"></script>
+<script src="<c:url value="/resources/libs/bootstrap-datepicker.ru.js" />"></script>
 
 <script src="//ulogin.ru/js/ulogin.js"></script>
 <script src="<c:url value="/resources/libs/bower_components/angular/angular.js" />"></script>
 <script src="<c:url value="/resources/libs/bower_components/angular-route/angular-route.js" />"></script>
+
 <script src="<c:url value="/resources/js/controllers/jobs.js" />"></script>
 <script src="<c:url value="/resources/js/controllers/skills.js" />"></script>
 <script src="<c:url value="/resources/js/controllers/skillWays.js" />"></script>
