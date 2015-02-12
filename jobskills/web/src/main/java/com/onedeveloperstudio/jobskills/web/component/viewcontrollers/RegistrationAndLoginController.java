@@ -5,10 +5,12 @@ import com.onedeveloperstudio.core.common.dto.ULoginUser;
 import com.onedeveloperstudio.core.common.dto.User;
 import com.onedeveloperstudio.core.server.service.SysUserService;
 import com.onedeveloperstudio.core.server.utils.MappingUtils;
+import com.onedeveloperstudio.core.server.utils.ValidationUtils;
 import flexjson.JSONDeserializer;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.authentication.dao.SaltSource;
@@ -17,10 +19,14 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.ValidationException;
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -41,7 +47,7 @@ public class RegistrationAndLoginController {
 
   @Autowired
   private UserDetailsService service;
-  
+
   @Autowired
   private SysUserService sysUserService;
 
@@ -56,12 +62,13 @@ public class RegistrationAndLoginController {
   private DaoAuthenticationProvider provider;
 
   @RequestMapping("/login")
-  public String loginPage(HttpServletRequest request){
+  public String loginPage(HttpServletRequest request) {
     return "/login";
   }
 
   /**
    * коллбэк при авторизации пользователя
+   *
    * @param request
    * @throws Exception
    */
@@ -70,10 +77,10 @@ public class RegistrationAndLoginController {
     String token = request.getParameter("token");
     try {
       String answer = sendGet(token);
-      InputStream stream =  new ByteArrayInputStream(answer.getBytes());
+      InputStream stream = new ByteArrayInputStream(answer.getBytes());
       Reader reader = new InputStreamReader(stream);
       ULoginUser user = serializer.deserialize(reader, ULoginUser.class);
-      user.setPassword(passwordEncoder.encodePassword(DUMMY_PASSWORD, saltSource.getSalt(new User(user.getEmail(),DUMMY_PASSWORD,"",null))));
+      user.setPassword(passwordEncoder.encodePassword(DUMMY_PASSWORD, saltSource.getSalt(new User(user.getEmail(), DUMMY_PASSWORD, "", null))));
       SysUserDto sysUserDto = MappingUtils.fromULoginUserToDto(user);
       SysUserDto dto = sysUserService.loadByEmail(user.getEmail());
       if (dto.getId() != null) {
@@ -93,6 +100,7 @@ public class RegistrationAndLoginController {
 
   /**
    * Отправляем запрос на получение данных о пользователе
+   *
    * @param token - токен, полученный от ulogin
    * @return json - ответ-информация о пользователе
    * @throws Exception
@@ -118,23 +126,36 @@ public class RegistrationAndLoginController {
    * Регистрируем пользователя
    */
   @RequestMapping(value = "/register", method = RequestMethod.POST)
-  public String register(HttpServletRequest request) throws ParseException {
-    if(StringUtils.isEmpty(request.getParameter("email")) || StringUtils.isEmpty(request.getParameter("password"))){
-      return "error";
+  @ResponseBody
+  public String register(@RequestBody SysUserDto sysuser) throws ParseException {
+    StringBuilder errorMsg = new StringBuilder();
+    if (StringUtils.isEmpty(sysuser.getEmail()) || StringUtils.isEmpty(sysuser.getPassword())) {
+      errorMsg.append("Значение почты и пароля не должно быть пустым");
     }
-    SysUserDto dto = new SysUserDto();
-    dto.setEmail(request.getParameter("email"));
-    dto.setPassword(passwordEncoder.encodePassword(request.getParameter("password"), saltSource.getSalt(new User(dto.getEmail(), request.getParameter("password"), "", null))));
-    dto.setUserFullName(request.getParameter("userFullName"));
-    dto.setSex(request.getParameter("sex"));
-    dto.setPhone(request.getParameter("phone"));
-    dto.setCountry(request.getParameter("country"));
-    dto.setBirthday(Long.valueOf(request.getParameter("birthday")));
-    dto.setCity(request.getParameter("city"));
-    sysUserService.insert(dto);
+    errorMsg.append(ValidationUtils.validateEmail(sysuser.getEmail()));
+    errorMsg.append(ValidationUtils.validatePassword(sysuser.getPassword()));
+    if (!errorMsg.toString().equals("")) {
+      throw new ValidationException(errorMsg.toString());
+    }
+    sysuser.setPassword(passwordEncoder.encodePassword(sysuser.getPassword(), saltSource.getSalt(new User(sysuser.getEmail(), sysuser.getPassword(), "", null))));
+    sysUserService.insert(sysuser);
     sysUserService.getAuthentication();
-    Authentication auth = provider.authenticate(new UsernamePasswordAuthenticationToken(dto.getEmail(), dto.getPassword()));
+    Authentication auth = provider.authenticate(new UsernamePasswordAuthenticationToken(sysuser.getEmail(), sysuser.getPassword()));
     SecurityContextHolder.getContext().setAuthentication(auth);
     return "redirect:/";
+  }
+
+  @ResponseBody
+  @ExceptionHandler(Exception.class)
+  public String handleAllException(Exception ex) {
+    if (ex instanceof AccessDeniedException) {
+      System.out.println(ex.getLocalizedMessage());
+      return "{error: 'Необходима авторизация'}";
+    } else if (ex instanceof ValidationException) {
+      System.out.println(ex.getLocalizedMessage());
+      return "{error: 'Данные заполнены неверно:'" + ex.getMessage() + "}";
+    }
+    ex.printStackTrace();
+    return "{error:" + ex.getLocalizedMessage() + "}";
   }
 }
