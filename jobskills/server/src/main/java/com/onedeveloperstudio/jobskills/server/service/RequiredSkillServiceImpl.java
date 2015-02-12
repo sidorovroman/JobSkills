@@ -3,8 +3,10 @@ package com.onedeveloperstudio.jobskills.server.service;
 import com.onedeveloperstudio.core.common.appobj.AppObj;
 import com.onedeveloperstudio.core.common.appobj.AppObjDict;
 import com.onedeveloperstudio.core.common.dto.CommentaryDto;
+import com.onedeveloperstudio.core.common.dto.SysUserDto;
 import com.onedeveloperstudio.core.server.service.BaseCommentaryService;
 import com.onedeveloperstudio.core.server.service.BaseVoteServiceImlp;
+import com.onedeveloperstudio.core.server.service.SysUserService;
 import com.onedeveloperstudio.jobskills.common.dto.RequiredSkillDto;
 import com.onedeveloperstudio.jobskills.common.dto.WayToImproveSkillDto;
 import com.onedeveloperstudio.jobskills.server.dao.repositories.RequiredSkillRepository;
@@ -29,6 +31,9 @@ public class RequiredSkillServiceImpl extends BaseVoteServiceImlp<RequiredSkillD
   private RequiredSkillRepository repository;
   @Autowired
   private Mapper mapper;
+
+  @Autowired
+  private SysUserService sysUserService;
 
   @PostConstruct
   private  void init(){
@@ -55,5 +60,15 @@ public class RequiredSkillServiceImpl extends BaseVoteServiceImlp<RequiredSkillD
     RequiredSkillDto wtis = this.load(id);
     wtis.getComments().add(comment);
     this.save(wtis);
+  }
+
+  @Override
+  public RequiredSkillDto insert(RequiredSkillDto dto) {
+    setAuthor(dto);
+    return super.insert(dto);
+  }
+
+  private void setAuthor(RequiredSkillDto dto){
+    dto.setAuthor(sysUserService.getAuthentication());
   }
 }

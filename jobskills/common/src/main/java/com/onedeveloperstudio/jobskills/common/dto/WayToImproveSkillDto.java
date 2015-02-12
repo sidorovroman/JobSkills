@@ -2,6 +2,7 @@ package com.onedeveloperstudio.jobskills.common.dto;
 
 import com.onedeveloperstudio.core.common.dto.CommentaryDto;
 import com.onedeveloperstudio.core.common.dto.RatedDto;
+import com.onedeveloperstudio.core.common.dto.SysUserDto;
 import com.onedeveloperstudio.core.common.dto.VoteDto;
 import com.onedeveloperstudio.jobskills.common.GRADE;
 import com.onedeveloperstudio.jobskills.common.ResourceType;
@@ -17,6 +18,7 @@ public class WayToImproveSkillDto extends RatedDto {
   private GRADE grade;
   private String caption;
   private String description;
+  private SysUserDto author;
   private List<RequiredSkillDto> skills;
   private String link;
   private ResourceType resourceType;
@@ -85,5 +87,13 @@ public class WayToImproveSkillDto extends RatedDto {
 
   public void setCommentaries(List<CommentaryDto> commentaries) {
     this.commentaries = commentaries;
+  }
+
+  public SysUserDto getAuthor() {
+    return author;
+  }
+
+  public void setAuthor(SysUserDto author) {
+    this.author = author;
   }
 }

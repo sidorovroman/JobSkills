@@ -4,6 +4,7 @@ import com.onedeveloperstudio.core.common.util.FieldSize;
 import com.onedeveloperstudio.core.server.entity.BaseEntity;
 import com.onedeveloperstudio.core.server.entity.Commentary;
 import com.onedeveloperstudio.core.server.entity.Vote;
+import com.onedeveloperstudio.core.server.entity.user.SysUserEntity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,6 +26,7 @@ public class RequiredSkill extends BaseEntity {
   private JobEntity job;
   private String caption;
   private String description;
+  private SysUserEntity author;
   private List<WayToImproveSkill> ways;
   private List<Commentary> comments;
   private List<Vote> votes;
@@ -89,5 +91,14 @@ public class RequiredSkill extends BaseEntity {
 
   public void setVotes(List<Vote> votes) {
     this.votes = votes;
+  }
+
+  @ManyToOne
+  public SysUserEntity getAuthor() {
+    return author;
+  }
+
+  public void setAuthor(SysUserEntity author) {
+    this.author = author;
   }
 }

@@ -2,6 +2,7 @@ package com.onedeveloperstudio.jobskills.server.entity;
 
 import com.onedeveloperstudio.core.common.util.FieldSize;
 import com.onedeveloperstudio.core.server.entity.BaseEntity;
+import com.onedeveloperstudio.core.server.entity.user.SysUserEntity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,6 +25,7 @@ public class JobEntity extends BaseEntity {
   private JobEntity parent;
   private Set<JobEntity> children;
   private List<RequiredSkill> skills;
+  private SysUserEntity author;
 
 
   @Column(nullable = false, length = FieldSize.CAPTION)
@@ -69,5 +71,14 @@ public class JobEntity extends BaseEntity {
 
   public void setSkills(List<RequiredSkill> skills) {
     this.skills = skills;
+  }
+
+  @ManyToOne
+  public SysUserEntity getAuthor() {
+    return author;
+  }
+
+  public void setAuthor(SysUserEntity author) {
+    this.author = author;
   }
 }

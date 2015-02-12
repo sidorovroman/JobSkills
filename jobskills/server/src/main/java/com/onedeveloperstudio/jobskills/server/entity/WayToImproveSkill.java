@@ -4,6 +4,7 @@ import com.onedeveloperstudio.core.common.util.FieldSize;
 import com.onedeveloperstudio.core.server.entity.BaseEntity;
 import com.onedeveloperstudio.core.server.entity.Commentary;
 import com.onedeveloperstudio.core.server.entity.Vote;
+import com.onedeveloperstudio.core.server.entity.user.SysUserEntity;
 import com.onedeveloperstudio.jobskills.common.GRADE;
 import com.onedeveloperstudio.jobskills.common.ResourceType;
 
@@ -14,6 +15,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.Date;
@@ -29,6 +31,7 @@ public class WayToImproveSkill extends BaseEntity {
   private GRADE grade;
   private String caption;
   private String description;
+  private SysUserEntity author;
   private List<RequiredSkill> skills;
   private String link;
   private ResourceType resourceType;
@@ -128,5 +131,14 @@ public class WayToImproveSkill extends BaseEntity {
 
   public void setCommentaries(List<Commentary> commentaries) {
     this.commentaries = commentaries;
+  }
+
+  @ManyToOne
+  public SysUserEntity getAuthor() {
+    return author;
+  }
+
+  public void setAuthor(SysUserEntity author) {
+    this.author = author;
   }
 }

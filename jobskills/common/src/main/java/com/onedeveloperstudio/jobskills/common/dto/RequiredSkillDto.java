@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.onedeveloperstudio.core.common.dto.CommentaryDto;
 import com.onedeveloperstudio.core.common.dto.RatedDto;
+import com.onedeveloperstudio.core.common.dto.SysUserDto;
 import com.onedeveloperstudio.core.common.dto.VoteDto;
 
 import java.util.List;
@@ -18,6 +19,7 @@ public class RequiredSkillDto extends RatedDto {
   private JobDto job;
   private String caption;
   private String description;
+  private SysUserDto author;
   @JsonIgnore
   private List<WayToImproveSkillDto> ways;
   private List<CommentaryDto> comments;
@@ -64,5 +66,13 @@ public class RequiredSkillDto extends RatedDto {
 
   public void setDescription(String description) {
     this.description = description;
+  }
+
+  public SysUserDto getAuthor() {
+    return author;
+  }
+
+  public void setAuthor(SysUserDto author) {
+    this.author = author;
   }
 }

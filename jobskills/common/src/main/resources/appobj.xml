@@ -37,12 +37,12 @@
   <dict name="comment" caption="Комментарии">
     <entity class="com.onedeveloperstudio.core.server.entity.Commentary"/>
     <editDto class="com.onedeveloperstudio.core.common.dto.CommentaryDto"/>
-    <repository class="com.onedeveloperstudio.jobskills.server.dao.repositories.CommentaryRepository"/>
+    <repository class="com.onedeveloperstudio.core.server.repository.CommentaryRepository"/>
   </dict>
 
   <dict name="vote" caption="Голоса">
     <entity class="com.onedeveloperstudio.core.server.entity.Vote"/>
     <editDto class="com.onedeveloperstudio.core.common.dto.VoteDto"/>
-    <repository class="com.onedeveloperstudio.jobskills.server.dao.repositories.VoteRepository"/>
+    <repository class="com.onedeveloperstudio.core.server.repository.VoteRepository"/>
   </dict>
 </objects>

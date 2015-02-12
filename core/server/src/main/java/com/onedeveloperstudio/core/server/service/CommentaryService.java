@@ -1,4 +1,4 @@
-package com.onedeveloperstudio.jobskills.server.service;
+package com.onedeveloperstudio.core.server.service;
 
 import com.onedeveloperstudio.core.server.service.BaseService;
 import com.onedeveloperstudio.core.common.dto.CommentaryDto;

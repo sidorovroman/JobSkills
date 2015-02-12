@@ -5,6 +5,7 @@ import com.onedeveloperstudio.core.common.appobj.AppObjDict;
 import com.onedeveloperstudio.core.common.dto.CommentaryDto;
 import com.onedeveloperstudio.core.server.service.BaseCommentaryService;
 import com.onedeveloperstudio.core.server.service.BaseVoteServiceImlp;
+import com.onedeveloperstudio.core.server.service.SysUserService;
 import com.onedeveloperstudio.jobskills.common.dto.RequiredSkillDto;
 import com.onedeveloperstudio.jobskills.common.dto.WayToImproveSkillDto;
 import com.onedeveloperstudio.jobskills.server.dao.repositories.RequiredSkillRepository;
@@ -34,6 +35,9 @@ public class WayToImproveSkillServiceImpl extends BaseVoteServiceImlp<WayToImpro
   @Autowired
   private Mapper mapper;
 
+  @Autowired
+  private SysUserService sysUserService;
+
   @PostConstruct
   private  void init(){
     AppObjDict dict = AppObjDict.getInstance();
@@ -58,5 +62,15 @@ public class WayToImproveSkillServiceImpl extends BaseVoteServiceImlp<WayToImpro
     WayToImproveSkillDto wtis = this.load(id);
     wtis.getCommentaries().add(comment);
     this.save(wtis);
+  }
+
+  @Override
+  public WayToImproveSkillDto insert(WayToImproveSkillDto dto) {
+    setAuthor(dto);
+    return super.insert(dto);
+  }
+
+  private void setAuthor(WayToImproveSkillDto dto){
+    dto.setAuthor(sysUserService.getAuthentication());
   }
 }

@@ -1,6 +1,7 @@
 package com.onedeveloperstudio.jobskills.common.dto;
 
 import com.onedeveloperstudio.core.common.dto.BaseDto;
+import com.onedeveloperstudio.core.common.dto.SysUserDto;
 
 import java.util.List;
 
@@ -12,6 +13,7 @@ public class JobDto extends BaseDto {
   private String caption;
   private String description;
   private JobDto parent;
+  private SysUserDto author;
   private List<JobDto> children;
   private List<RequiredSkillDto> skills;
 
@@ -53,5 +55,13 @@ public class JobDto extends BaseDto {
 
   public void setSkills(List<RequiredSkillDto> skills) {
     this.skills = skills;
+  }
+
+  public SysUserDto getAuthor() {
+    return author;
+  }
+
+  public void setAuthor(SysUserDto author) {
+    this.author = author;
   }
 }

@@ -3,7 +3,9 @@ package com.onedeveloperstudio.jobskills.server.service;
 import com.onedeveloperstudio.core.common.appobj.AppObj;
 import com.onedeveloperstudio.core.common.appobj.AppObjDict;
 import com.onedeveloperstudio.core.server.service.BaseServiceImpl;
+import com.onedeveloperstudio.core.server.service.SysUserService;
 import com.onedeveloperstudio.jobskills.common.dto.JobDto;
+import com.onedeveloperstudio.jobskills.common.dto.WayToImproveSkillDto;
 import com.onedeveloperstudio.jobskills.server.dao.repositories.JobRepository;
 import com.onedeveloperstudio.jobskills.server.entity.JobEntity;
 import com.onedeveloperstudio.jobskills.server.utils.MappingUtils;
@@ -24,6 +26,9 @@ public class JobServiceImpl extends BaseServiceImpl<JobDto> implements JobServic
   @Autowired
   private JobRepository repository;
 
+  @Autowired
+  private SysUserService sysUserService;
+
   @PostConstruct
   private  void init(){
     AppObjDict dict = AppObjDict.getInstance();
@@ -40,5 +45,15 @@ public class JobServiceImpl extends BaseServiceImpl<JobDto> implements JobServic
       result.add(MappingUtils.jobToDto(job));
     }
     return result;
+  }
+
+  @Override
+  public JobDto insert(JobDto dto) {
+    setAuthor(dto);
+    return super.insert(dto);
+  }
+
+  private void setAuthor(JobDto dto){
+    dto.setAuthor(sysUserService.getAuthentication());
   }
 }
