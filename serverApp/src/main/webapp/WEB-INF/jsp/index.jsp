@@ -75,6 +75,7 @@
 <script src="<c:url value="/resources/libs/bower_components/angular/angular.js" />"></script>
 <script src="<c:url value="/resources/libs/bower_components/angular-route/angular-route.js" />"></script>
 
+<script src="<c:url value="/resources/js/controllers/login.js" />"></script>
 <script src="<c:url value="/resources/js/controllers/jobs.js" />"></script>
 <script src="<c:url value="/resources/js/controllers/skills.js" />"></script>
 <script src="<c:url value="/resources/js/controllers/skillWays.js" />"></script>

@@ -10,15 +10,6 @@
                 language: "ru"
             }).datepicker("setDate", new Date());
 
-            $scope.save = function (info, userInfoForm) {
-                if (info.pass.equals(info.pass2)) {
-                    alert("пароли не совпадают");
-                }
-                if (userInfoForm.$valid) {
-                    // действия по сохранению
-                    alert(info.login + ", всё ништяк");
-                }
-            };
             $scope.logout = function () {
                 $http.get('/users/logout').
                     success(function (data) {

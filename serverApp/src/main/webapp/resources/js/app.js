@@ -72,7 +72,10 @@
 
             /* ============  others  ============ */
 
-            when("/login", {templateUrl: "/resources/partials/content/login.html"}).
+            when("/login", {
+                controller:"LoginCtrl",
+                templateUrl: "/resources/partials/content/login.html"
+            }).
             when("/logout", {
                 controller: function(){
                     alert("Выход");

@@ -1,11 +1,11 @@
 <div id="login-form">
-    <form class="auth-col form-horizontal" method="POST" action="/j_spring_security_check">
+    <form class="auth-col form-horizontal">
         <fieldset>
             <legend>Вход</legend>
             <div class="form-group">
                     <div class="input-group col-lg-10 col-lg-offset-2">
                         <span class="input-group-addon"><img src="./resources/img/icon-email.png"></span>
-                        <input type="email" autocomplete="off" name="username" class="form-control" id="inputLoginEmail"
+                        <input type="email" ng-model="LoginForm.email" autocomplete="off" name="username" class="form-control" id="inputLoginEmail"
                                placeholder="e-mail" required>
                     </div>
             </div>
@@ -14,14 +14,14 @@
 
                 <div class="input-group col-lg-10 col-lg-offset-2">
                     <span class="input-group-addon"><img src="./resources/img/icon-pass.png"></span>
-                    <input type="password" autocomplete="off" name="password" class="form-control" id="inputLoginPas"
+                    <input type="password" ng-model="LoginForm.password"  autocomplete="off" name="password" class="form-control" id="inputLoginPas"
                            placeholder="пароль" required>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-lg-10 col-lg-offset-3">
-                    <button type="submit" class="btn btn-primary">Войти</button>
-                    <a href="#/user/info" class="btn btn-default">Зарегистрироваться</a>
+                    <button class="btn btn-primary" ng-click="login()">Войти</button>
+                    <button class="btn btn-default" ng-click="reg()">Зарегистрироваться</button>
                 </div>
             </div>
         </fieldset>
