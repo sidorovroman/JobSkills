@@ -137,6 +137,7 @@ public class RegistrationAndLoginController {
     if (!errorMsg.toString().equals("")) {
       throw new ValidationException(errorMsg.toString());
     }
+    sysuser.setUserName(sysuser.getEmail());
     sysuser.setPassword(passwordEncoder.encodePassword(sysuser.getPassword(), saltSource.getSalt(new User(sysuser.getEmail(), sysuser.getPassword(), "", null))));
     sysUserService.insert(sysuser);
     sysUserService.getAuthentication();
