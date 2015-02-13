@@ -138,11 +138,12 @@ public class RegistrationAndLoginController {
       throw new ValidationException(errorMsg.toString());
     }
     sysuser.setUserName(sysuser.getEmail());
+    String password = sysuser.getPassword();
     sysuser.setPassword(passwordEncoder.encodePassword(sysuser.getPassword(), saltSource.getSalt(new User(sysuser.getEmail(), sysuser.getPassword(), "", null))));
-    sysUserService.insert(sysuser);
-    sysUserService.getAuthentication();
-    Authentication auth = provider.authenticate(new UsernamePasswordAuthenticationToken(sysuser.getEmail(), sysuser.getPassword()));
+    sysuser = sysUserService.insert(sysuser);
+    Authentication auth = provider.authenticate(new UsernamePasswordAuthenticationToken(sysuser.getEmail(), password));
     SecurityContextHolder.getContext().setAuthentication(auth);
+    SysUserDto user = sysUserService.getAuthentication();
     return "redirect:/";
   }
 
