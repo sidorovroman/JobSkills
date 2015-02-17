@@ -130,10 +130,14 @@ public class RegistrationAndLoginController {
   public SysUserDto register(@RequestBody SysUserDto sysuser) throws ParseException {
     StringBuilder errorMsg = new StringBuilder();
     if (StringUtils.isEmpty(sysuser.getEmail()) || StringUtils.isEmpty(sysuser.getPassword())) {
-      errorMsg.append("Значение почты и пароля не должно быть пустым");
+      errorMsg.append("Значение почты и пароля не должно быть пустым.\n");
     }
     errorMsg.append(ValidationUtils.validateEmail(sysuser.getEmail()));
     errorMsg.append(ValidationUtils.validatePassword(sysuser.getPassword()));
+    SysUserDto existedUser = sysUserService.loadByEmail(sysuser.getEmail());
+    if(existedUser!=null){
+      errorMsg.append("Пользователь с таким почтовым ящиком уже существует в системе.\n");
+    }
     if (!errorMsg.toString().equals("")) {
       throw new ValidationException(errorMsg.toString());
     }
