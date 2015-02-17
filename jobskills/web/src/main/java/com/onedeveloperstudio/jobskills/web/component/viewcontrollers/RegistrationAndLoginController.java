@@ -127,7 +127,7 @@ public class RegistrationAndLoginController {
    */
   @RequestMapping(value = "/register", method = RequestMethod.POST)
   @ResponseBody
-  public String register(@RequestBody SysUserDto sysuser) throws ParseException {
+  public SysUserDto register(@RequestBody SysUserDto sysuser) throws ParseException {
     StringBuilder errorMsg = new StringBuilder();
     if (StringUtils.isEmpty(sysuser.getEmail()) || StringUtils.isEmpty(sysuser.getPassword())) {
       errorMsg.append("Значение почты и пароля не должно быть пустым");
@@ -144,7 +144,7 @@ public class RegistrationAndLoginController {
     Authentication auth = provider.authenticate(new UsernamePasswordAuthenticationToken(sysuser.getEmail(), password));
     SecurityContextHolder.getContext().setAuthentication(auth);
     SysUserDto user = sysUserService.getAuthentication();
-    return "redirect:/";
+    return user;
   }
 
   @ResponseBody
