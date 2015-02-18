@@ -15,7 +15,7 @@ public class MappingUtils {
   public static SysUserDto sysUserToDto(SysUserEntity userEntity){
     SysUserDto sysUserDto = new SysUserDto();
     if(userEntity == null){
-      return sysUserDto;
+      return null;
     }
     sysUserDto.setId(userEntity.getId());
     sysUserDto.setUserName(userEntity.getUsername());
