@@ -130,13 +130,13 @@ public class RegistrationAndLoginController {
   public SysUserDto register(@RequestBody SysUserDto sysuser) throws ParseException {
     StringBuilder errorMsg = new StringBuilder();
     if (StringUtils.isEmpty(sysuser.getEmail()) || StringUtils.isEmpty(sysuser.getPassword())) {
-      errorMsg.append("Значение почты и пароля не должно быть пустым.\n");
+      errorMsg.append("Значение почты и пароля не должно быть пустым.\\n");
     }
     errorMsg.append(ValidationUtils.validateEmail(sysuser.getEmail()));
     errorMsg.append(ValidationUtils.validatePassword(sysuser.getPassword()));
     SysUserDto existedUser = sysUserService.loadByEmail(sysuser.getEmail());
     if(existedUser!=null){
-      errorMsg.append("Пользователь с таким почтовым ящиком уже существует в системе.\n");
+      errorMsg.append("Пользователь с таким почтовым ящиком уже существует в системе.\\n");
     }
     if (!errorMsg.toString().equals("")) {
       throw new ValidationException(errorMsg.toString());
@@ -156,12 +156,12 @@ public class RegistrationAndLoginController {
   public String handleAllException(Exception ex) {
     if (ex instanceof AccessDeniedException) {
       System.out.println(ex.getLocalizedMessage());
-      return "{'error': 'Необходима авторизация'}";
+      return "{\"error\": \"Необходима авторизация\"}";
     } else if (ex instanceof ValidationException) {
       System.out.println(ex.getLocalizedMessage());
-      return "{'error': 'Данные заполнены неверно:" + ex.getMessage() + "'}";
+      return "{\"error\": \"Данные заполнены неверно:" + ex.getMessage() + "\"}";
     }
     ex.printStackTrace();
-    return "{'error':'" + ex.getLocalizedMessage() + "'}";
+    return "{\"error\":\"" + ex.getLocalizedMessage() + "\"}";
   }
 }
