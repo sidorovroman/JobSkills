@@ -156,12 +156,12 @@ public class RegistrationAndLoginController {
   public String handleAllException(Exception ex) {
     if (ex instanceof AccessDeniedException) {
       System.out.println(ex.getLocalizedMessage());
-      return "{error: 'Необходима авторизация'}";
+      return "{'error': 'Необходима авторизация'}";
     } else if (ex instanceof ValidationException) {
       System.out.println(ex.getLocalizedMessage());
-      return "{error: 'Данные заполнены неверно:'" + ex.getMessage() + "}";
+      return "{'error': 'Данные заполнены неверно:" + ex.getMessage() + "}";
     }
     ex.printStackTrace();
-    return "{error:" + ex.getLocalizedMessage() + "}";
+    return "{'error':" + ex.getLocalizedMessage() + "}";
   }
 }

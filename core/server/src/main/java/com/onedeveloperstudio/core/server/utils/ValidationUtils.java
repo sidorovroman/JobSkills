@@ -13,13 +13,13 @@ public abstract class ValidationUtils {
 
   public static String validateEmail(String email){
     Matcher matcher = pattern.matcher(email);
-    return (matcher.matches() ? "" : "Email заполнен неверно");
+    return (matcher.matches() ? "" : "Email заполнен неверно\n");
   }
 
   public static String validatePassword(String password){
     StringBuilder builder = new StringBuilder();
     if(password.length()<8){
-      builder.append("Пароль должен быть длинее 8 символов");
+      builder.append("Пароль должен быть длинее 8 символов\n");
     }
     return builder.toString();
   }
