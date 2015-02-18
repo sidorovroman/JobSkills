@@ -100,6 +100,6 @@ public class RequiredSkillViewController {
       return "{'error': 'Необходима авторизация'}";
     }
     ex.printStackTrace();
-    return "{'error':" + ex.getLocalizedMessage() + "}";
+    return "{'error':'" + ex.getLocalizedMessage() + "'}";
   }
 }

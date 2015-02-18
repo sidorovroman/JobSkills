@@ -110,6 +110,6 @@ public class NewsController {
       return "{'error': 'Необходима авторизация'}";
     }
     ex.printStackTrace();
-    return "{'error':" + ex.getLocalizedMessage() + "}";
+    return "{'error':'" + ex.getLocalizedMessage() + "'}";
   }
 }
