@@ -34,6 +34,8 @@
         }
     })
     app.controller("AddNewsCtrl", function ($scope, $location, $http) {
+
+        CKEDITOR.replace( 'editor1' );
         $scope.NewsForm = {};
         $scope.save = function () {
             var dataObject = {
@@ -56,6 +58,8 @@
         }
     });
     app.controller("EditNewsCtrl", function ($scope, $location, $http, $routeParams) {
+
+        CKEDITOR.replace( 'editor1' );
         $scope.NewsForm = {};
         console.log("try to edit");
 
