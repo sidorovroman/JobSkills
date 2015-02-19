@@ -131,6 +131,33 @@ body {
 #login-form .auth-col .login-icons {
   margin: 47px 0 0 47px;
 }
+#login-form .auth-col .login-icons .soc {
+  width: 38px;
+  height: 38px;
+  float: left;
+  margin: 4px;
+}
+#login-form .auth-col .login-icons .soc:hover {
+  opacity: 1;
+}
+#login-form .auth-col .login-icons .soc.vk {
+  background: url("/resources/img/vk2.png") no-repeat;
+}
+#login-form .auth-col .login-icons .soc.vk:hover {
+  background: url("/resources/img/vk.png") no-repeat;
+}
+#login-form .auth-col .login-icons .soc.fb {
+  background: url("/resources/img/f2.png") no-repeat;
+}
+#login-form .auth-col .login-icons .soc.fb:hover {
+  background: url("/resources/img/fa.png") no-repeat;
+}
+#login-form .auth-col .login-icons .soc.gl {
+  background: url("/resources/img/go2.png") no-repeat;
+}
+#login-form .auth-col .login-icons .soc.gl:hover {
+  background: url("/resources/img/go.png") no-repeat;
+}
 /* ==========================================
                  news
    ========================================== */

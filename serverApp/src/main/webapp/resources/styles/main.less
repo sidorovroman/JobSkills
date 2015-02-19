@@ -131,8 +131,36 @@ body{
        width: 100%;
        margin-bottom: 16px;
      }
-     .login-icons{
+     .login-icons {
        margin: 47px 0 0 47px;
+       .soc {
+         width: 38px;
+         height: 38px;
+         float: left;
+         margin: 4px;
+         &:hover{
+           opacity: 1;
+         }
+         &.vk {
+           background: url("/resources/img/vk2.png") no-repeat;
+           &:hover{
+             background: url("/resources/img/vk.png") no-repeat;
+
+           }
+         }
+         &.fb {
+           background: url("/resources/img/f2.png") no-repeat;
+           &:hover{
+             background: url("/resources/img/fa.png") no-repeat;
+           }
+         }
+         &.gl {
+           background: url("/resources/img/go2.png") no-repeat;
+           &:hover{
+             background: url("/resources/img/go.png") no-repeat;
+           }
+         }
+       }
      }
    }
 }
