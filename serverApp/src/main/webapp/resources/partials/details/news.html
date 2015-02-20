@@ -3,54 +3,28 @@
         <fieldset>
             <legend>Новость</legend>
             <div class="form-group">
-                <label for="inputNewsCaption" class="col-lg-2 control-label">caption</label>
-                <div class="col-lg-10">
-                    <input type="text" ng-model="NewsForm.caption" class="form-control" id="inputNewsCaption" placeholder="caption" required>
-                </div>
+                <input type="text" ng-model="NewsForm.caption" class="form-control" id="inputNewsCaption" placeholder="Заголовок" required>
             </div>
             <div class="form-group">
-                <label for="textAreaNewsBody" class="col-lg-2 control-label">body</label>
-                <div class="col-lg-10">
-                    <textarea  name="editor1" id="editor1" rows="10" cols="80" class="form-control" rows="3" id="textAreaNewsBody" ng-model="NewsForm.body" placeholder="body" required></textarea>
-                </div>
+                <textarea  name="newsEditor" id="newsEditor" rows="10" cols="80" class="form-control" rows="3" id="textAreaNewsBody" ng-model="NewsForm.body" placeholder="body" required></textarea>
             </div>
             <div class="form-group" ng-show="NewsForm.author.userName">
                 <label class="col-lg-2 control-label">Автор:</label>
-                <div class="col-lg-10">
-                    {{NewsForm.author.userName}}
-                </div>
+                {{NewsForm.author.userName}}
             </div>
             <div class="form-group" ng-show="NewsForm.addDate">
                 <label class="col-lg-2 control-label">Дата:</label>
-                <div class="col-lg-10">
                     {{NewsForm.addDate|date:'dd MMM HH:mm'}}
-                </div>
             </div>
             <div class="form-group">
-                <label for="inputNewsTag" class="col-lg-2 control-label">tags</label>
-                <div class="col-lg-10">
-                    <input type="text" ng-model="NewsForm.tags" class="form-control" id="inputNewsTag" placeholder="#tag">
-                </div>
+                    <input type="text" ng-model="NewsForm.tags" class="form-control" id="inputNewsTag" placeholder="#ТЕГИ">
             </div>
             <div class="form-group">
-                <label for="inputNewsLink" class="col-lg-2 control-label">link</label>
-                <div class="col-lg-10">
-                    <input type="text" ng-model="NewsForm.link" class="form-control" id="inputNewsLink" placeholder="link" required>
-                </div>
+                    <input type="text" ng-model="NewsForm.link" class="form-control" id="inputNewsLink" placeholder="Ссылка на новость,только одна?" >
             </div>
             <div class="form-group">
-                <label for="inputNewsRating" class="col-lg-2 control-label">rating</label>
-                <div class="col-lg-10">
-                    <input type="number" ng-model="NewsForm.rating" class="form-control" id="inputNewsRating" placeholder="rating">
-                </div>
-            </div>
-
-
-            <div class="form-group">
-                <div class="col-lg-10 col-lg-offset-2">
-                    <a href="#/news" class="btn btn-default">Cancel</a>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
+                    <a href="#/news" class="btn btn-warning">Отмена</a>
+                    <button type="submit" class="btn btn-info">Сохранить</button>
             </div>
         </fieldset>
     </form>

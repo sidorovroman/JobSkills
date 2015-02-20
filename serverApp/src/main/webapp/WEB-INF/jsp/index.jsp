@@ -93,6 +93,7 @@
                             <label for="remember-me">Запомнить меня</label>
                         </p>
                         <p class="fieldset">
+                            <button  type="submit" class="full-width" class="btn btn-info">Войти</button>
                             <input class="full-width" type="submit" value="Войти">
                         </p>
                     </form>

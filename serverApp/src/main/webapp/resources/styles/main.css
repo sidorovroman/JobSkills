@@ -45,7 +45,7 @@ body {
   background: #FFF;
 }
 #main .box .content {
-  padding: 50px 0 0 56px;
+  padding: 50px 320px 0 56px;
 }
 #main .box .left-panel {
   position: fixed;
@@ -167,6 +167,13 @@ body {
 /* ==========================================
                  news
    ========================================== */
+#news-detail {
+  padding: 0  0 0 20px;
+}
+#news-detail .form-group {
+  margin-left: 0;
+  margin-right: 0;
+}
 #news-list .add-news {
   background: #f4f4f4;
   padding: 15px 10px;
@@ -204,7 +211,9 @@ body {
 }
 #news-list .post .body {
   font-size: 14px;
-  padding-bottom: 20px;
+  margin-bottom: 20px;
+  max-height: 300px;
+  overflow: hidden;
 }
 #news-list .post .info {
   display: inline-block;

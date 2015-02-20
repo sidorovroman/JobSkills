@@ -1,7 +1,7 @@
 (function () {
     var app = angular.module('news', []);
 
-    app.controller("NewsListCtrl", function ($scope, $http) {
+    app.controller("NewsListCtrl", function ($scope, $http,$sce) {
         $http.get('/news/list').
             success(function (data) {
                 $scope.news = data;
@@ -10,6 +10,9 @@
                 alert("Fail");
             });
 
+        $scope.renderHtml = function(html_code){
+            return $sce.trustAsHtml(html_code);
+        };
         $scope.voteUp = function(info){
             var responsePromise = $http.post("/news/up/"+info.id,{});
             responsePromise.success(function (dataFromServer, status, headers, config) {
@@ -35,12 +38,12 @@
     })
     app.controller("AddNewsCtrl", function ($scope, $location, $http) {
 
-        CKEDITOR.replace( 'editor1' );
+        CKEDITOR.replace( 'newsEditor' );
         $scope.NewsForm = {};
         $scope.save = function () {
             var dataObject = {
                 caption: this.NewsForm.caption,
-                body: this.NewsForm.body,
+                body: CKEDITOR.instances.newsEditor.getData(),
                 addDate: this.NewsForm.addDate,
                 author: this.NewsForm.author,
                 link: this.NewsForm.link,
@@ -59,7 +62,7 @@
     });
     app.controller("EditNewsCtrl", function ($scope, $location, $http, $routeParams) {
 
-        CKEDITOR.replace( 'editor1' );
+        CKEDITOR.replace( 'newsEditor' );
         $scope.NewsForm = {};
         console.log("try to edit");
 
@@ -67,6 +70,7 @@
             success(function (data) {
                 console.log("get news with id: " + $routeParams.id + " success");
                 $scope.NewsForm = data;
+                CKEDITOR.instances.newsEditor.setData(data.body);
             }).
             error(function () {
                 console.log("get news with id: " + $routeParams.id + " failed");
@@ -78,7 +82,7 @@
             var dataObject = {
                 id:this.NewsForm.id,
                 caption: this.NewsForm.caption,
-                body: this.NewsForm.body,
+                body: CKEDITOR.instances.newsEditor.getData(),
                 addDate: new Date().getTime(),
                 author: this.NewsForm.author,
                 link: this.NewsForm.link,

@@ -20,9 +20,7 @@
 
         </h1>
 
-        <div class="body">
-            {{info.body}}
-        </div>
+        <div class="body" ng-bind-html="renderHtml(info.body)"></div>
         <div class="info">
             <div class="author">
                 от {{info.author.userName}}
