@@ -67,7 +67,7 @@ public class News extends BaseEntity {
     this.author = author;
   }
 
-  @Column(nullable = false, length = FieldSize.LINK)
+  @Column(length = FieldSize.LINK)
   public String getLink() {
     return link;
   }
