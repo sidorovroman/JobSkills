@@ -99,4 +99,8 @@
         config.htmlEncodeOutput = false;
         config.entities = false;
     };
+
+    $('.btn-start').click(function(){
+        $('.start-page').slideUp();
+    });
 })();

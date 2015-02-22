@@ -22,6 +22,13 @@
 
 </head>
 <body>
+    <div class="start-page">
+        <div class="start-words">
+            <p class="project-name">Skill Yourself</p>
+            <p>Хочешь изменить мир начни со своих боков</p>
+        </div>
+        <button class="btn btn-info btn-start">УБРАТЬ</button>
+    </div>
     <div id="wrap"   ng-app="App">
         <div id="header">
             <div class="navbar navbar-default">

@@ -34,6 +34,43 @@ body{
 }
 
 /* ==========================================
+                    main-img
+   ========================================== */
+.start-page{
+  position: fixed;
+  background-size: cover;
+  z-index: 1;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: url("../img/main.jpg") no-repeat center;
+  button{
+    position: absolute;
+    right: 100px;
+    bottom: 234px;
+  }
+  .start-words{
+    position: absolute;
+    bottom: 200px;
+    right: 200px;
+    p{
+      text-align: center;
+      font-family: "Lato","Helvetica Neue","Helvetica",sans-serif;
+      color: #fff;
+      font-size: 17px;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+      &.project-name{
+
+        font-size: 69px;
+        font-weight: 200;
+        margin-bottom: -20px;
+      }
+    }
+  }
+
+}
+   /* ==========================================
                     main
    ========================================== */
 #main{
