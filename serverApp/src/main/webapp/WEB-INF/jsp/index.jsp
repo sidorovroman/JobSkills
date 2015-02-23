@@ -70,10 +70,15 @@
                 <div ng-view class="content"></div>
             </div>
         </div>
-
+        <div class="pseudo-footer"></div>
     </div>
 
     <!-- Modal -->
+    <footer class="footer">
+        <div class="container">
+            <p>Designed and built in 2015</p>
+        </div>
+    </footer>
     <div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -101,12 +106,8 @@
             </div>
         </div>
     </div>
-    <footer class="footer">
-        <div class="container">
-            <p>Designed and built in 2015</p>
-        </div>
-    </footer>
-<script src="<c:url value="/resources/libs/jquery-2.1.3.min.js" />"></script>
+
+    <script src="<c:url value="/resources/libs/jquery-2.1.3.min.js" />"></script>
 <script src="<c:url value="/resources/libs/bootstrap.min.js" />"></script>
 <script src="<c:url value="/resources/libs/bootstrap-multiselect.js" />"></script>
 <script src="<c:url value="/resources/libs/bootstrap-datepicker.js" />"></script>

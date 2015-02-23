@@ -12,8 +12,10 @@ body {
   background: #edeef2;
 }
 #wrap {
-  height: 100%;
   width: 100%;
+  min-height: 100%;
+  margin-bottom: -91px;
+  background: white;
 }
 .box {
   max-width: 1440px;
@@ -331,6 +333,9 @@ body {
 /* ==========================================
                     footer
    ========================================== */
+.pseudo-footer {
+  height: 91px;
+}
 .footer {
   text-align: center;
   padding: 30px 0;
