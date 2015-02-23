@@ -102,6 +102,39 @@ body {
 #modalLogin {
   /* Иконки полей ввода */
 }
+#modalLogin .btn-container {
+  float: right;
+}
+#modalLogin .login-icons {
+  margin: 0px 25px 0px 0px;
+}
+#modalLogin .login-icons .soc {
+  width: 38px;
+  height: 38px;
+  float: left;
+  margin: 0 4px;
+}
+#modalLogin .login-icons .soc:hover {
+  opacity: 1;
+}
+#modalLogin .login-icons .soc.vk {
+  background: url("/resources/img/vk2.png") no-repeat;
+}
+#modalLogin .login-icons .soc.vk:hover {
+  background: url("/resources/img/vk.png") no-repeat;
+}
+#modalLogin .login-icons .soc.fb {
+  background: url("/resources/img/f2.png") no-repeat;
+}
+#modalLogin .login-icons .soc.fb:hover {
+  background: url("/resources/img/fa.png") no-repeat;
+}
+#modalLogin .login-icons .soc.gl {
+  background: url("/resources/img/go2.png") no-repeat;
+}
+#modalLogin .login-icons .soc.gl:hover {
+  background: url("/resources/img/go.png") no-repeat;
+}
 #modalLogin .cd-form {
   padding: 1.4em;
 }
@@ -300,36 +333,6 @@ body {
   width: 100%;
   margin-bottom: 16px;
 }
-#modalLogin form .login-icons {
-  margin: 47px 0 0 47px;
-}
-#modalLogin form .login-icons .soc {
-  width: 38px;
-  height: 38px;
-  float: left;
-  margin: 4px;
-}
-#modalLogin form .login-icons .soc:hover {
-  opacity: 1;
-}
-#modalLogin form .login-icons .soc.vk {
-  background: url("/resources/img/vk2.png") no-repeat;
-}
-#modalLogin form .login-icons .soc.vk:hover {
-  background: url("/resources/img/vk.png") no-repeat;
-}
-#modalLogin form .login-icons .soc.fb {
-  background: url("/resources/img/f2.png") no-repeat;
-}
-#modalLogin form .login-icons .soc.fb:hover {
-  background: url("/resources/img/fa.png") no-repeat;
-}
-#modalLogin form .login-icons .soc.gl {
-  background: url("/resources/img/go2.png") no-repeat;
-}
-#modalLogin form .login-icons .soc.gl:hover {
-  background: url("/resources/img/go.png") no-repeat;
-}
 /* ==========================================
                     footer
    ========================================== */
@@ -486,6 +489,35 @@ body {
 #job-container .skills-title {
   color: #81899b;
   font-size: 16px;
+}
+#jobs-list {
+  padding: 50px;
+}
+#jobs-list .job-block {
+  float: left;
+  width: 300px;
+  height: 200px;
+  border: 1px solid #e9e9e9;
+  border-radius: 5px;
+  padding: 8px;
+}
+#jobs-list .job-block:hover {
+  background: #f5f5f5;
+}
+#jobs-list img {
+  width: 70px;
+  margin: 5px;
+  float: left;
+}
+#jobs-list .job-info {
+  float: left;
+  padding-left: 10px;
+}
+#jobs-list .job-info h1 {
+  margin-top: 13px;
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #575050;
 }
 #jobs-list .btn-add,
 #jobs-list .btn-edit {

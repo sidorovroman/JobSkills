@@ -97,12 +97,29 @@
                             <label class="image-replace cd-password" for="signin-password">Пароль</label>
                             <input name="password" class="full-width has-padding has-border" id="signin-password" type="text"  placeholder="Пароль">
                         </p>
-
-                        <button type="submit" value="login" class="btn btn-info login">Войти</button>
-                        <button type="submit" value="registration" class="btn btn-primary reg" data-dismiss="modal">Зарегистрироваться</button>
                     </form>
                 </div>
-                <div class="modal-footer"></div>
+                <div class="modal-footer">
+                    <div class="login-icons">
+                        <div id="uLogincc8fbc96"
+                             x-ulogin-params="display=buttons;
+                                     fields=first_name,last_name,nickname,sex,bdate,email;
+                                     optional=phone,city,country;
+                                     verify=1;
+                                     providers=google,vkontakte,facebook,mailru,odnoklassniki;
+                                     hidden=twitter,yandex,livejournal,openid,lastfm,linkedin,liveid,soundcloud,steam,flickr,uid,youtube,webmoney,foursquare,tumblr,googleplus,dudu,vimeo,instagram;
+                                     redirect_uri=http%3A%2F%2Flocalhost%3A8080%2Flogin_callback">
+                            <div class="soc vk"x-ulogin-button="vkontakte"></div>
+                            <div class="soc fb"x-ulogin-button="facebook"></div>
+                            <div class="soc gl"x-ulogin-button="google"></div>
+                        </div>
+
+                    </div>
+                    <div class="btn-container">
+                        <button type="submit" value="login" class="btn btn-info login">Войти</button>
+                        <button type="submit" value="registration" class="btn btn-primary reg" data-dismiss="modal">Зарегистрироваться</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
