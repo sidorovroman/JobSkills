@@ -1,7 +1,7 @@
 (function () {
     var app = angular.module('news', []);
 
-    app.controller("NewsListCtrl", function ($scope, $http,$sce) {
+    app.controller("NewsListCtrl", function ($scope, $http,$sce,$location) {
         $http.get('/news/list').
             success(function (data) {
                 $scope.news = data;
@@ -9,6 +9,10 @@
             error(function () {
                 alert("Fail");
             });
+
+        $scope.select = function (news) {
+            $location.path('/news/' + news.id);
+        };
 
         $scope.renderHtml = function(html_code){
             return $sce.trustAsHtml(html_code);
@@ -35,7 +39,42 @@
                 alert("vote down form failed!");
             });
         }
-    })
+    });
+    app.controller("NewsCtrl", function ($scope, $http,$sce,$routeParams) {
+        $http.get('/news/' + $routeParams.newsId).
+            success(function (data) {
+                $scope.news = data;
+                console.log(data);
+            }).
+            error(function () {
+                alert("Fail");
+            });
+        $scope.renderHtml = function(html_code){
+            return $sce.trustAsHtml(html_code);
+        };
+        $scope.voteUp = function(info){
+            var responsePromise = $http.post("/news/up/"+info.id,{});
+            responsePromise.success(function (dataFromServer, status, headers, config) {
+                alert("vote up success!");
+                info.rating = dataFromServer;
+
+            });
+            responsePromise.error(function (data, status, headers, config) {
+                alert("vote up form failed!");
+            });
+        }
+        $scope.voteDown = function(info){
+            var responsePromise = $http.post("/news/down/"+info.id,{});
+            responsePromise.success(function (dataFromServer, status, headers, config) {
+                alert("vote down success!");
+                info.rating = dataFromServer;
+
+            });
+            responsePromise.error(function (data, status, headers, config) {
+                alert("vote down form failed!");
+            });
+        }
+    });
     app.controller("AddNewsCtrl", function ($scope, $location, $http) {
 
         CKEDITOR.replace( 'newsEditor' );

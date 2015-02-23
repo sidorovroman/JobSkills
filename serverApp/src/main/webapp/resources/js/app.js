@@ -69,6 +69,10 @@
                 controller:"EditNewsCtrl",
                 templateUrl:'/resources/partials/details/news.html'
             }).
+            when('/news/:newsId', {
+                controller:"NewsCtrl",
+                templateUrl:'/resources/partials/info/news.jsp'
+            }).
 
             /* ============  others  ============ */
 

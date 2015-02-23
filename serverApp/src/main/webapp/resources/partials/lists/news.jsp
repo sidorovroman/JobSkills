@@ -12,7 +12,7 @@
 
     <div class="post" ng-repeat="info in news">
         <h1>
-            <a href="#">{{info.caption}}</a>
+            <a ng-click="select(info)">{{info.caption}}</a>
             <sec:authorize var="loggedIn" access="isAuthenticated()">
                 <a href="#/news/{{info.id}}/edit"><i class="btn-edit"></i></a>
             </sec:authorize>

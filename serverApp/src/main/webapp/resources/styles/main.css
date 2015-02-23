@@ -500,6 +500,70 @@ body {
 #news-list .post .rating .vote-down {
   background: url("../img/vote-down.png") no-repeat;
 }
+#news-container {
+  padding: 10px;
+  border-bottom: 1px solid #dae2e8;
+}
+#news-container .btn-edit {
+  height: 20px;
+  width: 20px;
+  float: left;
+  margin: 5px 0 0 -29px;
+  background: url("../img/btn-edit.png") no-repeat;
+  background-size: cover;
+}
+#news-container .btn-edit:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+#news-container .date {
+  float: right;
+  color: #a9a9a9 ;
+  font-size: 12px;
+  line-height: 28px;
+  padding-right: 20px;
+}
+#news-container h1 {
+  font-size: 26px;
+}
+#news-container h1 a {
+  color: #8b98aa;
+}
+#news-container .body {
+  font-size: 14px;
+  margin-bottom: 20px;
+  max-height: 300px;
+  overflow: hidden;
+}
+#news-container .info {
+  display: inline-block;
+}
+#news-container .author {
+  font-size: 11px;
+  float: left;
+  color: #a9a9a9;
+}
+#news-container .rating {
+  float: left;
+  margin-left: 20px;
+}
+#news-container .rating .rating-value {
+  float: left;
+}
+#news-container .rating .vote-up,
+#news-container .rating .vote-down {
+  margin: 0 10px;
+  width: 23px;
+  height: 20px;
+  display: block;
+  float: left;
+}
+#news-container .rating .vote-up {
+  background: url("../img/vote-up.png") no-repeat;
+}
+#news-container .rating .vote-down {
+  background: url("../img/vote-down.png") no-repeat;
+}
 /* ==========================================
                  jobs,skills, skillWays
    ========================================== */
@@ -532,7 +596,7 @@ body {
   position: relative;
   float: left;
   width: 300px;
-  max-height: 200px;
+  height: 160px;
   border: 1px solid #e9e9e9;
   border-radius: 5px;
   overflow: hidden;
