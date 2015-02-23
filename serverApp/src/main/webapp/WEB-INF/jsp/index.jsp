@@ -68,6 +68,12 @@
             <div class="box">
                 <div class="left-panel"></div>
                 <div ng-view class="content"></div>
+                <div class="right-panel">
+                    <div class="top-news">Топовые новости</div>
+                    <div class="new-skills">Новые навыки</div>
+                    <div class="billboard">Реклама</div>
+                </div>
+
             </div>
         </div>
         <div class="pseudo-footer"></div>

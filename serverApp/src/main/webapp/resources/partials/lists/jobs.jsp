@@ -5,17 +5,16 @@
                     <a href="#/addJob" class="btn-add" >+</a>
                 </sec:authorize>
     <div class="job-block" ng-repeat="job in jobs" ng-click="select(job)">
-        <img src="/resources/img/job-icon.png">
-
-        <div class="job-info">
+        <sec:authorize var="loggedIn" access="isAuthenticated()">
+            <a class="edit" href="#/editJob/{{job.id}}">
+                <i class="btn-edit"></i>
+            </a>
+        </sec:authorize>
+        <div>
+            <img src="/resources/img/job-icon-{{$index}}.png">
             <h1>{{job.caption}}</h1>
-            <p>{{job.description}}</p>
-            <sec:authorize var="loggedIn" access="isAuthenticated()">
-                <a href="#/editJob/{{job.id}}">
-                    <i class="btn-edit"></i>
-                </a>
-            </sec:authorize>
-
         </div>
+
+        <p class="job-info">{{job.description}}</p>
     </div>
 </div>
