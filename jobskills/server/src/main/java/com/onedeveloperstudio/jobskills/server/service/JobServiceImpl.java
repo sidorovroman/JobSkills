@@ -56,4 +56,10 @@ public class JobServiceImpl extends BaseServiceImpl<JobDto> implements JobServic
   private void setAuthor(JobDto dto){
     dto.setAuthor(sysUserService.getAuthentication());
   }
+
+  @Override
+  public JobDto update(JobDto dto) {
+    setAuthor(dto);
+    return super.update(dto);
+  }
 }
