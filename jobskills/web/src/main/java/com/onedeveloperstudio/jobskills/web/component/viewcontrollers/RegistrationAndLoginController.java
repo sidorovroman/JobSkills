@@ -83,7 +83,7 @@ public class RegistrationAndLoginController {
       user.setPassword(passwordEncoder.encodePassword(DUMMY_PASSWORD, saltSource.getSalt(new User(user.getEmail(), DUMMY_PASSWORD, "", null))));
       SysUserDto sysUserDto = MappingUtils.fromULoginUserToDto(user);
       SysUserDto dto = sysUserService.loadByEmail(user.getEmail());
-      if (dto.getId() != null) {
+      if (dto != null && dto.getId()!=null) {
         sysUserDto.setId(dto.getId());
         sysUserService.update(sysUserDto);
       } else {

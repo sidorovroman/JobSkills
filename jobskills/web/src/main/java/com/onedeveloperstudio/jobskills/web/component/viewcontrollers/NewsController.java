@@ -25,6 +25,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -46,6 +48,31 @@ public class NewsController {
     service.setAppObj(dict.getAppObj("news"));
   }
 
+  @RequestMapping(value = "/top10")
+  @ResponseBody
+  public List<NewsDto> getTop10News() {
+    List<NewsDto> newss = service.loadAll();
+    Collections.sort(newss, new Comparator<NewsDto>() {
+      @Override
+      public int compare(NewsDto o1, NewsDto o2) {
+        return -1 * o1.getRating().compareTo(o2.getRating());
+      }
+    });
+    return newss.size() > 10 ? newss.subList(0, 10) : newss;
+  }
+
+  @RequestMapping(value = "/latest10")
+  @ResponseBody
+  public List<NewsDto> getLatest10News(){
+    List<NewsDto> newss = service.loadAll();
+    Collections.sort(newss, new Comparator<NewsDto>() {
+      @Override
+      public int compare(NewsDto o1, NewsDto o2) {
+        return -1 * o1.getAddDate().compareTo(o2.getAddDate());
+      }
+    });
+    return newss.size() > 10 ? newss.subList(0, 10) : newss;
+  }
 
   @RequestMapping(value = "/list")
   @ResponseBody
