@@ -205,9 +205,7 @@
       <column name="author_id" type="BIGINT">
         <constraints nullable="false"/>
       </column>
-      <column name="link" type="VARCHAR(150)">
-        <constraints nullable="false"/>
-      </column>
+      <column name="link" type="VARCHAR(150)"/>
     </createTable>
     <addForeignKeyConstraint baseColumnNames="author_id" baseTableName="news"
                              constraintName="FK_NEWS_USERACCOUNT" referencedColumnNames="id"
