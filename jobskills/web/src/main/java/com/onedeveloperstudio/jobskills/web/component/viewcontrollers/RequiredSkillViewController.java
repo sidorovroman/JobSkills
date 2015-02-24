@@ -6,6 +6,7 @@ import com.onedeveloperstudio.jobskills.common.dto.RequiredSkillDto;
 import com.onedeveloperstudio.jobskills.server.service.RequiredSkillService;
 import flexjson.JSONDeserializer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -31,15 +32,15 @@ public class RequiredSkillViewController {
 
   @RequestMapping("/list")
   @ResponseBody
-  public List<RequiredSkillDto> getList(){
+  public List<RequiredSkillDto> getList(@RequestBody(required = false) Pageable pageable){
     List<RequiredSkillDto> requiredSkills = service.loadAll();
     return requiredSkills;
   }
 
   @RequestMapping("/{jobId}/list")
   @ResponseBody
-  public List<RequiredSkillDto> getListByJob(@PathVariable Long jobId){
-    List<RequiredSkillDto> requiredSkills = service.loadAllbyJob(jobId);
+  public List<RequiredSkillDto> getListByJob(@PathVariable Long jobId, @RequestBody(required = false) Pageable pageable){
+    List<RequiredSkillDto> requiredSkills = service.loadAllbyJob(jobId, pageable);
     return requiredSkills;
   }
 

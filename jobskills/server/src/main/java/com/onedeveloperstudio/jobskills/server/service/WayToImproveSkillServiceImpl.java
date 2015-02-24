@@ -3,18 +3,14 @@ package com.onedeveloperstudio.jobskills.server.service;
 import com.onedeveloperstudio.core.common.appobj.AppObj;
 import com.onedeveloperstudio.core.common.appobj.AppObjDict;
 import com.onedeveloperstudio.core.common.dto.CommentaryDto;
-import com.onedeveloperstudio.core.server.service.BaseCommentaryService;
 import com.onedeveloperstudio.core.server.service.BaseVoteServiceImlp;
 import com.onedeveloperstudio.core.server.service.SysUserService;
-import com.onedeveloperstudio.jobskills.common.dto.RequiredSkillDto;
 import com.onedeveloperstudio.jobskills.common.dto.WayToImproveSkillDto;
-import com.onedeveloperstudio.jobskills.server.dao.repositories.RequiredSkillRepository;
 import com.onedeveloperstudio.jobskills.server.dao.repositories.WayToImproveSkillRepository;
-import com.onedeveloperstudio.jobskills.server.entity.RequiredSkill;
 import com.onedeveloperstudio.jobskills.server.entity.WayToImproveSkill;
 import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -47,8 +43,8 @@ public class WayToImproveSkillServiceImpl extends BaseVoteServiceImlp<WayToImpro
 
   @Override
   @Transactional(readOnly = true)
-  public List<WayToImproveSkillDto> loadAllbySkill(Long skillId) {
-    List<WayToImproveSkill> list = repository.findAllBySkillsId(skillId);
+  public List<WayToImproveSkillDto> loadAllbySkill(Long skillId, Pageable pageable) {
+    List<WayToImproveSkill> list = repository.findAllBySkillsId(skillId, pageable);
     List<WayToImproveSkillDto> result = new ArrayList<>(list.size());
     for(WayToImproveSkill skill : list){
       result.add(mapper.map(skill, WayToImproveSkillDto.class));

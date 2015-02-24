@@ -8,6 +8,7 @@ import com.onedeveloperstudio.jobskills.common.dto.WayToImproveSkillDto;
 import com.onedeveloperstudio.jobskills.server.service.WayToImproveSkillService;
 import flexjson.JSONDeserializer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -49,8 +50,8 @@ public class WayToImproveSkillViewController {
 
   @RequestMapping("/{skillId}/list")
   @ResponseBody
-  public List<WayToImproveSkillDto> getListBySkill(@PathVariable Long skillId){
-    List<WayToImproveSkillDto> ways = service.loadAllbySkill(skillId);
+  public List<WayToImproveSkillDto> getListBySkill(@PathVariable Long skillId, @RequestBody(required = false)  Pageable pageable){
+    List<WayToImproveSkillDto> ways = service.loadAllbySkill(skillId, pageable);
     return ways;
   }
 

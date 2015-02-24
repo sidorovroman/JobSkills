@@ -5,6 +5,7 @@ import com.onedeveloperstudio.jobskills.server.service.JobService;
 import flexjson.JSONDeserializer;
 import org.hibernate.HibernateException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -32,8 +33,13 @@ public class JobsViewController {
 
   @RequestMapping("/list")
   @ResponseBody
-  public List<JobDto> getList(){
-    List<JobDto> jobs = service.getAllParents();
+  public List<JobDto> getList(@RequestBody(required = false) Pageable pageable){
+    List<JobDto> jobs = null;
+    if (pageable != null) {
+      jobs = service.loadAny(pageable);
+    } else {
+      jobs = service.getAllParents();
+    }
     return jobs;
   }
 

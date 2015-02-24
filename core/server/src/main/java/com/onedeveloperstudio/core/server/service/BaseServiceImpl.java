@@ -6,6 +6,7 @@ import com.onedeveloperstudio.core.server.entity.BaseEntity;
 import org.dozer.Mapper;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Component;
@@ -73,6 +74,16 @@ public class BaseServiceImpl<D extends BaseDto> implements BaseService<D> {
   @Transactional(readOnly = true)
   public List<D> loadAll() {
     List list = repository.findAll();
+    List<D> result = new ArrayList<>(list.size());
+    for (Object entity : list) {
+      result.add(mapper.map(entity, dtoClass));
+    }
+    return result;
+  }
+
+  @Override
+  public List<D> loadAny(Pageable pageRequest) {
+    List list = repository.findAll(pageRequest).getContent();
     List<D> result = new ArrayList<>(list.size());
     for (Object entity : list) {
       result.add(mapper.map(entity, dtoClass));

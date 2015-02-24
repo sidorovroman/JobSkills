@@ -10,6 +10,7 @@ import com.onedeveloperstudio.jobskills.common.dto.NewsDto;
 import com.onedeveloperstudio.jobskills.server.service.NewsService;
 import flexjson.JSONDeserializer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.Authentication;
@@ -76,8 +77,13 @@ public class NewsController {
 
   @RequestMapping(value = "/list")
   @ResponseBody
-  public List<NewsDto> getList(){
-    List<NewsDto> newss = service.loadAll();
+  public List<NewsDto> getList(@RequestBody(required = false) Pageable pageable) {
+    List<NewsDto> newss = null;
+    if (pageable == null) {
+      newss = service.loadAll();
+    } else {
+      newss = service.loadAny(pageable);
+    }
     return newss;
   }
 

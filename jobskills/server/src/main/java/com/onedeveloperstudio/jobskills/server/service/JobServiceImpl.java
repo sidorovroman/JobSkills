@@ -5,7 +5,6 @@ import com.onedeveloperstudio.core.common.appobj.AppObjDict;
 import com.onedeveloperstudio.core.server.service.BaseServiceImpl;
 import com.onedeveloperstudio.core.server.service.SysUserService;
 import com.onedeveloperstudio.jobskills.common.dto.JobDto;
-import com.onedeveloperstudio.jobskills.common.dto.WayToImproveSkillDto;
 import com.onedeveloperstudio.jobskills.server.dao.repositories.JobRepository;
 import com.onedeveloperstudio.jobskills.server.entity.JobEntity;
 import com.onedeveloperstudio.jobskills.server.utils.MappingUtils;

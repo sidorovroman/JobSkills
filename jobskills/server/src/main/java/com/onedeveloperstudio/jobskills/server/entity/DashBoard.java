@@ -6,7 +6,6 @@ import com.onedeveloperstudio.core.server.entity.user.SysUserEntity;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import java.util.Date;
 
 /**
  * User: y.zakharov

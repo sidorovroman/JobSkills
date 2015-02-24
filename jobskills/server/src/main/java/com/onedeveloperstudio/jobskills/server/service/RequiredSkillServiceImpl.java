@@ -3,17 +3,14 @@ package com.onedeveloperstudio.jobskills.server.service;
 import com.onedeveloperstudio.core.common.appobj.AppObj;
 import com.onedeveloperstudio.core.common.appobj.AppObjDict;
 import com.onedeveloperstudio.core.common.dto.CommentaryDto;
-import com.onedeveloperstudio.core.common.dto.SysUserDto;
-import com.onedeveloperstudio.core.server.service.BaseCommentaryService;
 import com.onedeveloperstudio.core.server.service.BaseVoteServiceImlp;
 import com.onedeveloperstudio.core.server.service.SysUserService;
 import com.onedeveloperstudio.jobskills.common.dto.RequiredSkillDto;
-import com.onedeveloperstudio.jobskills.common.dto.WayToImproveSkillDto;
 import com.onedeveloperstudio.jobskills.server.dao.repositories.RequiredSkillRepository;
 import com.onedeveloperstudio.jobskills.server.entity.RequiredSkill;
 import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -44,8 +41,8 @@ public class RequiredSkillServiceImpl extends BaseVoteServiceImlp<RequiredSkillD
 
   @Override
   @Transactional(readOnly = true)
-  public List<RequiredSkillDto> loadAllbyJob(Long jobId) {
-    List<RequiredSkill> list = repository.findAllByJobId(jobId);
+  public List<RequiredSkillDto> loadAllbyJob(Long jobId, Pageable pageable) {
+    List<RequiredSkill> list = repository.findAllByJobId(jobId, pageable);
     List<RequiredSkillDto> result = new ArrayList<>(list.size());
     for(RequiredSkill skill : list){
       result.add(mapper.map(skill, RequiredSkillDto.class));
