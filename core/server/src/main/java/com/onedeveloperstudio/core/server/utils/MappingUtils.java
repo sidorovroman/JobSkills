@@ -28,6 +28,7 @@ public class MappingUtils {
     sysUserDto.setNetwork(userEntity.getNetwork());
     sysUserDto.setPhone(userEntity.getPhone());
     sysUserDto.setSex(userEntity.getSex());
+    sysUserDto.setRating(userEntity.getRating());
     return sysUserDto;
   }
 
@@ -44,6 +45,7 @@ public class MappingUtils {
     entity.setNetwork(dto.getNetwork());
     entity.setPhone(dto.getPhone());
     entity.setSex(dto.getSex());
+    entity.setRating(dto.getRating());
     return entity;
   }
 

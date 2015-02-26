@@ -1,7 +1,5 @@
 package com.onedeveloperstudio.core.common.dto;
 
-import java.util.Date;
-
 public class SysUserDto extends BaseDto {
   private String userFullName;
   private String email;
@@ -13,7 +11,7 @@ public class SysUserDto extends BaseDto {
   private String city;
   private String country;
   private String network;
-
+  private Long rating;
   private String authorityName;
 
   public String getUserFullName() {
@@ -102,5 +100,13 @@ public class SysUserDto extends BaseDto {
 
   public void setNetwork(String network) {
     this.network = network;
+  }
+
+  public Long getRating() {
+    return rating;
+  }
+
+  public void setRating(Long rating) {
+    this.rating = rating;
   }
 }
