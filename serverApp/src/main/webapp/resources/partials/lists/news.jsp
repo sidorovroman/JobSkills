@@ -3,7 +3,7 @@
 <div id="news-list" xmlns="http://www.w3.org/1999/html">
 
     <sec:authorize var="loggedIn" access="isAuthenticated()">
-        <div class="add-news">ээй, админ, расскажи что-нибудь новенькое <a href="#/news/add" class="btn btn-add btn-primary">лаадно</a></div>
+        <div class="add-news"><a href="#/news/add" class="btn btn-add btn-primary">Добавить новость</a></div>
     </sec:authorize>
 
     <sec:authorize var="loggedIn" access="isAnonymous()">

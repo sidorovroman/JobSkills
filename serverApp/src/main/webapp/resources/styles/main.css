@@ -86,11 +86,20 @@ body {
 #main .box {
   min-height: 100%;
   background: #FFF;
+  display: inline-block;
+  width: 100%;
 }
-#main .box .content {
-  padding: 50px 0 0 56px;
-  width: 900px;
+#main .box .inner {
+  margin-top: 52px;
+  min-height: 100%;
+  padding-top: 12px;
+  padding-left: 81px;
+  padding-right: 24px;
+}
+#main .box .inner .content {
   float: left;
+  padding-right: 320px;
+  width: 100%;
 }
 #main .box .left-panel {
   position: fixed;
@@ -99,36 +108,40 @@ body {
   height: 100%;
   background: url("../img/logo.png") #3499f3 no-repeat center 15px;
   box-shadow: black 0px 0px 22px -5px inset;
+  z-index: 99;
 }
 #main .box .right-panel {
-  float: right;
+  position: relative;
+  padding-top: 7px;
+  float: left;
   width: 300px;
-  margin-top: 100px;
+  margin-left: -300px;
 }
-#main .box .right-panel .top-news,
-#main .box .right-panel .new-skills,
-#main .box .right-panel .billboard {
-  text-align: center;
-  padding: 20px;
-  text-size: 20px;
-  margin: 20px;
-  -webkit-border-top-right-radius: 5px;
-  -webkit-border-bottom-right-radius: 5px;
-  -webkit-border-bottom-left-radius: 5px;
-  -webkit-border-top-left-radius: 5px;
-  -moz-border-radius-topright: 5px;
-  -moz-border-radius-bottomright: 5px;
-  -moz-border-radius-bottomleft: 5px;
-  -moz-border-radius-topleft: 5px;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
-  border-bottom-left-radius: 5px;
-  border-top-left-radius: 5px;
-  -moz-background-clip: padding-box;
-  -webkit-background-clip: padding-box;
-  background-clip: padding-box;
-  background: #E6F3FF;
-  height: 200px;
+#main .box .right-panel .info-block {
+  font-family: tahoma,arial;
+  padding: 15px 20px;
+  margin-bottom: 20px;
+  background: #f2f2f2;
+}
+#main .box .right-panel .info-block .title {
+  color: #999;
+  margin-bottom: 20px;
+  font-size: 24px;
+  letter-spacing: -1px;
+  font-family: Verdana, sans-serif;
+}
+#main .box .right-panel .info-block .info-list {
+  font-size: 12px;
+}
+#main .box .right-panel .info-block .info-list .info-item {
+  margin-bottom: 10px;
+  clear: both;
+  color: #999;
+  line-height: 18px;
+}
+#main .box .right-panel .info-block .info-list .info-item a {
+  color: #6da3bd;
+  text-decoration: none;
 }
 /* ==========================================
                     modal Login
@@ -393,7 +406,6 @@ body {
    ========================================== */
 #reg-form {
   width: 60%;
-  padding: 100px 0 0 50px;
 }
 #reg-form .reg-table {
   font-family: Cambria;
@@ -429,12 +441,6 @@ body {
 #news-detail .form-group {
   margin-left: 0;
   margin-right: 0;
-}
-#news-list .add-news {
-  background: #f4f4f4;
-  padding: 15px 10px;
-  border-radius: 5px;
-  box-shadow: #000000 0 0 20px -7px inset;
 }
 #news-list .post {
   padding: 10px;
@@ -567,10 +573,27 @@ body {
 /* ==========================================
                  jobs,skills, skillWays
    ========================================== */
-#job-container .job-name {
-  color: #1a88eb;
-  font-size: 16px;
+#job-container .title {
+  padding: 20px;
+}
+#job-container .title img {
+  width: 130px;
+  margin: 0 30px 20px 0;
+  float: left;
+}
+#job-container .title img .info h1 {
+  display: inline-block;
+  margin-top: 13px;
+  margin-left: 20px;
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #575050;
   text-transform: uppercase;
+}
+#job-container .title img .info .job-description {
+  color: #81899b;
+  padding-left: 20px;
+  font-size: 16px;
 }
 #job-container .description-title {
   color: #5b9eb7;
@@ -580,16 +603,11 @@ body {
   margin-bottom: 10px;
   display: inline-block;
 }
-#job-container .job-description {
-  color: #56585d;
-  font-size: 16px;
-}
 #job-container .skills-title {
-  color: #81899b;
+  clear: both;
   font-size: 16px;
 }
 #jobs-list {
-  padding: 50px;
   display: inline-block;
 }
 #jobs-list .job-block {
@@ -646,6 +664,10 @@ body {
   background: url("../img/btn-edit.png") no-repeat;
   background-size: cover;
 }
+#skills-list,
+#skill-ways-list {
+  padding-top: 5px;
+}
 #skills-list table,
 #skill-ways-list table {
   background: #fff;
@@ -673,7 +695,8 @@ body {
 }
 #skills-list table tr td,
 #skill-ways-list table tr td {
-  padding: 15px 40px;
+  font-size: 14px;
+  padding: 10px 15px;
   border-top: 1px solid #eaf2f7;
 }
 #skills-list table tr td:hover,

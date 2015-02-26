@@ -87,10 +87,19 @@ body{
   .box{
     min-height: 100%;
     background: #FFF;
-    .content{
-      padding: 50px 0 0 56px;
-      width: 900px;
-      float: left;
+    display: inline-block;
+    width: 100%;
+    .inner{
+      margin-top: 52px;
+      min-height: 100%;
+      padding-top: 12px;
+      padding-left: 81px;
+      padding-right: 24px;
+      .content{
+        float: left;
+        padding-right: 320px;
+        width: 100%;
+      }
     }
     .left-panel{
       position: fixed;
@@ -99,21 +108,51 @@ body{
       height: 100%;
       background: url("../img/logo.png") #3499f3 no-repeat center 15px;
       box-shadow: black 0px 0px 22px -5px inset;
+      z-index: 99;
     }
     .right-panel{
-      float: right;
+      position: relative;
+      padding-top: 7px;
+      float: left;
       width: 300px;
-      margin-top: 100px;
+      margin-left: -300px;
+      .info-block{
+        font-family: tahoma,arial;
+        padding: 15px 20px;
+        margin-bottom: 20px;
+        background: #f2f2f2;
+        .title{
+          color: #999;
+          margin-bottom: 20px;
+          font-size: 24px;
+          letter-spacing: -1px;
+          font-family: Verdana,sans-serif;
+        }
+        .info-list{
+          font-size: 12px;
+          .info-item{
+            margin-bottom: 10px;
+            clear: both;
+            color: #999;
+            line-height: 18px;
+            a{
+              color: #6da3bd;
+              text-decoration: none;
+            }
+          }
+        }
+
+      }
       .top-news,
       .new-skills,
       .billboard{
-        text-align: center;
-        padding: 20px;
-        text-size: 20px;
-        margin: 20px;
-        .border-radius(5px,5px,5px,5px);
-        background: #E6F3FF;
-        height: 200px;
+//        text-align: center;
+//        padding: 20px;
+//        text-size: 20px;
+//        margin: 20px;
+//        .border-radius(5px,5px,5px,5px);
+//        background: #E6F3FF;
+//        height: 200px;
       }
       
     }
@@ -389,7 +428,6 @@ body{
    ========================================== */
 #reg-form{
   width: 60%;
-  padding: 100px 0 0 50px;
   .reg-table{
     font-family: Cambria;
     font-size: 28px;
@@ -431,12 +469,6 @@ body{
   }
 }
 #news-list{
-  .add-news{
-    background: #f4f4f4;
-    padding: 15px 10px;
-    border-radius: 5px;
-    box-shadow: #000 0 0 20px -7px inset;
-  }
   .post{
     padding: 10px;
     border-bottom: 1px solid #dae2e8;
@@ -576,10 +608,32 @@ body{
                  jobs,skills, skillWays
    ========================================== */
 #job-container{
-  .job-name{
-    color: #1a88eb;
-    font-size:16px;
-    text-transform: uppercase;
+  .title{
+    padding: 20px;
+    img{
+      width: 130px;
+      margin: 0 30px 20px 0;
+      float: left;
+      .info{
+        h1{
+          display: inline-block;
+          margin-top: 13px;
+          margin-left: 20px;
+          font-size: 24px;
+          margin-bottom: 10px;
+          color: rgba(87, 80, 80, 1);
+          text-transform: uppercase;
+
+        }
+        .job-description{
+          color:#81899b;
+          padding-left: 20px;
+          font-size:16px;
+        }
+
+      }
+    }
+
   }
   .description-title{
     color: #5b9eb7;
@@ -590,17 +644,13 @@ body{
     display: inline-block;
 
   }
-  .job-description{
-    color:#56585d;
-    font-size:16px;
-  }
+
   .skills-title{
-    color:#81899b;
+    clear: both;
     font-size: 16px;
   }
 }
 #jobs-list{
-  padding: 50px;
   display: inline-block;
   .job-block{
     position: relative;
@@ -658,6 +708,7 @@ body{
 }
 #skills-list,
 #skill-ways-list{
+  padding-top: 5px;
   table{
     background: #fff;
     width: 609px;
@@ -668,7 +719,8 @@ body{
     }
     tr{
       td{
-        padding: 15px 40px;
+        font-size: 14px;
+        padding: 10px 15px;
         border-top: 1px solid #eaf2f7;
         &:hover{
           background:#d9edf7;

@@ -32,7 +32,6 @@
         <div id="header">
             <div class="navbar navbar-default">
                 <div class="box">
-
                     <div class="navbar-header">
                         <a class="navbar-brand" href="#">Skill Youself</a>
                     </div>
@@ -67,11 +66,29 @@
         <div id="main">
             <div class="box">
                 <div class="left-panel"></div>
-                <div ng-view class="content"></div>
-                <div class="right-panel">
-                    <div class="top-news">Топовые новости</div>
-                    <div class="new-skills">Новые навыки</div>
-                    <div class="billboard">Реклама</div>
+                <div class="inner">
+                    <div ng-view class="content"></div>
+                    <div class="right-panel">
+                        <div class="top-news info-block">
+                            <div class="title">Топовые новости</div>
+                            <div class="info-list">
+                                <div class="info-item"><a href="#" >Мультивендорная корпоративная сеть: мифы и реальность</a></div>
+                                <div class="info-item"><a href="#" >Еще один термостат на Arduino, но с OpenTherm</a></div>
+                                <div class="info-item"><a href="#" >Правоохранительные органы обрушили ботнет Ramnit</a></div>
+                                <div class="info-item"><a href="#" >«Hero Image» — баннеры в параллаксе</a></div>
+                            </div>
+                        </div>
+                        <div class="new-skills info-block">
+                            <div class="title">Новые навыки</div>
+                            <div class="info-list">
+                                <div class="info-item"><a href="#" >Использование чего-нить</a></div>
+                                <div class="info-item"><a href="#" >Использование чего-нить</a></div>
+                                <div class="info-item"><a href="#" >Использование чего-нить</a></div>
+                                <div class="info-item"><a href="#" >Использование чего-нить</a></div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
             </div>
