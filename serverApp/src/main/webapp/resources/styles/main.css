@@ -86,8 +86,6 @@ body {
 #main .box {
   min-height: 100%;
   background: #FFF;
-  display: inline-block;
-  width: 100%;
 }
 #main .box .inner {
   margin-top: 52px;
