@@ -10,5 +10,5 @@ import java.util.List;
  * Date: 22.07.14
  */
 public interface JobRepository extends JpaRepository<JobEntity, Long> {
-  List<JobEntity> findAllByParent(JobEntity parent);
+  List<JobEntity> findAllByParentOrderByIdAsc(JobEntity parent);
 }

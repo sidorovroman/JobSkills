@@ -38,7 +38,7 @@ public class JobServiceImpl extends BaseServiceImpl<JobDto> implements JobServic
   @Override
   @Transactional(readOnly = true)
   public List<JobDto> getAllParents() {
-    List<JobEntity> list =  repository.findAllByParent(null);
+    List<JobEntity> list =  repository.findAllByParentOrderByIdAsc(null);
     List<JobDto> result = new ArrayList<>(list.size());
     for(JobEntity job : list){
       result.add(MappingUtils.jobToDto(job));

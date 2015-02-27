@@ -25,8 +25,12 @@ public class BaseVoteServiceImlp<D extends RatedDto> extends BaseServiceImpl<D> 
   @Transactional(readOnly = true)
   public D load(Long id) {
     D obj = super.load(id);
-    SysUserDto user = sysUserService.getAuthentication();
-    sumsRating(obj, user);
+    try{
+      SysUserDto user = sysUserService.getAuthentication();
+      sumsRating(obj, user);
+    } catch (Exception e){
+
+    }
     return obj;
   }
 

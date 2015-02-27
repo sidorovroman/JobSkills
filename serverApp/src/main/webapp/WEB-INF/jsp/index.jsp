@@ -72,19 +72,27 @@
                         <div class="top-news info-block">
                             <div class="title">Топовые новости</div>
                             <div class="info-list">
-                                <div class="info-item"><a href="#" >Мультивендорная корпоративная сеть: мифы и реальность</a></div>
-                                <div class="info-item"><a href="#" >Еще один термостат на Arduino, но с OpenTherm</a></div>
-                                <div class="info-item"><a href="#" >Правоохранительные органы обрушили ботнет Ramnit</a></div>
-                                <div class="info-item"><a href="#" >«Hero Image» — баннеры в параллаксе</a></div>
+                                <div class="info-item"><a href="#" >IT-компании о себе: ролики о команде, работе и атмосфере</a></div>
+                                <div class="info-item"><a href="#" >Опрос об отношении к фразе «А у меня на компе работает»</a></div>
+                                <div class="info-item"><a href="#" >Бесплатный курс «7 шагов к работе вашей мечты»</a></div>
+                                <div class="info-item"><a href="#" >Создатель Gmail, Пол Бакхайт, о том, где лучше работать — в стартапе или большой компании</a></div>
+                              <div class="info-item"><a href="#" >Консультируйте бесплатно, и вам заплатят за работу</a></div>
+                              <div class="info-item"><a href="#" >Тренинг нестандартных поступков: как сделать работу продуктивнее</a></div>
+                              <div class="info-item"><a href="#" >Как выглядит работа ИТ-специалиста изнутри</a></div>
+                              <div class="info-item"><a href="#" >Шоу Звук — Первый год работы над подкастом</a></div>
                             </div>
                         </div>
                         <div class="new-skills info-block">
                             <div class="title">Новые навыки</div>
                             <div class="info-list">
-                                <div class="info-item"><a href="#" >Использование чего-нить</a></div>
-                                <div class="info-item"><a href="#" >Использование чего-нить</a></div>
-                                <div class="info-item"><a href="#" >Использование чего-нить</a></div>
-                                <div class="info-item"><a href="#" >Использование чего-нить</a></div>
+                                <div class="info-item"><a href="#" >Командная работа</a></div>
+                                <div class="info-item"><a href="#" >Английский язык</a></div>
+                                <div class="info-item"><a href="#" >Скорость печати</a></div>
+                                <div class="info-item"><a href="#" >Обработка металла</a></div>
+                              <div class="info-item"><a href="#" >Хорошая физическая форма</a></div>
+                              <div class="info-item"><a href="#" >Знание JDK</a></div>
+                              <div class="info-item"><a href="#" >Использование магии</a></div>
+                              <div class="info-item"><a href="#" >Точность стрельбы</a></div>
                             </div>
                         </div>
                     </div>
