@@ -406,6 +406,7 @@ body {
    ========================================== */
 #reg-form {
   width: 60%;
+  padding: 15px;
 }
 #reg-form .reg-table {
   font-family: Cambria;
@@ -442,8 +443,11 @@ body {
   margin-left: 0;
   margin-right: 0;
 }
+#news-list .add-news {
+  padding-left: 15px;
+}
 #news-list .post {
-  padding: 10px;
+  padding: 15px;
   border-bottom: 1px solid #dae2e8;
 }
 #news-list .post .btn-edit {
