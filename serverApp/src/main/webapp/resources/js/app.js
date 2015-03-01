@@ -1,6 +1,7 @@
 (function () {
     angular.module('App', [
         'App.controllers',
+        'App.directives',
         'ngRoute'
     ]).
     config(['$routeProvider', function($routeProvider) {

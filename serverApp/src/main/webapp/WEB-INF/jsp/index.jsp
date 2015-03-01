@@ -11,12 +11,14 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/styles/reset.css" />">
-    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/styles/bootstrap.min.css" />">
+    <%--<link rel="stylesheet" type="text/css" href="<c:url value="/resources/styles/reset.css" />">--%>
+    <%--<link rel="stylesheet" type="text/css" href="<c:url value="/resources/styles/bootstrap-3.1.1.min.css" />">--%>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/less" href="<c:url value="/resources/styles/bootswatch.less" />">
     <link rel="stylesheet" type="text/less" href="<c:url value="/resources/styles/variables.less" />">
     <link rel="stylesheet" href="<c:url value="/resources/styles/bootstrap-multiselect.css" />">
-    <link rel="stylesheet" type="text/less" href="<c:url value="/resources/styles/bootswatch.less" />">
-    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/styles/datepicker.css" />">
+    <%--<link rel="stylesheet" type="text/css" href="<c:url value="/resources/styles/datepicker.css" />">--%>
     <link rel="stylesheet" type="text/css" href="<c:url value="/resources/styles/main.css" />">
 
 </head>
@@ -155,26 +157,34 @@
         </div>
     </div>
 
+    <%--libs--%>
     <script src="<c:url value="/resources/libs/jquery-2.1.3.min.js" />"></script>
-<script src="<c:url value="/resources/libs/bootstrap.min.js" />"></script>
-<script src="<c:url value="/resources/libs/bootstrap-multiselect.js" />"></script>
-<script src="<c:url value="/resources/libs/bootstrap-datepicker.js" />"></script>
-<script src="<c:url value="/resources/libs/bootstrap-datepicker.ru.js" />"></script>
-<%--<script src="//cdn.ckeditor.com/4.4.7/standard/ckeditor.js"></script>--%>
-<script src="//cdn.ckeditor.com/4.4.7/full/ckeditor.js"></script>
-<script src="//ulogin.ru/js/ulogin.js"></script>
-<script src="<c:url value="/resources/libs/bower_components/angular/angular.js" />"></script>
-<script src="<c:url value="/resources/libs/bower_components/angular-route/angular-route.js" />"></script>
+    <script src="<c:url value="/resources/libs/bootstrap.min.js" />"></script>
+    <script src="<c:url value="/resources/libs/bootstrap-multiselect.js" />"></script>
+    <script src="//cdn.ckeditor.com/4.4.7/full/ckeditor.js"></script>
+    <script src="//ulogin.ru/js/ulogin.js"></script>
+    <%--<script src="<c:url value="/resources/libs/angular.js" />"></script>--%>
+    <%--<script src="<c:url value="/resources/libs/ui-bootstrap-custom-build/ui-bootstrap-custom-0.12.1.js" />"></script>--%>
 
-<script src="<c:url value="/resources/js/modalLogin.js" />"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js"></script>
+    <script src="<c:url value="/resources/libs/angular-route.js" />"></script>
+    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.1.js"></script>
 
-<script src="<c:url value="/resources/js/controllers/login.js" />"></script>
-<script src="<c:url value="/resources/js/controllers/jobs.js" />"></script>
-<script src="<c:url value="/resources/js/controllers/skills.js" />"></script>
-<script src="<c:url value="/resources/js/controllers/skillWays.js" />"></script>
-<script src="<c:url value="/resources/js/controllers/news.js" />"></script>
-<script src="<c:url value="/resources/js/controllers/userInfo.js" />"></script>
-<script src="<c:url value="/resources/js/controllers/controllers.js" />"></script>
-<script src="<c:url value="/resources/js/app.js" />"></script>
+    <%--resources--%>
+    <script src="<c:url value="/resources/js/modalLogin.js" />"></script>
+
+    <script src="<c:url value="/resources/js/directives.js" />"></script>
+    <script src="<c:url value="/resources/js/directives/datepicker.js" />"></script>
+
+    <script src="<c:url value="/resources/js/controllers.js" />"></script>
+    <script src="<c:url value="/resources/js/controllers/login.js" />"></script>
+    <script src="<c:url value="/resources/js/controllers/jobs.js" />"></script>
+    <script src="<c:url value="/resources/js/controllers/skills.js" />"></script>
+    <script src="<c:url value="/resources/js/controllers/skillWays.js" />"></script>
+    <script src="<c:url value="/resources/js/controllers/news.js" />"></script>
+    <script src="<c:url value="/resources/js/controllers/userInfo.js" />"></script>
+
+    <%--app--%>
+    <script src="<c:url value="/resources/js/app.js" />"></script>
 </body>
 </html>
