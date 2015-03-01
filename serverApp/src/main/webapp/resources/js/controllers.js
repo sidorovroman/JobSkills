@@ -1,5 +1,5 @@
 (function () {
-    angular.module('App.controllers', ['login','jobs','news','skills','skillWays','userInfo'])
+    angular.module('App.controllers', ['login','jobs','news','skills','skillWays','userInfo','loginModal'])
 
         .controller("DashboardListCtrl", function ($scope, $http) {
             $http.get('/dashboard/list').

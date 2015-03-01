@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" ng-app="App">
 <head>
     <meta charset="utf-8">
     <title>Skill &middot; Youself</title>
@@ -12,11 +12,10 @@
     <meta name="author" content="">
 
     <%--<link rel="stylesheet" type="text/css" href="<c:url value="/resources/styles/reset.css" />">--%>
-    <%--<link rel="stylesheet" type="text/css" href="<c:url value="/resources/styles/bootstrap-3.1.1.min.css" />">--%>
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/styles/bootstrap.min.css" />">
 
-    <link rel="stylesheet" type="text/less" href="<c:url value="/resources/styles/bootswatch.less" />">
-    <link rel="stylesheet" type="text/less" href="<c:url value="/resources/styles/variables.less" />">
+    <%--<link rel="stylesheet" type="text/less" href="<c:url value="/resources/styles/bootswatch.less" />">--%>
+    <%--<link rel="stylesheet" type="text/less" href="<c:url value="/resources/styles/variables.less" />">--%>
     <link rel="stylesheet" href="<c:url value="/resources/styles/bootstrap-multiselect.css" />">
     <%--<link rel="stylesheet" type="text/css" href="<c:url value="/resources/styles/datepicker.css" />">--%>
     <link rel="stylesheet" type="text/css" href="<c:url value="/resources/styles/main.css" />">
@@ -30,7 +29,7 @@
         </div>
         <button class="btn btn-info btn-start">УБРАТЬ</button>
     </div>
-    <div id="wrap"   ng-app="App">
+    <div id="wrap">
         <div id="header">
             <div class="navbar navbar-default">
                 <div class="box">
@@ -106,13 +105,15 @@
         <div class="pseudo-footer"></div>
     </div>
 
-    <!-- Modal -->
     <footer class="footer">
         <div class="container">
             <p>Designed and built in 2015</p>
         </div>
     </footer>
-    <div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+    <!-- Modal -->
+
+    <div ng-controller="ModalLoginCtrl" class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -149,7 +150,7 @@
 
                     </div>
                     <div class="btn-container">
-                        <button type="submit" value="login" class="btn btn-info login">Войти</button>
+                        <button  value="login" ngClick = "login()" class="btn btn-info login">Войти</button>
                         <button type="submit" value="registration" class="btn btn-primary reg" data-dismiss="modal">Зарегистрироваться</button>
                     </div>
                 </div>
@@ -171,10 +172,14 @@
     <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.1.js"></script>
 
     <%--resources--%>
-    <script src="<c:url value="/resources/js/modalLogin.js" />"></script>
+    <%--<script src="<c:url value="/resources/js/loginModal.js" />"></script>--%>
+
+    <%--app--%>
+    <script src="<c:url value="/resources/js/app.js" />"></script>
 
     <script src="<c:url value="/resources/js/directives.js" />"></script>
     <script src="<c:url value="/resources/js/directives/datepicker.js" />"></script>
+    <script src="<c:url value="/resources/js/controllers/loginModal.js" />"></script>
 
     <script src="<c:url value="/resources/js/controllers.js" />"></script>
     <script src="<c:url value="/resources/js/controllers/login.js" />"></script>
@@ -184,7 +189,5 @@
     <script src="<c:url value="/resources/js/controllers/news.js" />"></script>
     <script src="<c:url value="/resources/js/controllers/userInfo.js" />"></script>
 
-    <%--app--%>
-    <script src="<c:url value="/resources/js/app.js" />"></script>
 </body>
 </html>
