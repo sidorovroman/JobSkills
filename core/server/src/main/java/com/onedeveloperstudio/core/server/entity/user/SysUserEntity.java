@@ -20,7 +20,6 @@ public class SysUserEntity extends BaseEntity {
   private String city;
   private String country;
   private String network;
-  private Long rating;
 
   @Column(nullable = false, length = FieldSize.EMAIL)
   public String getEmail() {
@@ -108,13 +107,5 @@ public class SysUserEntity extends BaseEntity {
 
   public void setNetwork(String network) {
     this.network = network;
-  }
-
-  public Long getRating() {
-    return rating;
-  }
-
-  public void setRating(Long rating) {
-    this.rating = rating;
   }
 }

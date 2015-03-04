@@ -27,7 +27,6 @@ public class JobEntity extends BaseEntity {
   private List<RequiredSkill> skills;
   private SysUserEntity author;
 
-
   @Column(nullable = false, length = FieldSize.CAPTION)
   public String getCaption() {
     return caption;

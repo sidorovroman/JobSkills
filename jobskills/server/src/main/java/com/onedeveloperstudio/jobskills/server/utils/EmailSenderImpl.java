@@ -27,9 +27,6 @@ import java.io.FileOutputStream;
 import java.util.Date;
 import java.util.Properties;
 
-/**
- * @author Yuri Zakharov, "Integrated Information Solutions Ltd"
- */
 @Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
 @Component(value = "emailSender")
 public class EmailSenderImpl implements EmailSender {

@@ -18,5 +18,6 @@
     <class>com.onedeveloperstudio.jobskills.server.entity.DashBoard</class>
     <class>com.onedeveloperstudio.jobskills.server.entity.WayToImproveSkill</class>
     <class>com.onedeveloperstudio.jobskills.server.entity.RequiredSkill</class>
+    <class>com.onedeveloperstudio.jobskills.server.entity.UserJobRating</class>
   </persistence-unit>
 </persistence>
