@@ -16,7 +16,7 @@ import java.util.List;
  * User: y.zakharov
  * Date: 18.11.14
  */
-public class BaseVoteServiceImlp<D extends RatedDto> extends BaseServiceImpl<D> implements VoteService {
+public class BaseVoteServiceImpl<D extends RatedDto> extends BaseServiceImpl<D> implements VoteService {
 
   @Autowired
   private SysUserService sysUserService;

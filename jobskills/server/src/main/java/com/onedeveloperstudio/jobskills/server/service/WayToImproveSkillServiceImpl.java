@@ -3,7 +3,7 @@ package com.onedeveloperstudio.jobskills.server.service;
 import com.onedeveloperstudio.core.common.appobj.AppObj;
 import com.onedeveloperstudio.core.common.appobj.AppObjDict;
 import com.onedeveloperstudio.core.common.dto.CommentaryDto;
-import com.onedeveloperstudio.core.server.service.BaseVoteServiceImlp;
+import com.onedeveloperstudio.core.server.service.BaseVoteServiceImpl;
 import com.onedeveloperstudio.core.server.service.SysUserService;
 import com.onedeveloperstudio.jobskills.common.dto.WayToImproveSkillDto;
 import com.onedeveloperstudio.jobskills.server.dao.repositories.WayToImproveSkillRepository;
@@ -24,7 +24,7 @@ import java.util.List;
  */
 
 @Service
-public class WayToImproveSkillServiceImpl extends BaseVoteServiceImlp<WayToImproveSkillDto> implements WayToImproveSkillService {
+public class WayToImproveSkillServiceImpl extends BaseVoteServiceImpl<WayToImproveSkillDto> implements WayToImproveSkillService {
 
   @Autowired
   private WayToImproveSkillRepository repository;

@@ -3,7 +3,7 @@ package com.onedeveloperstudio.jobskills.server.service;
 import com.onedeveloperstudio.core.common.appobj.AppObj;
 import com.onedeveloperstudio.core.common.appobj.AppObjDict;
 import com.onedeveloperstudio.core.common.dto.CommentaryDto;
-import com.onedeveloperstudio.core.server.service.BaseVoteServiceImlp;
+import com.onedeveloperstudio.core.server.service.BaseVoteServiceImpl;
 import com.onedeveloperstudio.core.server.service.SysUserService;
 import com.onedeveloperstudio.jobskills.common.dto.RequiredSkillDto;
 import com.onedeveloperstudio.jobskills.server.dao.repositories.RequiredSkillRepository;
@@ -23,7 +23,7 @@ import java.util.List;
  * Date: 25.08.14
  */
 @Service
-public class RequiredSkillServiceImpl extends BaseVoteServiceImlp<RequiredSkillDto> implements RequiredSkillService {
+public class RequiredSkillServiceImpl extends BaseVoteServiceImpl<RequiredSkillDto> implements RequiredSkillService {
   @Autowired
   private RequiredSkillRepository repository;
   @Autowired

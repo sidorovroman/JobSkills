@@ -3,8 +3,10 @@ package com.onedeveloperstudio.jobskills.web.component.viewcontrollers;
 import com.onedeveloperstudio.jobskills.common.dto.JobDto;
 import com.onedeveloperstudio.jobskills.server.service.JobService;
 import flexjson.JSONDeserializer;
+import org.apache.commons.lang3.Validate;
 import org.hibernate.HibernateException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Controller;
@@ -27,9 +29,16 @@ import java.util.Map;
 @Controller
 @RequestMapping("/jobs")
 public class JobsViewController {
+  public String imgsPath;
 
   @Autowired
   private JobService service;
+
+  @Value("${jobsViewController.imgsPath}")
+  public void setImgsPath(String imgsPath) {
+    //Validate.notBlank(imgsPath, "Не определён параметр 'saiku.schema.path'");
+    this.imgsPath = imgsPath;
+  }
 
   @RequestMapping("/list")
   @ResponseBody
@@ -67,7 +76,10 @@ public class JobsViewController {
 
   @RequestMapping(value = "/add", method = RequestMethod.POST)
   @ResponseBody
-  public JobDto addJob(@RequestBody JobDto job) {
+  public JobDto addJob(@RequestBody JobDto job, @RequestBody(required = false) byte[] img) {
+    if(img!=null){
+      //Сохраняем изображение
+    }
     if (job.getParent() != null && job.getParent().getId() == null) {
       job.setParent(null);
     }
