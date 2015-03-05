@@ -24,7 +24,7 @@ import java.util.List;
  */
 
 @Service
-public class WayToImproveSkillServiceImpl extends BaseVoteServiceImpl<WayToImproveSkillDto> implements WayToImproveSkillService {
+public class WayToImproveSkillServiceImpl extends JobSkillsVoteServiceImpl<WayToImproveSkillDto> implements WayToImproveSkillService {
 
   @Autowired
   private WayToImproveSkillRepository repository;

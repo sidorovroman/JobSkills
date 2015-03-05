@@ -45,4 +45,9 @@
     <editDto class="com.onedeveloperstudio.core.common.dto.VoteDto"/>
     <repository class="com.onedeveloperstudio.core.server.repository.VoteRepository"/>
   </dict>
+  <dict name="userJobRating" caption="Влияение пользователя на работы">
+    <entity class="com.onedeveloperstudio.jobskills.server.entity.UserJobRating"/>
+    <editDto class="com.onedeveloperstudio.jobskills.common.dto.UserJobRatingDto"/>
+    <repository class="com.onedeveloperstudio.jobskills.server.dao.repositories.UserJobRatingRepository"/>
+  </dict>
 </objects>

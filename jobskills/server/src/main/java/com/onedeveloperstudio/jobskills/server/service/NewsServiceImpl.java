@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
  * Date: 20.09.14
  */
 @Service
-public class NewsServiceImpl extends BaseVoteServiceImpl<NewsDto> implements NewsService {
+public class NewsServiceImpl extends JobSkillsVoteServiceImpl<NewsDto> implements NewsService {
 
   @Transactional
   @Override

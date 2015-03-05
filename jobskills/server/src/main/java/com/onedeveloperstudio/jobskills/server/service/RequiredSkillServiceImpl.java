@@ -23,7 +23,7 @@ import java.util.List;
  * Date: 25.08.14
  */
 @Service
-public class RequiredSkillServiceImpl extends BaseVoteServiceImpl<RequiredSkillDto> implements RequiredSkillService {
+public class RequiredSkillServiceImpl extends JobSkillsVoteServiceImpl<RequiredSkillDto> implements RequiredSkillService {
   @Autowired
   private RequiredSkillRepository repository;
   @Autowired
