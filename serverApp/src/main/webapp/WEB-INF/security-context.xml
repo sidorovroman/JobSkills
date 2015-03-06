@@ -24,6 +24,7 @@
 
   <s:http auto-config='true' use-expressions="true">
     <s:intercept-url pattern="/user/*" access="isFullyAuthenticated()"/>
+    <s:intercept-url pattern="/admin/*" access="hasRole('ROLE_ADMIN')"/>
     <s:intercept-url pattern="/" access="permitAll()"/>
     <s:form-login login-page="/"
                   username-parameter="username"

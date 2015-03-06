@@ -17,17 +17,18 @@ import java.util.List;
  * Date: 18.07.14
  */
 @Controller
+@RequestMapping("/admin")
 public class AdminViewController {
   @Autowired
   private AutowireCapableBeanFactory beanFactory;
 
-  @RequestMapping(value = {"/admin/index"})
+  @RequestMapping(value = {"/index"})
   public String getDefaultPage(ModelMap model) {
     AppObjDict dict = AppObjDict.getInstance();
     AppObj jobAppObj = dict.getAppObj("job");
     JobService service = beanFactory.getBean(JobService.class);
     service.setAppObj(jobAppObj);
     List<JobDto>  list = service.loadAll();
-    return "/admin/index";
+    return "/index";
   }
 }
