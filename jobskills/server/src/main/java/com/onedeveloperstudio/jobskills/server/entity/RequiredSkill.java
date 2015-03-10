@@ -6,6 +6,7 @@ import com.onedeveloperstudio.core.server.entity.Commentary;
 import com.onedeveloperstudio.core.server.entity.Vote;
 import com.onedeveloperstudio.core.server.entity.user.SysUserEntity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -80,7 +81,7 @@ public class RequiredSkill extends BaseEntity {
     this.description = description;
   }
 
-  @ManyToMany
+  @ManyToMany(cascade = CascadeType.ALL)
   @JoinTable(name = "requiredskill_votes", joinColumns = {
       @JoinColumn(name = "skill_id", nullable = false, updatable = false)},
       inverseJoinColumns = {@JoinColumn(name = "vote_id",

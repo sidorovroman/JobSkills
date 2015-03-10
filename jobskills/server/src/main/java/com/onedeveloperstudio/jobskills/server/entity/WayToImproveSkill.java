@@ -8,6 +8,7 @@ import com.onedeveloperstudio.core.server.entity.user.SysUserEntity;
 import com.onedeveloperstudio.jobskills.common.GRADE;
 import com.onedeveloperstudio.jobskills.common.ResourceType;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -106,7 +107,7 @@ public class WayToImproveSkill extends BaseEntity {
     this.description = description;
   }
 
-  @ManyToMany
+  @ManyToMany(cascade = CascadeType.ALL)
   @JoinTable(name = "waytoimproveskill_votes", joinColumns = {
       @JoinColumn(name = "waytoimproveskill_id", nullable = false, updatable = false)},
       inverseJoinColumns = {@JoinColumn(name = "vote_id",

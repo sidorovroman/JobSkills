@@ -10,6 +10,7 @@ import com.onedeveloperstudio.jobskills.common.dto.RequiredSkillDto;
 import com.onedeveloperstudio.jobskills.common.dto.UserJobRatingDto;
 import com.onedeveloperstudio.jobskills.common.dto.WayToImproveSkillDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +24,7 @@ public class JobSkillsVoteServiceImpl<D extends RatedDto> extends BaseVoteServic
   private UserJobRatingService userJobRatingService;
 
   @Override
+  @Transactional
   public Integer vote(Long id, VoteState state) {
     D ratedObject = this.load(id);
     updateAuthorRating(ratedObject, state);
@@ -53,6 +55,7 @@ public class JobSkillsVoteServiceImpl<D extends RatedDto> extends BaseVoteServic
     }
   }
 
+  @Transactional
   private void updateKarma(SysUserDto author, JobDto job, VoteState state) {
     UserJobRatingDto userJobRatingDto = userJobRatingService.findByUserAndJob(author, job);
     if (userJobRatingDto != null) {

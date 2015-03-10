@@ -8,6 +8,7 @@ import com.onedeveloperstudio.core.server.service.SysUserService;
 import com.onedeveloperstudio.jobskills.common.dto.JobDto;
 import com.onedeveloperstudio.jobskills.common.dto.UserJobRatingDto;
 import com.onedeveloperstudio.jobskills.server.dao.repositories.UserJobRatingRepository;
+import com.onedeveloperstudio.jobskills.server.entity.UserJobRating;
 import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,6 +37,10 @@ public class UserJobRatingServiceImpl extends BaseServiceImpl<UserJobRatingDto> 
 
   @Override
   public UserJobRatingDto findByUserAndJob(SysUserDto user, JobDto job) {
-    return mapper.map(repository.findOneByUserIdAndJobId(user.getId(), job.getId()), UserJobRatingDto.class);
+    UserJobRating ratingEntity = repository.findOneByUserIdAndJobId(user.getId(), job.getId());
+    if (ratingEntity == null) {
+      return null;
+    }
+    return mapper.map(ratingEntity, UserJobRatingDto.class);
   }
 }
