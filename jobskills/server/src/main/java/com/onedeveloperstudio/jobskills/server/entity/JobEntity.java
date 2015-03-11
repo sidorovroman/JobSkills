@@ -26,6 +26,16 @@ public class JobEntity extends BaseEntity {
   private Set<JobEntity> children;
   private List<RequiredSkill> skills;
   private SysUserEntity author;
+  private Long addDate;
+
+  @Column(nullable = false, name = "adddate")
+  public Long getAddDate() {
+    return addDate;
+  }
+
+  public void setAddDate(Long addDate) {
+    this.addDate = addDate;
+  }
 
   @Column(nullable = false, length = FieldSize.CAPTION)
   public String getCaption() {

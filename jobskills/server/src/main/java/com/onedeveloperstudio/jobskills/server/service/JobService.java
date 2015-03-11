@@ -11,4 +11,5 @@ import java.util.List;
  */
 public interface JobService extends BaseService<JobDto> {
   List<JobDto> getAllParents();
+  Long getCount();
 }

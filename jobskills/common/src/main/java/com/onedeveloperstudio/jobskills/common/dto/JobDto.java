@@ -14,6 +14,7 @@ public class JobDto extends BaseDto {
   private String description;
   private JobDto parent;
   private SysUserDto author;
+  private Long addDate;
   private List<JobDto> children;
   private List<RequiredSkillDto> skills;
 
@@ -63,5 +64,13 @@ public class JobDto extends BaseDto {
 
   public void setAuthor(SysUserDto author) {
     this.author = author;
+  }
+
+  public Long getAddDate() {
+    return addDate;
+  }
+
+  public void setAddDate(Long addDate) {
+    this.addDate = addDate;
   }
 }

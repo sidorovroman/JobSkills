@@ -22,6 +22,7 @@ import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -72,6 +73,7 @@ public class WayToImproveSkillViewController {
   @RequestMapping(value = "/add", method = RequestMethod.POST)
   @ResponseBody
   public WayToImproveSkillDto addWayToImproveSkill(@RequestBody WayToImproveSkillDto wayToImproveSkill){
+    wayToImproveSkill.setAddDate(new Date().getTime());
     wayToImproveSkill = service.insert(wayToImproveSkill);
     return wayToImproveSkill;
   }

@@ -32,6 +32,7 @@
       <column name="city" type="VARCHAR(30)"/>
       <column name="country" type="VARCHAR(30)"/>
       <column name="network" type="VARCHAR(20)"/>
+      <column name="regdate" type="BIGINT"/>
     </createTable>
     <createTable tableName="commentary">
       <column autoIncrement="true" name="id" type="BIGINT">
@@ -89,6 +90,9 @@
         <constraints nullable="false"/>
       </column>
       <column name="parent_id" type="BIGINT"/>
+      <column name="adddate" type="BIGINT">
+        <constraints nullable="false"/>
+      </column>
     </createTable>
     <createTable tableName="requiredskill">
       <column autoIncrement="true" name="id" type="BIGINT">
@@ -101,6 +105,9 @@
         <constraints nullable="false"/>
       </column>
       <column name="job_id" type="BIGINT">
+        <constraints nullable="false"/>
+      </column>
+      <column name="adddate" type="BIGINT">
         <constraints nullable="false"/>
       </column>
     </createTable>

@@ -121,4 +121,9 @@ public class BaseServiceImpl<D extends BaseDto> implements BaseService<D> {
   public void setRepository(JpaRepository repository) {
     this.repository = repository;
   }
+
+  @Override
+  public Long getCount() {
+    return repository.count();
+  }
 }

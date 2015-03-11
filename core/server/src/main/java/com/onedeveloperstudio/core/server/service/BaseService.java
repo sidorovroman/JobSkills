@@ -17,6 +17,8 @@ public interface BaseService<D extends BaseDto> {
 
   List<D> loadAll();
 
+  Long getCount();
+
   List<D> loadAny(Pageable pageRequest);
 
   void delete(Long id);

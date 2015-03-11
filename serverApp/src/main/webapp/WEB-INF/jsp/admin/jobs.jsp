@@ -77,7 +77,7 @@
   <a class="nav_row" href="/admin/jobs">Работы</a>
 </div>
 <div id="main_content" style="margin-left: 100px;">
-  Пользователи
+  Работы
   <div id="statistic" class="right_block">
     <h3 class="text-center">Статистика</h3>
     <div class="nav_row"> Новостей: ${newsCount} </div>

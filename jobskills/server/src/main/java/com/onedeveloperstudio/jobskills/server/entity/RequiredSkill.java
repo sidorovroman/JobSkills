@@ -31,6 +31,16 @@ public class RequiredSkill extends BaseEntity {
   private List<WayToImproveSkill> ways;
   private List<Commentary> comments;
   private List<Vote> votes;
+  private Long addDate;
+
+  @Column(nullable = false, name = "adddate")
+  public Long getAddDate() {
+    return addDate;
+  }
+
+  public void setAddDate(Long addDate) {
+    this.addDate = addDate;
+  }
 
   @ManyToMany
   @JoinTable(name = "requiredskill_waytoimproveskill", joinColumns = {

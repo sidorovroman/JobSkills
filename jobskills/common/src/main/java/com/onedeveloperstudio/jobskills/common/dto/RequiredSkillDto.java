@@ -20,6 +20,7 @@ public class RequiredSkillDto extends RatedDto {
   private String caption;
   private String description;
   private SysUserDto author;
+  private Long addDate;
   @JsonIgnore
   private List<WayToImproveSkillDto> ways;
   private List<CommentaryDto> comments;
@@ -74,5 +75,13 @@ public class RequiredSkillDto extends RatedDto {
 
   public void setAuthor(SysUserDto author) {
     this.author = author;
+  }
+
+  public Long getAddDate() {
+    return addDate;
+  }
+
+  public void setAddDate(Long addDate) {
+    this.addDate = addDate;
   }
 }

@@ -35,9 +35,18 @@ public class WayToImproveSkill extends BaseEntity {
   private List<RequiredSkill> skills;
   private String link;
   private ResourceType resourceType;
-  private Long addDate;
   private List<Vote> votes;
   private List<Commentary> commentaries;
+  private Long addDate;
+
+  @Column(nullable = false, name = "adddate")
+  public Long getAddDate() {
+    return addDate;
+  }
+
+  public void setAddDate(Long addDate) {
+    this.addDate = addDate;
+  }
 
   @Enumerated(EnumType.STRING)
   @Column(length = 100)
@@ -87,15 +96,6 @@ public class WayToImproveSkill extends BaseEntity {
 
   public void setResourceType(ResourceType resourceType) {
     this.resourceType = resourceType;
-  }
-
-  @Column(nullable = false)
-  public Long getAddDate() {
-    return addDate;
-  }
-
-  public void setAddDate(Long addDate) {
-    this.addDate = addDate;
   }
 
   @Column(nullable = false, length = FieldSize.DESCRIPTION)

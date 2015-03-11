@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -83,6 +84,7 @@ public class JobsViewController {
     if (job.getParent() != null && job.getParent().getId() == null) {
       job.setParent(null);
     }
+    job.setAddDate(new Date().getTime());
     job = service.insert(job);
     return job;
   }

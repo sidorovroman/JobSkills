@@ -13,6 +13,7 @@ public class SysUserDto extends BaseDto {
   private String network;
   private Long rating;
   private String authorityName;
+  private Long regdate;
 
   public String getUserFullName() {
     return userFullName;
@@ -108,5 +109,13 @@ public class SysUserDto extends BaseDto {
 
   public void setRating(Long rating) {
     this.rating = rating;
+  }
+
+  public Long getRegdate() {
+    return regdate;
+  }
+
+  public void setRegdate(Long regdate) {
+    this.regdate = regdate;
   }
 }

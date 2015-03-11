@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -64,6 +65,7 @@ public class RequiredSkillViewController {
     if(requiredSkill.getWays().size()==1 && requiredSkill.getWays().get(0).getCaption() == null){
       requiredSkill.setWays(null);
     }
+    requiredSkill.setAddDate(new Date().getTime());
     requiredSkill = service.insert(requiredSkill);
     return requiredSkill;
   }

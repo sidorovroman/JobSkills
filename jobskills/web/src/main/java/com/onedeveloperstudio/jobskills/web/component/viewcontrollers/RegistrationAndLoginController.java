@@ -35,6 +35,7 @@ import java.io.Reader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.ParseException;
+import java.util.Date;
 
 /**
  * User: y.zakharov
@@ -87,6 +88,7 @@ public class RegistrationAndLoginController {
         sysUserDto.setId(dto.getId());
         sysUserService.update(sysUserDto);
       } else {
+        sysUserDto.setRegdate(new Date().getTime());
         sysUserService.insert(sysUserDto);
       }
       Authentication auth = provider.authenticate(new UsernamePasswordAuthenticationToken(user.getEmail(), DUMMY_PASSWORD));
@@ -144,6 +146,7 @@ public class RegistrationAndLoginController {
     sysuser.setUserName(sysuser.getEmail());
     String password = sysuser.getPassword();
     sysuser.setPassword(passwordEncoder.encodePassword(sysuser.getPassword(), saltSource.getSalt(new User(sysuser.getEmail(), sysuser.getPassword(), "", null))));
+    sysuser.setRegdate(new Date().getTime());
     sysuser = sysUserService.insert(sysuser);
     Authentication auth = provider.authenticate(new UsernamePasswordAuthenticationToken(sysuser.getEmail(), password));
     SecurityContextHolder.getContext().setAuthentication(auth);

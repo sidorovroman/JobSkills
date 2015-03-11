@@ -1,14 +1,15 @@
 package com.onedeveloperstudio.jobskills.web.component.viewcontrollers;
 
-import com.onedeveloperstudio.core.common.appobj.AppObj;
-import com.onedeveloperstudio.core.common.appobj.AppObjDict;
+import com.onedeveloperstudio.core.server.service.SysUserService;
 import com.onedeveloperstudio.jobskills.common.dto.JobDto;
 import com.onedeveloperstudio.jobskills.server.service.JobService;
+import com.onedeveloperstudio.jobskills.server.service.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -22,13 +23,22 @@ public class AdminViewController {
   @Autowired
   private AutowireCapableBeanFactory beanFactory;
 
+  @Autowired
+  private JobService jobService;
+
+  @Autowired
+  private NewsService newsService;
+
+  @Autowired
+  private SysUserService userService;
+
   @RequestMapping(value = {"/index"})
-  public String getDefaultPage(ModelMap model) {
-    AppObjDict dict = AppObjDict.getInstance();
-    AppObj jobAppObj = dict.getAppObj("job");
-    JobService service = beanFactory.getBean(JobService.class);
-    service.setAppObj(jobAppObj);
-    List<JobDto>  list = service.loadAll();
-    return "admin/index";
+  public ModelAndView getDefaultPage(ModelMap model) {
+    List<JobDto>  list = jobService.loadAll();
+    ModelAndView mv = new ModelAndView("admin/index");
+    mv.addObject("jobsCount", jobService.getCount());
+    mv.addObject("usersCount", userService.getCount());
+    mv.addObject("newsCount", newsService.getCount());
+    return mv;
   }
 }

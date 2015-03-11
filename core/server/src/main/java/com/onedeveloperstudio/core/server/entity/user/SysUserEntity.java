@@ -6,6 +6,7 @@ import com.onedeveloperstudio.core.server.entity.BaseEntity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import java.util.Date;
 
 @Entity(name = "useraccount")
 @Table(name = "useraccount")
@@ -20,6 +21,7 @@ public class SysUserEntity extends BaseEntity {
   private String city;
   private String country;
   private String network;
+  private Long regdate;
 
   @Column(nullable = false, length = FieldSize.EMAIL)
   public String getEmail() {
@@ -107,5 +109,14 @@ public class SysUserEntity extends BaseEntity {
 
   public void setNetwork(String network) {
     this.network = network;
+  }
+
+  @Column(nullable = false)
+  public Long getRegdate() {
+    return regdate;
+  }
+
+  public void setRegdate(Long regdate) {
+    this.regdate = regdate;
   }
 }
