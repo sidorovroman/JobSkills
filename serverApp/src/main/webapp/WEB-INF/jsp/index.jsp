@@ -41,6 +41,9 @@
                             <li><a href="#/jobs">Работы</a></li>
                             <li><a href="#/news">Новости</a></li>
                             <li><a href="#/about">О нас</a></li>
+                            <sec:authorize var="loggedIn" access="hasRole('ROLE_ADMIN')">
+                              <li><a href="/admin/index">Админка</a></li>
+                            </sec:authorize>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <li>

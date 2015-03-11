@@ -29,6 +29,6 @@ public class AdminViewController {
     JobService service = beanFactory.getBean(JobService.class);
     service.setAppObj(jobAppObj);
     List<JobDto>  list = service.loadAll();
-    return "/index";
+    return "admin/index";
   }
 }

