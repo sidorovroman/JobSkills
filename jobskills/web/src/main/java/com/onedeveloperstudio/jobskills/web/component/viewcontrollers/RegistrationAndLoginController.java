@@ -130,10 +130,10 @@ public class RegistrationAndLoginController {
    */
   @RequestMapping(value = "/register", method = RequestMethod.POST)
   @ResponseBody
-  public SysUserDto register(@RequestParam(required = true) String email, @RequestParam(required = true) String password) throws ParseException {
+  public SysUserDto register(@RequestParam(required = true) String mail, @RequestParam(required = true) String password) throws ParseException {
     StringBuilder errorMsg = new StringBuilder();
     SysUserDto sysuser = new SysUserDto();
-    sysuser.setEmail(email);
+    sysuser.setEmail(mail);
     sysuser.setPassword(password);
     if (StringUtils.isEmpty(sysuser.getEmail()) || StringUtils.isEmpty(sysuser.getPassword())) {
       errorMsg.append("Значение почты и пароля не должно быть пустым.\\n");
