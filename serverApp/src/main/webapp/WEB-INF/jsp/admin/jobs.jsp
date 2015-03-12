@@ -41,7 +41,7 @@
 
   .nav_row {
     display: block;
-    color: #8c8c8b;
+    color: white;
     font-size: 14px;
     font-weight: bold;
     padding: 10px 25px;
@@ -55,7 +55,7 @@
   }
 
   #nav_bar {
-    background: white;
+    background: #00BAD3;
   }
 
   #right_block {
@@ -118,17 +118,17 @@
 </style>
 <div id="nav_panel">
   <div id="logo" class="text-center" style="border: 1px solid green;">
-    <h2 style="margin-top: 10px;">S &middot; Y</h2>
+    <h2 style="margin-top: 10px; color: white;">S &middot; Y</h2>
   </div>
-  <div class="nav_button text-center" style="border: 1px solid red; cursor: pointer;">
-    <h3>
+  <div class="nav_button text-center" style="cursor: pointer;">
+    <h3 style="color:white;">
       ===<br>===
     </h3>
   </div>
 </div>
 <div id="nav_bar"
      style="display: none; position: absolute; float: left; width: 300px; height: 100%; border: 1px solid black; margin-left: 70px;">
-  <div style="text-align: center; margin-top: 60px; border: 1px solid red;"><h2>Навигация</h2></div>
+  <div style="text-align: center; margin-top: 60px;"><h2>Навигация</h2></div>
   <a class="nav_row" href="/admin/index">Пользователи</a>
   <a class="nav_row" href="/admin/news">Новости</a>
   <a class="nav_row" href="/admin/jobs">Работы</a>
