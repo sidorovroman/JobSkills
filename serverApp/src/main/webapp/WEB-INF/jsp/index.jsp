@@ -127,12 +127,12 @@
                     <form class="cd-form" id="login-form">
                         <p class="fieldset">
                             <label class="image-replace cd-email" for="signin-email">E-mail</label>
-                            <input name="email" class="full-width has-padding has-border" id="signin-email" type="email" placeholder="E-mail">
+                            <input name="email" class="full-width has-padding has-border" id="signin-email" ng-model="mail" type="text" placeholder="E-mail">
                             <span class="cd-error-message">Введите корректный e-mail!</span>
                         </p>
                         <p class="fieldset">
                             <label class="image-replace cd-password" for="signin-password">Пароль</label>
-                            <input name="password" class="full-width has-padding has-border" id="signin-password" type="text"  placeholder="Пароль">
+                            <input name="password" class="full-width has-padding has-border" id="signin-password" ng-model="password" type="text"  placeholder="Пароль">
                         </p>
                     </form>
                 </div>
@@ -153,8 +153,8 @@
 
                     </div>
                     <div class="btn-container">
-                        <button  value="login" ngClick = "login()" class="btn btn-info login">Войти</button>
-                        <button type="submit" value="registration" class="btn btn-primary reg" data-dismiss="modal">Зарегистрироваться</button>
+                        <button value="login"  ng-click="login()" class="btn btn-info login">Войти</button>
+                        <button value="registration" ng-click="register()" class="btn btn-primary reg" data-dismiss="modal">Зарегистрироваться</button>
                     </div>
                 </div>
             </div>
@@ -185,7 +185,6 @@
     <script src="<c:url value="/resources/js/controllers/loginModal.js" />"></script>
 
     <script src="<c:url value="/resources/js/controllers.js" />"></script>
-    <script src="<c:url value="/resources/js/controllers/login.js" />"></script>
     <script src="<c:url value="/resources/js/controllers/jobs.js" />"></script>
     <script src="<c:url value="/resources/js/controllers/skills.js" />"></script>
     <script src="<c:url value="/resources/js/controllers/skillWays.js" />"></script>
