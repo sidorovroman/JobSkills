@@ -44,10 +44,16 @@
     background: white;
   }
 
-  .right_block {
+  #right_block {
     float: right;
     width: 25%;
     margin: 20px;
+
+  }
+
+  .statistic{
+    margin-top: 20px;
+    width: 100%;
     border: 1px solid #000000;
     -webkit-box-shadow:
       10px 10px 10px #000;
@@ -78,12 +84,27 @@
 </div>
 <div id="main_content" style="margin-left: 100px;">
   Работы
-  <div id="statistic" class="right_block">
-    <h3 class="text-center">Статистика</h3>
-    <div class="nav_row"> Новостей: ${newsCount} </div>
-    <div class="nav_row"> Пользователей: ${usersCount} </div>
-    <div class="nav_row"> Работ: ${jobsCount} </div>
+
+  <c:forEach var="job" items="${jobs}" varStatus="loop">
+    <li><a href="#">${job.caption}</a></li>
+  </c:forEach>
+
+  <div  id="right_block">
+    <div class="statistic">
+      <h3 class="text-center">Общая статистика</h3>
+      <div class="nav_row"> Новостей: ${newsCount} </div>
+      <div class="nav_row"> Пользователей: ${usersCount} </div>
+      <div class="nav_row"> Работ: ${jobsCount} </div>
+    </div>
+
+    <div class="statistic">
+      <h3 class="text-center">Cтатистика за 30 дней</h3>
+      <div class="nav_row"> Новостей: ${newNewss} </div>
+      <div class="nav_row"> Пользователей: ${newUsers} </div>
+      <div class="nav_row"> Работ: ${newJobs} </div>
+    </div>
   </div>
+
 </div>
 <script type="text/javascript">
   $('.nav_button').click(function () {

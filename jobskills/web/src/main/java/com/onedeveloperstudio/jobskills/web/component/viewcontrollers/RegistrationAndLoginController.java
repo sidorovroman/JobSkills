@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
@@ -129,8 +130,11 @@ public class RegistrationAndLoginController {
    */
   @RequestMapping(value = "/register", method = RequestMethod.POST)
   @ResponseBody
-  public SysUserDto register(@RequestBody SysUserDto sysuser) throws ParseException {
+  public SysUserDto register(@RequestParam(required = true) String email, @RequestParam(required = true) String password) throws ParseException {
     StringBuilder errorMsg = new StringBuilder();
+    SysUserDto sysuser = new SysUserDto();
+    sysuser.setEmail(email);
+    sysuser.setPassword(password);
     if (StringUtils.isEmpty(sysuser.getEmail()) || StringUtils.isEmpty(sysuser.getPassword())) {
       errorMsg.append("Значение почты и пароля не должно быть пустым.\\n");
     }
@@ -144,7 +148,6 @@ public class RegistrationAndLoginController {
       throw new ValidationException(errorMsg.toString());
     }
     sysuser.setUserName(sysuser.getEmail());
-    String password = sysuser.getPassword();
     sysuser.setPassword(passwordEncoder.encodePassword(sysuser.getPassword(), saltSource.getSalt(new User(sysuser.getEmail(), sysuser.getPassword(), "", null))));
     sysuser.setRegdate(new Date().getTime());
     sysuser = sysUserService.insert(sysuser);

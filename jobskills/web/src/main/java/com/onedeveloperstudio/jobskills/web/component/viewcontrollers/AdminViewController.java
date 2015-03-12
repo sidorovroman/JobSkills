@@ -35,7 +35,6 @@ public class AdminViewController {
 
   @RequestMapping(value = {"/index"})
   public ModelAndView getDefaultPage(ModelMap model) {
-    List<JobDto>  list = jobService.loadAll();
     ModelAndView mv = new ModelAndView("admin/index");
     mv.addObject("jobsCount", jobService.getCount());
     mv.addObject("usersCount", userService.getCount());
@@ -45,6 +44,22 @@ public class AdminViewController {
     mv.addObject("newUsers", userService.countUsersRegisteredBetweenDates(monthAgoTime, currentTime));
     mv.addObject("newJobs", jobService.getCountBetweenDates(monthAgoTime, currentTime));
     mv.addObject("newNewss", newsService.countNewsAddedBetweenDates(monthAgoTime, currentTime));
+    return mv;
+  }
+
+  @RequestMapping(value = {"/jobs"})
+  public ModelAndView getJobsPage(ModelMap model) {
+    List<JobDto>  list = jobService.getAllParents();
+    ModelAndView mv = new ModelAndView("admin/jobs");
+    mv.addObject("jobsCount", jobService.getCount());
+    mv.addObject("usersCount", userService.getCount());
+    mv.addObject("newsCount", newsService.getCount());
+    Long currentTime = new Date().getTime();
+    Long monthAgoTime = currentTime - 3600*24*30;
+    mv.addObject("newUsers", userService.countUsersRegisteredBetweenDates(monthAgoTime, currentTime));
+    mv.addObject("newJobs", jobService.getCountBetweenDates(monthAgoTime, currentTime));
+    mv.addObject("newNewss", newsService.countNewsAddedBetweenDates(monthAgoTime, currentTime));
+    mv.addObject("jobs", list);
     return mv;
   }
 }
