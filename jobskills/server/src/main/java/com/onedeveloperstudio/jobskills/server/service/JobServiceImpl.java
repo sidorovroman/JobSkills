@@ -47,6 +47,11 @@ public class JobServiceImpl extends BaseServiceImpl<JobDto> implements JobServic
   }
 
   @Override
+  public Long getCountBetweenDates(Long dateFrom, Long dateTo) {
+    return repository.countByAddDateBetween(dateFrom, dateTo);
+  }
+
+  @Override
   public JobDto insert(JobDto dto) {
     setAuthor(dto);
     return super.insert(dto);

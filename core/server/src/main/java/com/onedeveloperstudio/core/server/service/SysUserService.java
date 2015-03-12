@@ -11,4 +11,5 @@ public interface SysUserService extends BaseService<SysUserDto> {
   SysUserDto loadByUsernameAndPassword(String username, String password);
   SysUserDto loadByEmail(String email);
   SysUserDto getAuthentication();
+  Long countUsersRegisteredBetweenDates(Long from, Long to);
 }

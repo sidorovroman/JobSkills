@@ -75,4 +75,9 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUserDto> implements S
     SysUserDto user = this.loadByEmail(regUser.getUsername());
     return user;
   }
+
+  @Override
+  public Long countUsersRegisteredBetweenDates(Long from, Long to) {
+    return userRepository.countByRegdateBetween(from, to);
+  }
 }

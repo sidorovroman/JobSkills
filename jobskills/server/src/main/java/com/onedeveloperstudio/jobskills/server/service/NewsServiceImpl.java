@@ -3,6 +3,8 @@ package com.onedeveloperstudio.jobskills.server.service;
 import com.onedeveloperstudio.core.common.dto.CommentaryDto;
 import com.onedeveloperstudio.core.server.service.BaseVoteServiceImpl;
 import com.onedeveloperstudio.jobskills.common.dto.NewsDto;
+import com.onedeveloperstudio.jobskills.server.dao.repositories.NewsRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,6 +14,8 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service
 public class NewsServiceImpl extends JobSkillsVoteServiceImpl<NewsDto> implements NewsService {
+  @Autowired
+  private NewsRepository newsRepository;
 
   @Transactional
   @Override
@@ -19,5 +23,10 @@ public class NewsServiceImpl extends JobSkillsVoteServiceImpl<NewsDto> implement
     NewsDto news = this.load(id);
     news.getCommentaries().add(comment);
     this.save(news);
+  }
+
+  @Override
+  public Long countNewsAddedBetweenDates(Long from, Long to) {
+    return newsRepository.countByAddDateBetween(from, to);
   }
 }

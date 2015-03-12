@@ -8,4 +8,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * Date: 03.09.14
  */
 public interface NewsRepository extends JpaRepository<News, Long> {
+  Long countByAddDateBetween(Long from, Long to);
 }

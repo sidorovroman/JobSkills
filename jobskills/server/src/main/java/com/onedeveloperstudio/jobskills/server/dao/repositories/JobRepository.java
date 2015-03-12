@@ -11,4 +11,5 @@ import java.util.List;
  */
 public interface JobRepository extends JpaRepository<JobEntity, Long> {
   List<JobEntity> findAllByParentOrderByIdAsc(JobEntity parent);
+  Long countByAddDateBetween(Long from, Long to);
 }

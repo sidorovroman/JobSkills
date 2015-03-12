@@ -11,6 +11,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -39,6 +40,11 @@ public class AdminViewController {
     mv.addObject("jobsCount", jobService.getCount());
     mv.addObject("usersCount", userService.getCount());
     mv.addObject("newsCount", newsService.getCount());
+    Long currentTime = new Date().getTime();
+    Long monthAgoTime = currentTime - 3600*24*30;
+    mv.addObject("newUsers", userService.countUsersRegisteredBetweenDates(monthAgoTime, currentTime));
+    mv.addObject("newJobs", jobService.getCountBetweenDates(monthAgoTime, currentTime));
+    mv.addObject("newNewss", newsService.countNewsAddedBetweenDates(monthAgoTime, currentTime));
     return mv;
   }
 }
