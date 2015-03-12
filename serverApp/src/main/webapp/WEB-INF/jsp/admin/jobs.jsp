@@ -25,6 +25,14 @@
 </head>
 <body>
 <style>
+  body {
+    background: #EFEFEF;
+  }
+
+  #nav_panel {
+    background: #008E9E;
+  }
+
   .nav_row {
     display: block;
     color: #8c8c8b;
@@ -51,18 +59,57 @@
 
   }
 
-  .statistic{
+  .statistic {
     margin-top: 20px;
     width: 100%;
-    border: 1px solid #000000;
-    -webkit-box-shadow:
-      10px 10px 10px #000;
-    -moz-box-shadow:
-      10px 10px 10px #000;
-    -o-box-shadow:
-      10px 10px 10px #000;
-    box-shadow:
-      10px 10px 10px #000;
+    border: 1px solid #A7A7A7;
+    border-radius: 3px;
+    -webkit-box-shadow: 10px 10px 25px #A7A7A7;
+    -moz-box-shadow: 10px 10px 25px #A7A7A7;
+    -o-box-shadow: 10px 10px 25px #A7A7A7;
+    box-shadow: 10px 10px 25px #A7A7A7;
+    background: #E1E1E1;
+  }
+
+  .job-block {
+    position: relative;
+    float: left;
+    width: 300px;
+    height: 300px;
+    border: 1px solid #e9e9e9;
+    border-radius: 5px;
+    overflow: hidden;
+    padding: 8px;
+    margin: 4px;
+    background: #fafafa;
+  }
+
+  .job-block:hover {
+    background: #f5f5f5;
+  }
+
+  .job-block .edit {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+
+  .job-block img {
+    width: 70px;
+    margin: 5px;
+  }
+
+  .job-block h1 {
+    display: inline-block;
+    margin-top: 13px;
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #575050;
+  }
+
+  .job-block .job-info {
+    float: left;
+    margin: 10px;
   }
 </style>
 <div id="nav_panel" style="position: absolute; float: left; width: 80px; height: 100%; border: 1px solid black;">
@@ -82,29 +129,36 @@
   <a class="nav_row" href="/admin/news">Новости</a>
   <a class="nav_row" href="/admin/jobs">Работы</a>
 </div>
-<div id="main_content" style="margin-left: 100px;">
-  Работы
+<div id="main_content" style="margin-left: 100px; width: 70%;">
+  <h2 style="margin-top: 0px; text-align: center;">Работы</h2>
 
   <c:forEach var="job" items="${jobs}" varStatus="loop">
-    <li><a href="#">${job.caption}</a></li>
+    <div class="job-block">
+      <div>
+        <img src="/resources/img/job-icon-1.png">
+
+        <h1>${job.caption}</h1>
+      </div>
+      <p class="job-info">${job.description}</p>
+    </div>
   </c:forEach>
+</div>
+<div id="right_block">
+  <div class="statistic">
+    <h3 class="text-center">Общая статистика</h3>
 
-  <div  id="right_block">
-    <div class="statistic">
-      <h3 class="text-center">Общая статистика</h3>
-      <div class="nav_row"> Новостей: ${newsCount} </div>
-      <div class="nav_row"> Пользователей: ${usersCount} </div>
-      <div class="nav_row"> Работ: ${jobsCount} </div>
-    </div>
-
-    <div class="statistic">
-      <h3 class="text-center">Cтатистика за 30 дней</h3>
-      <div class="nav_row"> Новостей: ${newNewss} </div>
-      <div class="nav_row"> Пользователей: ${newUsers} </div>
-      <div class="nav_row"> Работ: ${newJobs} </div>
-    </div>
+    <div class="nav_row"> Новостей: ${newsCount} </div>
+    <div class="nav_row"> Пользователей: ${usersCount} </div>
+    <div class="nav_row"> Работ: ${jobsCount} </div>
   </div>
 
+  <div class="statistic">
+    <h3 class="text-center">Cтатистика за 30 дней</h3>
+
+    <div class="nav_row"> Новостей: ${newNewss} </div>
+    <div class="nav_row"> Пользователей: ${newUsers} </div>
+    <div class="nav_row"> Работ: ${newJobs} </div>
+  </div>
 </div>
 <script type="text/javascript">
   $('.nav_button').click(function () {
