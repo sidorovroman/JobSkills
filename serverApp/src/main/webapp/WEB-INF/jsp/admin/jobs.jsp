@@ -27,10 +27,16 @@
 <style>
   body {
     background: #EFEFEF;
+    overflow: scroll;
   }
 
   #nav_panel {
     background: #008E9E;
+    position: absolute;
+    float: left;
+    width: 71px;
+    height: 100%;
+    border: 1px solid black;
   }
 
   .nav_row {
@@ -54,13 +60,13 @@
 
   #right_block {
     float: right;
-    width: 25%;
-    margin: 20px;
+    width: 330px;
+    margin: -5px 20px 0px 0px;
 
   }
 
   .statistic {
-    margin-top: 20px;
+    margin-top: 15px;
     width: 100%;
     border: 1px solid #A7A7A7;
     border-radius: 3px;
@@ -68,30 +74,28 @@
     -moz-box-shadow: 10px 10px 25px #A7A7A7;
     -o-box-shadow: 10px 10px 25px #A7A7A7;
     box-shadow: 10px 10px 25px #A7A7A7;
-    background: #E1E1E1;
+    background: #00BAD3;
+    padding-bottom: 10px;
   }
 
   .job-block {
-    position: relative;
     float: left;
-    width: 300px;
+    width: 280px;
     height: 300px;
     border: 1px solid #e9e9e9;
-    border-radius: 5px;
+    border-radius: 3px;
     overflow: hidden;
     padding: 8px;
-    margin: 4px;
+    margin: 10px;
     background: #fafafa;
+    -webkit-box-shadow: 10px 10px 25px #A7A7A7;
+    -moz-box-shadow: 10px 10px 25px #A7A7A7;
+    -o-box-shadow: 10px 10px 25px #A7A7A7;
+    box-shadow: 10px 10px 25px #A7A7A7;
   }
 
   .job-block:hover {
     background: #f5f5f5;
-  }
-
-  .job-block .edit {
-    position: absolute;
-    top: 10px;
-    right: 10px;
   }
 
   .job-block img {
@@ -112,7 +116,7 @@
     margin: 10px;
   }
 </style>
-<div id="nav_panel" style="position: absolute; float: left; width: 80px; height: 100%; border: 1px solid black;">
+<div id="nav_panel">
   <div id="logo" class="text-center" style="border: 1px solid green;">
     <h2 style="margin-top: 10px;">S &middot; Y</h2>
   </div>
@@ -123,13 +127,13 @@
   </div>
 </div>
 <div id="nav_bar"
-     style="display: none; position: absolute; float: left; width: 300px; height: 100%; border: 1px solid black; margin-left: 80px;">
+     style="display: none; position: absolute; float: left; width: 300px; height: 100%; border: 1px solid black; margin-left: 70px;">
   <div style="text-align: center; margin-top: 60px; border: 1px solid red;"><h2>Навигация</h2></div>
   <a class="nav_row" href="/admin/index">Пользователи</a>
   <a class="nav_row" href="/admin/news">Новости</a>
   <a class="nav_row" href="/admin/jobs">Работы</a>
 </div>
-<div id="main_content" style="margin-left: 100px; width: 70%;">
+<div id="main_content" style="margin-left: 85px; width: 925px; padding: 10px 0px 0px 0px;">
   <h2 style="margin-top: 0px; text-align: center;">Работы</h2>
 
   <c:forEach var="job" items="${jobs}" varStatus="loop">
