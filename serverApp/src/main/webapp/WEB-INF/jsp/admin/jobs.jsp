@@ -57,6 +57,7 @@
     padding-top: 12px;
     padding-left: 96px;
     padding-right: 24px;
+    background: #fff;
   }
 
   #nav_panel {
@@ -229,7 +230,12 @@
   });
   $('.job-block').click(function (event) {
     var targerElem = event.currentTarget;
-    $('.job-block').not(event.currentTarget).remove();
+    //$('.job-block').not(event.currentTarget).remove();
+    $(event.currentTarget).animate({
+      width: "100%",
+      "margin-top": 0,
+      "margin-left": 0
+    }, 500 );
   });
 </script>
 </body>
