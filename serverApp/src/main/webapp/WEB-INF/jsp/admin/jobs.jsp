@@ -35,6 +35,7 @@
     width: 71px;
     height: 71px;
   }
+
   #main_layout {
     max-width: 1440px;
     min-width: 1024px;
@@ -87,6 +88,7 @@
     vertical-align: baseline;
     outline: 0;
   }
+
   .nav_row {
     display: block;
     color: white;
@@ -141,6 +143,7 @@
     -moz-box-shadow: 10px 10px 25px #A7A7A7;
     -o-box-shadow: 10px 10px 25px #A7A7A7;
     box-shadow: 10px 10px 25px #A7A7A7;
+    cursor: pointer;
   }
 
   .job-block:hover {
@@ -187,16 +190,18 @@
     <div id="main_content">
       <div id="page_head" style="margin-top: 0px; text-align: center;">Работы</div>
 
-      <c:forEach var="job" items="${jobs}" varStatus="loop">
-        <div class="job-block">
-          <div>
-            <img src="/resources/img/job-icon-1.png">
+      <div id="content_block">
+        <c:forEach var="job" items="${jobs}" varStatus="loop">
+          <div class="job-block">
+            <div>
+              <img src="/resources/img/job-icon-1.png">
 
-            <h1>${job.caption}</h1>
+              <h1>${job.caption}</h1>
+            </div>
+            <p class="job-info">${job.description}</p>
           </div>
-          <p class="job-info">${job.description}</p>
-        </div>
-      </c:forEach>
+        </c:forEach>
+      </div>
     </div>
     <div id="right_block">
       <div class="statistic">
@@ -221,6 +226,10 @@
 <script type="text/javascript">
   $('.nav_button').click(function () {
     $('#nav_bar').animate({width: 'toggle'});
+  });
+  $('.job-block').click(function (event) {
+    var targerElem = event.currentTarget;
+    $('.job-block').not(event.currentTarget).remove();
   });
 </script>
 </body>
