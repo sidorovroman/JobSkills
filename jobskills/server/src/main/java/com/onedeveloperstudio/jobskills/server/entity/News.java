@@ -14,12 +14,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import java.util.List;
 
 /**
  * User: y.zakharov
  * Date: 02.09.14
  */
+@Table(name = "news")
 @Entity
 public class News extends BaseEntity {
   private String caption;
