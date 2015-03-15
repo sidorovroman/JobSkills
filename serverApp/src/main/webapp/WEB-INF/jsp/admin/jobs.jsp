@@ -26,7 +26,7 @@
 <body>
 <style>
   body {
-    background: #EFEFEF;
+    background: #fff;
     overflow-y: scroll;
   }
 
@@ -193,7 +193,7 @@
 
       <div id="content_block">
         <c:forEach var="job" items="${jobs}" varStatus="loop">
-          <div class="job-block">
+          <div class="job-block" job-id="${job.id}">
             <div>
               <img src="/resources/img/job-icon-1.png">
 
@@ -230,12 +230,23 @@
   });
   $('.job-block').click(function (event) {
     var targerElem = event.currentTarget;
-    //$('.job-block').not(event.currentTarget).remove();
-    $(event.currentTarget).animate({
-      width: "100%",
-      "margin-top": 0,
-      "margin-left": 0
-    }, 500 );
+    var jobId = $(targerElem).attr("job-id");
+    if ($(targerElem).css("width") == '280px') {
+      $(targerElem).animate({
+        width: "98%",
+        "padding-right": '20px'
+      }, 500);
+      $.ajax({
+        url: "/admin/jobs/" + jobId
+      }).done(function (data) {
+            $(targerElem).find('div').replaceWith(data);
+          });
+    } else {
+      $(targerElem).animate({
+        width: "280px",
+        "margin-top": '10px'
+      }, 500);
+    }
   });
 </script>
 </body>
