@@ -19,22 +19,21 @@
                 });
         };
         $scope.register = function () {
-            $http.post('/register',
+            $.post(
+                "/register",
                 {
                     mail:$scope.mail,
                     password: $scope.password
-                }).
-                success(function(data, status, headers, config) {
+                },
+                function(data){
                     console.log("post success");
                     if(data.error==null){
                         console.log("register success");
                     }else{
                         alert(data.error);
                     }
-                }).
-                error(function(data, status, headers, config) {
-                    console.log("post error");
-                });
+                }
+            );
         };
     })
 
