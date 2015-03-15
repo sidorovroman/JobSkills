@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Date;
@@ -60,6 +62,13 @@ public class AdminViewController {
     mv.addObject("newJobs", jobService.getCountBetweenDates(monthAgoTime, currentTime));
     mv.addObject("newNewss", newsService.countNewsAddedBetweenDates(monthAgoTime, currentTime));
     mv.addObject("jobs", list);
+    return mv;
+  }
+
+  @RequestMapping(value = {"/jobs/{id}"})
+  public ModelAndView getJobsPage(@PathVariable Long id) {
+    ModelAndView mv = new ModelAndView("admin/job");
+    mv.addObject("job", jobService.load(id));
     return mv;
   }
 }
