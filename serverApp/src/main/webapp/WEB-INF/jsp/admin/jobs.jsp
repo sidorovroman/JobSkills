@@ -158,7 +158,7 @@
 
   .job-block h1 {
     display: inline-block;
-    margin-top: 13px;
+    margin-top: 0px;
     font-size: 24px;
     margin-bottom: 10px;
     color: #575050;
@@ -167,6 +167,11 @@
   .job-block .job-info {
     float: left;
     margin: 10px;
+  }
+
+  #job-container .title{
+    min-height: 180px;
+
   }
 </style>
 <div id="main_layout">
@@ -240,11 +245,13 @@
         url: "/admin/jobs/" + jobId
       }).done(function (data) {
             $(targerElem).find('div').replaceWith(data);
+            $(targerElem).height("100%");
           });
     } else {
       $(targerElem).animate({
         width: "280px",
-        "margin-top": '10px'
+        "margin-top": '10px',
+        "height" : '300px'
       }, 500);
     }
   });

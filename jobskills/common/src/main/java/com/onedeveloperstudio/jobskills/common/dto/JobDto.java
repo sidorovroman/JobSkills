@@ -1,5 +1,7 @@
 package com.onedeveloperstudio.jobskills.common.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.onedeveloperstudio.core.common.dto.BaseDto;
 import com.onedeveloperstudio.core.common.dto.SysUserDto;
 
@@ -12,6 +14,7 @@ import java.util.List;
 public class JobDto extends BaseDto {
   private String caption;
   private String description;
+  @JsonIgnore
   private JobDto parent;
   private SysUserDto author;
   private Long addDate;
@@ -26,10 +29,12 @@ public class JobDto extends BaseDto {
     this.caption = caption;
   }
 
+  @JsonIgnore
   public JobDto getParent() {
     return parent;
   }
 
+  @JsonProperty("parent")
   public void setParent(JobDto parent) {
     this.parent = parent;
   }

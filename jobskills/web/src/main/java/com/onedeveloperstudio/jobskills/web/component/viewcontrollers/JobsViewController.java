@@ -78,9 +78,6 @@ public class JobsViewController {
   @RequestMapping(value = "/add", method = RequestMethod.POST)
   @ResponseBody
   public JobDto addJob(@RequestBody JobDto job, @RequestBody(required = false) byte[] img) {
-    if(img!=null){
-      //Сохраняем изображение
-    }
     if (job.getParent() != null && job.getParent().getId() == null) {
       job.setParent(null);
     }

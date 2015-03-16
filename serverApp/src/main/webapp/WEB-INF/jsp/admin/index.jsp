@@ -18,7 +18,7 @@
   <%--<link rel="stylesheet" type="text/less" href="<c:url value="/resources/styles/variables.less" />">--%>
   <link rel="stylesheet" href="<c:url value="../../../resources/styles/bootstrap-multiselect.css" />">
   <%--<link rel="stylesheet" type="text/css" href="<c:url value="/resources/styles/datepicker.css" />">--%>
-  <link rel="stylesheet" type="text/css" href="<c:url value="../../../resources/styles/main.css" />">
+  <%--<link rel="stylesheet" type="text/css" href="<c:url value="../../../resources/styles/main.css" />">--%>
   <link rel="stylesheet" type="text/css" href="<c:url value="../../../resources/styles/admin.css" />">
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script src="<c:url value="../../../resources/js/admin.js" />"></script>
@@ -154,7 +154,7 @@
 
   .job-block h1 {
     display: inline-block;
-    margin-top: 13px;
+    margin-top: 0px;
     font-size: 24px;
     margin-bottom: 10px;
     color: #575050;
