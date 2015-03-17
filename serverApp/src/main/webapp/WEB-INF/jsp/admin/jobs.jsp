@@ -245,6 +245,7 @@
       $.ajax({
         url: "/admin/jobs/" + jobId
       }).done(function (data) {
+            $(targerElem).find('p').remove();
             $(targerElem).find('div').replaceWith(data);
             $(targerElem).height("100%");
           });

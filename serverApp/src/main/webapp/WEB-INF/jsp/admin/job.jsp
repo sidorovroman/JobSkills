@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <style>
-  .child-jobs {
+  .child-list {
     padding-left: 20px;
   }
 
@@ -15,11 +15,12 @@
   .child-spec span {
     font-weight: bold;
   }
+
   .child-spec li {
     padding-left: 10px;
     padding-top: 5px;
     height: 50px;
-    border: 3px solid #ffffff;
+    border: 3px solid #A7A7A7;
     margin: 2px 0px 2px -2px;
     -webkit-box-shadow: 2px 2px 0px #A7A7A7;
     -moz-box-shadow: 2px 2px 0px #A7A7A7;
@@ -36,11 +37,13 @@
     white-space: nowrap;
     width: 100%;
   }
-  .caption{
+
+  .caption {
     font-size: 16px;
   }
 </style>
-<div id="job-container" xmlns="http://www.w3.org/1999/html">
+<div id="job-container">
+  <span style="float: right;">Закрыть</span>
   <div class="title">
     <img src="/resources/img/job-icon-0.png">
 
@@ -51,41 +54,24 @@
 
     </div>
   </div>
-  <div class="child-jobs">
+  <div class="child-list">
     <ul class="child-spec"><span>Дочерние специализации</span>
       <c:forEach var="child" items="${job.children}" varStatus="loop">
         <li>
           <strong class="caption">${child.caption}</strong><br/>
-          ${child.description}
+          При клике сюда -  в этом же блоке откроется работа, оставив только название. Хз как сделать но будет круто${child.description}
         </li>
       </c:forEach>
     </ul>
   </div>
-  <div>
-  <h1 class="skills-title">Необходимые навыки <a ng-click="add()" class="btn" style="float:right">Добавить навык</a></h1>
-
-    <div id="skills-list" xmlns="http://www.w3.org/1999/html">
-      <table>
-        <tbody>
-        <c:forEach var="skill" items="${job.skills}" varStatus="loop">
-          <tr ng-click="select(skill)">
-            <td ng-click="select(skill)">
-              <div ng-click="edit(skill)">
-                <span>${skill.caption}</span>
-
-                <div class="rating">
-                  <div class="vote-up"></div>
-                  <span class="rating-value"> 5</span>
-
-                  <div class="vote-down"></div>
-                </div>
-                <i class="btn-edit"></i>
-              </div>
-            </td>
-          </tr>
-        </c:forEach>
-        </tbody>
-      </table>
-    </div>
+  <div class="child-list">
+    <ul class="child-spec"><span>Необходимые навыки</span>
+      <c:forEach var="skill" items="${job.skills}" varStatus="loop">
+        <li>
+          <strong class="caption">${skill.caption}</strong><br/>
+            Навыки, как и последующие скилы, будут открываться в новом окно, типа записи вк.${skill.description}
+        </li>
+      </c:forEach>
+    </ul>
   </div>
 </div>
