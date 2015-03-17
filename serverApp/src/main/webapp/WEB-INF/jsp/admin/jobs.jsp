@@ -191,6 +191,7 @@
     <a class="nav_row" href="/admin/index">Пользователи</a>
     <a class="nav_row" href="/admin/news">Новости</a>
     <a class="nav_row" href="/admin/jobs">Работы</a>
+    <a class="nav_row" href="/#/jobs">На главную</a>
   </div>
   <div class="inner">
     <div id="main_content">

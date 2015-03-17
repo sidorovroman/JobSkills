@@ -6,6 +6,39 @@
   .child-jobs {
     padding-left: 20px;
   }
+
+  .child-spec {
+    list-style-type: none;
+    padding: 0px;
+  }
+
+  .child-spec span {
+    font-weight: bold;
+  }
+  .child-spec li {
+    padding-left: 10px;
+    padding-top: 5px;
+    height: 50px;
+    border: 3px solid #ffffff;
+    margin: 2px 0px 2px -2px;
+    -webkit-box-shadow: 2px 2px 0px #A7A7A7;
+    -moz-box-shadow: 2px 2px 0px #A7A7A7;
+    -o-box-shadow: 2px 2px 0px #A7A7A7;
+    box-shadow: 2px 2px 0px #A7A7A7;
+    font-size: 11px;
+    color: black;
+    font-weight: normal;
+    line-height: 1.333;
+    border-radius: 2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+  }
+  .caption{
+    font-size: 16px;
+  }
 </style>
 <div id="job-container" xmlns="http://www.w3.org/1999/html">
   <div class="title">
@@ -19,9 +52,12 @@
     </div>
   </div>
   <div class="child-jobs">
-    <ul>Дочерние специализации
+    <ul class="child-spec"><span>Дочерние специализации</span>
       <c:forEach var="child" items="${job.children}" varStatus="loop">
-        <li>${child.caption}</li>
+        <li>
+          <strong class="caption">${child.caption}</strong><br/>
+          ${child.description}
+        </li>
       </c:forEach>
     </ul>
   </div>
