@@ -127,7 +127,7 @@
                     <form class="cd-form" id="login-form">
                         <p class="fieldset">
                             <label class="image-replace cd-email" for="signin-email">E-mail</label>
-                            <input name="email" class="full-width has-padding has-border" id="signin-email" ng-model="mail" type="text" placeholder="E-mail">
+                            <input name="mail" class="full-width has-padding has-border" id="signin-email" ng-model="mail" type="text" placeholder="E-mail">
                             <span class="cd-error-message">Введите корректный e-mail!</span>
                         </p>
                         <p class="fieldset">
@@ -153,8 +153,8 @@
 
                     </div>
                     <div class="btn-container">
-                        <button value="login"  ng-click="login()" class="btn btn-info login">Войти</button>
-                        <button value="registration" ng-click="register()" class="btn btn-primary reg" data-dismiss="modal">Зарегистрироваться</button>
+                        <button ng-click="login()" class="btn btn-info login">Войти</button>
+                        <button ng-click="register()" class="btn btn-primary reg" data-dismiss="modal">Зарегистрироваться</button>
                     </div>
                 </div>
             </div>
