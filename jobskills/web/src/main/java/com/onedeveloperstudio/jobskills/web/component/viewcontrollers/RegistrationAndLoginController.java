@@ -128,9 +128,8 @@ public class RegistrationAndLoginController {
   /**
    * Регистрируем пользователя
    */
-  @RequestMapping(value = "/register", method = RequestMethod.POST)
-  @ResponseBody
-  public SysUserDto register(@RequestParam(required = true) String mail, @RequestParam(required = true) String password) throws ParseException {
+  @RequestMapping(value = "/register", method = RequestMethod.GET)
+  public String register(@RequestParam(required = true) String mail, @RequestParam(required = true) String password) throws ParseException {
     StringBuilder errorMsg = new StringBuilder();
     SysUserDto sysuser = new SysUserDto();
     sysuser.setEmail(mail);
@@ -154,7 +153,7 @@ public class RegistrationAndLoginController {
     Authentication auth = provider.authenticate(new UsernamePasswordAuthenticationToken(sysuser.getEmail(), password));
     SecurityContextHolder.getContext().setAuthentication(auth);
     SysUserDto user = sysUserService.getAuthentication();
-    return user;
+    return "redirect:/";
   }
 
   @ResponseBody
