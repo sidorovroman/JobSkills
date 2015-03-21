@@ -128,7 +128,7 @@ public class RegistrationAndLoginController {
   /**
    * Регистрируем пользователя
    */
-  @RequestMapping(value = "/register", method = RequestMethod.GET)
+  @RequestMapping(value = "/register", method = RequestMethod.POST)
   public String register(@RequestParam(required = true) String mail, @RequestParam(required = true) String password) throws ParseException {
     StringBuilder errorMsg = new StringBuilder();
     SysUserDto sysuser = new SysUserDto();

@@ -27,7 +27,7 @@
     <s:intercept-url pattern="/admin/*" access="hasRole('ROLE_ADMIN')"/>
     <s:intercept-url pattern="/" access="permitAll()"/>
     <s:form-login login-page="/"
-                  username-parameter="username"
+                  username-parameter="mail"
                   password-parameter="password"
                   authentication-failure-url="/?login_error=1"
                   default-target-url="/"/>
