@@ -132,7 +132,6 @@
                             <label class="image-replace cd-password" for="signin-password">Пароль</label>
                             <input name="password" class="full-width has-padding has-border" id="signin-password" ng-model="password" type="text"  placeholder="Пароль">
                         </p>
-                        <input type="submit" placeholder=";;;;;;;">
                     </form>
                 </div>
                 <div class="modal-footer">
