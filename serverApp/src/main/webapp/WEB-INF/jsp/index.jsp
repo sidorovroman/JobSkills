@@ -13,9 +13,7 @@
 
     <%--<link rel="stylesheet" type="text/css" href="<c:url value="/resources/styles/reset.css" />">--%>
     <link rel="stylesheet" type="text/css" href="<c:url value="/resources/styles/bootstrap.min.css" />">
-
-    <%--<link rel="stylesheet" type="text/less" href="<c:url value="/resources/styles/bootswatch.less" />">--%>
-    <%--<link rel="stylesheet" type="text/less" href="<c:url value="/resources/styles/variables.less" />">--%>
+    <%--<link href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.4/sandstone/bootstrap.min.css" rel="stylesheet">--%>
     <link rel="stylesheet" href="<c:url value="/resources/styles/bootstrap-multiselect.css" />">
     <%--<link rel="stylesheet" type="text/css" href="<c:url value="/resources/styles/datepicker.css" />">--%>
     <link rel="stylesheet" type="text/css" href="<c:url value="/resources/styles/main.css" />">
@@ -50,7 +48,7 @@
 
                                 <sec:authorize var="loggedIn" access="isAuthenticated()">
                                     <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><sec:authentication property="principal.username"></sec:authentication> <span class="caret"></span></a>
+                                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><sec:authentication property="principal.username"></sec:authentication> <span class="caret"></span></a>
                                         <ul class="dropdown-menu" role="menu">
                                             <li><a href="#/user/info">Настройки</a></li>
                                             <li><a href="/users/logout">Выход</a></li>
@@ -124,7 +122,7 @@
                     <h4 class="modal-title" id="myModalLabel">Авторизация</h4>
                 </div>
                 <div class="modal-body">
-                    <form class="cd-form" id="login-form" method="POST">
+                    <form class="cd-form" id="login-form" method="POST" action="/j_spring_security_check">
                         <p class="fieldset">
                             <label class="image-replace cd-email" for="signin-email">E-mail</label>
                             <input name="mail" class="full-width has-padding has-border" id="signin-email" ng-model="mail" type="text" placeholder="E-mail">
@@ -134,6 +132,7 @@
                             <label class="image-replace cd-password" for="signin-password">Пароль</label>
                             <input name="password" class="full-width has-padding has-border" id="signin-password" ng-model="password" type="text"  placeholder="Пароль">
                         </p>
+                        <input type="submit" placeholder=";;;;;;;">
                     </form>
                 </div>
                 <div class="modal-footer">

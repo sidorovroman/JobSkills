@@ -578,11 +578,16 @@ body {
    ========================================== */
 #job-container .title {
   padding: 20px;
+  display: inline-block;
+  width: 100%;
 }
 #job-container .title img {
   width: 130px;
-  margin: 0 30px 20px 0;
   float: left;
+}
+#job-container .title img .info {
+  float: left;
+  margin-left: 20px;
 }
 #job-container .title img .info h1 {
   display: inline-block;
@@ -647,7 +652,15 @@ body {
   float: left;
   margin: 10px;
 }
-#jobs-list .btn-add,
+#jobs-list .btn-add {
+  color: #e9e9e9;
+  font-size: 94px;
+  text-align: center;
+  text-decoration: none;
+}
+#jobs-list .btn-add:hover {
+  color: #3499f3;
+}
 #jobs-list .btn-edit {
   text-align: center;
   height: 20px;
@@ -659,7 +672,6 @@ body {
   color: #FFF;
   cursor: pointer;
 }
-#jobs-list .btn-add:hover,
 #jobs-list .btn-edit:hover {
   opacity: 0.6;
 }

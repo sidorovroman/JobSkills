@@ -12,6 +12,9 @@
 
         $scope.select = function (job) {
             $location.path('/jobs/'+job.id);
+        };
+        $scope.edit = function (job) {
+            $location.path('/editJob/'+job.id);
         }
     });
 
