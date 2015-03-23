@@ -44,6 +44,18 @@
     background: #6db33f;
   }
 
+  #nav_bar a {
+    text-decoration: none;
+  }
+
+  #nav_bar a:hover {
+    color: white;
+    margin-left: -20px;
+    padding-left: 20px;
+    background: #34302d;
+    text-decoration: none;
+  }
+
   .statistic {
     margin-top: 15px;
     width: 100%;
@@ -72,10 +84,10 @@
     padding: 8px;
     margin: 10px;
     background: #fafafa;
-    -webkit-box-shadow: 10px 10px 25px #A7A7A7;
-    -moz-box-shadow: 10px 10px 25px #A7A7A7;
-    -o-box-shadow: 10px 10px 25px #A7A7A7;
-    box-shadow: 10px 10px 25px #A7A7A7;
+    -webkit-box-shadow: 10px 10px 25px #6db33f;
+    -moz-box-shadow: 10px 10px 25px #6db33f;
+    -o-box-shadow: 10px 10px 25px #6db33f;
+    box-shadow: 10px 10px 25px #6db33f;
     cursor: pointer;
   }
 

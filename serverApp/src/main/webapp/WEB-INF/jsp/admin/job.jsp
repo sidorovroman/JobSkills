@@ -20,12 +20,12 @@
     padding-left: 10px;
     padding-top: 5px;
     height: 50px;
-    border: 3px solid #A7A7A7;
-    margin: 2px 0px 2px -2px;
-    -webkit-box-shadow: 2px 2px 0px #A7A7A7;
-    -moz-box-shadow: 2px 2px 0px #A7A7A7;
-    -o-box-shadow: 2px 2px 0px #A7A7A7;
-    box-shadow: 2px 2px 0px #A7A7A7;
+    border: 1px solid #34302d;
+    margin: 4px 0px 2px -2px;
+    -webkit-box-shadow: 2px 2px 0px #34302d;
+    -moz-box-shadow: 2px 2px 0px #34302d;
+    -o-box-shadow: 2px 2px 0px #34302d;
+    box-shadow: 2px 2px 0px #34302d;
     font-size: 11px;
     color: black;
     font-weight: normal;
@@ -36,6 +36,11 @@
     -o-text-overflow: ellipsis;
     white-space: nowrap;
     width: 100%;
+  }
+
+  .child-spec li:hover{
+    color: white;
+    background: #6db33f;
   }
 
   .caption {
