@@ -38,7 +38,7 @@ public class BaseServiceImpl<D extends BaseDto> implements BaseService<D> {
   private Class<D> dtoClass;
 
   @Override
-  @Secured("ROLE_USER")
+  @Secured({"ROLE_USER", "ROLE_ADMIN"})
   @Transactional
   public D insert(D dto) {
     save(dto);
@@ -52,7 +52,7 @@ public class BaseServiceImpl<D extends BaseDto> implements BaseService<D> {
   }
 
   @Override
-  @Secured("ROLE_USER")
+  @Secured({"ROLE_USER", "ROLE_ADMIN"})
   @Transactional
   public D update(D dto) {
     save(dto);
