@@ -192,12 +192,16 @@
 
   .job-block .job-info {
     float: left;
-    margin: 10px;
+    margin: 5px;
+    height: 200px;
+    overflow: hidden;
+    word-break: break-word;
+    text-overflow:ellipsis;
   }
 
   #job-container .title{
     min-height: 180px;
-
+    padding: 0px 0px 20px 20px
   }
 
   .headline {
