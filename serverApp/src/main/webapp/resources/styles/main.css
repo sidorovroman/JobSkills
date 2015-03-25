@@ -585,11 +585,11 @@ body {
   width: 130px;
   float: left;
 }
-#job-container .title img .info {
+#job-container .title .info {
   float: left;
   margin-left: 20px;
 }
-#job-container .title img .info h1 {
+#job-container .title .info h1 {
   display: inline-block;
   margin-top: 13px;
   margin-left: 20px;
@@ -598,7 +598,7 @@ body {
   color: #575050;
   text-transform: uppercase;
 }
-#job-container .title img .info .job-description {
+#job-container .title .info .job-description {
   color: #81899b;
   padding-left: 20px;
   font-size: 16px;

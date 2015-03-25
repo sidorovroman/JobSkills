@@ -4,7 +4,7 @@
         <div class="info">
 
             <h1>{{job.caption}}</h1>
-            <span class="job-description">{{job.description}}</span>
+            <span class="job-description"  ng-bind-html="renderHtml(job.description)"></span>
 
         </div>
     </div>

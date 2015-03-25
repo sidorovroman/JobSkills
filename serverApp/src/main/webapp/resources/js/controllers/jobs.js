@@ -19,13 +19,22 @@
     });
 
     app.controller("AddJobCtrl", function ($scope, $location, $http) {
+        CKEDITOR.replace( 'jobEditor' );
+
         $scope.JobsForm = {};
+        $http.get('/jobs/list').
+            success(function (data) {
+                $scope.jobs = data;
+            }).
+            error(function () {
+                console.log("Fail");
+            });
         $scope.save = function () {
             console.log("try to save this: ",this);
             console.log("try to save $scope: ",$scope);
             var dataObject = {
                 caption: this.JobsForm.caption,
-                description: this.JobsForm.description,
+                description: CKEDITOR.instances.jobEditor.getData(),
                 parent: {
                     id: (this.JobsForm.parentId == "" ? null : this.JobsForm.parentId)
                 }
@@ -44,13 +53,24 @@
     });
 
     app.controller("EditJobCtrl", function ($scope, $location, $http, $routeParams) {
+        CKEDITOR.replace( 'jobEditor' );
         $scope.JobsForm = {};
+        $http.get('/jobs/list').
+            success(function (data) {
+                $scope.jobs = data;
+
+            }).
+            error(function () {
+                console.log("Fail");
+            });
         console.log("try to edit");
 
         $http.get('/jobs/' + $routeParams.id).
             success(function (data) {
                 console.log("get job with id: " + $routeParams.id + " success");
                 $scope.JobsForm = data;
+                CKEDITOR.instances.jobEditor.setData(data.description);
+
             }).
             error(function () {
                 console.log("get job with id: " + $routeParams.id + " failed");
@@ -62,7 +82,7 @@
             var dataObject = {
                 id:this.JobsForm.id,
                 caption: this.JobsForm.caption,
-                description: this.JobsForm.description,
+                description: CKEDITOR.instances.jobEditor.getData(),
                 parent: {
                     id: (this.JobsForm.parentId == "" ? null : this.JobsForm.parentId)
                 }
@@ -79,7 +99,7 @@
         }
     });
 
-    app.controller("JobCtrl", function ($scope, $location, $http, $routeParams) {
+    app.controller("JobCtrl", function ($scope, $sce, $location, $http, $routeParams) {
         $http.get('/jobs/' + $routeParams.jobId).
             success(function (data) {
                 $scope.job = data;
@@ -102,6 +122,9 @@
         };
         $scope.select = function (skill) {
             $location.path('/jobs/' + $routeParams.jobId + "/skills/" + skill.id + '/ways');
+        };
+        $scope.renderHtml = function(html_code){
+            return $sce.trustAsHtml(html_code);
         };
     });
 })();
