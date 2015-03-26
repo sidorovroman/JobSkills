@@ -12,9 +12,17 @@
     <meta name="author" content="">
 
     <%--<link rel="stylesheet" type="text/css" href="<c:url value="/resources/styles/reset.css" />">--%>
-    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/styles/bootstrap.min.css" />">
+    <%--<link rel="stylesheet" type="text/css" href="<c:url value="/resources/styles/bootstrap.min.css" />">--%>
     <%--<link href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.4/sandstone/bootstrap.min.css" rel="stylesheet">--%>
     <link rel="stylesheet" href="<c:url value="/resources/styles/bootstrap-multiselect.css" />">
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Include roboto.css to use the Roboto web font, material.css to include the theme and ripples.css to style the ripple effect -->
+    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/styles/material/css/roboto.min.css" />">
+    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/styles/material/css/material.min.css" />">
+    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/styles/material/css/ripples.min.css" />">
+
+
     <%--<link rel="stylesheet" type="text/css" href="<c:url value="/resources/styles/datepicker.css" />">--%>
     <link rel="stylesheet" type="text/css" href="<c:url value="/resources/styles/main.css" />">
 
@@ -163,7 +171,7 @@
     <script src="<c:url value="/resources/libs/jquery-2.1.3.min.js" />"></script>
     <script src="<c:url value="/resources/libs/bootstrap.min.js" />"></script>
     <script src="<c:url value="/resources/libs/bootstrap-multiselect.js" />"></script>
-    <script src="//cdn.ckeditor.com/4.4.7/full/ckeditor.js"></script>
+    <script src="//cdn.ckeditor.com/4.4.7/standard/ckeditor.js"></script>
     <script src="//ulogin.ru/js/ulogin.js"></script>
     <%--<script src="<c:url value="/resources/libs/angular.js" />"></script>--%>
     <%--<script src="<c:url value="/resources/libs/ui-bootstrap-custom-build/ui-bootstrap-custom-0.12.1.js" />"></script>--%>
@@ -171,6 +179,20 @@
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js"></script>
     <script src="<c:url value="/resources/libs/angular-route.js" />"></script>
     <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.1.js"></script>
+
+
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+    <script src="<c:url value="/resources/styles/material/js/ripples.min.js" />"></script>
+    <script src="<c:url value="/resources/styles/material/js/material.min.js" />"></script>
+
+    <script>
+        $(document).ready(function() {
+            // This command is used to initialize some elements and make them work properly
+            $.material.init();
+        });
+    </script>
+
 
     <%--resources--%>
     <%--<script src="<c:url value="/resources/js/loginModal.js" />"></script>--%>
