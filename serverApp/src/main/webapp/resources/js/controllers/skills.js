@@ -13,7 +13,7 @@
 
             var responsePromise = $http.post("/requiredSkill/add", dataObject, {});
             responsePromise.success(function (dataFromServer, status, headers, config) {
-                alert("add skill success");
+                console.log("add skill success");
                 window.history.back();
             });
             responsePromise.error(function (data, status, headers, config) {
@@ -25,12 +25,12 @@
         $scope.SkillForm = {};
         $http.get('/requiredSkill/' + $routeParams.skillId).
             success(function (data) {
-                alert("success");
+                console.log("success");
                 console.log("get skill with id: " + $routeParams.skillId + " success");
                 $scope.SkillForm = data;
             }).
             error(function () {
-                console.log("get job with id: " + $routeParams.skillId + " failed");
+                alert("get job with id: " + $routeParams.skillId + " failed");
             });
 
         $scope.save = function () {
@@ -46,11 +46,11 @@
 
             var responsePromise = $http.put("/requiredSkill/update", dataObject);
             responsePromise.success(function (dataFromServer, status, headers, config) {
-                alert("update success");
+                console.log("update success");
                 window.history.back();
             });
             responsePromise.error(function (data, status, headers, config) {
-                alert("update error status "+status);
+                console.log("update error status "+status);
             });
         }
     });

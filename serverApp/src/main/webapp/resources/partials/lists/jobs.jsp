@@ -15,6 +15,6 @@
             <h1>{{job.caption}}</h1>
         </div>
 
-        <p class="job-info">{{job.description}}</p>
+        <p class="job-info"   ng-bind-html="renderHtml(job.description)"></p>
     </div>
 </div>

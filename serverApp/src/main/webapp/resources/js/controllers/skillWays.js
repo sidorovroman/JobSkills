@@ -64,7 +64,7 @@
         $scope.SkillForm = {};
         $http.get('/wayToImproveSkill/' + $routeParams.wayId).
             success(function (data) {
-                alert("success");
+                console.log("success");
                 console.log("get skill way with id: " + $routeParams.wayId + " success");
                 $scope.SkillWaysForm = data;
             }).
@@ -86,7 +86,7 @@
 
             var responsePromise = $http.put("/wayToImproveSkill/update", dataObject);
             responsePromise.success(function (dataFromServer, status, headers, config) {
-                alert("update success");
+                console.log("update success");
                 window.history.back();
             });
             responsePromise.error(function (data, status, headers, config) {

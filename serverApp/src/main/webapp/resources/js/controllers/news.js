@@ -20,18 +20,18 @@
         $scope.voteUp = function(info){
             var responsePromise = $http.post("/news/up/"+info.id,{});
             responsePromise.success(function (dataFromServer, status, headers, config) {
-                alert("vote up success!");
+                console.log("vote up success!");
                 info.rating = dataFromServer;
 
             });
             responsePromise.error(function (data, status, headers, config) {
                 alert("vote up form failed!");
             });
-        }
+        };
         $scope.voteDown = function(info){
             var responsePromise = $http.post("/news/down/"+info.id,{});
             responsePromise.success(function (dataFromServer, status, headers, config) {
-                alert("vote down success!");
+                console.log("vote down success!");
                 info.rating = dataFromServer;
 
             });
@@ -55,7 +55,7 @@
         $scope.voteUp = function(info){
             var responsePromise = $http.post("/news/up/"+info.id,{});
             responsePromise.success(function (dataFromServer, status, headers, config) {
-                alert("vote up success!");
+                console.log("vote up success!");
                 info.rating = dataFromServer;
 
             });
@@ -131,7 +131,7 @@
 
             var responsePromise = $http.put("/news/update", dataObject, {});
             responsePromise.success(function (dataFromServer, status, headers, config) {
-                alert("update success");
+                console.log("update success");
                 $location.path('/news');
             });
             responsePromise.error(function (data, status, headers, config) {
