@@ -1,20 +1,13 @@
 <div id="news-detail">
     <form class="form-horizontal" ng-submit="save()">
         <fieldset>
-            <legend>Новость</legend>
+            <div class="author">{{NewsForm.author.userName}}</div>
+            <div class="date">{{NewsForm.addDate|date:'dd MMM HH:mm'}}</div>
             <div class="form-group">
                 <input type="text" ng-model="NewsForm.caption" class="form-control" id="inputNewsCaption" placeholder="Заголовок" required>
             </div>
             <div class="form-group">
                 <textarea  name="newsEditor" id="newsEditor" rows="10" cols="80" class="form-control" rows="3" id="textAreaNewsBody" ng-model="NewsForm.body" placeholder="body" required></textarea>
-            </div>
-            <div class="form-group" ng-show="NewsForm.author.userName">
-                <label class="col-lg-2 control-label">Автор:</label>
-                {{NewsForm.author.userName}}
-            </div>
-            <div class="form-group" ng-show="NewsForm.addDate">
-                <label class="col-lg-2 control-label">Дата:</label>
-                    {{NewsForm.addDate|date:'dd MMM HH:mm'}}
             </div>
             <div class="form-group">
                     <input type="text" ng-model="NewsForm.tags" class="form-control" id="inputNewsTag" placeholder="#ТЕГИ">

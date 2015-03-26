@@ -51,7 +51,7 @@
 
             var responsePromise = $http.post("/wayToImproveSkill/add", dataObject, {});
             responsePromise.success(function (dataFromServer, status, headers, config) {
-                alert("add skill way success");
+                console.log("add skill way success");
                 window.history.back();
             });
             responsePromise.error(function (data, status, headers, config) {

@@ -19,9 +19,9 @@
                     <div>
                         <span>{{skill.caption}}</span>
                         <div class="rating">
-                            <div class="vote-up" ng-click="voteUp(skill)" ></div>
+                            <div class="vote-up" ng-click="voteUp(skill);  $event.stopPropagation();" ></div>
                             <span class="rating-value">{{skill.rating}}</span>
-                            <div class="vote-down" ng-click="voteDown(skill)"></div>
+                            <div class="vote-down" ng-click="voteDown(skill);  $event.stopPropagation();"></div>
                         </div>
                         <i ng-click="edit(skill)" class="btn-edit"></i>
                     </div>

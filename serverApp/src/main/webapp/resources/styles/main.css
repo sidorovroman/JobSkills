@@ -442,6 +442,11 @@ body {
   margin-left: 0;
   margin-right: 0;
 }
+#news-detail legend .date {
+  float: right;
+  font-size: 14px;
+  line-height: 30px;
+}
 #news-list .add-news {
   padding-left: 15px;
 }

@@ -3,16 +3,11 @@
 
         <fieldset>
             <legend>Данные пользователя</legend>
-            <div class="form-group">
-                <label for="inputLogin" class="col-lg-2 control-label">Логин</label>
-                <div class="col-lg-10">
-                    <input name="login" ng-model="info.login" required type="text" class="form-control" id="inputLogin">
-                </div>
-            </div>
+
             <div class="form-group">
                 <label for="inputFio" class="col-lg-2 control-label">Ф.И.О.</label>
                 <div class="col-lg-10">
-                    <input name="fio"       ng-model="info.fio" required type="text" class="form-control" id="inputFio">
+                    <input name="userFullName" ng-model="info.userFullName" required type="text" class="form-control" id="inputFio">
                 </div>
             </div>
             <div class="form-group">
@@ -40,13 +35,31 @@
             <div class="form-group">
                 <label for="inputName" class="col-lg-2 control-label">Никнейм</label>
                 <div class="col-lg-10">
-                    <input name="supername" ng-model="info.supername" required type="text" class="form-control" id="inputName">
+                    <input name="userName" ng-model="info.userName" required type="text" class="form-control" id="inputName">
                 </div>
             </div>
             <div class="form-group">
                 <label for="inputMail" class="col-lg-2 control-label">Эл.почта</label>
                 <div class="col-lg-10">
                     <input name="email" ng-model="info.email"   required type="text" class="form-control" id="inputMail">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputPhone" class="col-lg-2 control-label">Телефон</label>
+                <div class="col-lg-10">
+                    <input name="phone" ng-model="info.phone"   required type="text" class="form-control" id="inputPhone">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputCountry" class="col-lg-2 control-label">Страна</label>
+                <div class="col-lg-10">
+                    <input name="country" ng-model="info.country"   required type="text" class="form-control" id="inputCountry">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputСity" class="col-lg-2 control-label">Город</label>
+                <div class="col-lg-10">
+                    <input name="city" ng-model="info.city"   required type="text" class="form-control" id="inputСity">
                 </div>
             </div>
             <div class="form-group">
