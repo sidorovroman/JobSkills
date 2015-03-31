@@ -651,6 +651,9 @@ body {
   text-align: center;
   text-decoration: none;
 }
+#jobs-list .btn-add .mdi-content-add-circle-outline {
+  font-size: 69px;
+}
 #jobs-list .btn-add:hover {
   color: #3499f3;
 }

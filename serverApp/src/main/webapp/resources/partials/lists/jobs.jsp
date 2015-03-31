@@ -2,7 +2,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <div id="jobs-list" xmlns="http://www.w3.org/1999/html">
                 <sec:authorize var="loggedIn" access="isAuthenticated()">
-                    <a href="#/addJob" class="job-block btn-add"> + </a>
+                    <a href="#/addJob" class="job-block btn-add"><i class="mdi-content-add-circle-outline"></i></a>
                 </sec:authorize>
     <div class="job-block" ng-repeat="job in jobs" ng-click="select(job)">
         <sec:authorize var="loggedIn" access="isAuthenticated()">
