@@ -59,6 +59,7 @@
                                         <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><sec:authentication property="principal.username"></sec:authentication> <span class="caret"></span></a>
                                         <ul class="dropdown-menu" role="menu">
                                             <li><a href="#/user/info">Настройки</a></li>
+                                            <li class="divider"></li>
                                             <li><a href="/users/logout">Выход</a></li>
                                         </ul>
                                     </li>
@@ -123,7 +124,7 @@
     <!-- Modal -->
 
     <div ng-controller="ModalLoginCtrl" class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -132,13 +133,12 @@
                 <div class="modal-body">
                     <form class="cd-form" id="login-form" method="POST" action="/j_spring_security_check">
                         <p class="fieldset">
-                            <label class="image-replace cd-email" for="signin-email">E-mail</label>
-                            <input name="mail" class="full-width has-padding has-border" id="signin-email" ng-model="mail" type="text" placeholder="E-mail">
-                            <span class="cd-error-message">Введите корректный e-mail!</span>
+                            <%--<label class="image-replace cd-email" for="signin-email">E-mail</label>--%>
+                            <input type="text" name="mail"  id="signin-email" ng-model="mail" class="form-control floating-label" placeholder="логин">
                         </p>
                         <p class="fieldset">
-                            <label class="image-replace cd-password" for="signin-password">Пароль</label>
-                            <input name="password" class="full-width has-padding has-border" id="signin-password" ng-model="password" type="text"  placeholder="Пароль">
+                            <%--<label class="image-replace cd-password" for="signin-password">Пароль</label>--%>
+                            <input type="text" name="password"  id="signin-password" ng-model="password" class="form-control floating-label" placeholder="пароль">
                         </p>
                     </form>
                 </div>
@@ -159,8 +159,8 @@
 
                     </div>
                     <div class="btn-container">
-                        <button ng-click="login()" class="btn btn-info login">Войти</button>
-                        <button ng-click="register()" class="btn btn-primary reg" data-dismiss="modal">Зарегистрироваться</button>
+                        <button ng-click="register()" class="btn reg" data-dismiss="modal">Зарегистрироваться</button>
+                        <button ng-click="login()" class="btn btn-primary login">Войти</button>
                     </div>
                 </div>
             </div>
