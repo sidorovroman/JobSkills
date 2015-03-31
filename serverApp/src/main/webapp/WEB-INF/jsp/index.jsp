@@ -169,7 +169,9 @@
 
     <%--libs--%>
     <script src="<c:url value="/resources/libs/jquery-2.1.3.min.js" />"></script>
-    <script src="<c:url value="/resources/libs/bootstrap.min.js" />"></script>
+    <%--<script src="<c:url value="/resources/libs/bootstrap.min.js" />"></script>--%>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
     <script src="<c:url value="/resources/libs/bootstrap-multiselect.js" />"></script>
     <script src="//cdn.ckeditor.com/4.4.7/standard/ckeditor.js"></script>
     <script src="//ulogin.ru/js/ulogin.js"></script>
@@ -181,17 +183,9 @@
     <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.1.js"></script>
 
 
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
     <script src="<c:url value="/resources/styles/material/js/ripples.min.js" />"></script>
     <script src="<c:url value="/resources/styles/material/js/material.min.js" />"></script>
-
-    <script>
-        $(document).ready(function() {
-            // This command is used to initialize some elements and make them work properly
-            $.material.init();
-        });
-    </script>
 
 
     <%--resources--%>

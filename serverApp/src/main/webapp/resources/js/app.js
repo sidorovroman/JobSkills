@@ -1,4 +1,7 @@
 (function () {
+    //This command is used to initialize some material elements and make them work properly
+    $.material.init();
+
     angular.module('App', [
         'App.controllers',
         'App.directives',
