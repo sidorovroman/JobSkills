@@ -7,7 +7,7 @@
     <div class="job-block" ng-repeat="job in jobs" ng-click="select(job)">
         <sec:authorize var="loggedIn" access="isAuthenticated()">
             <div class="edit" ng-click="edit(job); $event.stopPropagation();">
-                <i class="btn-edit"></i>
+                <i class="mdi-action-settings"></i>
             </div>
         </sec:authorize>
         <div>

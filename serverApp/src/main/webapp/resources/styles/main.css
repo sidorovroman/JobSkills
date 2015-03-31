@@ -461,18 +461,6 @@ body {
   padding: 15px;
   border-bottom: 1px solid #dae2e8;
 }
-#news-list .post .btn-edit {
-  height: 20px;
-  width: 20px;
-  float: left;
-  margin: 5px 0 0 -29px;
-  background: url("../img/btn-edit.png") no-repeat;
-  background-size: cover;
-}
-#news-list .post .btn-edit:hover {
-  cursor: pointer;
-  opacity: 0.6;
-}
 #news-list .post .date {
   float: right;
   color: #a9a9a9 ;
@@ -524,18 +512,6 @@ body {
 #news-container {
   padding: 10px;
   border-bottom: 1px solid #dae2e8;
-}
-#news-container .btn-edit {
-  height: 20px;
-  width: 20px;
-  float: left;
-  margin: 5px 0 0 -29px;
-  background: url("../img/btn-edit.png") no-repeat;
-  background-size: cover;
-}
-#news-container .btn-edit:hover {
-  cursor: pointer;
-  opacity: 0.6;
 }
 #news-container .date {
   float: right;
@@ -642,12 +618,17 @@ body {
   margin: 8px;
 }
 #jobs-list .job-block:hover {
-  background: #f5f5f5;
+  -webkit-box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.12);
+  -moz-box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.12);
 }
 #jobs-list .job-block .edit {
   position: absolute;
   top: 10px;
   right: 10px;
+}
+#jobs-list .job-block .edit .mdi-action-settings:hover {
+  color: #3499f3;
 }
 #jobs-list .job-block img {
   width: 70px;
@@ -673,27 +654,19 @@ body {
 #jobs-list .btn-add:hover {
   color: #3499f3;
 }
-#jobs-list .btn-edit {
-  text-align: center;
-  height: 20px;
-  width: 20px;
-  border-radius: 10px;
-  background: #07c507;
-  float: right;
-  text-decoration: none;
-  color: #FFF;
-  cursor: pointer;
-}
-#jobs-list .btn-edit:hover {
-  opacity: 0.6;
-}
-#jobs-list .btn-edit {
-  background: url("../img/btn-edit.png") no-repeat;
-  background-size: cover;
-}
 #skills-list,
 #skill-ways-list {
   padding-top: 5px;
+}
+#skills-list .mdi-action-settings,
+#skill-ways-list .mdi-action-settings {
+  float: right;
+  cursor: pointer;
+  color: #7b7b7b;
+}
+#skills-list .mdi-action-settings:hover,
+#skill-ways-list .mdi-action-settings:hover {
+  color: #3499f3;
 }
 #skills-list .rating,
 #skill-ways-list .rating {
@@ -758,9 +731,7 @@ body {
   background: #d9edf7;
 }
 #skills-list table .btn-add,
-#skill-ways-list table .btn-add,
-#skills-list table .btn-edit,
-#skill-ways-list table .btn-edit {
+#skill-ways-list table .btn-add {
   text-align: center;
   height: 20px;
   width: 20px;
@@ -772,16 +743,9 @@ body {
   cursor: pointer;
 }
 #skills-list table .btn-add:hover,
-#skill-ways-list table .btn-add:hover,
-#skills-list table .btn-edit:hover,
-#skill-ways-list table .btn-edit:hover {
+#skill-ways-list table .btn-add:hover {
   cursor: pointer;
   opacity: 0.6;
-}
-#skills-list table .btn-edit,
-#skill-ways-list table .btn-edit {
-  background: url("../img/btn-edit.png") no-repeat;
-  background-size: cover;
 }
 #job-detail table td {
   padding: 5px 0;

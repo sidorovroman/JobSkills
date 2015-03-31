@@ -120,7 +120,7 @@
         $scope.add = function () {
             $location.path('/jobs/' + $routeParams.jobId + "/skills/add");
         };
-        $scope.edit = function (skill) {
+        $scope.editSkill = function (skill) {
             $location.path('/jobs/' + $routeParams.jobId + "/skills/" + skill.id + "/edit");
         };
         $scope.select = function (skill) {

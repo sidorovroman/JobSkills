@@ -18,12 +18,12 @@
                 <td ng-click="select(skill)">
                     <div>
                         <span>{{skill.caption}}</span>
+                        <i ng-click="editSkill(skill); $event.stopPropagation();" class="mdi-action-settings"></i>
                         <div class="rating">
                             <div class="vote-up" ng-click="voteUp(skill);  $event.stopPropagation();" ></div>
                             <span class="rating-value">{{skill.rating}}</span>
                             <div class="vote-down" ng-click="voteDown(skill);  $event.stopPropagation();"></div>
                         </div>
-                        <i ng-click="edit(skill)" class="btn-edit"></i>
                     </div>
                 </td>
             </tr>

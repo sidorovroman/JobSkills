@@ -5,7 +5,7 @@
     <h1>
         <a>{{news.caption}}</a>
         <sec:authorize var="loggedIn" access="isAuthenticated()">
-            <a href="#/news/{{news.id}}/edit"><i class="btn-edit"></i></a>
+            <a href="#/news/{{news.id}}/edit"><i class="mdi-action-settings"></i></a>
         </sec:authorize>
         <span class="date">{{news.addDate|date:'dd MMMM HH:mm'}}</span>
 

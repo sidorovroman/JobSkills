@@ -2,6 +2,8 @@
     var app = angular.module('userInfo', []);
 
     app.controller('UserInfoCtrl', function ($scope, $http) {
+            $.material.init();
+
             $http.get('/user/info').
                 success(function (data) {
                     $scope.info = data;
