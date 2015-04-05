@@ -2,18 +2,102 @@
     <table>
         <thead>
         <tr>
-            <th>Наименование <div ng-click="add()" class="btn-add" >+</div></th>
+            <th>{{skill.caption}}</th>
         </tr>
         </thead>
         <tbody>
         <tr ng-repeat="way in ways">
-            <td>
-                <div ng-click="edit(way)">
-                    {{way.caption}}
-                    <i class="mdi-action-settings"></i>
+            <td  title={{way.description}}>
+                <div >
+                    <span>{{way.caption}}</span>
+                    <i class="btn-edit mdi-action-settings" ng-click="editWay(way)" title="Редактирование"></i>
                 </div>
             </td>
         </tr>
         </tbody>
+
     </table>
+    <button class="btn btn-primary"  ng-click="addWay(way)">Добавить способ</button>
+
+
+    <div class="modal fade" id="modalSkillWay" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">{{SkillWaysForm.title}}</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal">
+                        <fieldset>
+                            <div class="form-group">
+                                <div class="col-lg-10">
+                                    <input type="text" ng-model="SkillWaysForm.caption"  class="form-control" placeholder="Название" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-lg-10">
+                                    <textarea class="form-control " rows="3" ng-model="SkillWaysForm.description" placeholder="Описание" required></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-lg-10">
+                                    <input type="text" ng-model="SkillWaysForm.link" class="form-control " placeholder="Ссылка">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-10">
+                                    <select ng-model="SkillWaysForm.grade"  class="form-control">
+                                        <option value=''>- Выберите уровень -</option>
+
+                                        <option value="GRADE_1">Высокий уровень</option>
+                                        <option value="GRADE_2">Средний уровень</option>
+                                        <option value="GRADE_3">Низкий уровень</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-10">
+                                    <select ng-model="SkillWaysForm.resourceType"  class="form-control">
+                                        <option value=''>- Выберите тип ресурса -</option>
+
+                                        <option value="BOOK">Книга</option>
+                                        <option value="LESSON">Уроки</option>
+                                        <option value="TUTORIAL">Туториал</option>
+                                        <option value="DOCUMENTATION">Документация</option>
+                                        <option value="TESTS">Тесты</option>
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <!--<div class="form-group">-->
+                                <!--<div class="col-lg-10 col-lg-offset-2">-->
+                                    <!--&lt;!&ndash;<a href="#/news" class="btn btn-default">Cancel</a>&ndash;&gt;-->
+                                    <!--<button type="submit" class="btn btn-primary">Submit</button>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        </fieldset>
+                    </form>
+
+                </div>
+                <div class="modal-footer">
+                    <div class="btn-container">
+                        <button ng-click="addNew(skill.id)" class="btn-add btn btn-primary" data-dismiss="modal">Добавить</button>
+                        <button ng-click="update(skill.id)" class="btn-update btn btn-primary">Сохранить</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <div id="skill-ways-detail">
+    </div>
 </div>

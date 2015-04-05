@@ -628,7 +628,10 @@ body {
   right: 10px;
 }
 #jobs-list .job-block .edit .mdi-action-settings:hover {
-  color: #3499f3;
+  color: #009688;
+}
+#jobs-list .job-block .edit:hover {
+  cursor: pointer;
 }
 #jobs-list .job-block img {
   width: 70px;
@@ -655,21 +658,11 @@ body {
   font-size: 69px;
 }
 #jobs-list .btn-add:hover {
-  color: #3499f3;
+  color: #009688;
 }
 #skills-list,
 #skill-ways-list {
   padding-top: 5px;
-}
-#skills-list .mdi-action-settings,
-#skill-ways-list .mdi-action-settings {
-  float: right;
-  cursor: pointer;
-  color: #7b7b7b;
-}
-#skills-list .mdi-action-settings:hover,
-#skill-ways-list .mdi-action-settings:hover {
-  color: #3499f3;
 }
 #skills-list .rating,
 #skill-ways-list .rating {
@@ -701,7 +694,7 @@ body {
 #skills-list table,
 #skill-ways-list table {
   background: #fff;
-  width: 609px;
+  width: 100%;
   -webkit-border-top-right-radius: 3px;
   -webkit-border-bottom-right-radius: 3px;
   -webkit-border-bottom-left-radius: 3px;
@@ -721,7 +714,8 @@ body {
 #skills-list table th,
 #skill-ways-list table th {
   text-align: left;
-  padding: 5px 40px 5px 10px;
+  padding: 30px 40px 30px 10px;
+  text-transform: uppercase;
 }
 #skills-list table tr td,
 #skill-ways-list table tr td {
@@ -729,9 +723,24 @@ body {
   padding: 10px 15px;
   border-top: 1px solid #eaf2f7;
 }
+#skills-list table tr td .btn-edit,
+#skill-ways-list table tr td .btn-edit {
+  float: right;
+  cursor: pointer;
+  color: #7b7b7b;
+  visibility: hidden;
+}
 #skills-list table tr td:hover,
 #skill-ways-list table tr td:hover {
   background: #d9edf7;
+}
+#skills-list table tr td:hover .btn-edit,
+#skill-ways-list table tr td:hover .btn-edit {
+  visibility: visible;
+}
+#skills-list table tr td:hover .btn-edit:hover,
+#skill-ways-list table tr td:hover .btn-edit:hover {
+  color: #009688;
 }
 #skills-list table .btn-add,
 #skill-ways-list table .btn-add {

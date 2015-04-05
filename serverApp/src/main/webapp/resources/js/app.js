@@ -50,10 +50,6 @@
                 controller:"SkillWaysListCtrl",
                 templateUrl:'/resources/partials/lists/skillWays.html'
             }).
-            when('/jobs/:jobId/skills/:skillId/ways/add', {
-                controller:"AddSkillWaysCtrl",
-                templateUrl:'/resources/partials/details/skillWays.html'
-            }).
             when('/jobs/:jobId/skills/:skillId/ways/:wayId/edit', {
                 controller:"EditSkillWaysCtrl",
                 templateUrl:'/resources/partials/list/skillWays.html'

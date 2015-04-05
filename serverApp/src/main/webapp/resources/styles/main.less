@@ -664,7 +664,10 @@ body{
       top:10px;
       right: 10px;
       .mdi-action-settings:hover{
-        color: #3499f3;
+        color: #009688;
+      }
+      &:hover{
+        cursor: pointer;
       }
     }
     img{
@@ -692,7 +695,7 @@ body{
       font-size: 69px;
     }
     &:hover{
-      color: #3499f3;
+      color: #009688;
     }
   }
 
@@ -700,14 +703,6 @@ body{
 #skills-list,
 #skill-ways-list{
   padding-top: 5px;
-  .mdi-action-settings{
-    float: right;
-    cursor: pointer;
-    color: #7b7b7b;
-    &:hover{
-      color: #3499f3;
-    }
-  }
   .rating{
     float: right;
     margin-left: 20px;
@@ -730,19 +725,32 @@ body{
   }
   table{
     background: #fff;
-    width: 609px;
+    width: 100%;
     .border-radius(3px,3px,3px,3px);
-    th{
+    th {
       text-align: left;
-      padding: 5px 40px 5px 10px;
+      padding: 30px 40px 30px 10px;
+      text-transform: uppercase;
     }
     tr{
       td{
         font-size: 14px;
         padding: 10px 15px;
         border-top: 1px solid #eaf2f7;
+        .btn-edit{
+          float: right;
+          cursor: pointer;
+          color: #7b7b7b;
+          visibility: hidden;
+        }
         &:hover{
           background:#d9edf7;
+          .btn-edit{
+            visibility: visible;
+            &:hover {
+              color: #009688;
+            }
+          }
         }
       }
     }

@@ -18,7 +18,7 @@
                 <td ng-click="select(skill)">
                     <div>
                         <span>{{skill.caption}}</span>
-                        <i ng-click="editSkill(skill); $event.stopPropagation();" class="mdi-action-settings"></i>
+                        <i ng-click="editSkill(skill); $event.stopPropagation();" class="btn-edit"></i>
                         <div class="rating">
                             <div class="vote-up" ng-click="voteUp(skill);  $event.stopPropagation();" ></div>
                             <span class="rating-value">{{skill.rating}}</span>
