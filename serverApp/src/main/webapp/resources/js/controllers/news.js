@@ -40,7 +40,9 @@
             });
         }
     });
+
     app.controller("NewsCtrl", function ($scope, $http,$sce,$routeParams) {
+
         $http.get('/news/' + $routeParams.newsId).
             success(function (data) {
                 $scope.news = data;
@@ -49,9 +51,11 @@
             error(function () {
                 alert("Fail");
             });
+
         $scope.renderHtml = function(html_code){
             return $sce.trustAsHtml(html_code);
         };
+
         $scope.voteUp = function(info){
             var responsePromise = $http.post("/news/up/"+info.id,{});
             responsePromise.success(function (dataFromServer, status, headers, config) {
@@ -62,7 +66,8 @@
             responsePromise.error(function (data, status, headers, config) {
                 alert("vote up form failed!");
             });
-        }
+        };
+
         $scope.voteDown = function(info){
             var responsePromise = $http.post("/news/down/"+info.id,{});
             responsePromise.success(function (dataFromServer, status, headers, config) {
@@ -73,8 +78,26 @@
             responsePromise.error(function (data, status, headers, config) {
                 alert("vote down form failed!");
             });
-        }
+        };
+        $scope.comment = function(news){
+            var responsePromise = $http.put("/news/comment/" + news.id,{
+                message: news.message,
+                addDate: new Date().getTime()
+            });
+            responsePromise.success(function (dataFromServer, status, headers, config) {
+                console.log("comment success!");
+
+            });
+            responsePromise.error(function (data, status, headers, config) {
+                alert("commentm failed!");
+            });
+        };
+        $scope.showCommentForm = true;
+        $scope.toggleCommentForm = function() {
+            $scope.showCommentForm = $scope.showCommentForm === false ? true: false;
+        };
     });
+
     app.controller("AddNewsCtrl", function ($scope, $location, $http) {
 
         CKEDITOR.replace( 'newsEditor' );
@@ -99,6 +122,7 @@
             });
         }
     });
+
     app.controller("EditNewsCtrl", function ($scope, $location, $http, $routeParams) {
 
         CKEDITOR.replace( 'newsEditor' );
@@ -139,4 +163,5 @@
             });
         }
     });
+
 })();

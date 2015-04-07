@@ -1,6 +1,17 @@
 (function () {
     var app = angular.module('skillWays', []);
 
+    /*
+    *  todo!
+    *  будет удобно обновлять данные ways
+    *  если при запросах на создание и на обновление
+    *  будут возвращаться
+    *
+    *
+    *
+    *
+    *
+    * **/
     app.controller("SkillWaysListCtrl", function ($scope, $http, $routeParams, $location) {
         var $modal = $("#modalSkillWay");
 
@@ -41,7 +52,10 @@
             var responsePromise = $http.post("/wayToImproveSkill/add", dataObject, {});
             responsePromise.success(function (dataFromServer, status, headers, config) {
                 console.log("add skill way success");
-                window.location.reload();
+//                window.location.reload();
+                if(dataFromServer.error!=null){
+                    alert(dataFromServer.error);
+                }
             });
             responsePromise.error(function (data, status, headers, config) {
                 alert("Submitting form failed!");
@@ -64,7 +78,10 @@
             var responsePromise = $http.put("/wayToImproveSkill/update", dataObject);
             responsePromise.success(function (dataFromServer, status, headers, config) {
                 console.log("update success");
-                window.location.reload();
+//                window.location.reload();
+                if(dataFromServer.error!=null){
+                    alert(dataFromServer.error);
+                }
 
             });
             responsePromise.error(function (data, status, headers, config) {

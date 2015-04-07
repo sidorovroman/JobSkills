@@ -461,6 +461,9 @@ body {
   padding: 15px;
   border-bottom: 1px solid #dae2e8;
 }
+#news-list .post a:hover {
+  cursor: pointer;
+}
 #news-list .post .date {
   float: right;
   color: #a9a9a9 ;
@@ -510,8 +513,40 @@ body {
   background: url("../img/vote-down.png") no-repeat;
 }
 #news-container {
-  padding: 10px;
-  border-bottom: 1px solid #dae2e8;
+  padding: 12px;
+}
+#news-container .news-block {
+  padding-bottom: 10px;
+}
+#news-container .news-block h1 a:hover {
+  cursor: default;
+  text-decoration: none;
+}
+#news-container .news-block .add-comment:hover {
+  cursor: pointer;
+}
+#news-container .comments-header {
+  position: relative;
+  padding: 12px 0;
+  border-bottom: 2px solid #333;
+  margin-bottom: 10px;
+}
+#news-container .comments-header strong {
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  color: #333;
+  font-size: 13px;
+  margin: 0;
+  line-height: 1.5em;
+}
+#news-container a:hover {
+  cursor: pointer;
+}
+#news-container .add-news {
+  display: inline-block;
+  width: 100%;
+  background: rgba(233, 233, 233, 0.37);
+  padding: 27px 0 0px 24px;
 }
 #news-container .date {
   float: right;

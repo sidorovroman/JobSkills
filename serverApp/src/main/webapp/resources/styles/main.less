@@ -487,6 +487,9 @@ body{
   .post{
     padding: 15px;
     border-bottom: 1px solid #dae2e8;
+    a:hover{
+      cursor: pointer;
+    }
 
     .date{
       float: right;
@@ -538,8 +541,43 @@ body{
   }
 }
 #news-container{
-    padding: 10px;
-    border-bottom: 1px solid #dae2e8;
+    padding: 12px;
+    .news-block{
+      padding-bottom: 10px;
+      h1 a:hover{
+        cursor: default;
+        text-decoration: none;
+      }
+      .add-comment{
+        &:hover{
+          cursor: pointer;
+        }
+      }
+    }
+  .comments-header{
+    position: relative;
+    padding: 12px 0;
+    border-bottom: 2px solid #333;
+    margin-bottom: 10px;
+    strong{
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      color: #333;
+      font-size: 13px;
+      margin: 0;
+      line-height: 1.5em;
+    }
+  }
+  a:hover{
+    cursor: pointer;
+  }
+    .add-news{
+
+      display: inline-block;
+      width: 100%;
+      background: rgba(233, 233, 233, 0.37);
+      padding: 27px 0 0px 24px;
+    }
 
     .date{
       float: right;
