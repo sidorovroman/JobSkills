@@ -22,39 +22,8 @@
                 <span class="rating-value"> {{news.rating}}</span>
                 <div class="vote-down" ng-click="voteDown(news)"></div>
             </div>
-            <a class="add-comment"  ng-click="toggleCommentForm()">Комментировать</a>
         </div>
     </div>
-
-    <form class="form-horizontal">
-        <fieldset>
-            <sec:authorize var="loggedIn" access="isAuthenticated()">
-                <div class="add-news" ng-hide="showCommentForm">
-                    <div class="form-group">
-                        <div class="col-lg-10">
-                            <textarea class="form-control" rows="3" placeholder="Ваш Комментарий" ng-model="news.message"></textarea>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-lg-10">
-                            <button class="btn btn-primary" ng-click="comment(news)">Добавить</button>
-                        </div>
-                    </div>
-                </div>
-            </sec:authorize>
-
-            <sec:authorize var="loggedIn" access="isAnonymous()">
-                <a class="btn-enter" data-toggle="modal" data-target="#modalLogin">Авторизируйтесь</a>, чтобы оставить комментарий
-            </sec:authorize>
-        </fieldset>
-    </form>
-
-    <div class="comments-header">
-        <strong>Комментарии</strong>
-    </div>
-    <div class="news-comments"  ng-repeat="comment in news.comments">
-        {{comment}}
-    </div>
-
+    <ng-comments comments="{{news.comments}}" url="/news/comment"/>
 
 </div>

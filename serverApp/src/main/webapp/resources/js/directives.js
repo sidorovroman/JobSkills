@@ -1,3 +1,3 @@
 (function () {
-    var directives = angular.module('App.directives', ['datepicker']);
+    angular.module('App.directives', ['datepicker','comments']);
 })();

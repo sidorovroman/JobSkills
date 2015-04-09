@@ -196,6 +196,7 @@
 
     <script src="<c:url value="/resources/js/directives.js" />"></script>
     <script src="<c:url value="/resources/js/directives/datepicker.js" />"></script>
+    <script src="<c:url value="/resources/js/directives/comments.js" />"></script>
     <script src="<c:url value="/resources/js/controllers/loginModal.js" />"></script>
 
     <script src="<c:url value="/resources/js/controllers.js" />"></script>

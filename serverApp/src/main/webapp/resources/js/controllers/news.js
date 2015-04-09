@@ -79,23 +79,6 @@
                 alert("vote down form failed!");
             });
         };
-        $scope.comment = function(news){
-            var responsePromise = $http.put("/news/comment/" + news.id,{
-                message: news.message,
-                addDate: new Date().getTime()
-            });
-            responsePromise.success(function (dataFromServer, status, headers, config) {
-                console.log("comment success!");
-
-            });
-            responsePromise.error(function (data, status, headers, config) {
-                alert("commentm failed!");
-            });
-        };
-        $scope.showCommentForm = true;
-        $scope.toggleCommentForm = function() {
-            $scope.showCommentForm = $scope.showCommentForm === false ? true: false;
-        };
     });
 
     app.controller("AddNewsCtrl", function ($scope, $location, $http) {
