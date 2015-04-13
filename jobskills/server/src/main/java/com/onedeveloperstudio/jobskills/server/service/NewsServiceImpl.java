@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
+
 /**
  * User: User
  * Date: 20.09.14
@@ -26,6 +28,7 @@ public class NewsServiceImpl extends JobSkillsVoteServiceImpl<NewsDto> implement
   public void comment(Long id, CommentaryDto comment) {
     NewsDto news = this.load(id);
     comment.setAuthor(sysUserService.getAuthentication());
+    comment.setAddDate(new Date());
     news.getCommentaries().add(comment);
     this.save(news);
   }

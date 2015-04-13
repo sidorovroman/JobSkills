@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -56,6 +57,8 @@ public class WayToImproveSkillServiceImpl extends JobSkillsVoteServiceImpl<WayTo
   @Override
   public void comment(Long id, CommentaryDto comment) {
     WayToImproveSkillDto wtis = this.load(id);
+    comment.setAuthor(sysUserService.getAuthentication());
+    comment.setAddDate(new Date());
     wtis.getCommentaries().add(comment);
     this.save(wtis);
   }
