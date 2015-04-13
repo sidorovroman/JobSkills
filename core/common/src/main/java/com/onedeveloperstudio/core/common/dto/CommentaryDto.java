@@ -11,6 +11,7 @@ public class CommentaryDto extends RatedDto {
   private Date addDate;
   private String message;
   private CommentaryDto head;
+  private SysUserDto author;
   private List<CommentaryDto> children;
   private List<VoteDto> votes;
 
@@ -52,5 +53,13 @@ public class CommentaryDto extends RatedDto {
 
   public void setVotes(List<VoteDto> votes) {
     this.votes = votes;
+  }
+
+  public SysUserDto getAuthor() {
+    return author;
+  }
+
+  public void setAuthor(SysUserDto author) {
+    this.author = author;
   }
 }
