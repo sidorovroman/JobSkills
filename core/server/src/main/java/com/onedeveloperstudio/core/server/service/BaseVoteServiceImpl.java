@@ -51,7 +51,7 @@ public class BaseVoteServiceImpl<D extends RatedDto> extends BaseServiceImpl<D> 
   }
 
   @Override
-  @Secured("ROLE_USER")
+  @Secured({"ROLE_USER", "ROLE_ADMIN"})
   public D update(D dto) {
     D obj = super.update(dto);
     SysUserDto user = sysUserService.getAuthentication();
@@ -60,7 +60,7 @@ public class BaseVoteServiceImpl<D extends RatedDto> extends BaseServiceImpl<D> 
   }
 
   @Override
-  @Secured("ROLE_USER")
+  @Secured({"ROLE_USER", "ROLE_ADMIN"})
   @Transactional
   public Integer vote(Long id, VoteState state) {
     D ratedObject = this.load(id);
