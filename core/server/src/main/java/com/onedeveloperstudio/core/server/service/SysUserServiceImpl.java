@@ -2,6 +2,7 @@ package com.onedeveloperstudio.core.server.service;
 
 import com.onedeveloperstudio.core.common.appobj.AppObj;
 import com.onedeveloperstudio.core.common.appobj.AppObjDict;
+import com.onedeveloperstudio.core.common.dto.BaseDto;
 import com.onedeveloperstudio.core.common.dto.SysUserDto;
 import com.onedeveloperstudio.core.common.dto.User;
 import com.onedeveloperstudio.core.server.entity.user.SysUserEntity;
@@ -38,8 +39,8 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUserDto> implements S
   }
 
   @Secured("ROLE_ANONYMOUS")
-  public void save(SysUserDto dto) {
-    super.save(dto);
+  public BaseDto save(SysUserDto dto) {
+    return super.save(dto);
   }
 
   @Secured("ROLE_ANONYMOUS")

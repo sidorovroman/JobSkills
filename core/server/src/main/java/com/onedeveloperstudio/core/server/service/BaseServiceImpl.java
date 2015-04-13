@@ -41,14 +41,15 @@ public class BaseServiceImpl<D extends BaseDto> implements BaseService<D> {
   @Secured({"ROLE_USER", "ROLE_ADMIN"})
   @Transactional
   public D insert(D dto) {
-    save(dto);
+    dto = (D) save(dto);
     return dto;
   }
 
   @Transactional
-  public void save(D dto) {
+  public BaseDto save(D dto) {
     BaseEntity entity = mapper.map(dto, entityClass);
-    repository.save(entity);
+    entity = (BaseEntity) repository.save(entity);
+    return mapper.map(entity,dto.getClass());
   }
 
   @Override
