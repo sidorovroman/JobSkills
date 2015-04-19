@@ -22,11 +22,7 @@
             <div class="author">
                 от {{info.author.userName}}
             </div>
-            <div class="rating">
-                <div class="vote-up" ng-click="voteUp(info)"></div>
-                   <span class="rating-value"> {{info.rating}}</span>
-                <div class="vote-down" ng-click="voteDown(info)"></div>
-            </div>
+            <ng-rating id="{{info.id}}"  value="{{info.rating}}" url-part = "/news"/>
         </div>
     </div>
 </div>

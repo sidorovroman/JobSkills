@@ -17,11 +17,8 @@
             <div class="author">
                 от {{news.author.userName}}
             </div>
-            <div class="rating">
-                <div class="vote-up" ng-click="voteUp(news)"></div>
-                <span class="rating-value"> {{news.rating}}</span>
-                <div class="vote-down" ng-click="voteDown(news)"></div>
-            </div>
+            <ng-rating id="{{news.id}}" value="{{news.rating}}" url-part="/news"></ng-rating>
+
         </div>
     </div>
     <ng-comments comments="{{news.comments}}" url="/news/comment"/>

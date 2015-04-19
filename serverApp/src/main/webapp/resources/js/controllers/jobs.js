@@ -129,29 +129,5 @@
         $scope.renderHtml = function(html_code){
             return $sce.trustAsHtml(html_code);
         };
-
-
-        $scope.voteUp = function(skill){
-            var responsePromise = $http.post("/requiredSkill/up/"+skill.id,{});
-            responsePromise.success(function (dataFromServer, status, headers, config) {
-                console.log("vote up success!");
-                skill.rating = dataFromServer;
-
-            });
-            responsePromise.error(function (data, status, headers, config) {
-                alert("vote up form failed!");
-            });
-        };
-        $scope.voteDown = function(skill){
-            var responsePromise = $http.post("/requiredSkill/down/"+skill.id,{});
-            responsePromise.success(function (dataFromServer, status, headers, config) {
-                console.log("vote down success!");
-                skill.rating = dataFromServer;
-
-            });
-            responsePromise.error(function (data, status, headers, config) {
-                alert("vote down form failed!");
-            });
-        }
     });
 })();

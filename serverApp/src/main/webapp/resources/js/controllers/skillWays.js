@@ -37,7 +37,6 @@
             setModalMode(false);
             $modal.modal('show');
         };
-
         $scope.addNew = function (skillId) {
             var dataObject = {
                 caption: this.SkillWaysForm.caption,
@@ -55,6 +54,8 @@
 //                window.location.reload();
                 if(dataFromServer.error!=null){
                     alert(dataFromServer.error);
+                }else{
+                    $scope.ways.push(dataFromServer);
                 }
             });
             responsePromise.error(function (data, status, headers, config) {
@@ -63,9 +64,9 @@
 
 
         };
-
         $scope.update = function (skillId) {
             var dataObject = {
+                addDate:  new Date().getTime(),
                 id: this.SkillWaysForm.id,
                 caption: this.SkillWaysForm.caption,
                 description: this.SkillWaysForm.description,
@@ -94,17 +95,18 @@
         function setModalMode(editMode) {
             var $modal = $("#modalSkillWay");
 
-            var btnAdd = $modal.find(".btn-add");
-            var btnUpdate = $modal.find(".btn-update");
+            var $btnAdd = $modal.find(".btn-add");
+            var $btnUpdate = $modal.find(".btn-update");
+            var $title = $modal.find(".modal-title");
 
             if(editMode){
-                btnAdd.hide();
-                btnUpdate.show();
-                $scope.SkillWaysForm.title = "Редактирование";
+                $btnAdd.hide();
+                $btnUpdate.show();
+                $title.text("Редактирование");
             }else{
-                btnAdd.show();
-                btnUpdate.hide();
-                $scope.SkillWaysForm.title = "Добавление";
+                $btnAdd.show();
+                $btnUpdate.hide();
+                $title.text("Добавление");
             }
         }
     });

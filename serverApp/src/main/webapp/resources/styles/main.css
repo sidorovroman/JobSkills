@@ -39,6 +39,30 @@ body {
   padding-left: 81px;
 }
 /* ==========================================
+                    component rating
+   ========================================== */
+.ng-rating {
+  float: left;
+  margin: 0 20px;
+}
+.ng-rating .rating-value {
+  float: left;
+}
+.ng-rating .vote-up,
+.ng-rating .vote-down {
+  margin: 0 10px;
+  width: 23px;
+  height: 20px;
+  display: block;
+  float: left;
+}
+.ng-rating .vote-up {
+  background: url("../img/vote-up.png") no-repeat;
+}
+.ng-rating .vote-down {
+  background: url("../img/vote-down.png") no-repeat;
+}
+/* ==========================================
                     main-img
    ========================================== */
 .start-page {
@@ -491,27 +515,6 @@ body {
   float: left;
   color: #a9a9a9;
 }
-#news-list .post .rating {
-  float: left;
-  margin-left: 20px;
-}
-#news-list .post .rating .rating-value {
-  float: left;
-}
-#news-list .post .rating .vote-up,
-#news-list .post .rating .vote-down {
-  margin: 0 10px;
-  width: 23px;
-  height: 20px;
-  display: block;
-  float: left;
-}
-#news-list .post .rating .vote-up {
-  background: url("../img/vote-up.png") no-repeat;
-}
-#news-list .post .rating .vote-down {
-  background: url("../img/vote-down.png") no-repeat;
-}
 #news-container {
   padding: 12px;
 }
@@ -574,27 +577,6 @@ body {
   font-size: 11px;
   float: left;
   color: #a9a9a9;
-}
-#news-container .rating {
-  float: left;
-  margin-left: 20px;
-}
-#news-container .rating .rating-value {
-  float: left;
-}
-#news-container .rating .vote-up,
-#news-container .rating .vote-down {
-  margin: 0 10px;
-  width: 23px;
-  height: 20px;
-  display: block;
-  float: left;
-}
-#news-container .rating .vote-up {
-  background: url("../img/vote-up.png") no-repeat;
-}
-#news-container .rating .vote-down {
-  background: url("../img/vote-down.png") no-repeat;
 }
 /* ==========================================
                  jobs,skills, skillWays
@@ -699,32 +681,9 @@ body {
 #skill-ways-list {
   padding-top: 5px;
 }
-#skills-list .rating,
-#skill-ways-list .rating {
+#skills-list .ng-rating,
+#skill-ways-list .ng-rating {
   float: right;
-  margin-left: 20px;
-}
-#skills-list .rating .rating-value,
-#skill-ways-list .rating .rating-value {
-  float: left;
-}
-#skills-list .rating .vote-up,
-#skill-ways-list .rating .vote-up,
-#skills-list .rating .vote-down,
-#skill-ways-list .rating .vote-down {
-  margin: 0 10px;
-  width: 23px;
-  height: 20px;
-  display: block;
-  float: left;
-}
-#skills-list .rating .vote-up,
-#skill-ways-list .rating .vote-up {
-  background: url("../img/vote-up.png") no-repeat;
-}
-#skills-list .rating .vote-down,
-#skill-ways-list .rating .vote-down {
-  background: url("../img/vote-down.png") no-repeat;
 }
 #skills-list table,
 #skill-ways-list table {
