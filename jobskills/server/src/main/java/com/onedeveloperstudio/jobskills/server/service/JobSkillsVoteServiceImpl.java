@@ -44,6 +44,7 @@ public class JobSkillsVoteServiceImpl<D extends RatedDto> extends BaseVoteServic
       updateKarma(author, job, state);
     } else if (ratedObject instanceof WayToImproveSkillDto) {
       WayToImproveSkillDto wayToImproveSkillDto = (WayToImproveSkillDto) ratedObject;
+      author = wayToImproveSkillDto.getAuthor();
       List<RequiredSkillDto> skills = wayToImproveSkillDto.getSkills();
       List<JobDto> jobs = new ArrayList<>();
       for (RequiredSkillDto skill : skills) {
