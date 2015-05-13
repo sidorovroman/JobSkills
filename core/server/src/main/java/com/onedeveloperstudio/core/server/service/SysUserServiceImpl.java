@@ -39,7 +39,7 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUserDto> implements S
   }
 
   @Secured("ROLE_ANONYMOUS")
-  public BaseDto save(SysUserDto dto) {
+  public SysUserDto save(SysUserDto dto) {
     return super.save(dto);
   }
 

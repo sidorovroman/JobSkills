@@ -54,12 +54,14 @@ public class RequiredSkillServiceImpl extends JobSkillsVoteServiceImpl<RequiredS
 
   @Transactional
   @Override
-  public void comment(Long id, CommentaryDto comment) {
-    RequiredSkillDto wtis = this.load(id);
+  public CommentaryDto comment(Long id, CommentaryDto comment) {
+    RequiredSkillDto requiredSkill = this.load(id);
     comment.setAuthor(sysUserService.getAuthentication());
     comment.setAddDate(new Date());
-    wtis.getComments().add(comment);
-    this.save(wtis);
+    requiredSkill.getComments().add(comment);
+    requiredSkill = this.save(requiredSkill);
+    return requiredSkill.getComments().stream()
+        .filter(item -> (item.getAuthor().equals(comment.getAuthor())) && item.getAddDate().equals(comment.getAddDate())).findFirst().get();
   }
 
   @Override

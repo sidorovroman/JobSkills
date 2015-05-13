@@ -46,10 +46,10 @@ public class BaseServiceImpl<D extends BaseDto> implements BaseService<D> {
   }
 
   @Transactional
-  public BaseDto save(D dto) {
+  public D save(D dto) {
     BaseEntity entity = mapper.map(dto, entityClass);
     entity = (BaseEntity) repository.save(entity);
-    return mapper.map(entity,dto.getClass());
+    return (D) mapper.map(entity,dto.getClass());
   }
 
   @Override

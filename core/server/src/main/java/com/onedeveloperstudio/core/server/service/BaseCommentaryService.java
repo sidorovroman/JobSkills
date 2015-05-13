@@ -7,5 +7,5 @@ import com.onedeveloperstudio.core.common.dto.CommentaryDto;
  * Date: 24.11.14
  */
 public interface BaseCommentaryService {
-  public void comment(Long id, CommentaryDto comment);
+  public CommentaryDto comment(Long id, CommentaryDto comment);
 }

@@ -25,12 +25,14 @@ public class NewsServiceImpl extends JobSkillsVoteServiceImpl<NewsDto> implement
 
   @Transactional
   @Override
-  public void comment(Long id, CommentaryDto comment) {
+  public CommentaryDto comment(Long id, CommentaryDto comment) {
     NewsDto news = this.load(id);
     comment.setAuthor(sysUserService.getAuthentication());
     comment.setAddDate(new Date());
     news.getCommentaries().add(comment);
-    this.save(news);
+    news = this.save(news);
+    return news.getCommentaries().stream()
+        .filter(item -> (item.getAuthor().equals(comment.getAuthor())) && item.getAddDate().equals(comment.getAddDate())).findFirst().get();
   }
 
   @Override

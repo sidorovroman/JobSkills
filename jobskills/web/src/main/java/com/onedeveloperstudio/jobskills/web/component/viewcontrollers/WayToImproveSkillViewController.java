@@ -3,10 +3,8 @@ package com.onedeveloperstudio.jobskills.web.component.viewcontrollers;
 import com.onedeveloperstudio.core.common.VoteState;
 import com.onedeveloperstudio.core.common.appobj.AppObjDict;
 import com.onedeveloperstudio.core.common.dto.CommentaryDto;
-import com.onedeveloperstudio.jobskills.common.dto.RequiredSkillDto;
 import com.onedeveloperstudio.jobskills.common.dto.WayToImproveSkillDto;
 import com.onedeveloperstudio.jobskills.server.service.WayToImproveSkillService;
-import flexjson.JSONDeserializer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.access.AccessDeniedException;
@@ -19,8 +17,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.PostConstruct;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -94,8 +90,9 @@ public class WayToImproveSkillViewController {
   }
 
   @RequestMapping(value = "/comment/{id}", method = RequestMethod.PUT)
-  public void comment(@PathVariable Long id, @RequestBody CommentaryDto comment){
-    service.comment(id, comment);
+  @ResponseBody
+  public CommentaryDto comment(@PathVariable Long id, @RequestBody CommentaryDto comment){
+    return service.comment(id, comment);
   }
 
   @RequestMapping(value = "up/{id}")

@@ -55,12 +55,14 @@ public class WayToImproveSkillServiceImpl extends JobSkillsVoteServiceImpl<WayTo
 
   @Transactional
   @Override
-  public void comment(Long id, CommentaryDto comment) {
+  public CommentaryDto comment(Long id, CommentaryDto comment) {
     WayToImproveSkillDto wtis = this.load(id);
     comment.setAuthor(sysUserService.getAuthentication());
     comment.setAddDate(new Date());
     wtis.getCommentaries().add(comment);
-    this.save(wtis);
+    wtis = this.save(wtis);
+    return wtis.getCommentaries().stream()
+        .filter(item -> (item.getAuthor().equals(comment.getAuthor())) && item.getAddDate().equals(comment.getAddDate())).findFirst().get();
   }
 
   @Override
