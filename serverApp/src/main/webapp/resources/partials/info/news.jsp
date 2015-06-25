@@ -21,6 +21,6 @@
 
         </div>
     </div>
-    <ng-comments comments="{{news.comments}}" url="/news/comment"/>
+    <ng-comments comments="news.commentaries" id="news.id" url="/news/comment"/>
 
 </div>

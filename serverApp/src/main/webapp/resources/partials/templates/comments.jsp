@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
-<div class="comments-list">
+<div class="ng-comments comments-list">
     <%-- эта кнопка скрывает/показывает форму добавления комментария--%>
     <sec:authorize var="loggedIn" access="isAuthenticated()">
         <a class="add-comment" ng-click="toggleCommentForm()">Комментировать</a>
@@ -18,7 +18,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-lg-10">
-                            <button class="btn btn-primary" ng-click="comment(news)">Добавить</button>
+                            <button class="btn btn-primary" ng-click="comment(id)">Добавить</button>
                         </div>
                     </div>
                 </div>
@@ -33,7 +33,11 @@
     <div class="comments-header">
         <strong>Комментарии</strong>
     </div>
-    <div class="news-comments"  ng-repeat="comment in comments">
-        {{comment}}
+    <div class="article-comments"  ng-repeat="comment in comments">
+        <div class="comment-wrap">
+            <div class="comment-head">{{comment.author.userFullName}}  <span class="date">{{comment.addDate|date:'dd MMMM HH:mm'}}</span></div>
+            <div class="comment-body">{{comment.message}}</div>
+        </div>
+
     </div>
 </div>

@@ -38,6 +38,42 @@ body{
   }
 }
 /* ==========================================
+                    component commetable
+   ========================================== */
+
+.ng-comments {
+  .comments-header {
+    position: relative;
+    padding: 12px 0;
+    border-bottom: 2px solid #333;
+    margin-bottom: 10px;
+    strong {
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      color: #333;
+      font-size: 13px;
+      margin: 0;
+      line-height: 1.5em;
+    }
+  }
+  .article-comments{
+    .comment-wrap{
+      position: relative;
+      padding: 28px 0;
+      border-bottom: 1px solid #f0f0f0;
+      .comment-head{
+        color: #333;
+        font-size: 15px;
+        line-height: 1em;
+        margin-bottom: 7px;
+      }
+      .comment-body{
+        margin-left: 0;
+      }
+    }
+  }
+}
+   /* ==========================================
                     component rating
    ========================================== */
 .ng-rating{
@@ -557,20 +593,6 @@ body{
         }
       }
     }
-  .comments-header{
-    position: relative;
-    padding: 12px 0;
-    border-bottom: 2px solid #333;
-    margin-bottom: 10px;
-    strong{
-      text-transform: uppercase;
-      letter-spacing: .5px;
-      color: #333;
-      font-size: 13px;
-      margin: 0;
-      line-height: 1.5em;
-    }
-  }
   a:hover{
     cursor: pointer;
   }
